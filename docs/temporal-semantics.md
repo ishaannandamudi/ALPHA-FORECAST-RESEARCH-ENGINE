@@ -51,3 +51,25 @@ explicit fit/evaluation cutoffs, mandatory future interval purging, and embargo
 spacing. Purging is a recorded requirement in AFRE-0, not an implemented splitter.
 AFRE-4 will remove rows whose label intervals overlap held-out windows and fit all
 normalization/selection using only training data and available completed labels.
+
+## AFRE-1 physical delivery and reconstruction
+
+`AvailabilityEvidence` preserves six separate clocks: upstream publication and
+source availability (optional evidence), actual AFRE receipt, ingestion,
+computation/reconstruction, and final feature availability. For live and unqualified
+reconstructed records, final >= computation >= ingestion >= receipt. Publication
+at 10:00 with receipt at 10:02 cannot serve 10:01. An archive downloaded months
+later does not inherit its earlier publication time as AFRE availability.
+
+Only explicit qualified historical delivery bound to exact source/entity and a
+locally approved attestor can substitute historical processing availability.
+Actual later receipt/ingestion/computation remain recorded; historical channel
+knowability is separate from literal observation by this system. This AFRE-1
+contract strengthens adapter evidence while preserving AFRE-0 `ReconstructionProof`
+and `FeatureValue.observed_ns` semantics. See [feature vintages](feature-vintages.md).
+
+Validity and knowledge remain independent: interval features use [effective, end),
+rolling computation uses effective observations in (T-lookback, T] with each input
+available by cutoff, and explicit KNOWN_FACT features may represent a scheduled
+future-effective fact. Corrections never overwrite vintages; snapshot joins and
+frozen materializations preserve exact selections across concurrent/later inserts.

@@ -13,7 +13,15 @@ from afre.ids import validate_fingerprint
 from afre.models import ModelArtifact, ModelSpec
 from afre.schema import Artifact, require
 from afre.serialization import canonical_json, deserialize
-from afre.version import ENGINE_VERSION, STORE_SCHEMA_VERSION, STORE_USER_VERSION
+from afre.version import (
+    LEGACY_ENGINE_VERSION as ENGINE_VERSION,
+)
+from afre.version import (
+    LEGACY_STORE_SCHEMA_VERSION as STORE_SCHEMA_VERSION,
+)
+from afre.version import (
+    LEGACY_STORE_USER_VERSION as STORE_USER_VERSION,
+)
 
 TABLES: dict[type[Artifact], str] = {
     DatasetManifest: "dataset_manifests",

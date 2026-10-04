@@ -1,7 +1,9 @@
 # Research reproducibility
 
-Engine: **0.1.0**. Foundation schema: **1.0**. SQLite schema: **1.0**, represented by
-`PRAGMA user_version=1`. Processing, model, label, calendar, source and selection
+Engine: **0.2.0**. Foundation schema: **1.0**. Feature-store schema: **1.0**.
+SQLite feature-store schema: **1.1**, represented by `PRAGMA user_version=2`.
+The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
+Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
 randomness enters an artifact. Every stochastic model spec records a uint64 seed;
 experiment seed must agree. Names are human labels and participate in content
@@ -51,3 +53,19 @@ adds the forecast snapshot, registry and service boundary with artifact replay,
 content-addressed model bytes and provenance linking. AFRE-25 performs final
 integration, hardening and research audit. Multiple-testing/overfitting controls
 and model-selection history remain explicit in AFRE-19 and AFRE-20 respectively.
+
+AFRE-1 migration 1.0→1.1 adds only feature-store artifacts, lookup/spec/receipt/scope
+indexes, immutable triggers and explicit version metadata in one transaction.
+Foundation payload bytes, foundation schema metadata and original engine-creation
+metadata remain untouched. New `store_schema_version`, `feature_store_schema` and
+`feature_store_engine_version` identify the additive extension. Failed migration
+rolls back to the valid legacy layout; unknown future layouts/versions fail closed.
+
+The feature-store example verifies hash seeds, exact input/state/receipt lineage,
+unchanged old selections after revisions, serving/batch parity and byte-identical
+restart. Tests additionally reverse insertion/origin order, interleave a second
+SQLite writer inside an actual historical join and corrupt ancestor provenance.
+All tests block sockets/DNS. The feature benchmark records at least 20,000 vintages
+over multiple features/securities and verifies indexed retrieval/restart; timings
+are local observations with no production SLA. AFRE-1 performs no model fitting,
+label computation or global/fold normalization fitting.

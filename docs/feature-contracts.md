@@ -23,7 +23,7 @@ immutable tuples; dictionaries/lists cannot be artifact fields.
 
 Every absence has `value=None`; PRESENT requires a value. INVALID quality cannot
 be PRESENT. Missing policy can reject absence or preserve explicit states. No
-imputation occurs. Freshness thresholds will be implemented with AFRE-1 vintages.
+imputation occurs. AFRE-1 vintages implement explicit freshness thresholds.
 A placeholder for NOT_AVAILABLE_YET must itself be knowledge available at origin;
 a future observation must not be included just to tag it as unavailable.
 
@@ -42,6 +42,11 @@ values or dependencies. A provider could falsely label a target-derived scalar a
 a feature: schema separation cannot detect that lie. Adapters/DAG audits must
 verify source lineage, clocks and exclusion of target-window inputs.
 
-AFRE-0 registers definition *artifacts* only. Feature vintages, retrieval indexes,
-point-in-time joins, normalization, computation DAG execution and materialization
-are deliberately deferred to AFRE-1.
+AFRE-0's definition/value semantics remain unchanged. AFRE-1 wraps definitions in
+`RegisteredFeatureDefinition`, persists immutable `FeatureVintage` records and
+projects exact selected vintages into these existing values/rows. Freshness and
+query policy participate in projection identity; stale audit values remain retained
+while the foundation value is withheld. Full physical delivery and reconstruction
+clocks remain in the referenced vintage. See [vintages](feature-vintages.md),
+[DAG computation](feature-computation-dag.md), [joins](point-in-time-joins.md) and
+[supplied normalization](feature-normalization.md). Labels remain AFRE-2.

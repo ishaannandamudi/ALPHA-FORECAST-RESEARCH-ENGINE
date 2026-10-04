@@ -38,7 +38,7 @@ def main() -> None:
             failures.append(f"{name}: trailing whitespace")
         if text and not text.endswith("\n"):
             failures.append(f"{name}: missing final newline")
-        if path.parent == package and path.suffix == ".py":
+        if package in path.parents and path.suffix == ".py":
             for node in ast.walk(ast.parse(text)):
                 if (
                     isinstance(node, ast.Call)

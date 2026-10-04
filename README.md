@@ -2,12 +2,14 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **This repository completes AFRE-0
-only.** It contains no predictive model fitting, feature store, portfolio sizing,
-orders or execution.
+lineage and honest out-of-sample evidence. **This repository completes AFRE-0 and
+AFRE-1 — Point-in-Time Feature Store.** It provides causal indexed feature lookup,
+immutable vintages, physical delivery clocks, audited computation and supplied
+normalization lineage. Predictive models, labels, portfolios and execution remain
+deferred.
 
-Python **3.11+**; engine **0.1.0**; foundation and SQLite schemas **1.0**. The runtime
-uses only the standard library.
+Python **3.11+**; engine **0.2.0**; foundation schema **1.0**; feature-store schema
+**1.0**; SQLite feature store **1.1**. The runtime uses only the standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
 deterministic JSON/domain-separated SHA-256 identity, provider protocols and an
@@ -16,6 +18,12 @@ append-only transactional SQLite artifact registry. Every feature must satisfy
 label must be completed and available at fit cutoff. Effective time and knowledge
 time remain separate. Stable security IDs and historical membership replace ticker
 identity and current-constituent reconstruction.
+
+Upstream publication and source availability, actual AFRE receipt, ingestion,
+computation and final feature availability remain distinct. Live features cannot
+precede physical receipt/processing. A qualified historical-delivery contract may
+establish historical availability while retaining actual later reconstruction
+clocks; publication alone cannot backdate an archived feature.
 
 EIE is an external upstream system via its final provider-neutral snapshot
 boundary. MCE, options and AME are optional future providers. No sibling repository
@@ -27,12 +35,14 @@ is imported or modified; no upstream SQLite schema is assumed.
 python3.11 -m venv .venv311
 .venv311/bin/python -m pip install -e '.[dev]'
 .venv311/bin/python examples/foundation_demo.py
+.venv311/bin/python examples/feature_store_demo.py
 ```
 
 For a checkout without editable installation, use:
 
 ```sh
 PYTHONPATH=src .venv311/bin/python examples/foundation_demo.py
+PYTHONPATH=src:. .venv311/bin/python examples/feature_store_demo.py
 ```
 
 The deterministic [example](examples/foundation_demo.py) does all twelve steps:
@@ -54,6 +64,12 @@ It also checks that a label is unavailable at origin and available at the later
 training cutoff. Data and label values are synthetic, not calculated returns.
 The SQLite file is caller-chosen in a temporary directory.
 
+The [AFRE-1 walkthrough](examples/feature_store_demo.py) registers five exact
+definitions, extracts completed synthetic bars and neutral EIE features, computes
+returns/volatility and a supplied-state z-score, freezes a historical materialization,
+adds a later revision, verifies single/batch parity and byte-identical restart,
+and reports lineage/audit evidence. Clocks and statistics are explicit fixtures.
+
 ## Package
 
 | Module | Responsibility |
@@ -67,6 +83,7 @@ The SQLite file is caller-chosen in a temporary directory.
 | models, experiments, evaluation | Reproducible specifications and artifact/result metadata |
 | providers, validation | External as-of protocols and pure boundary checks |
 | persistence | Explicit transactions, immutable registry, migration and replay |
+| feature_store | Registry/vintages, delivery evidence, indexed PIT selection, DAG computation, frozen joins, normalization lineage and additive store 1.1 |
 
 ## Quality gates
 
@@ -79,7 +96,10 @@ checks. The Python package performs no networking or shell execution.
 .venv311/bin/ruff format --check .
 .venv311/bin/mypy
 .venv311/bin/python scripts/check_repository.py
+.venv311/bin/python scripts/check_documentation.py
+git diff --check
 PYTHONPATH=src:. .venv311/bin/python benchmarks/foundation.py
+PYTHONPATH=src:. .venv311/bin/python benchmarks/feature_store.py
 ```
 
 Coverage requires ≥95% combined statements/branches. Tests include leakage,
@@ -96,6 +116,11 @@ Read the [master specification](docs/AFRE_MASTER_SPEC.md),
 [target contracts](docs/target-contracts.md),
 [reproducibility](docs/research-reproducibility.md), and
 [provider boundary](docs/provider-contracts.md).
+AFRE-1 details: [feature store](docs/point-in-time-feature-store.md),
+[vintages and delivery clocks](docs/feature-vintages.md),
+[computation DAG](docs/feature-computation-dag.md),
+[point-in-time joins](docs/point-in-time-joins.md), and
+[normalization](docs/feature-normalization.md).
 The frozen advanced roadmap has **26 distinct phases, AFRE-0 through AFRE-25**.
 Transaction-cost-aware research evaluation (AFRE-18), multiple-testing/overfitting
 controls (AFRE-19), model selection (AFRE-20), ensembles (AFRE-21), drift/decay
@@ -104,13 +129,14 @@ AFRE-24 is the final forecast snapshot, registry and service boundary; AFRE-25 i
 final integration, hardening and research audit. Portfolio construction, risk
 optimization and execution remain downstream projects after AFRE. Predictive
 metrics alone do not establish trading profitability.
-The [completion report](docs/AFRE_0_COMPLETION_REPORT.md) records gates and limits.
+The [AFRE-0 completion report](docs/AFRE_0_COMPLETION_REPORT.md) records its historical
+baseline; the [AFRE-1 report](docs/AFRE_1_COMPLETION_REPORT.md) records current gates.
 
-**Next scope: AFRE-1, point-in-time feature store.** It will add immutable feature
-vintages, a registry/computation DAG, point-in-time joins, stale/missing handling,
-market/EIE features, optional neutral adapters, materialization, training/serving
-parity, normalization lineage, leakage audits and efficient historical batches.
-Label construction starts at AFRE-2; actual predictive baselines start at AFRE-5.
+**Next scope: AFRE-2 — Forecast Targets & Label Construction.** It will resolve
+exact target windows, point-in-time prices/actions, label completion/availability,
+overlapping horizons and quality for forward/residual/absolute returns,
+realized volatility and downside/excursion outcomes. AFRE-1 stops at the feature
+store. Actual predictive baselines start at AFRE-5.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

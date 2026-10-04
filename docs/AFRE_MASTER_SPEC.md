@@ -1,6 +1,7 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 frozen scope**, engine 0.1.0, contract schema 1.0, store schema 1.0.
+Status: **AFRE-0 stable foundation; AFRE-1 feature store complete**, engine 0.2.0,
+foundation schema 1.0, feature-store schema 1.0, SQLite feature-store schema 1.1.
 
 ## Mission and philosophy
 
@@ -29,7 +30,8 @@ EIE contributes final snapshot metadata through a provider-neutral as-of contrac
 MCE, options, and AME are optional future providers. Adapters must preserve stable
 instrument identity, knowledge cutoff, upstream engine/schema versions, component
 fingerprints, source versions, and availability. AFRE does not reimplement their
-analytics. Concrete adapters and the feature store are deferred.
+analytics. AFRE-1 supplies offline neutral market/EIE adapters and the feature
+store; optional MCE/options/AME implementations remain deferred.
 
 ## Temporal semantics
 
@@ -223,5 +225,37 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-0.** AFRE-1 remains only the
-Point-in-Time Feature Store, scoped, documented and deferred.
+these distinct phases. **Stop after AFRE-1.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-2 — Forecast Targets & Label Construction is
+the next deferred implementation phase.
+
+## AFRE-1 implementation and availability boundary
+
+Engine 0.2.0 preserves foundation schema 1.0 and adds feature-store schema 1.0.
+`FeatureStoreRepository` upgrades the SQLite registry additively and transactionally
+from store 1.0 to 1.1 (user_version 1 to 2), preserving foundation rows and metadata.
+The original `ArtifactStore` remains a strict legacy 1.0 reader/writer; use the
+feature-store repository for migration and shared access to the upgraded database.
+
+Immutable registered definitions, exact vintages, qualified delivery evidence,
+explicit scope mappings, static computation DAGs, supplied normalization state,
+receipts, audits and materializations establish point-in-time feature history.
+One indexed as-of function serves single lookups and historical joins within
+consistent read snapshots. Ambiguous equal-time vintages require predecessor
+precedence. Frozen materializations retain exact historical selections after
+later/backdated inserts.
+
+Externally sourced features distinguish upstream publication, upstream source
+availability, actual AFRE receipt, ingestion, computation and final availability.
+Provider publication is not AFRE availability. Without locally approved qualified
+historical delivery evidence, final availability >= actual AFRE computation >=
+receipt. Qualified reconstruction retains actual later physical clocks and exact
+source/entity evidence rather than pretending historical literal AFRE ingestion.
+Live latency, months-later archive and qualified replay tests are mandatory
+acceptance evidence. Derived outputs additionally respect input and supplied
+normalization-state availability bounds.
+
+No predictive models, learned fold preprocessing, splitting, labels, portfolio
+construction or execution are implemented. The standalone documentation and
+offline example/benchmark specify supported policies and limits; no predictive
+metric establishes trading profitability.
