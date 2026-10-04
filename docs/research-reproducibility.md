@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.7.0**. Foundation, feature-store, target, universe, dataset, model and
-probabilistic schemas: **1.0**. Shared probabilistic store: **1.6**, represented by
-`PRAGMA user_version=7`, extending model store 1.5/user_version=6 additively.
+Engine: **0.8.0**. Foundation, feature-store, target, universe, dataset, model,
+probabilistic and calibration schemas: **1.0**. Shared calibration store: **1.7**,
+represented by `PRAGMA user_version=8`, extending probabilistic store 1.6/user_version=7 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -122,9 +122,19 @@ point fit, ordered TRAIN observation IDs, centering/scale/quantile/event assumpt
 probability state, fit clocks and proper-score protocol determine immutable identities.
 Seeds0/1/42/random, reversed insertion, restart and a concurrent backdated data/point
 correction are covered. Normal inverse uses the declared stdlib numerical version;
-platform-universal bit identity is not claimed. ProbabilisticRepository emits current
+platform-universal bit identity is not claimed. ProbabilisticRepository retains
 0.7.0 snapshot metadata while strict ModelRepository keeps 0.6.0. Forecast construction
 is response-free; only explicit later evaluation expands held-out truth. See
 [probabilistic reproducibility](probabilistic-evaluation.md).
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
-AFRE-7 owns Forecast Calibration; selection/ensembles/portfolios/execution are deferred.
+AFRE-7 implements separate Forecast Calibration; selection/ensembles/portfolios/execution remain deferred.
+
+AFRE-7 migration 7->8 preserves every prior payload, row, DDL and metadata value.
+CalibrationRepository emits 0.8.0 snapshot metadata; strict ProbabilisticRepository
+retains 0.7.0, ModelRepository 0.6.0 and prior readers remain strict. Explicit
+calibration requests pin exact truth vintages, including later corrected identities.
+Completed raw forecasts must have existed by their origin cutoff. Four hash seeds,
+reverse input/upstream order, restart and concurrent later truth insertion are tested.
+Canonical state/forecast/evaluation bytes replay exactly within supported platform
+arithmetic. Timing/profile measurements stay outside identity. See
+[calibration](forecast-calibration.md) and [partitions](calibration-partitions.md).

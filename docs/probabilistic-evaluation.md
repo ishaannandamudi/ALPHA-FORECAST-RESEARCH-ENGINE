@@ -66,4 +66,13 @@ perturbation, exact-sample unconditional comparison, correction and restart. The
 separately from 4,000 synthetic TRAIN residuals. Canonical upstream provenance limits
 registry scaling; numerical-kernel results do not claim equivalent registry throughput
 or a production SLA. Portfolio construction, risk optimization and execution remain
-downstream. Model selection, ensembles and AFRE-7 calibration are deferred.
+downstream. Model selection and ensembles are deferred; AFRE-7 calibration is separate and explicit.
+
+AFRE-7 [calibration evaluation](forecast-calibration.md) pins an unchanged AFRE-6
+raw evaluation on identical truth samples. Independent evaluation excludes the
+actual calibration fit sample and preserves TEST reuse records. Identity calibration
+retains applicable full-distribution scores; other methods expose marginal Brier,
+pinball and interval coverage/width, with calibrated NLL/CRPS/PIT unsupported.
+Coverage error and width are separate, and no comparison automatically selects a
+calibrator. Migration 7->8 adds calibration tables only, preserving this historical
+AFRE-6 store/scoring boundary.

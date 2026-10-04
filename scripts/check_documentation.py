@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-6.**" in master
-    assert "**Next scope: AFRE-7 — Forecast Calibration.**" in readme
+    assert "**Stop after AFRE-7.**" in master
+    assert "**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.7.0" and project["dependencies"] == []
+    assert project["version"] == "0.8.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -94,6 +94,12 @@ def main() -> None:
         "threshold-probabilities.md",
         "proper-scoring-rules.md",
         "probabilistic-evaluation.md",
+        "forecast-calibration.md",
+        "probability-calibration.md",
+        "quantile-calibration.md",
+        "conformal-calibration.md",
+        "calibration-partitions.md",
+        "calibration-drift.md",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     report = (REPOSITORY / "docs/AFRE_1_COMPLETION_REPORT.md").read_text()
@@ -129,6 +135,10 @@ def main() -> None:
     assert re.findall(r"^\| ([A-Z]{1,2}) \|", probability_report, re.MULTILINE) == list(
         (*labels, "AT", "AU")
     ), "probabilistic report must have exactly the 47 A–AU items in order"
+    calibration_report = (REPOSITORY / "docs/AFRE_7_COMPLETION_REPORT.md").read_text()
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", calibration_report, re.MULTILINE) == list(
+        (*labels, "AT", "AU", "AV", "AW")
+    ), "calibration report must have exactly the 49 A–AW items in order"
     for text in (master, readme):
         assert (
             "AFRE-6 evaluates calibration diagnostics but does NOT fit "
@@ -136,6 +146,7 @@ def main() -> None:
         )
         assert not re.search(r"AFRE-6 (?:is deferred|work is implemented)", text)
     from afre.version import (
+        CALIBRATION_SCHEMA_VERSION,
         DATASET_SCHEMA_VERSION,
         ENGINE_VERSION,
         FEATURE_STORE_SCHEMA_VERSION,
@@ -148,7 +159,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.7.0"
+    assert ENGINE_VERSION == "0.8.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
@@ -157,12 +168,13 @@ def main() -> None:
         == DATASET_SCHEMA_VERSION
         == MODEL_SCHEMA_VERSION
         == PROBABILISTIC_SCHEMA_VERSION
+        == CALIBRATION_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.6" and STORE_USER_VERSION == 7
+    assert STORE_SCHEMA_VERSION == "1.7" and STORE_USER_VERSION == 8
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 47-item A–AU scope"
+        "versions, links, historical reports and current 49-item A–AW scope"
     )
 
 

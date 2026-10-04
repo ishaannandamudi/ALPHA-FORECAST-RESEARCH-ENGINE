@@ -45,3 +45,13 @@ Purge NONE is explicit and does not claim overlap safety. Any protected sample w
 an unresolved interval makes an enabled purge fail, rather than silently certifying
 an unknown boundary. Fold queries and audits recompute the complete expected
 membership and reject missing, extra or contaminated partition records.
+
+## AFRE-7 calibration reservations
+
+Calibration sample is fit data. [CalibrationPartition](calibration-partitions.md)
+uses explicit reserved IDs and origin ranges over existing fold memberships;
+VALIDATION is never silently reused. Dedicated, strict TRAIN-tail and rolling-past
+policies preserve AFRE-4 partitions. Underlying model TRAIN and TEST cannot fit
+calibration. Raw forecasts must have existed at the historical origin and truth
+must be available by the calibration cutoff. TEST remains later evaluation only;
+independent calibration evaluation also excludes actual calibration fit samples.

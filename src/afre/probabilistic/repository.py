@@ -40,7 +40,6 @@ from afre.statistical_models.schema import ModelBounds
 from afre.statistical_models.storage import model_schema
 from afre.target_engine.repository import target_schema
 from afre.universe.repository import universe_schema
-from afre.version import ENGINE_VERSION
 
 PROBABILITY_TYPES: tuple[type[Artifact], ...] = (
     ProbabilisticBounds,
@@ -66,7 +65,7 @@ P = TypeVar("P", bound=Artifact)
 
 
 class ProbabilisticRepository(ModelRepository):
-    _snapshot_engine_version: ClassVar[str] = ENGINE_VERSION
+    _snapshot_engine_version: ClassVar[str] = "0.7.0"
 
     def __init__(
         self,

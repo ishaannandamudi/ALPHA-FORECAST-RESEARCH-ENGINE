@@ -1,8 +1,9 @@
 # Probabilistic forecasting
 
 AFRE-6 adds `afre.probabilistic` above completed AFRE-5 point models and AFRE-4
-frozen research folds. Probabilistic schema is 1.0, engine 0.7.0 and shared store
-1.6 / SQLite user_version=7. All prior schemas remain 1.0; prior interfaces keep
+frozen research folds. The historical AFRE-6 baseline is probabilistic schema 1.0, engine 0.7.0 and
+store 1.6 / SQLite user_version=7. AFRE-7 extends the shared store to 1.7 /
+user_version=8 with engine 0.8.0 and calibration schema 1.0. All prior schemas remain 1.0; prior interfaces keep
 their strict store boundary and historical snapshot engine metadata.
 
 `ProbabilisticModelSpec` pins exact completed converged point artifact, rich target
@@ -50,3 +51,9 @@ See [families](forecast-distributions.md), [quantiles](quantile-forecasts.md),
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
 AFRE-7 owns Forecast Calibration. Predictive metrics do not establish trading profitability.
 Portfolio construction, risk optimization and execution remain downstream projects.
+
+AFRE-7's [separate calibration layer](forecast-calibration.md) references these raw
+forecasts without rewriting them. Calibration cannot fit from TEST or from a raw
+forecast reconstructed after its historical origin. Applying frozen calibration
+reads no targets. The AFRE-6 distribution/scoring API retains its exact semantics;
+partial calibrated marginals do not become a full calibrated density implicitly.

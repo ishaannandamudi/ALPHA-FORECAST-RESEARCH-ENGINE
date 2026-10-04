@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-6 complete**, engine 0.7.0,
-foundation/feature-store/target/universe/dataset/model/probabilistic schemas 1.0,
-shared probabilistic store 1.6/user_version=7.
+Status: **AFRE-0 through AFRE-7 complete**, engine 0.8.0,
+foundation/feature-store/target/universe/dataset/model/probabilistic/calibration schemas 1.0,
+shared calibration store 1.7/user_version=8.
 
 ## Mission and philosophy
 
@@ -228,11 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-6.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-7.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
-causal distributions and proper scoring. AFRE-7 — Forecast Calibration is next;
-calibration transforms, model selection, ensembles, portfolios and execution remain
-deferred.
+causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
+AFRE-8 — Multi-Horizon Forecast Architecture is next; model selection, ensembles,
+portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
 
@@ -431,9 +431,49 @@ See [probabilistic forecasting](probabilistic-forecasting.md),
 [events](threshold-probabilities.md), [scores](proper-scoring-rules.md) and
 [evaluation](probabilistic-evaluation.md).
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
-AFRE-7 owns **Forecast Calibration**: probability/quantile/interval calibration,
-causally valid isotonic/conformal-style mappings, rolling diagnostics, calibration
-state/versioning/drift and strict TRAIN/calibration partition semantics. No regime
-mixtures, model selection or AFRE-7 implementation occurs here. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE. Predictive
-metrics never establish trading profitability. **Stop after AFRE-6.**
+AFRE-7 now implements a separate calibration layer above this frozen AFRE-6 boundary.
+
+## AFRE-7 completed scope
+
+CalibrationSpec reserves exact non-TEST samples under DEDICATED_CALIBRATION,
+TRAIN_TAIL or ROLLING_PAST policies without redesigning AFRE-4 partitions.
+Strict holdout enforces disjoint underlying model TRAIN. Exact raw forecasts must
+have existed and been available at their historical origin; exact completed
+verified truth must be known by calibration cutoff, including equality. A single
+read snapshot freezes evidence, and atomic publication preserves every earlier
+row, DDL, schema and metadata item. Later corrected truth requires explicit new
+requests/state identity and leaves old bytes recoverable.
+
+IDENTITY, fixed BINNED_PROBABILITY, deterministic PAV ISOTONIC_PROBABILITY,
+Type-7 residual QUANTILE_OFFSET, exact-rank CONFORMAL_ABSOLUTE_RESIDUAL and
+ROLLING_CONFORMAL are implemented. Event comparisons, levels, bins/ties/gap
+interpolation/extrapolation, alpha, rolling count and numerical versions are pinned.
+Independent quantile crossings fail closed. Finite-sample conformal ranks do not
+interpolate or cap; insufficient scores reject. Coverage arguments rely on
+exchangeability and can fail under nonstationary financial series.
+
+Immutable states pin mappings/offsets/scores, fit sample, disjointness, clocks and
+retrospective diagnostics. Application reads no truth, requires raw and state
+availability at the origin cutoff and creates a separate CalibratedForecast.
+Raw forecasts are unchanged. Only IDENTITY preserves a full calibrated distribution;
+adjusted marginals/intervals do not invent a calibrated PDF/CDF. Independent later
+evaluation keeps Brier/pinball and applicable proper scores, coverage error and
+width separate, with exact-sample descriptive comparisons and explicit TEST reuse.
+
+Bounded rolling drift uses fixed thresholds and STABLE/DEGRADED/INSUFFICIENT_DATA/
+UNKNOWN states. It never refits or selects a model/calibrator. Canonical data-only
+artifacts, verified indexes and one bounded calibration-to-upstream audit persist
+under additive store1.7/user_version=8. Calibration schema stays1.0; engine0.8.0;
+zero runtime dependencies. No portfolio, risk optimization or execution occurs.
+Predictive metrics never establish trading profitability.
+
+See [calibration](forecast-calibration.md), [partitions](calibration-partitions.md),
+[probabilities](probability-calibration.md), [quantiles](quantile-calibration.md),
+[conformal](conformal-calibration.md), [drift](calibration-drift.md) and
+[completion report](AFRE_7_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.** Consistent declared
+horizons, shared versus horizon-specific parameters, horizon dependencies/joint
+identity, appropriate covariance and horizon-specific loss/evaluation remain
+unimplemented. **Stop after AFRE-7.** Regime mixtures, model selection, ensembles,
+portfolios, risk optimization and execution remain deferred/downstream.

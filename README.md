@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-6 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-7 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -14,13 +14,14 @@ evaluation. Hyperparameters are fixed inputs; no automatic selection occurs.
 AFRE-6 adds explicit TRAIN-only empirical/Gaussian/quantile distributions, causal
 target-free forecasts, proper scores, calibration diagnostics and immutable lineage.
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
-AFRE-7 owns calibration.
+AFRE-7 adds explicit reserved causal calibration, immutable adjusted forecasts,
+independent evaluation and bounded drift diagnostics.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.7.0**; foundation, feature-store, target, universe,
-dataset, model and probabilistic schemas **1.0**; shared probabilistic store **1.6**,
-`user_version=7` (additive to model store 1.5/user_version=6). Runtime uses only the
+Python **3.11+**; engine **0.8.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic and calibration schemas **1.0**; shared calibration store **1.7**,
+`user_version=8` (additive to probabilistic store 1.6/user_version=7). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -53,6 +54,7 @@ python3.11 -m venv .venv311
 .venv311/bin/python -m examples.research_dataset_demo
 .venv311/bin/python -m examples.statistical_baselines_demo
 .venv311/bin/python -m examples.probabilistic_demo
+.venv311/bin/python -m examples.calibration_demo
 ```
 
 For a checkout without editable installation, use:
@@ -65,6 +67,7 @@ PYTHONPATH=src:. .venv311/bin/python examples/universe_demo.py
 PYTHONPATH=src:. .venv311/bin/python -m examples.research_dataset_demo
 PYTHONPATH=src:. .venv311/bin/python -m examples.statistical_baselines_demo
 PYTHONPATH=src:. .venv311/bin/python -m examples.probabilistic_demo
+PYTHONPATH=src:. .venv311/bin/python -m examples.calibration_demo
 ```
 
 The deterministic [example](examples/foundation_demo.py) does all twelve steps:
@@ -219,13 +222,25 @@ AFRE-6 details: [probabilistic forecasting](docs/probabilistic-forecasting.md),
 [evaluation](docs/probabilistic-evaluation.md), [demo](examples/probabilistic_demo.py),
 [profile](benchmarks/probabilistic.py) and [A–AU report](docs/AFRE_6_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-7 — Forecast Calibration.** Probability, quantile and interval
-calibration, causally valid isotonic/conformal-style mappings, rolling diagnostics,
-versioned calibration state/drift and strict TRAIN/calibration partitions are deferred.
-**Stop after AFRE-6.** No calibration transformations or AFRE-7 work is implemented.
+AFRE-7 details: [forecast calibration](docs/forecast-calibration.md),
+[probability mappings](docs/probability-calibration.md),
+[quantile offsets](docs/quantile-calibration.md),
+[conformal intervals](docs/conformal-calibration.md),
+[explicit partitions](docs/calibration-partitions.md),
+[drift diagnostics](docs/calibration-drift.md), [demo](examples/calibration_demo.py),
+[profile](benchmarks/calibration.py) and [A–AW report](docs/AFRE_7_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.** Consistent forecasts
+across declared horizons, shared versus horizon-specific parameters, horizon
+identity/dependency, appropriate cross-horizon covariance and horizon-specific
+loss/evaluation are deferred. **Stop after AFRE-7.** No AFRE-8 implementation,
+regime mixture, automated model selection, ensemble, portfolio or execution occurs.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.
 Provider audits remain necessary. AFRE-4 executes declared purge/embargo and TRAIN
 statistics. AFRE-5 adds explicit fitted coefficients and point forecasts; foundational
-model metadata retains its original contract role. Probabilistic calibration is deferred.
+model metadata retains its original contract role. AFRE-7 fits calibration only
+on explicit causal non-TEST reservations.
+Calibration and sharpness remain distinct; no calibration metric selects models
+or establishes trading profitability.
