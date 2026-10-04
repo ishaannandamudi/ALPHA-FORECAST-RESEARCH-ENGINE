@@ -1,7 +1,8 @@
 # Research reproducibility
 
-Engine: **0.2.0**. Foundation schema: **1.0**. Feature-store schema: **1.0**.
-SQLite feature-store schema: **1.1**, represented by `PRAGMA user_version=2`.
+Engine: **0.3.0**. Foundation, feature-store and target schemas: **1.0**.
+SQLite target store: **1.2**, represented by `PRAGMA user_version=3`, extending
+feature-store schema 1.1/user_version=2 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -69,3 +70,16 @@ All tests block sockets/DNS. The feature benchmark records at least 20,000 vinta
 over multiple features/securities and verifies indexed retrieval/restart; timings
 are local observations with no production SLA. AFRE-1 performs no model fitting,
 label computation or global/fold normalization fitting.
+
+AFRE-2 migration 2→3 adds target artifacts and immutable temporal/membership
+indexes without changing any prior payload/table/metadata value. The strict prior
+repositories reject this future store; TargetRepository supplies shared access.
+Target datasets pin full forecast-origin identities, supplied universe, exact source
+build, calendar/action/benchmark vintages, rows, source cutoff, actual construction
+time and engine/builder versions. Four hash seeds, reverse bar order, concurrent
+future inserts and restart preserve canonical bytes. Corrections create new builds.
+Deep audit recalculates labels and checks indexed evidence. New caches last only
+one pinned snapshot. The target benchmark records 20,000 observations/12,000 labels
+and indexed cutoff queries. AFRE-1's demo explicitly keeps its engine-0.2.0 fixture
+to preserve its old frozen identity; the completed tests/contracts are unchanged.
+See [target lineage](target-lineage.md) and [availability](target-availability.md).

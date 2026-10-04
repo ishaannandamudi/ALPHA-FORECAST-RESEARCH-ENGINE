@@ -2,14 +2,15 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **This repository completes AFRE-0 and
-AFRE-1 — Point-in-Time Feature Store.** It provides causal indexed feature lookup,
+lineage and honest out-of-sample evidence. **This repository completes AFRE-0,
+AFRE-1 and AFRE-2 — Forecast Targets & Label Construction.** It provides causal indexed feature lookup,
 immutable vintages, physical delivery clocks, audited computation and supplied
-normalization lineage. Predictive models, labels, portfolios and execution remain
-deferred.
+normalization lineage, exact future outcomes, immutable label datasets and audited
+label availability. Predictive models, portfolios and execution remain deferred.
 
-Python **3.11+**; engine **0.2.0**; foundation schema **1.0**; feature-store schema
-**1.0**; SQLite feature store **1.1**. The runtime uses only the standard library.
+Python **3.11+**; engine **0.3.0**; foundation, feature-store and target schemas
+**1.0**; SQLite target store **1.2**, `user_version=3` (additive to feature store
+1.1/user_version=2). The runtime uses only the standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
 deterministic JSON/domain-separated SHA-256 identity, provider protocols and an
@@ -36,6 +37,7 @@ python3.11 -m venv .venv311
 .venv311/bin/python -m pip install -e '.[dev]'
 .venv311/bin/python examples/foundation_demo.py
 .venv311/bin/python examples/feature_store_demo.py
+.venv311/bin/python examples/target_demo.py
 ```
 
 For a checkout without editable installation, use:
@@ -43,6 +45,7 @@ For a checkout without editable installation, use:
 ```sh
 PYTHONPATH=src .venv311/bin/python examples/foundation_demo.py
 PYTHONPATH=src:. .venv311/bin/python examples/feature_store_demo.py
+PYTHONPATH=src:. .venv311/bin/python examples/target_demo.py
 ```
 
 The deterministic [example](examples/foundation_demo.py) does all twelve steps:
@@ -69,6 +72,15 @@ definitions, extracts completed synthetic bars and neutral EIE features, compute
 returns/volatility and a supplied-state z-score, freezes a historical materialization,
 adds a later revision, verifies single/batch parity and byte-identical restart,
 and reports lineage/audit evidence. Clocks and statistics are explicit fixtures.
+Its historical dataset fixture explicitly pins engine 0.2.0 to preserve the
+completed AFRE-1 example's materialization identity across this engine release.
+
+The [AFRE-2 walkthrough](examples/target_demo.py) computes all eight target types,
+verifies endpoint delivery and same-time training eligibility, demonstrates explicit
+split policy, freezes exact source/label identities, inserts a later correction,
+rebuilds a distinct dataset and verifies unchanged old rows across restart.
+Target creation uses actual computation clocks; upstream publication alone cannot
+backdate a label, including one reconstructed from a qualified historical source.
 
 ## Package
 
@@ -84,6 +96,7 @@ and reports lineage/audit evidence. Clocks and statistics are explicit fixtures.
 | providers, validation | External as-of protocols and pure boundary checks |
 | persistence | Explicit transactions, immutable registry, migration and replay |
 | feature_store | Registry/vintages, delivery evidence, indexed PIT selection, DAG computation, frozen joins, normalization lineage and additive store 1.1 |
+| target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
 
@@ -100,6 +113,7 @@ checks. The Python package performs no networking or shell execution.
 git diff --check
 PYTHONPATH=src:. .venv311/bin/python benchmarks/foundation.py
 PYTHONPATH=src:. .venv311/bin/python benchmarks/feature_store.py
+PYTHONPATH=src:. .venv311/bin/python benchmarks/targets.py
 ```
 
 Coverage requires ≥95% combined statements/branches. Tests include leakage,
@@ -121,6 +135,11 @@ AFRE-1 details: [feature store](docs/point-in-time-feature-store.md),
 [computation DAG](docs/feature-computation-dag.md),
 [point-in-time joins](docs/point-in-time-joins.md), and
 [normalization](docs/feature-normalization.md).
+AFRE-2 details: [forecast targets](docs/forecast-targets.md),
+[window rules](docs/target-window-semantics.md),
+[label availability](docs/target-availability.md),
+[corporate actions](docs/target-corporate-actions.md),
+[lineage/isolation](docs/target-lineage.md), and [profile](docs/target-benchmark.md).
 The frozen advanced roadmap has **26 distinct phases, AFRE-0 through AFRE-25**.
 Transaction-cost-aware research evaluation (AFRE-18), multiple-testing/overfitting
 controls (AFRE-19), model selection (AFRE-20), ensembles (AFRE-21), drift/decay
@@ -130,13 +149,16 @@ final integration, hardening and research audit. Portfolio construction, risk
 optimization and execution remain downstream projects after AFRE. Predictive
 metrics alone do not establish trading profitability.
 The [AFRE-0 completion report](docs/AFRE_0_COMPLETION_REPORT.md) records its historical
-baseline; the [AFRE-1 report](docs/AFRE_1_COMPLETION_REPORT.md) records current gates.
+baseline; the [AFRE-1 report](docs/AFRE_1_COMPLETION_REPORT.md) records its historical
+feature-store gates. The [AFRE-2 A–AQ report](docs/AFRE_2_COMPLETION_REPORT.md) records
+current acceptance evidence and explicit limitations.
 
-**Next scope: AFRE-2 — Forecast Targets & Label Construction.** It will resolve
-exact target windows, point-in-time prices/actions, label completion/availability,
-overlapping horizons and quality for forward/residual/absolute returns,
-realized volatility and downside/excursion outcomes. AFRE-1 stops at the feature
-store. Actual predictive baselines start at AFRE-5.
+**Next scope: AFRE-3 — Point-in-Time Universe & Security Eligibility.** It will
+implement historical security master/membership, listing and ticker changes,
+delistings/lifecycle, constituent vintages, liquidity/price/tradability/session
+eligibility and survivorship controls. AFRE-2 only consumes supplied foundation
+universe contracts. Splitting begins at AFRE-4, predictive baselines at AFRE-5.
+Stop after AFRE-2; AFRE-3 is deferred.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

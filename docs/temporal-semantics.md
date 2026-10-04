@@ -1,5 +1,15 @@
 # Temporal semantics
 
+AFRE-2 adds exact (T,T+H] target windows and a separate reference-price policy.
+Foundation TargetSpec's first-after-origin convention remains unchanged. Every
+label retains nominal and actual endpoints, completion and six availability clocks.
+Final label availability follows endpoint/path/action/benchmark delivery and actual
+computation; publication alone cannot backdate a reconstructed label. Equality at
+training cutoff is eligible for verified complete labels. Exact supplied session
+grids distinguish elapsed/session/bar horizons and exclude declared market closures.
+See [target windows](target-window-semantics.md) and
+[target availability](target-availability.md).
+
 Time is a UTC integer nanosecond in [0, 2⁶³−1]. Booleans, floating timestamps,
 negative values and naive datetimes are rejected. `datetime_to_ns` uses integer
 arithmetic; `ns_to_datetime` rejects nanoseconds that Python's microsecond datetime
@@ -28,7 +38,7 @@ can substitute the historical computation clock, never a future input clock.
 Proof authenticity and timestamp accuracy are provider responsibilities.
 
 `TimeRange` is **[start, end)** for origin ranges, memberships and symbol mappings.
-A target's `window` uses those two boundary values but its `TargetSpec` explicitly
+A foundation target's `window` uses those two boundary values but its `TargetSpec` explicitly
 assigns price-selection semantics **(origin, endpoint]**. No price at origin is
 selected as the entry; the first admissible observation strictly after origin and
 last admissible observation at/before endpoint define the eventual target.
@@ -36,7 +46,8 @@ last admissible observation at/before endpoint define the eventual target.
 Elapsed horizons use a positive nanosecond duration. A UTC day is 86,400 seconds.
 Trading-session horizons use a positive session count and versioned calendar ID.
 Bar horizons additionally require a bar-definition ID. Calendar DST, holidays,
-halts, partial sessions and endpoint price admissibility belong to future resolvers.
+halts, partial sessions and endpoint price admissibility are resolved explicitly
+by AFRE-2; foundation rows require the supplied resolver reference.
 A target row checks exact elapsed endpoint, or requires resolver evidence for a
 session/bar endpoint; it never treats a session as an elapsed day.
 

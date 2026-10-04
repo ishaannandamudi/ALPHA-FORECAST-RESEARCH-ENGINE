@@ -65,4 +65,6 @@ See [vintages](feature-vintages.md), [DAG computation](feature-computation-dag.m
 The offline walkthrough is `examples/feature_store_demo.py`; the measured local
 workload is `benchmarks/feature_store.py`. No real upstream integration, learned
 normalization fitting, label engine, predictive model or forecast service is
-implemented. Next phase: AFRE-2 — Forecast Targets & Label Construction.
+implemented by AFRE-1. AFRE-2 now supplies the separate
+[target engine](forecast-targets.md); it preserves this feature-store boundary.
+Next implementation phase: AFRE-3 — Point-in-Time Universe & Security Eligibility.

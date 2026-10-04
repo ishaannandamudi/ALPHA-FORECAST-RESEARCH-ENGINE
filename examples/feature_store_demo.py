@@ -160,6 +160,7 @@ def dataset(features: FeatureSetManifest) -> DatasetManifest:
         AdjustmentPolicy(AdjustmentBasis.RAW, 0),
         MissingPolicy.EXPLICIT_STATE,
         "feature-store-demo-v1",
+        engine_version="0.2.0",
     )
 
 

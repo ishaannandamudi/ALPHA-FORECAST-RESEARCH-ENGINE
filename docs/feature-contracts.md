@@ -1,5 +1,12 @@
 # Feature contracts
 
+AFRE-2 target-only bars, definitions, vintages, sets, datasets and audits remain in
+`afre.target_engine`. They cannot enter AFRE-1 feature persistence, DAG inputs or
+normalization samples. Existing recursive target-provenance exclusions and feature
+clock contracts are unchanged. Future label data is usable only as label truth after
+its completion/availability, never as a forecast-time input. See
+[target lineage and isolation](target-lineage.md).
+
 `FeatureDefinition` fixes name/version, semantic family, scalar value type, unit,
 entity scope, lookback, publication/computed availability rule, absence handling,
 transformation version and feature-definition dependencies. `FeatureSet` sorts

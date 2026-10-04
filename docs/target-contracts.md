@@ -4,7 +4,7 @@
 return, log return, residual return, absolute return, realized volatility, downside
 return, maximum adverse excursion and maximum favorable excursion. Residual
 return requires a stable benchmark ID; other targets reject one. Implementations
-and normalization of units are future label-engine concerns.
+and normalization of units are handled separately by the additive AFRE-2 target engine.
 
 Each target embeds a typed horizon. Internal duration/count/calendar/endpoint
 fields determine identity; human descriptions such as “1d” do not. A one-day
@@ -25,7 +25,10 @@ qualify. The dataset must declare the target and market source. Values from futu
 windows cannot be features; contracts and hash namespaces separate both families.
 AFRE-0 does not calculate prices, returns, volatility, residuals or excursions.
 
-Future AFRE-2 must define admissible-price quality, close/auction conventions,
-corporate-action timing, benchmark vintages, missing prices, delisting outcomes,
-window gaps, endpoint resolvers and maximal input availability. It must retain raw
-observation/adjustment lineage and test target completion at each fit cutoff.
+AFRE-2 supplies these concerns in [forecast targets](forecast-targets.md), with
+explicit close sampling, window selection, source/action/benchmark vintages,
+availability and quality. `afre.target_engine.TargetDefinition` is a distinct
+contract; it defaults to exact P0 at T and does not reinterpret the foundation
+first-after-T rule. Rich target policies cannot silently become TargetSpec or feature
+values. Foundation contracts and serialized schemas remain unchanged. See
+[windows](target-window-semantics.md) and [lineage](target-lineage.md).

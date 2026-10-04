@@ -1,7 +1,7 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 stable foundation; AFRE-1 feature store complete**, engine 0.2.0,
-foundation schema 1.0, feature-store schema 1.0, SQLite feature-store schema 1.1.
+Status: **AFRE-0/1 stable; AFRE-2 target engine complete**, engine 0.3.0,
+foundation/feature-store/target schemas 1.0, SQLite target store 1.2/user_version=3.
 
 ## Mission and philosophy
 
@@ -79,8 +79,9 @@ adapters must audit derivation, raw vintages, publication clocks and evidence.
 Elapsed time, trading sessions and bars are separate typed bases. Identities
 include nanosecond duration or count, calendar/session version or bar definition
 where relevant, and endpoint convention. A day of elapsed UTC time is distinct
-from a trading session. Session and bar endpoints require a later calendar/market
-resolver; AFRE-0 never pretends they are fixed elapsed durations.
+from a trading session. Foundation session/bar rows require explicit calendar/market
+resolver evidence; AFRE-2 supplies exact schedules and observation selection.
+AFRE-0 never pretends these horizons are fixed elapsed durations.
 
 Target specifications define simple/log/residual/absolute return, realized
 volatility, downside return, and maximum adverse/favorable excursion. Residual
@@ -88,7 +89,7 @@ returns require an explicit benchmark identity. The only foundation price
 convention is first admissible observation strictly after T through the last
 admissible observation at or before the resolved endpoint: **(T, endpoint]**.
 Target rows preserve an explicit window and availability at or after its end,
-market dataset fingerprint, quality, and value. No label engine is implemented.
+market dataset fingerprint, quality, and value. AFRE-0 itself calculates no labels.
 Training eligibility requires a completed, available, acceptable target and an
 origin strictly before the fit cutoff. Test origins must follow fit cutoff.
 
@@ -102,9 +103,10 @@ remain representable. Reused tickers cannot merge separate stable IDs.
 
 Adjustment policies distinguish raw, split adjusted, total return and explicit
 adjustment streams. Non-raw policy requires identified adjustment data and its
-knowledge cutoff. Dataset origins cannot precede that cutoff. Later price adapters
-must enforce per-observation action availability; the manifest is a foundation
-declaration, not a corporate-action engine.
+knowledge cutoff. Foundation DatasetManifest origins cannot precede that cutoff.
+AFRE-2's separate TargetDatasetManifest instead admits forward action evidence by
+the declared target source cutoff and label computation time. Each target pins
+exact policy/stream knowledge; no future action can become a forecast-time feature.
 
 ## Datasets and experimental identity
 
@@ -225,9 +227,9 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-1.** AFRE-1 remains only the
-Point-in-Time Feature Store. AFRE-2 — Forecast Targets & Label Construction is
-the next deferred implementation phase.
+these distinct phases. **Stop after AFRE-2.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-3 — Point-in-Time Universe & Security Eligibility
+is the next deferred implementation phase.
 
 ## AFRE-1 implementation and availability boundary
 
@@ -255,7 +257,56 @@ Live latency, months-later archive and qualified replay tests are mandatory
 acceptance evidence. Derived outputs additionally respect input and supplied
 normalization-state availability bounds.
 
-No predictive models, learned fold preprocessing, splitting, labels, portfolio
-construction or execution are implemented. The standalone documentation and
+AFRE-1 implements no predictive models, learned fold preprocessing, splitting,
+labels, portfolio construction or execution. The standalone documentation and
 offline example/benchmark specify supported policies and limits; no predictive
 metric establishes trading profitability.
+
+## AFRE-2 target truth and acceptance boundary
+
+The additive `afre.target_engine` package preserves every AFRE-0/1 public contract
+and migration. Rich `TargetDefinition` and target-only source/vintage/dataset types
+remain separate from foundation `TargetSpec`, whose original first-after-origin
+semantics remain unchanged. No implicit cast substitutes richer endpoint policies.
+New target identity domains are blocked by unchanged AFRE-1 lineage safeguards.
+Target rows cannot enter feature persistence, computation DAGs or normalization.
+
+The nominal elapsed outcome interval is (T,T+H]. Default AFRE-2 origin/endpoint
+prices are exact completed closes, with separately declared bounded alternatives
+and typed tolerance flags. Exact supplied UTC session grids resolve session/bar
+horizons, holiday/short-session/extended-hours behavior and path sampling. Values
+are dimensionless simple/log/residual/absolute/downside returns, close-path realized
+volatility and signed adverse/favorable excursions. Volatility uses summed squared
+consecutive log returns, explicit sampling and optional explicit annualization.
+Missing paths fail by default; explicit partial coverage is withheld from training.
+
+Raw, split and supplied price-factor adjustments are separate target policies with
+exact action-stream coverage and knowledge clocks. Total return/dividend reinvestment
+remains contract-only and fails clearly. Residuals subtract an exact aligned supplied
+benchmark; there is no beta fitting or implicit benchmark/universe construction.
+Missing prices, zero outcomes, halts and delistings retain explicit rows/states.
+
+Source builds freeze exact admitted bars, calendar, action stream, benchmarks and
+cutoff. Label datasets freeze exact origins/universe, definitions, inputs, rows,
+construction time and engine/builder versions. Source corrections/rebuilds create
+new identities and never mutate frozen truth. Indexed known-by queries require
+completed verified labels with origin before cutoff and availability ≤ cutoff.
+Every source/output retains six availability clocks; live receipt and late endpoint,
+benchmark/action delivery constrain availability. Qualified historical source evidence
+retains actual later reconstruction clocks; target computation is never silently
+backdated. No qualified historical target-computation contract is implemented.
+
+`TargetRepository` adds store 1.2/user_version=3 transactionally; old rows/metadata
+remain byte-identical. Normal reads validate bounded payload/hash/index integrity;
+deep audit replays exact calculations and referenced evidence. Offline tests cover
+availability, calendars, paths, actions, isolation, revision/order/hash-seed/restart,
+concurrent writers, migration rollback, corruption and bounds. The profile uses
+20,000 observations and 12,000 labels; timings are local evidence with no SLA.
+See [target contracts](forecast-targets.md), [completion report](AFRE_2_COMPLETION_REPORT.md)
+and [benchmark](target-benchmark.md) for policies, gates and limits.
+
+AFRE-3 is only Point-in-Time Universe & Security Eligibility: historical membership,
+security master, listing/ticker/name changes, delistings/lifecycle, constituent
+vintages, liquidity/price/tradability/exchange/session eligibility, stable identity,
+knowledge-time membership and survivorship-bias prevention. It is not implemented.
+AFRE-4 splitting, predictive models, portfolios and execution remain deferred.
