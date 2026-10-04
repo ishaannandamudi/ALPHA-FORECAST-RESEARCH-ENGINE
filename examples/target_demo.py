@@ -144,6 +144,10 @@ def populate(repository: TargetRepository) -> tuple[TargetEngine, TargetSetManif
         UNIVERSE,
         clocks(8),
     )
+    # Keep the completed AFRE-2 fixture's historical engine identity explicit.
+    manifest = replace(manifest, engine_version="0.3.0")
+    with repository.transaction():
+        repository.put(manifest)
     return engine, targets, manifest.fingerprint
 
 

@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.3.0**. Foundation, feature-store and target schemas: **1.0**.
-SQLite target store: **1.2**, represented by `PRAGMA user_version=3`, extending
-feature-store schema 1.1/user_version=2 additively.
+Engine: **0.4.0**. Foundation, feature-store, target and universe schemas: **1.0**.
+SQLite universe store: **1.3**, represented by `PRAGMA user_version=4`, extending
+target store 1.2/user_version=3 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -83,3 +83,15 @@ one pinned snapshot. The target benchmark records 20,000 observations/12,000 lab
 and indexed cutoff queries. AFRE-1's demo explicitly keeps its engine-0.2.0 fixture
 to preserve its old frozen identity; the completed tests/contracts are unchanged.
 See [target lineage](target-lineage.md) and [availability](target-availability.md).
+
+AFRE-3 migration 3→4 preserves every prior table, payload, DDL and metadata value.
+UniverseRepository supplies shared foundation/feature/target/universe access.
+UniverseInputBuild pins exact admitted universe records and market feature vintages,
+knowledge cutoff, actual construction and delivery policy. Snapshots pin complete
+member/eligibility grids, sorted stable identities, source coverage, calendar and
+builder/engine versions. Deep audit replays the frozen build rather than querying
+latest live history; later/backdated corrections produce new identities. Caches
+hold validated objects only during one read or writer snapshot and clear on exit.
+Four seeds, reversed insertion, concurrent correction, restart, corruption and
+migration rollback are tested. The AFRE-2 demo keeps its historical 0.3.0 fixture ID.
+See [universe snapshots](point-in-time-universes.md) and [profile](universe-benchmark.md).

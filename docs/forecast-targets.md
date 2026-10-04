@@ -1,10 +1,10 @@
 # Forecast targets and label construction
 
-AFRE-2 implements the target truth layer in `afre.target_engine`, engine 0.3.0,
+AFRE-2 established the target truth layer in `afre.target_engine`, at engine 0.3.0,
 target schema 1.0. Foundation `afre.targets.TargetSpec` and `ForecastTargetRow`
 remain byte-compatible. Rich target definitions are separate contracts: there is
 no implicit conversion that changes the foundation first-after-origin convention.
-No models, splits, universe ingestion, portfolios or execution are implemented.
+The target layer implements no models, splits, universe ingestion, portfolios or execution.
 
 `TargetDefinition` identifies semantic name/version, type, typed horizon, separate
 origin/endpoint rules and tolerances, close price field, raw-input stream and units,
@@ -66,3 +66,11 @@ global latest truth. Run `python -m examples.target_demo` with `PYTHONPATH=src:.
 See [windows](target-window-semantics.md), [availability](target-availability.md),
 [actions](target-corporate-actions.md), [lineage](target-lineage.md) and the
 [offline profile](target-benchmark.md).
+
+AFRE-3 adds universe ingestion separately in afre.universe, with engine 0.4.0 and
+additive UniverseRepository store 1.3/user_version=4. Target schema and all existing
+label semantics remain 1.0. A complete causal snapshot projects to the foundation
+UniverseManifest consumed by TargetEngine. Feature and target rows match full stable
+security/origin/universe identities; ticker reuse cannot alter that key. Changing
+membership or eligibility changes snapshot, manifest and target dataset identity.
+No AFRE-4 joins or splits are generated. See [PIT universes](point-in-time-universes.md).

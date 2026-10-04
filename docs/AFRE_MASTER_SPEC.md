@@ -1,7 +1,7 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0/1 stable; AFRE-2 target engine complete**, engine 0.3.0,
-foundation/feature-store/target schemas 1.0, SQLite target store 1.2/user_version=3.
+Status: **AFRE-0/1/2 stable; AFRE-3 universe engine complete**, engine 0.4.0,
+foundation/feature-store/target/universe schemas 1.0, SQLite universe store 1.3/user_version=4.
 
 ## Mission and philosophy
 
@@ -227,8 +227,8 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-2.** AFRE-1 remains only the
-Point-in-Time Feature Store. AFRE-3 — Point-in-Time Universe & Security Eligibility
+these distinct phases. **Stop after AFRE-3.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-4 — Dataset Builder & Leakage-Safe Splitting
 is the next deferred implementation phase.
 
 ## AFRE-1 implementation and availability boundary
@@ -305,8 +305,47 @@ concurrent writers, migration rollback, corruption and bounds. The profile uses
 See [target contracts](forecast-targets.md), [completion report](AFRE_2_COMPLETION_REPORT.md)
 and [benchmark](target-benchmark.md) for policies, gates and limits.
 
-AFRE-3 is only Point-in-Time Universe & Security Eligibility: historical membership,
-security master, listing/ticker/name changes, delistings/lifecycle, constituent
-vintages, liquidity/price/tradability/exchange/session eligibility, stable identity,
-knowledge-time membership and survivorship-bias prevention. It is not implemented.
-AFRE-4 splitting, predictive models, portfolios and execution remain deferred.
+## AFRE-3 completed scope
+
+AFRE-3 implements only Point-in-Time Universe & Security Eligibility. Typed
+stable issuer/security/listing identities remain distinct. Symbols, external
+identifiers, relationships, lifecycle, listings and constituent evidence preserve
+[start,end) valid and knowledge intervals plus all six delivery clocks. Provider
+publication is not AFRE receipt; locally approved historical-delivery evidence can
+qualify reconstruction without fabricating physical ingestion time.
+
+Universe definitions pin source category, calendar and independent eligibility
+policy. Current constituents cannot reconstruct history. Membership is INCLUDED,
+EXCLUDED, UNKNOWN or CONFLICTED; absent evidence is exclusion only under an explicit
+complete source contract. Known future membership remains separate from effective
+membership. Delisted, acquired and spun-off histories retain original stable IDs.
+
+Eligibility reports state, typed reason, exact listing and source/market evidence.
+It uses frozen AFRE-1 security-scoped completed observations, per-observation
+revision precedence, freshness and delivery qualification; price, trailing share
+volume and mean dollar volume exclude future effective/delivery times. The trailing
+window is (T-lookback,T], listing age counts supplied completed sessions, and
+currency mismatches cannot invoke implicit FX. No imputation or borrow model exists.
+
+Snapshots pin exact security/member/eligibility references and an immutable input
+build, with explicit COMPLETE/KNOWN_GAPS/UNKNOWN status. Construction uses one
+consistent SQLite read transaction. Later or backdated inserts cannot change old
+materializations. Bounded indexed histories, resolution and audits fail explicitly
+on overflow or conflict. Store migration 3→4 adds only universe tables, indexes,
+immutable triggers and metadata; all previous artifacts and schemas remain intact.
+
+A complete causal snapshot projects to the existing foundation UniverseManifest
+at exactly its origin nanosecond. The snapshot fingerprint determines manifest
+and downstream dataset identity. Existing feature/target rows join on full stable
+security/origin/universe identities; symbols never become primary keys. Queries
+with later knowledge can describe revised history but cannot be projected into an
+earlier causal forecast origin. See [PIT universes](point-in-time-universes.md),
+[eligibility](security-eligibility.md), [completion report](AFRE_3_COMPLETION_REPORT.md)
+and [profile](universe-benchmark.md).
+
+**AFRE-4 — Dataset Builder & Leakage-Safe Splitting** is deferred: PIT universe,
+feature and target joins; exact sample identity; purged walk-forward folds;
+embargo; overlapping-label exclusion; rolling/expanding windows; fold-local
+preprocessing; fit/validation/test boundaries; dataset manifests; contamination
+audits; reproducible split identity. No AFRE-4 splitting, predictive fitting,
+calibration, ranking, portfolios or execution is implemented.

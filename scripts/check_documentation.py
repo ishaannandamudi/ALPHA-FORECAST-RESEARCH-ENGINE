@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-2.**" in master
-    assert "**Next scope: AFRE-3 — Point-in-Time Universe & Security Eligibility.**" in readme
+    assert "**Stop after AFRE-3.**" in master
+    assert "**Next scope: AFRE-4 — Dataset Builder & Leakage-Safe Splitting.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.3.0" and project["dependencies"] == []
+    assert project["version"] == "0.4.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -69,6 +69,13 @@ def main() -> None:
         "target-availability.md",
         "target-corporate-actions.md",
         "target-lineage.md",
+        "security-master.md",
+        "security-identity.md",
+        "point-in-time-universes.md",
+        "universe-membership-vintages.md",
+        "security-eligibility.md",
+        "survivorship-bias-controls.md",
+        "universe-benchmark.md",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     report = (REPOSITORY / "docs/AFRE_1_COMPLETION_REPORT.md").read_text()
@@ -85,6 +92,11 @@ def main() -> None:
         assert re.search(rf"^\| {label} \|", target_report, re.MULTILINE), (
             f"missing target report item {label}"
         )
+    universe_report = (REPOSITORY / "docs/AFRE_3_COMPLETION_REPORT.md").read_text()
+    for label in (*labels, "AT"):
+        assert re.search(rf"^\| {label} \|", universe_report, re.MULTILINE), (
+            f"missing universe report item {label}"
+        )
     from afre.version import (
         ENGINE_VERSION,
         FEATURE_STORE_SCHEMA_VERSION,
@@ -92,19 +104,21 @@ def main() -> None:
         STORE_SCHEMA_VERSION,
         STORE_USER_VERSION,
         TARGET_SCHEMA_VERSION,
+        UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.3.0"
+    assert ENGINE_VERSION == "0.4.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
         == TARGET_SCHEMA_VERSION
+        == UNIVERSE_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.2" and STORE_USER_VERSION == 3
+    assert STORE_SCHEMA_VERSION == "1.3" and STORE_USER_VERSION == 4
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical A–AS and current A–AQ scope"
+        "versions, links, historical reports and current A–AT scope"
     )
 
 

@@ -84,3 +84,14 @@ rolling computation uses effective observations in (T-lookback, T] with each inp
 available by cutoff, and explicit KNOWN_FACT features may represent a scheduled
 future-effective fact. Corrections never overwrite vintages; snapshot joins and
 frozen materializations preserve exact selections across concurrent/later inserts.
+
+AFRE-3 applies independent [start,end) valid and knowledge intervals to listings,
+symbols, identifiers, relationships, lifecycle and membership. Six delivery clocks
+reuse AFRE-1 AvailabilityEvidence. An announcement of future inclusion is retained
+as future_record_ids and does not confer current membership. Membership and
+eligibility are different decisions. Market eligibility admits only effective time
+<= T and final availability <= min(T,known_as_of), using (T-lookback,T] for liquidity.
+A later reconstruction keeps its physical receipt/ingestion/computation clocks;
+qualified historical evidence requires an explicitly approved attestor. Revised
+history with knowledge>T cannot serve a historical forecast. See
+[membership vintages](universe-membership-vintages.md).

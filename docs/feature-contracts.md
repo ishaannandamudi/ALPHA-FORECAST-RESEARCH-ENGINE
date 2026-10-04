@@ -57,3 +57,10 @@ while the foundation value is withheld. Full physical delivery and reconstructio
 clocks remain in the referenced vintage. See [vintages](feature-vintages.md),
 [DAG computation](feature-computation-dag.md), [joins](point-in-time-joins.md) and
 [supplied normalization](feature-normalization.md). Labels remain AFRE-2.
+
+AFRE-3 eligibility consumes exact AFRE-1 security-scoped feature vintages and pins
+their IDs in a frozen input build. A complete causal universe snapshot projects to
+the unchanged foundation UniverseManifest at exactly one origin nanosecond. Feature
+rows use that manifest fingerprint and stable instrument identity; wrong security,
+universe or cutoff is rejected by the existing row contract and AFRE-3 compatibility
+helper. No old feature row is rewritten. See [PIT universes](point-in-time-universes.md).
