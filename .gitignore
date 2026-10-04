@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+coverage.json
+htmlcov/
+
+# Type checking / lint
+.mypy_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Local databases / artifacts
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
