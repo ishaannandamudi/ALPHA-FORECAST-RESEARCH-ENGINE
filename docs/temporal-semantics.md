@@ -60,8 +60,9 @@ market source. Future labels fail even when the feature row itself is admissible
 Split metadata requires disjoint ordered train/validation/test origin ranges,
 explicit fit/evaluation cutoffs, mandatory future interval purging, and embargo
 spacing. Purging is a recorded requirement in AFRE-0, not an implemented splitter.
-AFRE-4 will remove rows whose label intervals overlap held-out windows and fit all
-normalization/selection using only training data and available completed labels.
+AFRE-4 implements exact interval purging and elapsed/session/bar embargo, and fits
+simple normalization using only TRAIN data and labels known at the training cutoff.
+Feature selection remains deferred. See [fold semantics](leakage-safe-splitting.md).
 
 ## AFRE-1 physical delivery and reconstruction
 
@@ -95,3 +96,9 @@ A later reconstruction keeps its physical receipt/ingestion/computation clocks;
 qualified historical evidence requires an explicitly approved attestor. Revised
 history with knowledge>T cannot serve a historical forecast. See
 [membership vintages](universe-membership-vintages.md).
+
+AFRE-4 information intervals record endpoint inclusion explicitly: target intervals
+are (actual origin close, actual endpoint close], while full information intervals
+include the earliest declared feature lookback and bounded dependency/bar lineage. Prepared transformations require a
+state available at the application time; retrospective training preprocessing does
+not backdate a learned statistic into the raw historical feature.

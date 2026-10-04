@@ -37,7 +37,8 @@ manifest, stable security, origin and cutoff. Rich snapshots retain excluded,
 unknown and conflicted results for audit.
 
 The manifest fingerprint binds downstream feature/target dataset identity to exact
-membership and eligibility. Existing contracts remain unchanged. AFRE-4 will build
-PIT sample joins, folds, embargo/purging and contamination audits; none are generated
-here. See [membership](universe-membership-vintages.md), [eligibility](security-eligibility.md),
+membership and eligibility. Existing contracts remain unchanged. AFRE-4 composes
+these snapshots into PIT samples, folds, embargo/purge and contamination audits in
+a separate [research dataset package](research-datasets.md). It preserves excluded
+and unresolved snapshot cells and never substitutes the current universe. See [membership](universe-membership-vintages.md), [eligibility](security-eligibility.md),
 [identity](security-identity.md) and [reproducibility](research-reproducibility.md).

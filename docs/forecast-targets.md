@@ -73,4 +73,7 @@ label semantics remain 1.0. A complete causal snapshot projects to the foundatio
 UniverseManifest consumed by TargetEngine. Feature and target rows match full stable
 security/origin/universe identities; ticker reuse cannot alter that key. Changing
 membership or eligibility changes snapshot, manifest and target dataset identity.
-No AFRE-4 joins or splits are generated. See [PIT universes](point-in-time-universes.md).
+AFRE-4 joins pinned targets without recomputing truth and filters TRAIN using the
+existing target-known-by-cutoff helper. Target intervals retain actual endpoints for
+purge; validation/test membership remains independent of later label readiness.
+See [PIT universes](point-in-time-universes.md) and [research datasets](research-datasets.md).

@@ -67,4 +67,8 @@ workload is `benchmarks/feature_store.py`. No real upstream integration, learned
 normalization fitting, label engine, predictive model or forecast service is
 implemented by AFRE-1. AFRE-2 now supplies the separate
 [target engine](forecast-targets.md); it preserves this feature-store boundary.
-Next implementation phase: AFRE-3 — Point-in-Time Universe & Security Eligibility.
+AFRE-3 supplies [historical universes](point-in-time-universes.md). AFRE-4 now
+uses this exact PIT join and retains selected vintages in frozen research samples.
+It fits simple TRAIN-only normalization through the existing AFRE-1 state contracts;
+raw historical feature availability remains unchanged. See [datasets](research-datasets.md)
+and [fold preprocessing](fold-local-preprocessing.md).

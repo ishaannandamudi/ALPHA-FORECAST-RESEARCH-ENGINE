@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.4.0**. Foundation, feature-store, target and universe schemas: **1.0**.
-SQLite universe store: **1.3**, represented by `PRAGMA user_version=4`, extending
-target store 1.2/user_version=3 additively.
+Engine: **0.5.0**. Foundation, feature-store, target, universe and dataset schemas: **1.0**.
+Shared research store: **1.4**, represented by `PRAGMA user_version=5`, extending
+universe store 1.3/user_version=4 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -95,3 +95,11 @@ hold validated objects only during one read or writer snapshot and clear on exit
 Four seeds, reversed insertion, concurrent correction, restart, corruption and
 migration rollback are tested. The AFRE-2 demo keeps its historical 0.3.0 fixture ID.
 See [universe snapshots](point-in-time-universes.md) and [profile](universe-benchmark.md).
+
+AFRE-4 migration 4→5 adds research artifacts and ordered sample/fold/partition
+indexes without altering earlier payloads, DDL or metadata. Frozen ResearchInputBuild
+selections, exact dataset grid, split policy, memberships and TRAIN preprocessing
+states are identity-bearing. Later/backdated insertions cannot enter old samples.
+Four seeds, reversed upstream/request insertion, restart, concurrent writer, rollback
+and corruption are tested. Universe replay preserves historical engine metadata.
+See [research datasets](research-datasets.md) and [audits](dataset-contamination-audits.md).

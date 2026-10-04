@@ -1,5 +1,7 @@
 """Bounded snapshot construction, exact frozen replay and security-history APIs."""
 
+from dataclasses import replace
+
 from afre.feature_store.schema import QueryPolicy
 from afre.schema import Artifact, require
 from afre.serialization import canonical_json
@@ -112,7 +114,7 @@ def build_snapshot(
 def replay_artifact(repository: UniverseRepository, value: Artifact) -> Artifact:
     if isinstance(value, UniverseSnapshot):
         definition = repository.resolve(UniverseDefinition, value.definition.fingerprint)
-        return build_snapshot(
+        replay = build_snapshot(
             repository,
             definition,
             value.valid_at_ns,
@@ -120,6 +122,7 @@ def replay_artifact(repository: UniverseRepository, value: Artifact) -> Artifact
             value.input_build_id,
             value.constructed_ns,
         )
+        return replace(replay, engine_version=value.engine_version)
     member = value.membership if isinstance(value, EligibilityResult) else value
     require(isinstance(member, MembershipSelection), "universe replay family mismatch")
     assert isinstance(member, MembershipSelection)

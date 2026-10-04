@@ -1,7 +1,7 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0/1/2 stable; AFRE-3 universe engine complete**, engine 0.4.0,
-foundation/feature-store/target/universe schemas 1.0, SQLite universe store 1.3/user_version=4.
+Status: **AFRE-0/1/2/3 stable; AFRE-4 research dataset engine complete**, engine 0.5.0,
+foundation/feature-store/target/universe/dataset schemas 1.0, shared research store 1.4/user_version=5.
 
 ## Mission and philosophy
 
@@ -227,8 +227,8 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-3.** AFRE-1 remains only the
-Point-in-Time Feature Store. AFRE-4 — Dataset Builder & Leakage-Safe Splitting
+these distinct phases. **Stop after AFRE-4.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-5 — Statistical Baseline Models
 is the next deferred implementation phase.
 
 ## AFRE-1 implementation and availability boundary
@@ -343,9 +343,37 @@ earlier causal forecast origin. See [PIT universes](point-in-time-universes.md),
 [eligibility](security-eligibility.md), [completion report](AFRE_3_COMPLETION_REPORT.md)
 and [profile](universe-benchmark.md).
 
-**AFRE-4 — Dataset Builder & Leakage-Safe Splitting** is deferred: PIT universe,
-feature and target joins; exact sample identity; purged walk-forward folds;
-embargo; overlapping-label exclusion; rolling/expanding windows; fold-local
-preprocessing; fit/validation/test boundaries; dataset manifests; contamination
-audits; reproducible split identity. No AFRE-4 splitting, predictive fitting,
-calibration, ranking, portfolios or execution is implemented.
+AFRE-4 now composes these immutable universe projections without changing prior
+contracts. Universe replay retains each persisted snapshot's original engine version.
+
+## AFRE-4 completed scope
+
+AFRE-4 implements Dataset Builder & Leakage-Safe Splitting in a separate
+`afre.research_datasets` package. Exact snapshot/security/origin/feature/target
+selections freeze under one upstream read snapshot, then publish atomically. Failed
+cells remain explicit; backdated corrections produce new builds and old bytes replay.
+Typed source/calendar/adjustment compatibility prevents accidental cross-build joins.
+
+Research samples retain actual target intervals, full declared information intervals,
+selected vintage IDs and target availability. Temporal holdout, walk-forward, rolling
+and expanding folds assign disjoint TRAIN/VALIDATION/TEST/PURGED/EMBARGOED/INELIGIBLE
+memberships. Security/issuer/sector/market/global interval purge uses sorted indexes;
+elapsed/session/bar embargo uses exact calendars/grids, endpoint inclusion and direction.
+TRAIN requires exact completed verified labels known at cutoff, including equality.
+
+Simple fold-local normalization reuses AFRE-1 specs/states and fits only TRAIN, with
+explicit missing skips, zero-scale and application availability. Test evaluation
+identities record holdout reuse; nested preparation constrains candidates to parent
+TRAIN. Neither constitutes model-selection or multiple-testing governance. Bounded
+contamination audits recompute frozen grid, partitions, labels and fit statistics.
+Store 1.4/user_version=5 adds immutable research artifacts/indexes transactionally.
+
+See [datasets](research-datasets.md), [splitting](leakage-safe-splitting.md),
+[purge](purged-walk-forward.md), [embargo](embargo-semantics.md),
+[preprocessing](fold-local-preprocessing.md) and [audits](dataset-contamination-audits.md).
+
+**AFRE-5 — Statistical Baseline Models** is deferred: unconditional mean/median,
+persistence/reference, linear/ridge, small trusted lasso/elastic-style regularization,
+cross-sectional linear and factor/residual baselines, deterministic training, point
+prediction, fit metadata and out-of-sample evaluation. No probabilistic calibration yet.
+No predictive fitting, model selection, ensembles, portfolios or execution is implemented.
