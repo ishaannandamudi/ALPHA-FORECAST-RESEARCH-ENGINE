@@ -88,3 +88,8 @@ Use `DatasetEngine.build_dataset`, `dataset_samples`, `build_split`, `folds`,
 `export_rows`. Run the [offline demo](../examples/research_dataset_demo.py) and
 [profile](../benchmarks/research_datasets.py). See [splitting](leakage-safe-splitting.md),
 [preprocessing](fold-local-preprocessing.md) and [audits](dataset-contamination-audits.md).
+
+AFRE-5 consumes these exact TRAIN partitions and pinned preprocessing states in a
+separate [statistical model layer](statistical-baselines.md). One target definition
+is modeled at a time; held-out responses never enter the design matrix. Later target
+revisions require a new dataset/spec/fit identity. The dataset schema stays 1.0.

@@ -77,3 +77,9 @@ AFRE-4 joins pinned targets without recomputing truth and filters TRAIN using th
 existing target-known-by-cutoff helper. Target intervals retain actual endpoints for
 purge; validation/test membership remains independent of later label readiness.
 See [PIT universes](point-in-time-universes.md) and [research datasets](research-datasets.md).
+
+AFRE-5 fits one exact target/horizon from TRAIN using the existing known-by-cutoff
+helper, including equality. Residual linear consumes these supplied residual labels;
+it estimates no held-out benchmark. Forecast construction does not load target truth.
+The separate [point evaluator](point-forecast-evaluation.md) joins exact pinned labels
+only at an explicit later evaluation cutoff. Target schema/semantics remain 1.0.

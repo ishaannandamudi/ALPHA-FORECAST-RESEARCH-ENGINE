@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.5.0**. Foundation, feature-store, target, universe and dataset schemas: **1.0**.
-Shared research store: **1.4**, represented by `PRAGMA user_version=5`, extending
-universe store 1.3/user_version=4 additively.
+Engine: **0.6.0**. Foundation, feature-store, target, universe, dataset and model schemas: **1.0**.
+Shared model store: **1.5**, represented by `PRAGMA user_version=6`, extending
+research store 1.4/user_version=5 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -103,3 +103,16 @@ states are identity-bearing. Later/backdated insertions cannot enter old samples
 Four seeds, reversed upstream/request insertion, restart, concurrent writer, rollback
 and corruption are tested. Universe replay preserves historical engine metadata.
 See [research datasets](research-datasets.md) and [audits](dataset-contamination-audits.md).
+
+AFRE-5 migration 5→6 adds model artifacts and fit/forecast/evaluation indexes without
+rewriting prior rows, SQL or metadata. Fixed specs, exact TRAIN matrices, fit clocks,
+coefficients, predictions and evaluations have canonical identities. Four hash seeds,
+reversed insertion and restart are tested within supported platform arithmetic.
+Later backdated writes cannot affect frozen fits. Solver timings are outside identity.
+See [model reproducibility](model-reproducibility.md).
+
+Strict pre-model repository interfaces retain the AFRE-4 universe snapshot engine
+metadata (0.5.0); ModelRepository emits 0.6.0. The builder explicitly obtains this
+metadata from its repository instead of silently changing the older interface when
+the global version advances. Stored snapshot replay continues preserving its exact
+original engine version. Public contracts and prior test assertions are unchanged.

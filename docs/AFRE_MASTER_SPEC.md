@@ -1,7 +1,7 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0/1/2/3 stable; AFRE-4 research dataset engine complete**, engine 0.5.0,
-foundation/feature-store/target/universe/dataset schemas 1.0, shared research store 1.4/user_version=5.
+Status: **AFRE-0/1/2/3/4 stable; AFRE-5 statistical baselines complete**, engine 0.6.0,
+foundation/feature-store/target/universe/dataset/model schemas 1.0, shared model store 1.5/user_version=6.
 
 ## Mission and philosophy
 
@@ -227,8 +227,8 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-4.** AFRE-1 remains only the
-Point-in-Time Feature Store. AFRE-5 — Statistical Baseline Models
+these distinct phases. **Stop after AFRE-5.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-6 — Probabilistic Forecasting
 is the next deferred implementation phase.
 
 ## AFRE-1 implementation and availability boundary
@@ -372,8 +372,34 @@ See [datasets](research-datasets.md), [splitting](leakage-safe-splitting.md),
 [purge](purged-walk-forward.md), [embargo](embargo-semantics.md),
 [preprocessing](fold-local-preprocessing.md) and [audits](dataset-contamination-audits.md).
 
-**AFRE-5 — Statistical Baseline Models** is deferred: unconditional mean/median,
-persistence/reference, linear/ridge, small trusted lasso/elastic-style regularization,
-cross-sectional linear and factor/residual baselines, deterministic training, point
-prediction, fit metadata and out-of-sample evaluation. No probabilistic calibration yet.
-No predictive fitting, model selection, ensembles, portfolios or execution is implemented.
+## AFRE-5 completed scope
+
+AFRE-5 adds `afre.statistical_models`, preserving the original foundation model and
+experiment contracts. BaselineModelSpec composes foundation ModelSpec and pins rich
+target/horizon, exact feature set, fold/preprocessing, fixed penalties, explicit
+intercept/rank/conditioning/convergence/missing policies, seed and solver/version.
+Mean, median, supplied reference, causal persistence, OLS, ridge, lasso, elastic net,
+global cross-sectional and supplied-residual linear models fit only exact TRAIN.
+
+One pinned input snapshot freezes a semantically ordered matrix with completed
+verified labels known by cutoff and exact supplied AFRE-4 preprocessing. Immutable
+fit inputs/runs, coefficients and diagnostics record clocks and complete lineage.
+Pivoted Householder QR and augmented ridge avoid matrix inversion; cyclic coordinate
+descent uses exact sum-loss L1/L2 conventions and explicit KKT/nonconvergence handling.
+
+Feature-only point prediction never loads target truth and enforces model/input
+availability at the origin. Retrospective IN_SAMPLE diagnostics are marked separately.
+Later explicit evaluation joins pinned truth for point errors, R², correlations,
+per-origin IC/rank diagnostics and identical-sample baseline deltas. TEST evaluation
+records existing AFRE-4 access/reuse evidence; no metric can change a model spec.
+Store 1.5/user_version=6 adds immutable model artifacts/indexes transactionally.
+
+See [baselines](statistical-baselines.md), [fit clocks](model-fit-semantics.md),
+[solvers](linear-models.md), [regularization](regularization-semantics.md),
+[evaluation](point-forecast-evaluation.md) and [replay](model-reproducibility.md).
+
+**AFRE-6 — Probabilistic Forecasting** is deferred: conditional distributions,
+quantiles, threshold/tail probabilities, conditional variance/scale, proper scoring,
+distribution artifacts and probabilistic evaluation. Post-hoc calibration remains
+AFRE-7. No probabilistic forecasts, calibration, automatic model selection, ensembles,
+portfolios or execution is implemented.

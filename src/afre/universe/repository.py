@@ -3,7 +3,7 @@
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Self, TypeVar, cast
+from typing import ClassVar, Self, TypeVar, cast
 
 from afre.feature_store.models import (
     FeatureVintage,
@@ -250,6 +250,9 @@ def indexes(value: Artifact) -> tuple[tuple[str, tuple[object, ...]], ...]:
 
 
 class UniverseRepository(TargetRepository):
+    # The strict pre-model interfaces retain their AFRE-4 snapshot metadata.
+    _snapshot_engine_version: ClassVar[str] = "0.5.0"
+
     def __init__(self, path: str | Path, bounds: UniverseBounds | None = None) -> None:
         self._universe_identity_cache: dict[int, tuple[Artifact, str]] = {}
         self.universe_bounds = bounds or UniverseBounds()

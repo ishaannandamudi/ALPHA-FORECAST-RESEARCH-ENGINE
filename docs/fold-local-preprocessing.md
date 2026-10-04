@@ -38,3 +38,8 @@ normalization into the raw historical feature, change the AFRE-1 vintage, or ass
 learned statistics were usable at each earlier origin. Recomputing all parameters from
 the pinned TRAIN set is part of contamination audit. A different availability time
 creates a distinct immutable fit state.
+
+AFRE-5 now consumes these exact states without global refitting. Every regularized
+feature requires a declared state, including explicit NONE for intended raw units.
+Model/forecast availability additionally respects state availability; retrospective
+TRAIN diagnostics are explicitly IN_SAMPLE. See [model fit semantics](model-fit-semantics.md).

@@ -64,3 +64,11 @@ the unchanged foundation UniverseManifest at exactly one origin nanosecond. Feat
 rows use that manifest fingerprint and stable instrument identity; wrong security,
 universe or cutoff is rejected by the existing row contract and AFRE-3 compatibility
 helper. No old feature row is rewritten. See [PIT universes](point-in-time-universes.md).
+
+## AFRE-5 consumption boundary
+
+The separate [statistical model layer](statistical-baselines.md) consumes only exact
+numeric feature columns from frozen AFRE-4 joins. It applies pinned fold-local states
+and records selected vintage identities. Prediction cannot accept target values or
+load TargetVintage; future/unverified features fail. Foundation feature contracts
+and raw historical availability remain unchanged.

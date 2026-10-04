@@ -103,6 +103,7 @@ def build_snapshot(
         completeness,
         members,
         eligible,
+        engine_version=repository._snapshot_engine_version,
     )
     require(
         len(canonical_json(snapshot).encode()) <= repository.universe_bounds.serialized_bytes,
