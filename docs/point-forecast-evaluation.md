@@ -44,3 +44,9 @@ own exact target subset. The semantic seal is not authentication or AFRE-19 gove
 
 No positions, P&L, portfolio Sharpe, transaction-cost strategy or profitability claim
 is produced from point forecasts.
+
+AFRE-6 composes this unchanged feature-only point forecast into explicit probability
+contracts. Its forecast path additionally blocks TRAIN-response evidence reads.
+Proper scores and coverage/PIT diagnostics use a separate
+[probabilistic evaluation](probabilistic-evaluation.md), retaining exact-sample and
+TEST boundaries. Diagnostics do not fit calibration; AFRE-7 owns transformations.

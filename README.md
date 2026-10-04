@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-5 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-6 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -11,12 +11,17 @@ AFRE-5 adds transparent statistical baselines: TRAIN-only mean/median/reference,
 causal persistence, QR OLS/ridge, deterministic lasso/elastic net, cross-sectional
 and supplied-residual linear models, feature-only point forecasts and exact-sample
 evaluation. Hyperparameters are fixed inputs; no automatic selection occurs.
+AFRE-6 adds explicit TRAIN-only empirical/Gaussian/quantile distributions, causal
+target-free forecasts, proper scores, calibration diagnostics and immutable lineage.
+AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
+AFRE-7 owns calibration.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.6.0**; foundation, feature-store, target, universe,
-dataset and model schemas **1.0**; shared SQLite model store **1.5**, `user_version=6`
-(additive to research store 1.4/user_version=5). Runtime uses only the standard library.
+Python **3.11+**; engine **0.7.0**; foundation, feature-store, target, universe,
+dataset, model and probabilistic schemas **1.0**; shared probabilistic store **1.6**,
+`user_version=7` (additive to model store 1.5/user_version=6). Runtime uses only the
+standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
 deterministic JSON/domain-separated SHA-256 identity, provider protocols and an
@@ -47,6 +52,7 @@ python3.11 -m venv .venv311
 .venv311/bin/python examples/universe_demo.py
 .venv311/bin/python -m examples.research_dataset_demo
 .venv311/bin/python -m examples.statistical_baselines_demo
+.venv311/bin/python -m examples.probabilistic_demo
 ```
 
 For a checkout without editable installation, use:
@@ -58,6 +64,7 @@ PYTHONPATH=src:. .venv311/bin/python examples/target_demo.py
 PYTHONPATH=src:. .venv311/bin/python examples/universe_demo.py
 PYTHONPATH=src:. .venv311/bin/python -m examples.research_dataset_demo
 PYTHONPATH=src:. .venv311/bin/python -m examples.statistical_baselines_demo
+PYTHONPATH=src:. .venv311/bin/python -m examples.probabilistic_demo
 ```
 
 The deterministic [example](examples/foundation_demo.py) does all twelve steps:
@@ -126,6 +133,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | universe | Stable identity, historical listings/symbols/lifecycle, bitemporal constituents, separate eligibility, frozen snapshots, bounded audits and additive store 1.3 |
 | research_datasets | Exact frozen samples/manifests, leakage-safe folds, scoped purge, typed embargo, TRAIN preprocessing, audits/export and additive store 1.4 |
 | statistical_models | Fixed typed statistical baselines, numerical solvers, exact TRAIN matrices, immutable coefficients, feature-only point forecasts, evaluation/audits and additive store 1.5 |
+| probabilistic | Fixed TRAIN residual/target distributions, explicit quantiles/events/scale, proper scores, bounded lineage and additive store 1.6 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
@@ -147,6 +155,7 @@ PYTHONPATH=src:. .venv311/bin/python benchmarks/targets.py
 PYTHONPATH=src:. .venv311/bin/python benchmarks/universes.py
 PYTHONPATH=src:. .venv311/bin/python -m benchmarks.research_datasets
 PYTHONPATH=src:. .venv311/bin/python -m benchmarks.statistical_models
+PYTHONPATH=src:. .venv311/bin/python -m benchmarks.probabilistic
 ```
 
 Coverage requires ≥95% combined statements/branches. Tests include leakage,
@@ -202,12 +211,18 @@ feature-store gates. The [AFRE-2 A–AQ report](docs/AFRE_2_COMPLETION_REPORT.md
 its historical target baseline. The [AFRE-3 A–AT report](docs/AFRE_3_COMPLETION_REPORT.md)
 records its historical universe baseline. The [AFRE-4 A–AS report](docs/AFRE_4_COMPLETION_REPORT.md)
 records its historical dataset baseline. The [AFRE-5 A–AV report](docs/AFRE_5_COMPLETION_REPORT.md)
-records current gates and limitations.
+records its historical model baseline and limitations.
 
-**Next scope: AFRE-6 — Probabilistic Forecasting.** Deferred scope is conditional
-distributions, quantiles, threshold/tail probabilities, conditional variance/scale,
-proper scoring, distribution artifacts and probabilistic evaluation. Post-hoc
-calibration remains AFRE-7. Stop after AFRE-5; no AFRE-6 work is implemented.
+AFRE-6 details: [probabilistic forecasting](docs/probabilistic-forecasting.md),
+[distributions](docs/forecast-distributions.md), [quantiles](docs/quantile-forecasts.md),
+[thresholds](docs/threshold-probabilities.md), [proper scores](docs/proper-scoring-rules.md),
+[evaluation](docs/probabilistic-evaluation.md), [demo](examples/probabilistic_demo.py),
+[profile](benchmarks/probabilistic.py) and [A–AU report](docs/AFRE_6_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-7 — Forecast Calibration.** Probability, quantile and interval
+calibration, causally valid isotonic/conformal-style mappings, rolling diagnostics,
+versioned calibration state/drift and strict TRAIN/calibration partitions are deferred.
+**Stop after AFRE-6.** No calibration transformations or AFRE-7 work is implemented.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

@@ -42,6 +42,9 @@ existing AFRE-1 embedded universe provenance dominates scaling; the numerical wo
 does not claim equivalent end-to-end registry throughput. All measurements are local
 synthetic evidence with no production SLA.
 
-AFRE-6 is deferred Probabilistic Forecasting: conditional distributions, quantiles,
-threshold/tail probabilities, conditional variance/scale, proper scoring, distribution
-artifacts and probabilistic evaluation. Post-hoc calibration remains AFRE-7.
+AFRE-6's ProbabilisticRepository extends this store additively to 1.6/user_version=7.
+All AFRE-5 rows, DDL, metadata and contracts remain intact. ModelRepository retains
+its strict 1.5 interface and historical 0.6.0 snapshot metadata. Probability specs,
+TRAIN state, forecasts, evaluations and bounded lineage replay independently; see
+[probabilistic persistence](probabilistic-evaluation.md). AFRE-6 evaluates calibration
+diagnostics but does NOT fit calibration transformations. AFRE-7 owns calibration.

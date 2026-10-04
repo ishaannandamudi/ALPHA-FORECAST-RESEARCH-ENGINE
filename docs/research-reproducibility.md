@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.6.0**. Foundation, feature-store, target, universe, dataset and model schemas: **1.0**.
-Shared model store: **1.5**, represented by `PRAGMA user_version=6`, extending
-research store 1.4/user_version=5 additively.
+Engine: **0.7.0**. Foundation, feature-store, target, universe, dataset, model and
+probabilistic schemas: **1.0**. Shared probabilistic store: **1.6**, represented by
+`PRAGMA user_version=7`, extending model store 1.5/user_version=6 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -116,3 +116,15 @@ metadata (0.5.0); ModelRepository emits 0.6.0. The builder explicitly obtains th
 metadata from its repository instead of silently changing the older interface when
 the global version advances. Stored snapshot replay continues preserving its exact
 original engine version. Public contracts and prior test assertions are unchanged.
+
+AFRE-6 migration 6->7 preserves all earlier rows, DDL and metadata. Exact completed
+point fit, ordered TRAIN observation IDs, centering/scale/quantile/event assumptions,
+probability state, fit clocks and proper-score protocol determine immutable identities.
+Seeds0/1/42/random, reversed insertion, restart and a concurrent backdated data/point
+correction are covered. Normal inverse uses the declared stdlib numerical version;
+platform-universal bit identity is not claimed. ProbabilisticRepository emits current
+0.7.0 snapshot metadata while strict ModelRepository keeps 0.6.0. Forecast construction
+is response-free; only explicit later evaluation expands held-out truth. See
+[probabilistic reproducibility](probabilistic-evaluation.md).
+AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
+AFRE-7 owns Forecast Calibration; selection/ensembles/portfolios/execution are deferred.

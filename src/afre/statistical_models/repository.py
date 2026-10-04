@@ -33,7 +33,6 @@ from afre.statistical_models.schema import ModelBounds
 from afre.statistical_models.storage import TABLES, model_indexes, model_schema
 from afre.target_engine.repository import target_schema
 from afre.universe.repository import universe_schema
-from afre.version import ENGINE_VERSION
 
 MODEL_TYPES: tuple[type[Artifact], ...] = (
     ModelBounds,
@@ -54,7 +53,7 @@ M = TypeVar("M", bound=Artifact)
 
 
 class ModelRepository(DatasetRepository):
-    _snapshot_engine_version: ClassVar[str] = ENGINE_VERSION
+    _snapshot_engine_version: ClassVar[str] = "0.6.0"
 
     def __init__(
         self,

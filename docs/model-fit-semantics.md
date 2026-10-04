@@ -39,3 +39,8 @@ Fits publish spec, foundation bridge, matrix, inputs, diagnostics, coefficients 
 run atomically. Failures publish no partial fit. Actual elapsed timing uses a separate
 nonidentity `last_fit_timings` diagnostic. Fixed semantic inputs/clocks give identical
 canonical artifacts; no implicit wall-clock read enters identity.
+
+AFRE-6 consumes exactly this completed converged point artifact and admitted TRAIN
+matrix. Its separate ProbabilisticFitInputs/Run/state preserve all prior model
+contracts. No held-out residual, scale/family selection or calibration transform can
+enter the uncertainty fit. See [probabilistic fit semantics](probabilistic-forecasting.md).

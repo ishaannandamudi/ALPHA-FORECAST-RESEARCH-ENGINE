@@ -1,7 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0/1/2/3/4 stable; AFRE-5 statistical baselines complete**, engine 0.6.0,
-foundation/feature-store/target/universe/dataset/model schemas 1.0, shared model store 1.5/user_version=6.
+Status: **AFRE-0 through AFRE-6 complete**, engine 0.7.0,
+foundation/feature-store/target/universe/dataset/model/probabilistic schemas 1.0,
+shared probabilistic store 1.6/user_version=7.
 
 ## Mission and philosophy
 
@@ -227,9 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-5.** AFRE-1 remains only the
-Point-in-Time Feature Store. AFRE-6 — Probabilistic Forecasting
-is the next deferred implementation phase.
+these distinct phases. **Stop after AFRE-6.** AFRE-1 remains only the
+Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
+causal distributions and proper scoring. AFRE-7 — Forecast Calibration is next;
+calibration transforms, model selection, ensembles, portfolios and execution remain
+deferred.
 
 ## AFRE-1 implementation and availability boundary
 
@@ -398,8 +401,39 @@ See [baselines](statistical-baselines.md), [fit clocks](model-fit-semantics.md),
 [solvers](linear-models.md), [regularization](regularization-semantics.md),
 [evaluation](point-forecast-evaluation.md) and [replay](model-reproducibility.md).
 
-**AFRE-6 — Probabilistic Forecasting** is deferred: conditional distributions,
-quantiles, threshold/tail probabilities, conditional variance/scale, proper scoring,
-distribution artifacts and probabilistic evaluation. Post-hoc calibration remains
-AFRE-7. No probabilistic forecasts, calibration, automatic model selection, ensembles,
-portfolios or execution is implemented.
+## AFRE-6 completed scope
+
+AFRE-6 adds `afre.probabilistic` above exact completed AFRE-5 point models. Closed
+EMPIRICAL_RESIDUAL, GAUSSIAN_LOCATION_SCALE and QUANTILE_SET families pin rich target,
+fold/cutoff, ordered TRAIN evidence, RAW/CENTER_MEAN centering, population STD,
+explicit MAD factor or fixed positive Gaussian scale, median-bearing quantiles,
+strict/inclusive event definitions and numerical versions. Unconditional TRAIN
+response distributions require an exact TRAIN-mean admission scaffold.
+
+One pinned snapshot fits only the admitted TRAIN matrix; held-out/excluded labels
+never affect uncertainty. Zero continuous scale rejects atomically; discrete and
+sparse-quantile degeneracy remain explicit. Probabilistic input/state/artifact/run
+clocks are causal. Forecasts use fitted uncertainty and feature-only point prediction
+without target or training-response reads; later evaluation joins pinned truth at
+an explicit cutoff. Retrospective IN_SAMPLE stays separate; TEST preserves existing
+AFRE-4 reuse evidence. Sparse quantiles imply no hidden CDF/density/event/moments.
+
+Gaussian NLL, exact Gaussian/empirical CRPS, pinball and Brier proper scores accompany
+coverage/width, quantile frequency, PIT and sharpness diagnostics. Exact-sample
+comparisons are descriptive and cannot select models. Bounded immutable lineage spans
+probability state, completed point fit, fold, TRAIN feature/target evidence and later
+truth only for evaluation. Additive store1.6/user_version=7 preserves all older rows,
+DDL and metadata. Atomic failure, corruption, seeds, reversed insertion, restart and
+concurrent correction are tested. No new runtime dependencies are introduced.
+
+See [probabilistic forecasting](probabilistic-forecasting.md),
+[distributions](forecast-distributions.md), [quantiles](quantile-forecasts.md),
+[events](threshold-probabilities.md), [scores](proper-scoring-rules.md) and
+[evaluation](probabilistic-evaluation.md).
+AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
+AFRE-7 owns **Forecast Calibration**: probability/quantile/interval calibration,
+causally valid isotonic/conformal-style mappings, rolling diagnostics, calibration
+state/versioning/drift and strict TRAIN/calibration partition semantics. No regime
+mixtures, model selection or AFRE-7 implementation occurs here. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE. Predictive
+metrics never establish trading profitability. **Stop after AFRE-6.**
