@@ -64,3 +64,14 @@ and execution remain deferred.
 ## AFRE-9 boundary
 
 AFRE-9 ranks each exact horizon independently. Point, raw probability and calibrated score sources retain their model/state/quantile/event identity. Unsupported statistics remain unavailable. No cross-horizon scalar fusion or aggregate rank is constructed. See [rankings](cross-sectional-ranking.md).
+
+## AFRE-11 composition boundary
+
+[Regime conditioning](regime-conditioned-forecasting.md) consumes exact causal
+filtered hard/soft state evidence without changing this phase's contracts. As-of
+is distinct from all six availability clocks. TRAIN state means/fitted-residual
+offsets, fixed soft weighting and explicit fallback are horizon-specific. Application
+preserves exact base bytes and reads no truth. Matched evaluation/ranking retains
+PIT scope and TEST controls. Global calibration cannot silently transfer, and
+descriptive regime drift never refits. MCE/AME remain external neutral data producers;
+downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.

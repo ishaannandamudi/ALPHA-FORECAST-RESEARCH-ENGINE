@@ -73,3 +73,14 @@ and [completion evidence](AFRE_9_COMPLETION_REPORT.md).
 
 AFRE-10 supplies neutral derived scores from exact conditioned forecasts. Same full origin, target/horizon, PIT universe and exact groups remain enforced. A wrapper records affected/unaffected securities. Event IC shares the exact matched truth set; ranking remains predictive research, with portfolio construction downstream.
 See [event-conditioned forecasting](event-conditioned-forecasting.md).
+
+## AFRE-11 composition boundary
+
+[Regime conditioning](regime-conditioned-forecasting.md) consumes exact causal
+filtered hard/soft state evidence without changing this phase's contracts. As-of
+is distinct from all six availability clocks. TRAIN state means/fitted-residual
+offsets, fixed soft weighting and explicit fallback are horizon-specific. Application
+preserves exact base bytes and reads no truth. Matched evaluation/ranking retains
+PIT scope and TEST controls. Global calibration cannot silently transfer, and
+descriptive regime drift never refits. MCE/AME remain external neutral data producers;
+downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.

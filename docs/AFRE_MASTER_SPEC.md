@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-10 complete**, engine 0.11.0,
+Status: **AFRE-0 through AFRE-11 complete**, engine 0.12.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared event store 1.10/user_version=11.
+shared regime store 1.11/user_version=12; regime-conditioned schema1.0.
 
 ## Mission and philosophy
 
@@ -228,11 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-10.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-11.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
-AFRE-10 conditions exact events; AFRE-11 — Regime-Conditioned Models is next; model selection, ensembles,
+AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12 — Mixture of Experts is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -590,8 +590,43 @@ snapshot metadata. See [forecasting](event-conditioned-forecasting.md),
 [evaluation](event-conditioned-evaluation.md), [reactions](event-reaction-signals.md),
 [profile](event-conditioned-benchmark.md) and [A–BC report](AFRE_10_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-11 — Regime-Conditioned Models.** MCE market regimes,
-provider-neutral microstructure/liquidity regimes, regime-specific fits/evaluation,
-transitions, soft/hard membership, separate calibration and drift. No mixture-of-experts
-gating yet. **Stop after AFRE-10.** Regimes, mixtures, model selection, ensembles,
-portfolios, risk optimization and execution remain deferred/downstream.
+## AFRE-11 completed scope
+
+Provider-neutral exact taxonomy/provider/state identities consume filtered hard or
+ordered soft membership with six independent clocks. As-of != availability; late
+receipt and unqualified archives remain unusable. Qualified reconstruction retains
+actual later clocks. GLOBAL/MARKET/SECURITY/PIT SECTOR matching pins candidate/mapping
+sets, maximum age and explicit latest/exact/fail selection, failing equal-time ambiguity.
+
+Exact admitted TRAIN fits implement state target means, hard fitted-residual offsets
+and supplied-probability-weighted residual offsets. In-sample fitted residual diagnostics
+are explicitly separate from historical out-of-fold forecasts. Minimum distinct/effective
+support and FAIL/USE_BASE/GLOBAL_OFFSET are declared; no hidden renormalization/gating.
+Truth-free application preserves base bytes and optional raw probability shape/scale.
+Exact event bases support target-mean location replacement in base→event→regime order.
+Horizon-specific1h/1d fixtures share the same regime evidence but retain distinct models.
+
+Causal supplied-history transitions retain full hard/soft vectors and observed elapsed
+persistence, never future switches/full duration. Matched truth/point/proper scores,
+state/kind/transition/horizon/event subgroups, explicit coverage and AFRE-9 IC retain TEST
+seals/reuse. Soft support/entropy/low-confidence diagnostics remain descriptive. Global
+calibration is incompatible; dedicated regime fitting remains unavailable. Known-window
+drift describes probability/error/transition-frequency changes and never refits/selects.
+
+Immutable bounded safe JSON, verified relational projections, transactional11→12 migration,
+frozen reads and unified lineage preserve every earlier row/DDL/metadata item. Engine0.12.0,
+store1.11/user_version12, regime-conditioned schema1.0, zero runtime dependencies. No direct
+MCE/AME import, private database, sibling path, detector algorithm or executable plugin.
+Downstream HFT integration supplies adapters. No predictive metric proves profitability.
+See [forecasting](regime-conditioned-forecasting.md), [snapshots](regime-snapshots.md),
+[membership](hard-soft-regimes.md), [transitions](regime-transitions.md),
+[calibration](regime-conditioned-calibration.md), [drift](regime-drift.md),
+[external integration](external-regime-integration.md),
+[profile](regime-conditioned-benchmark.md) and [A–BK report](AFRE_11_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-12 — Mixture of Experts.** Expert definitions and point/probabilistic,
+event/regime, external microstructure, macro/context and optional options experts;
+fixed versus learned gating, causal gating inputs/availability/missingness, gating
+calibration/evaluation and expert contribution diagnostics. No arbitrary nonlinear
+interaction framework yet. **Stop after AFRE-11.** AFRE-12 remains unimplemented;
+model selection, ensembles, portfolios, risk optimization and execution remain deferred/downstream.

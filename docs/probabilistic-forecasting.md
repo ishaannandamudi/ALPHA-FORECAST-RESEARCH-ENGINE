@@ -69,3 +69,14 @@ forecasting](multi-horizon-forecasting.md).
 
 AFRE-10 may translate the exact raw AFRE-6 distribution location while preserving shape/scale and original bytes. Sparse quantiles remain sparse, never an invented CDF. Event-conditioned uncertainty is not a joint horizon model or conditional variance estimator.
 See [event-conditioned forecasting](event-conditioned-forecasting.md).
+
+## AFRE-11 composition boundary
+
+[Regime conditioning](regime-conditioned-forecasting.md) consumes exact causal
+filtered hard/soft state evidence without changing this phase's contracts. As-of
+is distinct from all six availability clocks. TRAIN state means/fitted-residual
+offsets, fixed soft weighting and explicit fallback are horizon-specific. Application
+preserves exact base bytes and reads no truth. Matched evaluation/ranking retains
+PIT scope and TEST controls. Global calibration cannot silently transfer, and
+descriptive regime drift never refits. MCE/AME remain external neutral data producers;
+downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.

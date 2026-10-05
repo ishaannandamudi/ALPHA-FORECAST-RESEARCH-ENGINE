@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-10 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-11 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -22,12 +22,14 @@ AFRE-9 adds causal same-origin relative rankings, explicit peer/group transforms
 IC/buckets/stability and receipt-aware provider-neutral external signals.
 AFRE-10 adds exact causal event vintages/windows, TRAIN-only interpretable conditioning,
 explicit overlap, neutral reaction features, matched evaluation and event ranks.
+AFRE-11 adds exact causal hard/soft regime evidence, TRAIN-only state fits, explicit
+fallback, causal transitions, matched evaluation/ranks and descriptive drift.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.11.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional and event-conditioned schemas **1.0**;
-shared event store **1.10**, `user_version=11` (additive to store1.9/user_version10). Runtime uses only the
+Python **3.11+**; engine **0.12.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned and regime-conditioned schemas **1.0**;
+shared regime store **1.11**, `user_version=12` (additive to store1.10/user_version11). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -146,6 +148,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | multihorizon | Exact horizon sets, independent/shared point architectures, matched TRAIN covariance, separate surfaces/evaluation and additive store 1.8 |
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
+| regime_conditioned | Neutral hard/soft filtered regimes, TRAIN state means/offsets, causal transitions, matched metrics/ranks, drift and additive store1.11 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
@@ -275,11 +278,20 @@ PYTHONPATH=src:. .venv311/bin/python -m examples.event_conditioned_demo
 PYTHONPATH=src:. .venv311/bin/python -m benchmarks.event_conditioned_profile
 ```
 
-**Next scope: AFRE-11 — Regime-Conditioned Models.** MCE market regimes, neutral
-external microstructure/liquidity regimes, regime fits/evaluation/transitions,
-soft/hard membership, separate calibration and regime drift. No mixture-of-experts
-gating yet. **Stop after AFRE-10.** Event conditioning does not establish causal effects.
-No selection, ensembles, portfolios, execution or direct EIE/AME integration.
+AFRE-11 adds [regime forecasting](docs/regime-conditioned-forecasting.md),
+[snapshots](docs/regime-snapshots.md), [hard/soft membership](docs/hard-soft-regimes.md),
+[transitions](docs/regime-transitions.md), [calibration assessment](docs/regime-conditioned-calibration.md),
+[drift](docs/regime-drift.md), [external integration](docs/external-regime-integration.md),
+[profile](docs/regime-conditioned-benchmark.md) and the [A–BK report](docs/AFRE_11_COMPLETION_REPORT.md).
+The offline demonstration is `PYTHONPATH=src:. .venv311/bin/python -m examples.regime_conditioned_demo`.
+
+**Next scope: AFRE-12 — Mixture of Experts.** Expert definitions across point/probability,
+event/regime, neutral external microstructure/macro and optional options inputs; fixed
+versus learned gating with causal availability/missingness, calibration/evaluation and
+contribution diagnostics. No arbitrary nonlinear interaction framework yet.
+**Stop after AFRE-11.** Mixture-of-experts work remains deferred. Downstream HFT
+integration supplies real provider adapters. Predictive metrics do not establish
+profitability. Portfolio construction, risk optimization and execution remain downstream.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

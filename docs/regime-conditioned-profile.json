@@ -1,0 +1,53 @@
+{
+  "artifact_count": 2630,
+  "audit_nodes": 329,
+  "engine": "0.12.0",
+  "interpretation": "Synthetic bounded offline causal workflow and separate bulk arithmetic kernel; no production SLA or profitability claim.",
+  "maximum_oracle_absolute_error": 2.7755575615628914e-17,
+  "oracle_absolute_errors": {
+    "50000_weighted_residual_kernel": 8.470329472543003e-22,
+    "drift_probability": 0.0,
+    "hard_state_A": 0.0,
+    "hard_state_B": 0.0,
+    "matched_mse_delta": 1.0164395367051604e-20,
+    "membership_sum": 0.0,
+    "pearson_IC": 2.7755575615628914e-17,
+    "probability_mass_change": 0.0,
+    "shift:afre.rc_forecast:1.0:6eb65ccb348f44340dd83119b5a561906a9dd482cd08150bc27d391827d1ebfb": 0.0,
+    "shift:afre.rc_forecast:1.0:77ea857ca1782939f53ebed3c1c5197dc3a6d3b686841d090eaba3e77ef6ae67": 1.8905775382715984e-18,
+    "shift:afre.rc_forecast:1.0:bd25fb70a6fe99bedbbac686e814d77cb4ef7295c1fbff3f0a9ce07a130bac63": 0.0,
+    "shift:afre.rc_forecast:1.0:c91db8226939f5a45b238c6e453eb8ba3f23ae0c1ae089308bf0a8483ba9bc88": 1.8905775382715984e-18,
+    "shift:afre.rc_forecast:1.0:c9d143dbaa6a95d196603f33c1e7ff22ab67c07116776a9565ae74dab6648158": 1.8905775382715984e-18,
+    "shift:afre.rc_forecast:1.0:d5a03492fd251b87e55604b00c22f08afa5c5ce3cdb7a78621b4e4e42d46b8f7": 0.0,
+    "soft_state_A": 1.3552527156068805e-20,
+    "soft_state_B": 2.0328790734103208e-20,
+    "target_mean_state_A": 0.0,
+    "target_mean_state_B": 0.0
+  },
+  "sqlite_user_version": 12,
+  "storage_bytes": 15552512,
+  "store": "1.11",
+  "timings": {
+    "50000_weighted_residual_kernel_seconds": 0.025484667043201625,
+    "bounded_lineage_full_audit_seconds": 4.320437874994241,
+    "causal_fixture_hard_soft_initial_fit_seconds": 9.083315333991777,
+    "drift_without_refit_seconds": 0.05222883395617828,
+    "eight_point_probability_applications_seconds": 0.22134029102744535,
+    "eight_taxonomies_1000_snapshot_persistence_seconds": 2.613106417004019,
+    "matching_sample_and_ten_transition_publication_seconds": 0.103048958000727,
+    "ranking_matched_IC_seconds": 0.19746541703352705,
+    "restart_full_audit_seconds": 3.6324894999852404,
+    "three_matched_state_transition_evaluations_seconds": 0.1746477090055123,
+    "three_state_fit_replays_seconds": 0.5253918329835869
+  },
+  "weighted_kernel_effective_support": 38570.040004388815,
+  "workload": {
+    "additional_snapshots": 1000,
+    "additional_taxonomies": 8,
+    "bulk_weighted_rows": 50000,
+    "causal_TRAIN_samples_per_model": 12,
+    "causal_history_transitions": 10,
+    "deployment_forecasts": 8,
+    "state_models": 3
+  }
+}

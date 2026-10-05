@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-10.**" in master
-    assert "**Next scope: AFRE-11 — Regime-Conditioned Models.**" in readme
+    assert "**Stop after AFRE-11.**" in master
+    assert "**Next scope: AFRE-12 — Mixture of Experts.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.11.0" and project["dependencies"] == []
+    assert project["version"] == "0.12.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -59,6 +59,14 @@ def main() -> None:
             target = link.split("#", 1)[0]
             assert (document.parent / target).exists(), f"{document.name}: broken {link}"
     for name in (
+        "regime-conditioned-forecasting.md",
+        "regime-snapshots.md",
+        "hard-soft-regimes.md",
+        "regime-transitions.md",
+        "regime-conditioned-calibration.md",
+        "regime-drift.md",
+        "external-regime-integration.md",
+        "regime-conditioned-benchmark.md",
         "event-conditioned-forecasting.md",
         "event-time-semantics.md",
         "event-windows.md",
@@ -178,6 +186,15 @@ def main() -> None:
     event_labels = (*cross_section_labels[:52], "BA", "BB", "BC")
     assert re.findall(r"^\| ([A-Z]{1,2}) \|", event_report, re.MULTILINE) == list(event_labels)
     assert (REPOSITORY / "docs/event-conditioned-profile.json").is_file()
+    regime_report = (REPOSITORY / "docs/AFRE_11_COMPLETION_REPORT.md").read_text()
+    regime_labels = (
+        *cross_section_labels[:52],
+        *("B" + chr(index) for index in range(ord("A"), ord("K") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", regime_report, re.MULTILINE) == list(
+        regime_labels
+    )
+    assert (REPOSITORY / "docs/regime-conditioned-profile.json").is_file()
     assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
         assert (
@@ -196,13 +213,14 @@ def main() -> None:
         MODEL_SCHEMA_VERSION,
         MULTIHORIZON_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
+        REGIME_CONDITIONED_SCHEMA_VERSION,
         STORE_SCHEMA_VERSION,
         STORE_USER_VERSION,
         TARGET_SCHEMA_VERSION,
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.11.0"
+    assert ENGINE_VERSION == "0.12.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
@@ -215,12 +233,13 @@ def main() -> None:
         == MULTIHORIZON_SCHEMA_VERSION
         == CROSS_SECTIONAL_SCHEMA_VERSION
         == EVENT_CONDITIONED_SCHEMA_VERSION
+        == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.10" and STORE_USER_VERSION == 11
+    assert STORE_SCHEMA_VERSION == "1.11" and STORE_USER_VERSION == 12
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 55-item A–BC scope"
+        "versions, links, historical reports and current 63-item A–BK scope"
     )
 
 

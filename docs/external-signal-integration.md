@@ -47,3 +47,14 @@ All tests and fresh-process replay workers block sockets and DNS.
 
 AFRE-10 consumes exact neutral post-event reaction ScoreSpecs/ExternalSignals. Event availability does not establish reaction availability. Each reaction must be causally available, post-anchor and security/semantic compatible. EIE and AME remain external/provider-neutral; the downstream HFT system implements adapters.
 See [event-conditioned forecasting](event-conditioned-forecasting.md).
+
+## AFRE-11 composition boundary
+
+[Regime conditioning](regime-conditioned-forecasting.md) consumes exact causal
+filtered hard/soft state evidence without changing this phase's contracts. As-of
+is distinct from all six availability clocks. TRAIN state means/fitted-residual
+offsets, fixed soft weighting and explicit fallback are horizon-specific. Application
+preserves exact base bytes and reads no truth. Matched evaluation/ranking retains
+PIT scope and TEST controls. Global calibration cannot silently transfer, and
+descriptive regime drift never refits. MCE/AME remain external neutral data producers;
+downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.

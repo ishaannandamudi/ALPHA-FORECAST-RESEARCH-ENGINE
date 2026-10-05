@@ -63,10 +63,10 @@ event decay models, class-specific variance and fitted conditioned calibration a
 unsupported. Provider claims cannot be authenticated by contracts alone.
 
 Conditioned forecast != causal effect. Event-conditioned ranking != portfolio
-construction. Predictive skill never proves profitability. AFRE-11 is deferred:
-regime-conditioned models, MCE and neutral liquidity regimes, transitions, hard/soft
-membership, separate regime calibration/evaluation and regime drift; no mixture
-of experts gating yet. Portfolios, risk optimization and execution remain downstream.
+construction. Predictive skill never proves profitability. AFRE-11 now adds a separate
+[regime-conditioning layer](regime-conditioned-forecasting.md). Exact event bases
+can precede regime target-mean location replacement under explicit compatibility.
+Other event/regime compositions and learned gating remain unsupported. Portfolios, risk optimization and execution remain downstream.
 
 See [clocks](event-time-semantics.md), [windows](event-windows.md),
 [attributes](event-surprise-materiality-novelty.md), [overlap](event-overlap.md),

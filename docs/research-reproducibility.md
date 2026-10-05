@@ -154,3 +154,14 @@ AFRE-9 adds store1.9/user_version10 transactionally while preserving prior rows/
 
 AFRE-10 adds store1.10/user_version11 transactionally. EventRepository emits0.11.0 snapshots while prior readers retain their original strict metadata. Canonical event/reaction/request order, explicit overlap, exact TRAIN and base forecasts determine identity. Seeds0/1/42/random, reversals, restart and second-writer event/target/reaction corrections are verified. Pure read stages pin exact immutable references; staged bridge publication uses those exact refs across epochs, never latest-state substitution. Full semantic audit validates model fitting; target-free application does not refit TRAIN labels.
 See [event-conditioned forecasting](event-conditioned-forecasting.md).
+
+## AFRE-11 composition boundary
+
+[Regime conditioning](regime-conditioned-forecasting.md) consumes exact causal
+filtered hard/soft state evidence without changing this phase's contracts. As-of
+is distinct from all six availability clocks. TRAIN state means/fitted-residual
+offsets, fixed soft weighting and explicit fallback are horizon-specific. Application
+preserves exact base bytes and reads no truth. Matched evaluation/ranking retains
+PIT scope and TEST controls. Global calibration cannot silently transfer, and
+descriptive regime drift never refits. MCE/AME remain external neutral data producers;
+downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.
