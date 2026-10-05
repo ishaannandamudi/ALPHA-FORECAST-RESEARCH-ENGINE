@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-8 complete**, engine 0.9.0,
-foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon schemas 1.0,
-shared multi-horizon store 1.8/user_version=9.
+Status: **AFRE-0 through AFRE-9 complete**, engine 0.10.0,
+foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional schemas 1.0,
+shared cross-sectional store 1.9/user_version=10.
 
 ## Mission and philosophy
 
@@ -228,10 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-8.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-9.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
-AFRE-8 composes exact horizons; AFRE-9 — Cross-Sectional Alpha & Ranking is next; model selection, ensembles,
+AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
+AFRE-10 — Event-Conditioned Forecasting is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -509,10 +510,47 @@ See [multi-horizon forecasting](multi-horizon-forecasting.md),
 [horizon calibration](horizon-specific-calibration.md) and
 [completion report](AFRE_8_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.** Within-origin security
-ranking, cross-sectional forecasts, rank targets/metrics, IC/rank IC, sector/industry
-neutral evaluation, PIT group membership, cross-sectional normalization and ranking
-stability are deferred. No event-conditioned specialization yet.
-**Stop after AFRE-8.** Regimes, mixtures, model selection, ensembles, portfolios,
-risk optimization and execution remain deferred/downstream. Predictive metrics
-never establish trading profitability.
+## AFRE-9 completed scope
+
+`afre.cross_sectional` preserves every AFRE-0 through AFRE-8 implementation and
+public contract. Exact target/horizon, common ForecastOrigin information context,
+PIT universe/eligibility, canonical stable-security order, model/provider/statistic,
+ties, direction, missingness, peer normalization and group policy pin identities.
+Frozen ranking construction is target-free; exclusions retain the full eligible grid.
+
+Raw, population/sample z-score, explicitly scaled median/MAD and percentile outputs
+remain separate from group demeaning and historical TRAIN preprocessing. Versioned
+provider-neutral PIT memberships prevent current classifications projecting backward.
+Relative linear models reuse AFRE-5 TRAIN matrices/QR and can demean only TRAIN targets.
+All predictor/group inputs must be usable by origin; actual ranking clocks never backdate.
+
+Point, expectation, median, quantile, threshold probability and external signals
+have distinct exact score semantics. Provider-neutral external artifacts reuse all
+six AFRE clocks and explicit quality states; qualified reconstruction requires exact
+persisted evidence and locally approved attestors. Ordinary categorical/numeric
+external state may become FeatureVintage data, without regime-conditioned models.
+No AME package, private database, sibling layout, algorithms or execution state is coupled.
+The downstream HFT integration system supplies external-engine adapters.
+
+Later truth/evaluation pins exact vintage/origin/horizon and native TEST seals/reuse.
+Pearson and declared tied-rank IC retain exact N, missingness and undefined states.
+Top/bottom means, buckets, pooled group-demeaned IC and IC series are descriptive.
+Stability distinguishes eligible-universe changes from ranked-set exclusions and
+uses explicit intersection. Top-bottom spreads are not tradable portfolio returns;
+no predictive metric proves profitability. No cross-horizon fused ranking exists.
+
+Additive transactional 9→10 migration, immutable safe JSON, verified indexes and
+bounded unified lineage preserve every prior row/DDL/metadata value. Engine0.10.0,
+store1.9/user_version10, cross-sectional schema1.0; zero runtime dependencies.
+See [rankings](cross-sectional-ranking.md), [normalization](cross-sectional-normalization.md),
+[IC](information-coefficient.md), [groups](group-neutral-ranking.md),
+[stability](rank-stability.md), [external integration](external-signal-integration.md),
+[profile](cross-sectional-benchmark.md) and [completion report](AFRE_9_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-10 — Event-Conditioned Forecasting.** EIE event classes,
+materiality/novelty/surprise, event-time alignment, pre/post-event information,
+event windows, event-specific calibration/evaluation, overlapping events,
+event-conditioned cross-sectional effects and provider-neutral external reaction
+features, including supplied microstructure signals. No regime mixture yet.
+**Stop after AFRE-9.** Regimes, mixtures, model selection, ensembles, portfolios,
+risk optimization and execution remain deferred/downstream.

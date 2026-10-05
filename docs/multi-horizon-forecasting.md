@@ -58,4 +58,9 @@ be reduced. No provider I/O, executable artifacts or runtime dependency is added
 Run `PYTHONPATH=src:. .venv311/bin/python examples/multihorizon_demo.py` for the
 causal two-horizon example; the [profile](multi-horizon-benchmark.md) distinguishes
 large numerical kernels from its smaller persisted historical workload.
-AFRE-9 ranking, selection, ensembles, portfolios and execution remain deferred.
+AFRE-9 adds independent rankings per horizon. Selection, ensembles, portfolios
+and execution remain deferred.
+
+## AFRE-9 boundary
+
+AFRE-9 ranks each exact horizon independently. Point, raw probability and calibrated score sources retain their model/state/quantile/event identity. Unsupported statistics remain unavailable. No cross-horizon scalar fusion or aggregate rank is constructed. See [rankings](cross-sectional-ranking.md).

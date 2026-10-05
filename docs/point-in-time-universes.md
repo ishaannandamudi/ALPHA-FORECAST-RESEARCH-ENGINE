@@ -42,3 +42,7 @@ these snapshots into PIT samples, folds, embargo/purge and contamination audits 
 a separate [research dataset package](research-datasets.md). It preserves excluded
 and unresolved snapshot cells and never substitutes the current universe. See [membership](universe-membership-vintages.md), [eligibility](security-eligibility.md),
 [identity](security-identity.md) and [reproducibility](research-reproducibility.md).
+
+## AFRE-9 boundary
+
+AFRE-9 ranks only the exact INCLUDED/ELIGIBLE snapshot grid at its origin. Delisted historical members remain representable; current constituents cannot enter old rankings. See [cross-sectional ranking](cross-sectional-ranking.md) and [PIT groups](group-neutral-ranking.md).

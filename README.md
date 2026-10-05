@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-8 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-9 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -18,12 +18,14 @@ AFRE-7 adds explicit reserved causal calibration, immutable adjusted forecasts,
 independent evaluation and bounded drift diagnostics.
 AFRE-8 adds exact horizon sets, independent/shared point architectures, matched
 TRAIN covariance, explicit partial bundles and separate horizon evaluation.
+AFRE-9 adds causal same-origin relative rankings, explicit peer/group transforms,
+IC/buckets/stability and receipt-aware provider-neutral external signals.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.9.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration and multi-horizon schemas **1.0**; shared multi-horizon store **1.8**,
-`user_version=9` (additive to calibration store 1.7/user_version=8). Runtime uses only the
+Python **3.11+**; engine **0.10.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon and cross-sectional schemas **1.0**;
+shared cross-sectional store **1.9**, `user_version=10` (additive to store1.8/user_version9). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -140,6 +142,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | statistical_models | Fixed typed statistical baselines, numerical solvers, exact TRAIN matrices, immutable coefficients, feature-only point forecasts, evaluation/audits and additive store 1.5 |
 | probabilistic | Fixed TRAIN residual/target distributions, explicit quantiles/events/scale, proper scores, bounded lineage and additive store 1.6 |
 | multihorizon | Exact horizon sets, independent/shared point architectures, matched TRAIN covariance, separate surfaces/evaluation and additive store 1.8 |
+| cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
@@ -246,10 +249,24 @@ PYTHONPATH=src:. .venv311/bin/python examples/multihorizon_demo.py
 PYTHONPATH=src:. .venv311/bin/python benchmarks/multihorizon.py
 ```
 
-**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.** Within-origin security
-ranking, cross-sectional forecasts/rank metrics, IC/rank IC, neutral evaluation,
-PIT group membership, normalization and ranking stability remain deferred.
-**Stop after AFRE-8.** No automated selection, ensembles, portfolios or execution.
+AFRE-9 details: [rankings](docs/cross-sectional-ranking.md),
+[normalization](docs/cross-sectional-normalization.md), [IC](docs/information-coefficient.md),
+[PIT groups](docs/group-neutral-ranking.md), [stability](docs/rank-stability.md),
+[external boundary](docs/external-signal-integration.md), [demo](examples/cross_sectional_demo.py),
+[profile](docs/cross-sectional-benchmark.md) and [A–BE report](docs/AFRE_9_COMPLETION_REPORT.md).
+
+```sh
+.venv311/bin/python -m examples.cross_sectional_demo
+.venv311/bin/python -m benchmarks.cross_sectional
+```
+
+**Next scope: AFRE-10 — Event-Conditioned Forecasting.** EIE event classes,
+materiality/novelty/surprise, event-time alignment, pre/post-event information,
+event windows, event-specific calibration/evaluation, overlapping events,
+event-conditioned cross-sectional effects and neutral external reaction features.
+No regime mixture yet. **Stop after AFRE-9.**
+No automated selection, ensembles, portfolios, execution or direct AME integration.
+Top-bottom spreads are descriptive diagnostics, not tradable portfolio returns.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

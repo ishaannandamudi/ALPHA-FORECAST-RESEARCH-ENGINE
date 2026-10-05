@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.8.0**. Foundation, feature-store, target, universe, dataset, model,
-probabilistic and calibration schemas: **1.0**. Shared calibration store: **1.7**,
-represented by `PRAGMA user_version=8`, extending probabilistic store 1.6/user_version=7 additively.
+Engine: **0.10.0**. All foundation through cross-sectional public schemas: **1.0**.
+Shared cross-sectional store: **1.9**, `PRAGMA user_version=10`, extending
+multi-horizon store1.8/user_version9 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -145,3 +145,7 @@ Canonical horizon order, ownership, exact model/calibration mappings, intersecti
 covariance numerical policy and actual bundle clocks enter identity. Later corrections
 require explicit new evidence, never substitution inside a frozen bundle. One bounded
 audit spans all phases. See [multi-horizon architecture](multi-horizon-forecasting.md).
+
+## AFRE-9 boundary
+
+AFRE-9 adds store1.9/user_version10 transactionally while preserving prior rows/DDL/metadata. CrossSectionRepository emits snapshot metadata0.10.0; earlier readers remain strict. Full same-origin context, stable member order, exact predictor/group refs, policies, peer state and physical clocks determine rank identity. Seeds0/1/42/random, reversed securities/groups/signals, restart and concurrent universe/group/target/external corrections are tested. See [rankings](cross-sectional-ranking.md) and [external boundary](external-signal-integration.md).

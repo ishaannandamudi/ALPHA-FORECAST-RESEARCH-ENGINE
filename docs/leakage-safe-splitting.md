@@ -55,3 +55,7 @@ policies preserve AFRE-4 partitions. Underlying model TRAIN and TEST cannot fit
 calibration. Raw forecasts must have existed at the historical origin and truth
 must be available by the calibration cutoff. TEST remains later evaluation only;
 independent calibration evaluation also excludes actual calibration fit samples.
+
+## AFRE-9 boundary
+
+AFRE-9 relative models reuse admitted AFRE-5 TRAIN matrices and exact full origin grouping. Optional target centering is TRAIN-only. Later native TEST rank evaluation preserves the existing AFRE-4 seals/reuse and exact pinned truth; it cannot influence fitting or ranking. See [IC](information-coefficient.md).

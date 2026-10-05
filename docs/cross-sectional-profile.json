@@ -1,0 +1,43 @@
+{
+  "counts": {
+    "causal_audit_nodes": 82,
+    "causal_eligible": 4,
+    "causal_origins": 2,
+    "causal_ranked": 3,
+    "cs_artifacts": 56,
+    "synthetic_groups": 20,
+    "synthetic_securities_per_section": 1000,
+    "synthetic_security_origins": 12000
+  },
+  "engine": "0.10.0",
+  "max_error": 1.1102230246251565e-16,
+  "maximum_numerical_errors": {
+    "group_demean": 0.0,
+    "mean_std_zscore": 0.0,
+    "median_mad": 0.0,
+    "pearson": 1.1102230246251565e-16,
+    "percentile": 1.1102230246251565e-16,
+    "spearman_stability": 1.1102230246251565e-16,
+    "top_bottom_spread": 0.0
+  },
+  "production_sla": false,
+  "scope": "large pure numerical components; separate small causal pipeline",
+  "seconds": {
+    "causal_atomic_persistence_and_validation": 0.05774479196406901,
+    "causal_bounded_audit_and_persistence": 0.13907091598957777,
+    "causal_external_lookup": 0.0002757919719442725,
+    "causal_ic_buckets_truth_and_persistence": 0.03567937499610707,
+    "causal_materialization_including_peer_transforms": 0.016986790986265987,
+    "causal_second_origin_stability_and_persistence": 0.13461416604695842,
+    "causal_upstream_and_four_security_fixture": 3.6443917920114473,
+    "restart_and_full_registry_audit": 1.8965561669901945,
+    "synthetic_group_demean_12_by_1000": 0.30367879197001457,
+    "synthetic_ic_12_by_1000": 0.004054457996971905,
+    "synthetic_mad_and_percentile_1000": 0.04384179098997265,
+    "synthetic_rank_12_by_1000": 0.00679679203312844,
+    "synthetic_zscore_12_by_1000": 0.2600470830220729
+  },
+  "sqlite_version": 10,
+  "storage_bytes": 9326592,
+  "store": "1.9"
+}

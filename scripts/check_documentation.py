@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-8.**" in master
-    assert "**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.**" in readme
+    assert "**Stop after AFRE-9.**" in master
+    assert "**Next scope: AFRE-10 — Event-Conditioned Forecasting.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.9.0" and project["dependencies"] == []
+    assert project["version"] == "0.10.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -106,6 +106,14 @@ def main() -> None:
         "multi-horizon-consistency.md",
         "multi-horizon-evaluation.md",
         "horizon-specific-calibration.md",
+        "cross-sectional-ranking.md",
+        "cross-sectional-normalization.md",
+        "information-coefficient.md",
+        "group-neutral-ranking.md",
+        "rank-stability.md",
+        "external-signal-integration.md",
+        "point-in-time-universe.md",
+        "cross-sectional-benchmark.md",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     report = (REPOSITORY / "docs/AFRE_1_COMPLETION_REPORT.md").read_text()
@@ -149,6 +157,16 @@ def main() -> None:
     assert re.findall(r"^\| ([A-Z]{1,2}) \|", multihorizon_report, re.MULTILINE) == list(
         (*labels, "AT", "AU", "AV", "AW")
     ), "multi-horizon report must have exactly the 49 A–AW items in order"
+    cross_section_report = (REPOSITORY / "docs/AFRE_9_COMPLETION_REPORT.md").read_text()
+    cross_section_labels = (
+        *tuple(chr(index) for index in range(ord("A"), ord("Z") + 1)),
+        *tuple("A" + chr(index) for index in range(ord("A"), ord("Z") + 1)),
+        *tuple("B" + chr(index) for index in range(ord("A"), ord("E") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", cross_section_report, re.MULTILINE) == list(
+        cross_section_labels
+    ), "cross-sectional report must have exactly the 57 A–BE items in order"
+    assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
         assert (
             "AFRE-6 evaluates calibration diagnostics but does NOT fit "
@@ -157,6 +175,7 @@ def main() -> None:
         assert not re.search(r"AFRE-6 (?:is deferred|work is implemented)", text)
     from afre.version import (
         CALIBRATION_SCHEMA_VERSION,
+        CROSS_SECTIONAL_SCHEMA_VERSION,
         DATASET_SCHEMA_VERSION,
         ENGINE_VERSION,
         FEATURE_STORE_SCHEMA_VERSION,
@@ -170,7 +189,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.9.0"
+    assert ENGINE_VERSION == "0.10.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
@@ -181,12 +200,13 @@ def main() -> None:
         == PROBABILISTIC_SCHEMA_VERSION
         == CALIBRATION_SCHEMA_VERSION
         == MULTIHORIZON_SCHEMA_VERSION
+        == CROSS_SECTIONAL_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.8" and STORE_USER_VERSION == 9
+    assert STORE_SCHEMA_VERSION == "1.9" and STORE_USER_VERSION == 10
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 49-item A–AW scope"
+        "versions, links, historical reports and current 57-item A–BE scope"
     )
 
 

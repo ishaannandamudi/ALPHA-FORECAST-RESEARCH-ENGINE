@@ -51,3 +51,7 @@ TRAIN intersection with every required label known at shared cutoff; AFRE-4
 purge/embargo membership is reused. The initial backbone accepts raw features and no
 learned shared transform. Fixed horizon weights are supplied, never learned. See
 [multi-horizon fitting](multi-horizon-forecasting.md).
+
+## AFRE-9 boundary
+
+AFRE-9 adds an explicit relative linear wrapper over the completed CROSS_SECTIONAL_LINEAR TRAIN matrix/solver. Exact origin peer groups and optional realized TRAIN target means are retained. Application uses causal feature-only scaffolds and never current target centering. Origin-local predictor normalization is separate from learned preprocessing. See [normalization](cross-sectional-normalization.md).
