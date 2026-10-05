@@ -68,3 +68,8 @@ See [normalization](cross-sectional-normalization.md), [groups](group-neutral-ra
 [IC](information-coefficient.md), [stability](rank-stability.md),
 [external integration](external-signal-integration.md), [profile](cross-sectional-benchmark.md)
 and [completion evidence](AFRE_9_COMPLETION_REPORT.md).
+
+## AFRE-10 integration
+
+AFRE-10 supplies neutral derived scores from exact conditioned forecasts. Same full origin, target/horizon, PIT universe and exact groups remain enforced. A wrapper records affected/unaffected securities. Event IC shares the exact matched truth set; ranking remains predictive research, with portfolio construction downstream.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

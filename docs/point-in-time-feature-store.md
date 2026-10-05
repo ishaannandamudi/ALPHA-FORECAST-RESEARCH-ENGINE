@@ -72,3 +72,8 @@ uses this exact PIT join and retains selected vintages in frozen research sample
 It fits simple TRAIN-only normalization through the existing AFRE-1 state contracts;
 raw historical feature availability remains unchanged. See [datasets](research-datasets.md)
 and [fold preprocessing](fold-local-preprocessing.md).
+
+## AFRE-10 integration
+
+EventReference and event attributes reuse the existing six-clock evidence unchanged. Occurrence/publication never bypass receipt/final availability. Qualified delivery preserves later reconstruction clocks and binds exact source/security plus approved attestor.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

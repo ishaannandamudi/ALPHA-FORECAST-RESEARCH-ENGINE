@@ -1,0 +1,34 @@
+{
+  "artifact_count": 1786,
+  "audit_nodes": 348,
+  "engine": "0.11.0",
+  "interpretation": "Synthetic bounded offline profile; full causal workflow and bulk window kernel measured separately; no production SLA or profitability claim.",
+  "maximum_linear_oracle_absolute_error": 7.806255641895632e-18,
+  "sqlite_user_version": 11,
+  "storage_bytes": 10973184,
+  "store": "1.10",
+  "timings": {
+    "bounded_lineage_seconds": 0.7659804170252755,
+    "causal_fixture_and_initial_fit_seconds": 6.5157064169761725,
+    "class_fit_replay_seconds": 0.20689216599566862,
+    "cross_section_rank_and_IC_seconds": 0.23910816700663418,
+    "event_persistence_seconds": 0.4607704589725472,
+    "four_forecast_replay_seconds": 0.12566395802423358,
+    "full_repository_audit_seconds": 8.21439375000773,
+    "matched_evaluation_seconds": 0.060359499999322,
+    "matching_and_100_observation_publication_seconds": 5.642321708030067,
+    "nearest_overlap_seconds": 0.23148395802127197,
+    "reaction_lookup_and_observation_seconds": 0.05160404200432822,
+    "restart_and_full_audit_seconds": 8.068362332996912,
+    "two_linear_fit_and_forecast_workflows_seconds": 2.9452266670414247,
+    "window_kernel_50000_checks_seconds": 0.01280549995135516
+  },
+  "workload": {
+    "additional_event_references": 100,
+    "bulk_window_checks": 50000,
+    "deployment_forecasts": 4,
+    "linear_families": 2,
+    "overlap_observations": 100,
+    "window_matches": 1000
+  }
+}

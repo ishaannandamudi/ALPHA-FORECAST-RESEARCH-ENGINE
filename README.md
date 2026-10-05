@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-9 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-10 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -20,12 +20,14 @@ AFRE-8 adds exact horizon sets, independent/shared point architectures, matched
 TRAIN covariance, explicit partial bundles and separate horizon evaluation.
 AFRE-9 adds causal same-origin relative rankings, explicit peer/group transforms,
 IC/buckets/stability and receipt-aware provider-neutral external signals.
+AFRE-10 adds exact causal event vintages/windows, TRAIN-only interpretable conditioning,
+explicit overlap, neutral reaction features, matched evaluation and event ranks.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.10.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon and cross-sectional schemas **1.0**;
-shared cross-sectional store **1.9**, `user_version=10` (additive to store1.8/user_version9). Runtime uses only the
+Python **3.11+**; engine **0.11.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional and event-conditioned schemas **1.0**;
+shared event store **1.10**, `user_version=11` (additive to store1.9/user_version10). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -143,6 +145,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | probabilistic | Fixed TRAIN residual/target distributions, explicit quantiles/events/scale, proper scores, bounded lineage and additive store 1.6 |
 | multihorizon | Exact horizon sets, independent/shared point architectures, matched TRAIN covariance, separate surfaces/evaluation and additive store 1.8 |
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
+| event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
@@ -260,13 +263,23 @@ AFRE-9 details: [rankings](docs/cross-sectional-ranking.md),
 .venv311/bin/python -m benchmarks.cross_sectional
 ```
 
-**Next scope: AFRE-10 — Event-Conditioned Forecasting.** EIE event classes,
-materiality/novelty/surprise, event-time alignment, pre/post-event information,
-event windows, event-specific calibration/evaluation, overlapping events,
-event-conditioned cross-sectional effects and neutral external reaction features.
-No regime mixture yet. **Stop after AFRE-9.**
-No automated selection, ensembles, portfolios, execution or direct AME integration.
-Top-bottom spreads are descriptive diagnostics, not tradable portfolio returns.
+AFRE-10 details: [forecasting](docs/event-conditioned-forecasting.md),
+[clocks](docs/event-time-semantics.md), [windows](docs/event-windows.md),
+[attributes](docs/event-surprise-materiality-novelty.md), [overlap](docs/event-overlap.md),
+[matched evaluation](docs/event-conditioned-evaluation.md),
+[reaction boundary](docs/event-reaction-signals.md), [demo](examples/event_conditioned_demo.py),
+[profile](docs/event-conditioned-benchmark.md) and [A–BC report](docs/AFRE_10_COMPLETION_REPORT.md).
+
+```sh
+PYTHONPATH=src:. .venv311/bin/python -m examples.event_conditioned_demo
+PYTHONPATH=src:. .venv311/bin/python -m benchmarks.event_conditioned_profile
+```
+
+**Next scope: AFRE-11 — Regime-Conditioned Models.** MCE market regimes, neutral
+external microstructure/liquidity regimes, regime fits/evaluation/transitions,
+soft/hard membership, separate calibration and regime drift. No mixture-of-experts
+gating yet. **Stop after AFRE-10.** Event conditioning does not establish causal effects.
+No selection, ensembles, portfolios, execution or direct EIE/AME integration.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

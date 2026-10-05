@@ -69,3 +69,8 @@ AFRE-8 preserves one exact CalibrationState per horizon. Raw and adjusted surfac
 distinct; adjusted marginals do not create a full calibrated PDF or expectation. No
 cross-horizon calibrator pooling occurs. See [horizon-specific
 calibration](horizon-specific-calibration.md).
+
+## AFRE-10 integration
+
+A changed event-conditioned statistic cannot silently inherit an unconditioned AFRE-7 state. AFRE-10 assessments require unique causal VALIDATION samples, separate from TRAIN/TEST; fitted event-conditioned calibration is unavailable rather than assumed.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

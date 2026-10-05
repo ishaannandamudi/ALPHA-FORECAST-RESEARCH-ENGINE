@@ -149,3 +149,8 @@ audit spans all phases. See [multi-horizon architecture](multi-horizon-forecasti
 ## AFRE-9 boundary
 
 AFRE-9 adds store1.9/user_version10 transactionally while preserving prior rows/DDL/metadata. CrossSectionRepository emits snapshot metadata0.10.0; earlier readers remain strict. Full same-origin context, stable member order, exact predictor/group refs, policies, peer state and physical clocks determine rank identity. Seeds0/1/42/random, reversed securities/groups/signals, restart and concurrent universe/group/target/external corrections are tested. See [rankings](cross-sectional-ranking.md) and [external boundary](external-signal-integration.md).
+
+## AFRE-10 integration
+
+AFRE-10 adds store1.10/user_version11 transactionally. EventRepository emits0.11.0 snapshots while prior readers retain their original strict metadata. Canonical event/reaction/request order, explicit overlap, exact TRAIN and base forecasts determine identity. Seeds0/1/42/random, reversals, restart and second-writer event/target/reaction corrections are verified. Pure read stages pin exact immutable references; staged bridge publication uses those exact refs across epochs, never latest-state substitution. Full semantic audit validates model fitting; target-free application does not refit TRAIN labels.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

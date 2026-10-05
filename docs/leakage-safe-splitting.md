@@ -59,3 +59,8 @@ independent calibration evaluation also excludes actual calibration fit samples.
 ## AFRE-9 boundary
 
 AFRE-9 relative models reuse admitted AFRE-5 TRAIN matrices and exact full origin grouping. Optional target centering is TRAIN-only. Later native TEST rank evaluation preserves the existing AFRE-4 seals/reuse and exact pinned truth; it cannot influence fitting or ranking. See [IC](information-coefficient.md).
+
+## AFRE-10 integration
+
+Event observations pin the exact base fold and ResearchSample partition. Fitting admits only exact TRAIN matrix rows with known targets; event/reaction information is checked at each sample origin. Native TEST comparisons require persisted access records. Overlap relations do not create independent samples.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

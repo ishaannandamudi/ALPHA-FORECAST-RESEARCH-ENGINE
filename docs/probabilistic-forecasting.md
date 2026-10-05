@@ -64,3 +64,8 @@ descriptive matched TRAIN dependence, not a new joint density. Expectations rema
 unsupported for sparse quantiles. The shared point backbone does not reuse uncertainty
 fitted for a different model. See [multi-horizon
 forecasting](multi-horizon-forecasting.md).
+
+## AFRE-10 integration
+
+AFRE-10 may translate the exact raw AFRE-6 distribution location while preserving shape/scale and original bytes. Sparse quantiles remain sparse, never an invented CDF. Event-conditioned uncertainty is not a joint horizon model or conditional variance estimator.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).

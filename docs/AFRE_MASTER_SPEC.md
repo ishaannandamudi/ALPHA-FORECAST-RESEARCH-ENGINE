@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-9 complete**, engine 0.10.0,
-foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional schemas 1.0,
-shared cross-sectional store 1.9/user_version=10.
+Status: **AFRE-0 through AFRE-10 complete**, engine 0.11.0,
+foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
+shared event store 1.10/user_version=11.
 
 ## Mission and philosophy
 
@@ -228,11 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-9.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-10.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
-AFRE-10 — Event-Conditioned Forecasting is next; model selection, ensembles,
+AFRE-10 conditions exact events; AFRE-11 — Regime-Conditioned Models is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -547,10 +547,51 @@ See [rankings](cross-sectional-ranking.md), [normalization](cross-sectional-norm
 [stability](rank-stability.md), [external integration](external-signal-integration.md),
 [profile](cross-sectional-benchmark.md) and [completion report](AFRE_9_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-10 — Event-Conditioned Forecasting.** EIE event classes,
-materiality/novelty/surprise, event-time alignment, pre/post-event information,
-event windows, event-specific calibration/evaluation, overlapping events,
-event-conditioned cross-sectional effects and provider-neutral external reaction
-features, including supplied microstructure signals. No regime mixture yet.
-**Stop after AFRE-9.** Regimes, mixtures, model selection, ensembles, portfolios,
-risk optimization and execution remain deferred/downstream.
+## AFRE-10 completed scope
+
+Provider-neutral EventReference reuses AFRE-1 six-clock AvailabilityEvidence and
+SourceReference, retaining neutral EIE snapshot refs where supplied. Occurrence !=
+publication != receipt != availability; same-time <= is accepted only with evidence.
+Qualified historical delivery binds source/security and approved attestor while
+retaining actual later reconstruction clocks. All reaction features retain their
+own clocks through unchanged AFRE-9 ExternalSignal contracts. EIE remains an
+external event producer; AME remains external. Downstream HFT integration owns adapters.
+
+Exact full-origin ResearchSample/fold/PIT eligibility, explicit issuer/group refs,
+class/subtype/scope, semantic attribute scales, elapsed windows, thresholds and
+three overlap policies determine immutable observations. Four TRAIN-only families
+fit independent target responses: class conditional mean, materiality/surprise
+linear and declared event-feature linear. Class application shift is conditional
+mean minus exact baseline forecast. No in-sample residual fiction, nonlinear
+interactions or event extraction. All labels must be known at training cutoff.
+
+Truth-free application preserves exact base point/raw probability bytes; optional
+location translation preserves distribution shape/scale. Conditioned calibration
+assessments report insufficient data or unavailable; unconditioned AFRE-7 states
+cannot be silently reused. Actual forecast computation must lie within its origin
+cutoff; late reconstruction of forecast computation is unsupported. CUSTOM scope
+matching and session/bar event windows are unsupported metadata choices.
+
+Matched baseline/conditioned later truth, explicit subgroup minimums/exclusions,
+coverage and AFRE-9 same-origin IC preserve exact target/horizon and TEST access.
+ALL_EVENTS_SEPARATE uses unit relation weights with distinct sample counts and
+correlated repeated labels; evaluation/ranking requires one forecast per sample/security.
+Separate horizons retain independent models, forecasts and evaluation. Conditioned
+forecast != causal effect; event-conditioned ranking != portfolio construction.
+Predictive metrics never prove trading profitability.
+
+Atomic10→11 migration preserves all previous rows/DDL/metadata; new safe immutable
+JSON, verified indexes, bounded lineage/replay and frozen reads resist subsequent
+corrections. Engine0.11.0, store1.10/user_version11, event-conditioned schema1.0;
+zero runtime dependencies. Earlier repository interfaces retain their original
+snapshot metadata. See [forecasting](event-conditioned-forecasting.md),
+[time](event-time-semantics.md), [windows](event-windows.md),
+[attributes](event-surprise-materiality-novelty.md), [overlap](event-overlap.md),
+[evaluation](event-conditioned-evaluation.md), [reactions](event-reaction-signals.md),
+[profile](event-conditioned-benchmark.md) and [A–BC report](AFRE_10_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-11 — Regime-Conditioned Models.** MCE market regimes,
+provider-neutral microstructure/liquidity regimes, regime-specific fits/evaluation,
+transitions, soft/hard membership, separate calibration and drift. No mixture-of-experts
+gating yet. **Stop after AFRE-10.** Regimes, mixtures, model selection, ensembles,
+portfolios, risk optimization and execution remain deferred/downstream.

@@ -42,3 +42,8 @@ object. Metadata checks cannot discover a dishonest provider hiding execution/fu
 information in a scalar; adapter/provider audits remain necessary. No eval, exec,
 pickle, joblib, shell, dynamic imports or runtime network occurs in the package.
 All tests and fresh-process replay workers block sockets and DNS.
+
+## AFRE-10 integration
+
+AFRE-10 consumes exact neutral post-event reaction ScoreSpecs/ExternalSignals. Event availability does not establish reaction availability. Each reaction must be causally available, post-anchor and security/semantic compatible. EIE and AME remain external/provider-neutral; the downstream HFT system implements adapters.
+See [event-conditioned forecasting](event-conditioned-forecasting.md).
