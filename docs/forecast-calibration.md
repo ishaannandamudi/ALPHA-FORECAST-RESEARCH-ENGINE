@@ -61,5 +61,11 @@ Run `python -m examples.calibration_demo`, `pytest tests/calibration` and
 `python -m benchmarks.calibration`. The [completion report](AFRE_7_COMPLETION_REPORT.md)
 records actual gates and limits. Calibration, sharpness, discrimination, point
 accuracy and proper scores are distinct. Predictive metrics alone do not establish
-trading profitability. AFRE-8 Multi-Horizon Forecast Architecture remains deferred;
+trading profitability. AFRE-8 now composes separate horizon forecasts;
 portfolio construction, risk optimization and execution remain downstream projects.
+
+## AFRE-8 composition
+AFRE-8 preserves one exact CalibrationState per horizon. Raw and adjusted surfaces stay
+distinct; adjusted marginals do not create a full calibrated PDF or expectation. No
+cross-horizon calibrator pooling occurs. See [horizon-specific
+calibration](horizon-specific-calibration.md).

@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-7.**" in master
-    assert "**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.**" in readme
+    assert "**Stop after AFRE-8.**" in master
+    assert "**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.8.0" and project["dependencies"] == []
+    assert project["version"] == "0.9.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -100,6 +100,12 @@ def main() -> None:
         "conformal-calibration.md",
         "calibration-partitions.md",
         "calibration-drift.md",
+        "multi-horizon-forecasting.md",
+        "horizon-sets.md",
+        "cross-horizon-dependence.md",
+        "multi-horizon-consistency.md",
+        "multi-horizon-evaluation.md",
+        "horizon-specific-calibration.md",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     report = (REPOSITORY / "docs/AFRE_1_COMPLETION_REPORT.md").read_text()
@@ -139,6 +145,10 @@ def main() -> None:
     assert re.findall(r"^\| ([A-Z]{1,2}) \|", calibration_report, re.MULTILINE) == list(
         (*labels, "AT", "AU", "AV", "AW")
     ), "calibration report must have exactly the 49 A–AW items in order"
+    multihorizon_report = (REPOSITORY / "docs/AFRE_8_COMPLETION_REPORT.md").read_text()
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", multihorizon_report, re.MULTILINE) == list(
+        (*labels, "AT", "AU", "AV", "AW")
+    ), "multi-horizon report must have exactly the 49 A–AW items in order"
     for text in (master, readme):
         assert (
             "AFRE-6 evaluates calibration diagnostics but does NOT fit "
@@ -152,6 +162,7 @@ def main() -> None:
         FEATURE_STORE_SCHEMA_VERSION,
         FOUNDATION_SCHEMA_VERSION,
         MODEL_SCHEMA_VERSION,
+        MULTIHORIZON_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
         STORE_SCHEMA_VERSION,
         STORE_USER_VERSION,
@@ -159,7 +170,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.8.0"
+    assert ENGINE_VERSION == "0.9.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
@@ -169,9 +180,10 @@ def main() -> None:
         == MODEL_SCHEMA_VERSION
         == PROBABILISTIC_SCHEMA_VERSION
         == CALIBRATION_SCHEMA_VERSION
+        == MULTIHORIZON_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.7" and STORE_USER_VERSION == 8
+    assert STORE_SCHEMA_VERSION == "1.8" and STORE_USER_VERSION == 9
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
         "versions, links, historical reports and current 49-item A–AW scope"

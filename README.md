@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-7 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-8 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -16,12 +16,14 @@ target-free forecasts, proper scores, calibration diagnostics and immutable line
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
 AFRE-7 adds explicit reserved causal calibration, immutable adjusted forecasts,
 independent evaluation and bounded drift diagnostics.
+AFRE-8 adds exact horizon sets, independent/shared point architectures, matched
+TRAIN covariance, explicit partial bundles and separate horizon evaluation.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.8.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic and calibration schemas **1.0**; shared calibration store **1.7**,
-`user_version=8` (additive to probabilistic store 1.6/user_version=7). Runtime uses only the
+Python **3.11+**; engine **0.9.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration and multi-horizon schemas **1.0**; shared multi-horizon store **1.8**,
+`user_version=9` (additive to calibration store 1.7/user_version=8). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -137,6 +139,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | research_datasets | Exact frozen samples/manifests, leakage-safe folds, scoped purge, typed embargo, TRAIN preprocessing, audits/export and additive store 1.4 |
 | statistical_models | Fixed typed statistical baselines, numerical solvers, exact TRAIN matrices, immutable coefficients, feature-only point forecasts, evaluation/audits and additive store 1.5 |
 | probabilistic | Fixed TRAIN residual/target distributions, explicit quantiles/events/scale, proper scores, bounded lineage and additive store 1.6 |
+| multihorizon | Exact horizon sets, independent/shared point architectures, matched TRAIN covariance, separate surfaces/evaluation and additive store 1.8 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
 ## Quality gates
@@ -230,11 +233,23 @@ AFRE-7 details: [forecast calibration](docs/forecast-calibration.md),
 [drift diagnostics](docs/calibration-drift.md), [demo](examples/calibration_demo.py),
 [profile](benchmarks/calibration.py) and [A–AW report](docs/AFRE_7_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.** Consistent forecasts
-across declared horizons, shared versus horizon-specific parameters, horizon
-identity/dependency, appropriate cross-horizon covariance and horizon-specific
-loss/evaluation are deferred. **Stop after AFRE-7.** No AFRE-8 implementation,
-regime mixture, automated model selection, ensemble, portfolio or execution occurs.
+AFRE-8 details: [multi-horizon forecasts](docs/multi-horizon-forecasting.md),
+[horizon sets](docs/horizon-sets.md), [dependence](docs/cross-horizon-dependence.md),
+[consistency](docs/multi-horizon-consistency.md),
+[evaluation](docs/multi-horizon-evaluation.md),
+[calibration by horizon](docs/horizon-specific-calibration.md),
+[demo](examples/multihorizon_demo.py), [profile](docs/multi-horizon-benchmark.md)
+and [A–AW report](docs/AFRE_8_COMPLETION_REPORT.md).
+
+```sh
+PYTHONPATH=src:. .venv311/bin/python examples/multihorizon_demo.py
+PYTHONPATH=src:. .venv311/bin/python benchmarks/multihorizon.py
+```
+
+**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.** Within-origin security
+ranking, cross-sectional forecasts/rank metrics, IC/rank IC, neutral evaluation,
+PIT group membership, normalization and ranking stability remain deferred.
+**Stop after AFRE-8.** No automated selection, ensembles, portfolios or execution.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

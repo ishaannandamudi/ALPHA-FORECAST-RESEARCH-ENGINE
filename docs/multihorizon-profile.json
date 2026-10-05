@@ -1,0 +1,28 @@
+{
+  "SLA": "none",
+  "aggregate_reference_error": 0.0,
+  "bundles": 100,
+  "correlation_matrix": "not exposed",
+  "kernel_horizons": 4,
+  "kernel_rows": 3000,
+  "lineage_nodes": 357,
+  "matched_TRAIN_rows": 8,
+  "max_covariance_reference_error": 0.0,
+  "multi_horizon_artifacts": 113,
+  "persisted_horizons": 2,
+  "sqlite_bytes": 9875456,
+  "timings_seconds": {
+    "aligned_shared_fit_and_persistence": 0.13139145803870633,
+    "bounded_lineage_and_persistence": 0.2595053340191953,
+    "bundles_and_persistence": 2.916641417017672,
+    "causal_covariance_and_persistence": 0.19751066697062925,
+    "causal_upstream_fixture": 3.480264125042595,
+    "covariance_3000_by_4_and_psd": 0.003545332991052419,
+    "evaluation_and_persistence": 0.0748164999531582,
+    "horizon_set_100": 0.0004884169902652502,
+    "idempotent_persistence": 0.03611624997574836,
+    "raw_and_calibrated_surfaces": 0.12960333400405943,
+    "restart_and_full_audit": 1.8564771669916809,
+    "synthetic_intersection_3000": 0.0019874999998137355
+  }
+}

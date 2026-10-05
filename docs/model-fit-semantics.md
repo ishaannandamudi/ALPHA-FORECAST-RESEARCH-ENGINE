@@ -44,3 +44,10 @@ AFRE-6 consumes exactly this completed converged point artifact and admitted TRA
 matrix. Its separate ProbabilisticFitInputs/Run/state preserve all prior model
 contracts. No held-out residual, scale/family selection or calibration transform can
 enter the uncertainty fit. See [probabilistic fit semantics](probabilistic-forecasting.md).
+
+## AFRE-8 composition
+AFRE-8 composes separate horizon cutoffs. Shared coefficients fit only the full-origin
+TRAIN intersection with every required label known at shared cutoff; AFRE-4
+purge/embargo membership is reused. The initial backbone accepts raw features and no
+learned shared transform. Fixed horizon weights are supplied, never learned. See
+[multi-horizon fitting](multi-horizon-forecasting.md).

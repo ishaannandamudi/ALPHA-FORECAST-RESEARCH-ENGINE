@@ -57,3 +57,10 @@ forecasts without rewriting them. Calibration cannot fit from TEST or from a raw
 forecast reconstructed after its historical origin. Applying frozen calibration
 reads no targets. The AFRE-6 distribution/scoring API retains its exact semantics;
 partial calibrated marginals do not become a full calibrated density implicitly.
+
+## AFRE-8 composition
+AFRE-8 pins every horizon's exact AFRE-6 artifact separately. Its covariance is
+descriptive matched TRAIN dependence, not a new joint density. Expectations remain
+unsupported for sparse quantiles. The shared point backbone does not reuse uncertainty
+fitted for a different model. See [multi-horizon
+forecasting](multi-horizon-forecasting.md).

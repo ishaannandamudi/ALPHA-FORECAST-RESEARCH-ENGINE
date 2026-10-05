@@ -138,3 +138,10 @@ reverse input/upstream order, restart and concurrent later truth insertion are t
 Canonical state/forecast/evaluation bytes replay exactly within supported platform
 arithmetic. Timing/profile measurements stay outside identity. See
 [calibration](forecast-calibration.md) and [partitions](calibration-partitions.md).
+
+## AFRE-8 composition
+AFRE-8 adds store1.8/user_version9 with earlier rows, DDL and metadata preserved.
+Canonical horizon order, ownership, exact model/calibration mappings, intersection rows,
+covariance numerical policy and actual bundle clocks enter identity. Later corrections
+require explicit new evidence, never substitution inside a frozen bundle. One bounded
+audit spans all phases. See [multi-horizon architecture](multi-horizon-forecasting.md).

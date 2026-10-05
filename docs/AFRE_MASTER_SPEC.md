@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-7 complete**, engine 0.8.0,
-foundation/feature-store/target/universe/dataset/model/probabilistic/calibration schemas 1.0,
-shared calibration store 1.7/user_version=8.
+Status: **AFRE-0 through AFRE-8 complete**, engine 0.9.0,
+foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon schemas 1.0,
+shared multi-horizon store 1.8/user_version=9.
 
 ## Mission and philosophy
 
@@ -228,10 +228,10 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-7.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-8.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
-AFRE-8 — Multi-Horizon Forecast Architecture is next; model selection, ensembles,
+AFRE-8 composes exact horizons; AFRE-9 — Cross-Sectional Alpha & Ranking is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -472,8 +472,47 @@ See [calibration](forecast-calibration.md), [partitions](calibration-partitions.
 [conformal](conformal-calibration.md), [drift](calibration-drift.md) and
 [completion report](AFRE_7_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-8 — Multi-Horizon Forecast Architecture.** Consistent declared
-horizons, shared versus horizon-specific parameters, horizon dependencies/joint
-identity, appropriate covariance and horizon-specific loss/evaluation remain
-unimplemented. **Stop after AFRE-7.** Regime mixtures, model selection, ensembles,
-portfolios, risk optimization and execution remain deferred/downstream.
+## AFRE-8 completed scope
+
+HorizonSet pins exact typed elapsed/session/bar horizons and rich target definitions.
+Comparable horizons sort semantically; mixed bases require explicit canonical order.
+Independent and shared-feature architectures preserve separate models, folds,
+cutoffs, uncertainty and calibration. The explicit shared linear backbone fits one
+coefficient vector and horizon-specific intercepts on the exact all-horizon TRAIN
+intersection, using fixed supplied weights and optional coefficient ridge penalty.
+It currently requires raw features and exposes point outputs only. Shared learned
+transforms and shared-output uncertainty require separate explicit extensions.
+
+Immutable fit runs retain per-horizon TRAIN evidence, label cutoffs, folds,
+preprocessing and underlying models. Bundles pin common full origin/security,
+exact point/raw/calibrated layers, required availability and explicit COMPLETE/
+PARTIAL/UNAVAILABLE entries. Expectations, medians, quantiles and horizon-qualified
+events retain missing/unsupported values. Actual later composition clocks are not
+backdated to the origin. Calibration stays horizon-specific; no pooling occurs.
+
+Matched TRAIN residual covariance pins exact sample/target rows, mean centering,
+N/N−1 denominator, ordered matrix and numerical tolerance. Symmetry, nonnegative
+variances and bounded deterministic PSD validation fail closed without repair.
+Dependence is descriptive; no full joint density, causal relationship, naive
+return addition, quantile addition or proportional variance scaling is inferred.
+
+Separate AFRE-5/6/7 evaluation respects each horizon's available truth and explicit
+TEST access/reuse. Paired diagnostics use exact full-origin intersection; supplied
+weighted MSE is descriptive and cannot select models. One bounded lineage spans
+all earlier phases. Snapshot-frozen reads, immutable safe JSON, verified indexes
+and additive transactional store1.8/user_version9 preserve earlier artifacts and
+metadata. Engine0.9.0, all public schemas1.0, zero runtime dependencies.
+
+See [multi-horizon forecasting](multi-horizon-forecasting.md),
+[horizon sets](horizon-sets.md), [dependence](cross-horizon-dependence.md),
+[consistency](multi-horizon-consistency.md), [evaluation](multi-horizon-evaluation.md),
+[horizon calibration](horizon-specific-calibration.md) and
+[completion report](AFRE_8_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-9 — Cross-Sectional Alpha & Ranking.** Within-origin security
+ranking, cross-sectional forecasts, rank targets/metrics, IC/rank IC, sector/industry
+neutral evaluation, PIT group membership, cross-sectional normalization and ranking
+stability are deferred. No event-conditioned specialization yet.
+**Stop after AFRE-8.** Regimes, mixtures, model selection, ensembles, portfolios,
+risk optimization and execution remain deferred/downstream. Predictive metrics
+never establish trading profitability.
