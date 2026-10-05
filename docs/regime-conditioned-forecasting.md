@@ -3,7 +3,7 @@
 AFRE-11 adds `afre.regime_conditioned` above completed AFRE-0 through AFRE-10.
 Engine0.12.0, regime-conditioned schema1.0, store1.11/user_version12. Earlier
 schemas remain1.0 and their source/test semantics are preserved. The roadmap
-freezes 26 distinct phases, AFRE-0 through AFRE-25. Stop after AFRE-11.
+freezes 26 distinct phases, AFRE-0 through AFRE-25. AFRE-11 is complete; current implementation stops after AFRE-12.
 
 RegimeConditioningSpec pins exact native point model, rich target/horizon, taxonomy,
 scope, admitted membership kinds, matching, maximum age, TRAIN/state/effective
@@ -62,3 +62,15 @@ See [snapshots](regime-snapshots.md), [membership](hard-soft-regimes.md),
 [transitions](regime-transitions.md), [calibration](regime-conditioned-calibration.md),
 [drift](regime-drift.md), [external integration](external-regime-integration.md),
 [profile](regime-conditioned-benchmark.md) and [A–BK report](AFRE_11_COMPLETION_REPORT.md).
+
+## AFRE-12 composition boundary
+
+[Mixture of Experts](mixture-of-experts.md) preserves exact native/neutral producer identity,
+target/horizon compatibility, receipt-aware availability, causal gating inputs and missingness.
+Fixed gates and one TRAIN-only constant simplex fit remain explicit. TEST never changes weights.
+Finite Gaussian/empirical laws preserve components; quantile averaging is invalid. Component
+calibration != mixture calibration. Matched truth/contribution/correlation/drift diagnostics and
+same-origin rankings remain descriptive and never refit/select. No independence or profitability
+is claimed; expert weights are forecast-combination weights, never portfolio weights. Downstream
+HFT integration supplies AME/MCE/EIE/options adapters without direct implementation dependencies.
+Frozen snapshots, append-only corrections and bounded lineage preserve older artifact bytes.

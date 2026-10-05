@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-11 complete**, engine 0.12.0,
+Status: **AFRE-0 through AFRE-12 complete**, engine 0.13.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared regime store 1.11/user_version=12; regime-conditioned schema1.0.
+shared mixture store 1.12/user_version=13; regime-conditioned and mixture schemas1.0.
 
 ## Mission and philosophy
 
@@ -228,11 +228,11 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-11.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-12.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
-AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12 — Mixture of Experts is next; model selection, ensembles,
+AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12 adds explicit expert composition; AFRE-13 — Nonlinear Feature Interactions is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -624,9 +624,54 @@ See [forecasting](regime-conditioned-forecasting.md), [snapshots](regime-snapsho
 [external integration](external-regime-integration.md),
 [profile](regime-conditioned-benchmark.md) and [A–BK report](AFRE_11_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-12 — Mixture of Experts.** Expert definitions and point/probabilistic,
-event/regime, external microstructure, macro/context and optional options experts;
-fixed versus learned gating, causal gating inputs/availability/missingness, gating
-calibration/evaluation and expert contribution diagnostics. No arbitrary nonlinear
-interaction framework yet. **Stop after AFRE-11.** AFRE-12 remains unimplemented;
-model selection, ensembles, portfolios, risk optimization and execution remain deferred/downstream.
+## AFRE-12 completed scope
+
+Exact producer references remain distinct from origin-specific forecast bindings. Canonical
+ExpertSet rejects semantic duplicates and requires identical rich target/horizon and output.
+Native AFRE point/probability/event/regime experts and neutral microstructure/context/options/
+generic experts retain individual source/model/availability/quality identities. Six-clock receipt
+floors and locally approved historical-delivery evidence preserve actual later reconstruction.
+
+Fixed normalized nonnegative weights and one declared TRAIN-only mean-SSE simplex fit are
+separate contracts. Learned linear weights are constant across origins; gating features retain
+causal audit evidence but contextual/softmax/neural gating is deferred. Native in-sample output
+cannot stand in for historically admissible TRAIN predictions. Known TRAIN labels, exact fold/
+cutoff, bounded solver work/convergence and immutable fit clocks define each gate artifact.
+
+Truth-free application records complete expert presence/absence grids, original/effective
+weights, exact contributions and final availability. FAIL, explicit drop/renormalization and
+exact fallback preserve missing values as None. Actual computation must occur by origin;
+backdated mixture computation is unsupported. Each horizon has a distinct set/gate; actual1h/1d
+fixtures reuse AFRE-8 independent architecture and preserve identities.
+
+Finite Gaussian/empirical component laws implement exact weighted CDF/events, expectation,
+within-plus-between total variance and bounded CRPS. Gaussian-only NLL uses log-sum-exp;
+empirical/mixed NLL is unsupported. Sparse quantile-only experts cannot supply an exact law/
+expectation. All mixture quantiles remain explicitly unsupported; quantile averaging is invalid.
+Component calibrators never become mixture calibrators. Dedicated assessment records
+insufficient/unavailable/incompatible; fitted mixture calibration remains deferred.
+
+Matched mixture/expert truth intersections, point/proper metrics, missing/gate/fallback cohorts,
+AFRE-9 same-origin IC, weights/contributions/effective count/entropy and exact pair correlation/
+disagreement remain descriptive. Ordered known-window drift never refits/prunes/selects.
+TEST evidence seals evaluation and cannot fit, tune, select, calibrate or change any gate.
+No expert independence, causal importance, portfolio interpretation or profitability is claimed.
+
+Safe immutable JSON, verified indexes, transactional12→13 migration and bounded unified
+lineage/frozen snapshots preserve every earlier row/DDL/metadata value and exact replay.
+Engine0.13.0, store1.12/user_version13, mixture schema1.0; older schemas remain1.0.
+Zero runtime dependencies; no direct AME/MCE/EIE/options implementation, sibling database,
+private class, filesystem assumption, dynamic executable payload or runtime network.
+Downstream HFT integration supplies real provider adapters. Expert weight != portfolio weight.
+See [mixtures](mixture-of-experts.md), [contracts](expert-contracts.md), [gating](expert-gating.md),
+[missingness](expert-missingness.md), [probabilities](probabilistic-mixtures.md),
+[contributions](expert-contributions.md), [integration](external-expert-integration.md),
+[profile](mixture-benchmark.md) and [A–BO report](AFRE_12_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-13 — Nonlinear Feature Interactions.** Explicit interaction features,
+nonlinear transformations, appropriate tree research models, interaction stability,
+supported monotonic/shape constraints, cross-feature effects, event × regime and
+microstructure × context interactions; no temporal/sequence modeling yet.
+**Stop after AFRE-12.** AFRE-13 remains unimplemented. Model selection and ensembles
+remain distinct later phases. Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.

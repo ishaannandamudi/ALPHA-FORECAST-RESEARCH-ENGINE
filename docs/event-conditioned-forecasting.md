@@ -72,3 +72,15 @@ See [clocks](event-time-semantics.md), [windows](event-windows.md),
 [attributes](event-surprise-materiality-novelty.md), [overlap](event-overlap.md),
 [reaction signals](event-reaction-signals.md), [evaluation](event-conditioned-evaluation.md),
 [profile](event-conditioned-benchmark.md) and [A–BC report](AFRE_10_COMPLETION_REPORT.md).
+
+## AFRE-12 composition boundary
+
+[Mixture of Experts](mixture-of-experts.md) preserves exact native/neutral producer identity,
+target/horizon compatibility, receipt-aware availability, causal gating inputs and missingness.
+Fixed gates and one TRAIN-only constant simplex fit remain explicit. TEST never changes weights.
+Finite Gaussian/empirical laws preserve components; quantile averaging is invalid. Component
+calibration != mixture calibration. Matched truth/contribution/correlation/drift diagnostics and
+same-origin rankings remain descriptive and never refit/select. No independence or profitability
+is claimed; expert weights are forecast-combination weights, never portfolio weights. Downstream
+HFT integration supplies AME/MCE/EIE/options adapters without direct implementation dependencies.
+Frozen snapshots, append-only corrections and bounded lineage preserve older artifact bytes.

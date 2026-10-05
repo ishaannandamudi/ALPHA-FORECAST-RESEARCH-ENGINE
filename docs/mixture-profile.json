@@ -1,0 +1,47 @@
+{
+  "arithmetic_kernel_rows": 10000,
+  "causal_origins": [
+    60,
+    80
+  ],
+  "causal_train_rows": 12,
+  "convergence_residual": 9.143774626352297e-11,
+  "engine": "0.13.0",
+  "external_revisions": 1000,
+  "iterations": 33,
+  "kernel_rows_are_not_causal_train_evidence": true,
+  "lineage_nodes": 498,
+  "maximum_absolute_numerical_errors": {
+    "effective_expert_count": 0.0,
+    "gaussian_cdf": 0.0,
+    "mixture_expectation": 0.0,
+    "mixture_variance": 0.0,
+    "simplex_known_solution": 9.327572048078991e-11,
+    "threshold_cdf_complement": 1.1102230246251565e-16,
+    "weighted_point": 0.0
+  },
+  "offline": true,
+  "point_experts": 6,
+  "probabilistic_experts": 3,
+  "production_sla": false,
+  "runtime_dependencies": [],
+  "schema": "1.0",
+  "seconds": {
+    "10000_arithmetic_rows_simplex_kernel_seconds": 0.01816462498391047,
+    "1000_external_revision_and_binding_publications_seconds": 8.114961792016402,
+    "1000_finite_probability_calculations_seconds": 0.1173848329926841,
+    "12_causal_train_rows_fit_replay_seconds": 0.07060325000202283,
+    "50000_weighted_point_arithmetic_seconds": 0.0026510420138947666,
+    "6000_exact_expert_binding_reads_seconds": 0.935694792016875,
+    "causal_fixture_seconds": 11.759585833002347,
+    "deep_repository_audit_seconds": 5.772506167006213,
+    "diagnostics_and_drift_seconds": 0.21060979197500274,
+    "four_fixed_mixture_replay_seconds": 0.08841158298309892,
+    "matched_evaluation_seconds": 0.05333341704681516,
+    "ranking_and_ic_seconds": 0.24693495797691867,
+    "restart_and_exact_lookup_seconds": 0.0028575410251505673,
+    "unified_lineage_seconds": 1.4737015420105308
+  },
+  "storage_bytes": 21766144,
+  "stored_mixture_artifacts": 2276
+}

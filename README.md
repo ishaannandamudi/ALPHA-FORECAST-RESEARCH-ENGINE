@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-11 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-12 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -24,12 +24,14 @@ AFRE-10 adds exact causal event vintages/windows, TRAIN-only interpretable condi
 explicit overlap, neutral reaction features, matched evaluation and event ranks.
 AFRE-11 adds exact causal hard/soft regime evidence, TRAIN-only state fits, explicit
 fallback, causal transitions, matched evaluation/ranks and descriptive drift.
+AFRE-12 adds exact independent experts, fixed/constant simplex learned gates, causal
+availability/missingness, finite probability mixtures and matched contribution diagnostics.
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.12.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned and regime-conditioned schemas **1.0**;
-shared regime store **1.11**, `user_version=12` (additive to store1.10/user_version11). Runtime uses only the
+Python **3.11+**; engine **0.13.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned and mixture schemas **1.0**;
+shared mixture store **1.12**, `user_version=13` (additive to store1.11/user_version12). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -148,6 +150,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | multihorizon | Exact horizon sets, independent/shared point architectures, matched TRAIN covariance, separate surfaces/evaluation and additive store 1.8 |
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
+| mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
 | regime_conditioned | Neutral hard/soft filtered regimes, TRAIN state means/offsets, causal transitions, matched metrics/ranks, drift and additive store1.11 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
@@ -285,13 +288,22 @@ AFRE-11 adds [regime forecasting](docs/regime-conditioned-forecasting.md),
 [profile](docs/regime-conditioned-benchmark.md) and the [A–BK report](docs/AFRE_11_COMPLETION_REPORT.md).
 The offline demonstration is `PYTHONPATH=src:. .venv311/bin/python -m examples.regime_conditioned_demo`.
 
-**Next scope: AFRE-12 — Mixture of Experts.** Expert definitions across point/probability,
-event/regime, neutral external microstructure/macro and optional options inputs; fixed
-versus learned gating with causal availability/missingness, calibration/evaluation and
-contribution diagnostics. No arbitrary nonlinear interaction framework yet.
-**Stop after AFRE-11.** Mixture-of-experts work remains deferred. Downstream HFT
-integration supplies real provider adapters. Predictive metrics do not establish
-profitability. Portfolio construction, risk optimization and execution remain downstream.
+AFRE-12 adds [mixture composition](docs/mixture-of-experts.md),
+[expert contracts](docs/expert-contracts.md), [gating](docs/expert-gating.md),
+[missingness](docs/expert-missingness.md), [finite laws](docs/probabilistic-mixtures.md),
+[contributions](docs/expert-contributions.md), [external integration](docs/external-expert-integration.md),
+[profile](docs/mixture-benchmark.md) and the [A–BO report](docs/AFRE_12_COMPLETION_REPORT.md).
+Run `PYTHONPATH=src:. .venv311/bin/python -m examples.mixture_demo`.
+Expert weights are forecast-combination weights, never portfolio weights. Component calibration
+is not mixture calibration. No expert independence is assumed. Quantile averaging is invalid.
+
+**Next scope: AFRE-13 — Nonlinear Feature Interactions.** Explicit interaction features,
+nonlinear transformations, appropriate tree research models, interaction stability,
+supported monotonic/shape constraints, cross-feature effects, event × regime and
+microstructure × context interactions; no temporal/sequence modeling yet.
+**Stop after AFRE-12.** AFRE-13 remains deferred. Downstream HFT integration supplies
+real provider adapters. Predictive metrics do not establish profitability. Portfolio
+construction, risk optimization and execution remain downstream projects after AFRE.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

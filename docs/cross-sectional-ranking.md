@@ -84,3 +84,15 @@ preserves exact base bytes and reads no truth. Matched evaluation/ranking retain
 PIT scope and TEST controls. Global calibration cannot silently transfer, and
 descriptive regime drift never refits. MCE/AME remain external neutral data producers;
 downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.
+
+## AFRE-12 composition boundary
+
+[Mixture of Experts](mixture-of-experts.md) preserves exact native/neutral producer identity,
+target/horizon compatibility, receipt-aware availability, causal gating inputs and missingness.
+Fixed gates and one TRAIN-only constant simplex fit remain explicit. TEST never changes weights.
+Finite Gaussian/empirical laws preserve components; quantile averaging is invalid. Component
+calibration != mixture calibration. Matched truth/contribution/correlation/drift diagnostics and
+same-origin rankings remain descriptive and never refit/select. No independence or profitability
+is claimed; expert weights are forecast-combination weights, never portfolio weights. Downstream
+HFT integration supplies AME/MCE/EIE/options adapters without direct implementation dependencies.
+Frozen snapshots, append-only corrections and bounded lineage preserve older artifact bytes.

@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-11.**" in master
-    assert "**Next scope: AFRE-12 — Mixture of Experts.**" in readme
+    assert "**Stop after AFRE-12.**" in master
+    assert "**Next scope: AFRE-13 — Nonlinear Feature Interactions.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.12.0" and project["dependencies"] == []
+    assert project["version"] == "0.13.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -59,6 +59,14 @@ def main() -> None:
             target = link.split("#", 1)[0]
             assert (document.parent / target).exists(), f"{document.name}: broken {link}"
     for name in (
+        "mixture-of-experts.md",
+        "expert-contracts.md",
+        "expert-gating.md",
+        "expert-missingness.md",
+        "probabilistic-mixtures.md",
+        "expert-contributions.md",
+        "external-expert-integration.md",
+        "mixture-benchmark.md",
         "regime-conditioned-forecasting.md",
         "regime-snapshots.md",
         "hard-soft-regimes.md",
@@ -195,6 +203,15 @@ def main() -> None:
         regime_labels
     )
     assert (REPOSITORY / "docs/regime-conditioned-profile.json").is_file()
+    mixture_report = (REPOSITORY / "docs/AFRE_12_COMPLETION_REPORT.md").read_text()
+    mixture_labels = (
+        *cross_section_labels[:52],
+        *("B" + chr(index) for index in range(ord("A"), ord("O") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", mixture_report, re.MULTILINE) == list(
+        mixture_labels
+    )
+    assert (REPOSITORY / "docs/mixture-profile.json").is_file()
     assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
         assert (
@@ -210,6 +227,7 @@ def main() -> None:
         EVENT_CONDITIONED_SCHEMA_VERSION,
         FEATURE_STORE_SCHEMA_VERSION,
         FOUNDATION_SCHEMA_VERSION,
+        MIXTURE_SCHEMA_VERSION,
         MODEL_SCHEMA_VERSION,
         MULTIHORIZON_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
@@ -220,7 +238,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.12.0"
+    assert ENGINE_VERSION == "0.13.0"
     assert (
         FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
@@ -233,13 +251,14 @@ def main() -> None:
         == MULTIHORIZON_SCHEMA_VERSION
         == CROSS_SECTIONAL_SCHEMA_VERSION
         == EVENT_CONDITIONED_SCHEMA_VERSION
+        == MIXTURE_SCHEMA_VERSION
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.11" and STORE_USER_VERSION == 12
+    assert STORE_SCHEMA_VERSION == "1.12" and STORE_USER_VERSION == 13
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 63-item A–BK scope"
+        "versions, links, historical reports and current 67-item A–BO scope"
     )
 
 
