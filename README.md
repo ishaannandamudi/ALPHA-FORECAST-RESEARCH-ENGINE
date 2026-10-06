@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-12 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-13 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.13.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned and mixture schemas **1.0**;
-shared mixture store **1.12**, `user_version=13` (additive to store1.11/user_version12). Runtime uses only the
+Python **3.11+**; engine **0.14.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture and nonlinear schemas **1.0**;
+shared nonlinear store **1.13**, `user_version=14` (additive to store1.12/user_version13). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -151,6 +151,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
+| nonlinear | Explicit causal interactions, TRAIN-only knots/scaling, QR linear models, bounded trees, matched research diagnostics, additive store1.13 |
 | regime_conditioned | Neutral hard/soft filtered regimes, TRAIN state means/offsets, causal transitions, matched metrics/ranks, drift and additive store1.11 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
 
@@ -297,11 +298,12 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.mixture_demo`.
 Expert weights are forecast-combination weights, never portfolio weights. Component calibration
 is not mixture calibration. No expert independence is assumed. Quantile averaging is invalid.
 
-**Next scope: AFRE-13 — Nonlinear Feature Interactions.** Explicit interaction features,
-nonlinear transformations, appropriate tree research models, interaction stability,
-supported monotonic/shape constraints, cross-feature effects, event × regime and
-microstructure × context interactions; no temporal/sequence modeling yet.
-**Stop after AFRE-12.** AFRE-13 remains deferred. Downstream HFT integration supplies
+**Next scope: AFRE-14 — Temporal / Sequence Models.** Ordered historical feature
+sequences, causal masking/lookbacks, missing sequence observations, sequence lengths,
+time encoding, training-only transforms, horizon-specific outputs and supplied
+event/regime/microstructure sequences. Appropriate recurrent/state-space/attention
+research models belong to AFRE-14; uncertainty decomposition remains AFRE-15.
+**Stop after AFRE-13.** AFRE-14 remains deferred. Downstream HFT integration supplies
 real provider adapters. Predictive metrics do not establish profitability. Portfolio
 construction, risk optimization and execution remain downstream projects after AFRE.
 
@@ -313,3 +315,46 @@ model metadata retains its original contract role. AFRE-7 fits calibration only
 on explicit causal non-TEST reservations.
 Calibration and sharpness remain distinct; no calibration metric selects models
 or establishes trading profitability.
+
+## AFRE-13 nonlinear interaction research
+
+Explicit immutable interaction definitions pin exact semantic inputs, transforms,
+parameters, units, missingness and computation policy. Ordered source vintages remain
+separate from definitions. Ten finite transforms implement products, safe ratios,
+differences, absolute differences, squares, cubes, signed logs, clipped linear,
+identity and fixed or TRAIN-quantile piecewise interpolation. Interactions are supplied;
+there is no automatic expansion or feature search. Transform fitting is TRAIN-only.
+
+LINEAR_ON_INTERACTIONS and LINEAR_PLUS_INTERACTIONS reuse AFRE-5 QR with fixed optional
+ridge. SHALLOW_REGRESSION_TREE uses bounded TRAIN midpoints, SSE, explicit depth/leaf
+limits and deterministic ties. Standardization is TRAIN-only; missing model columns
+fail. Monotonic/shape constraints, splines and post-hoc shape repair are unsupported.
+
+Neutral event attributes × filtered regime probabilities, microstructure × context,
+options × context and causal expert output × state share the same explicit contract.
+Derived availability cannot precede inputs, fitted state, model or actual computation.
+Publication is not receipt; qualified reconstruction preserves actual later physical
+clocks. Prediction reads no target truth. TEST cannot choose interactions/splits/knots.
+
+Optional AFRE-6 location translation preserves shape/scale and recomputes events and
+quantiles. Upstream calibrators are incompatible; dedicated nonlinear calibration is
+unavailable. AFRE-9 receives an exact neutral score; later evaluation pins matched
+truths and TEST reuse. Contributions, paths and compatible-window stability are
+arithmetic/descriptive diagnostics, not causal importance. No automatic pruning/model
+selection, direct external-engine dependency or sequence modeling is implemented.
+Predictive metrics do not establish profitability. Portfolio construction, risk
+optimization and execution remain downstream.
+
+Run the offline demo and bounded profile:
+
+```console
+python -m examples.nonlinear_demo
+python -m benchmarks.nonlinear_profile
+```
+
+See [nonlinear interactions](docs/nonlinear-feature-interactions.md),
+[definitions](docs/interaction-definitions.md), [transforms](docs/nonlinear-transforms.md),
+[trees](docs/shallow-tree-models.md), [stability](docs/interaction-stability.md),
+[cross-domain contracts](docs/cross-domain-interactions.md),
+[evaluation](docs/nonlinear-evaluation.md), [profile](docs/nonlinear-benchmark.md)
+and [A–BI report](docs/AFRE_13_COMPLETION_REPORT.md).

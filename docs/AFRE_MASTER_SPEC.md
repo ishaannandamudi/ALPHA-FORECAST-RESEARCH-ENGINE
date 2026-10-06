@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-12 complete**, engine 0.13.0,
+Status: **AFRE-0 through AFRE-13 complete**, engine 0.14.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared mixture store 1.12/user_version=13; regime-conditioned and mixture schemas1.0.
+shared nonlinear store 1.13/user_version=14; regime-conditioned, mixture and nonlinear schemas1.0.
 
 ## Mission and philosophy
 
@@ -228,11 +228,13 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-12.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-13.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
-AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12 adds explicit expert composition; AFRE-13 — Nonlinear Feature Interactions is next; model selection, ensembles,
+AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12
+adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
+AFRE-14 — Temporal / Sequence Models is next; model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -668,10 +670,52 @@ See [mixtures](mixture-of-experts.md), [contracts](expert-contracts.md), [gating
 [contributions](expert-contributions.md), [integration](external-expert-integration.md),
 [profile](mixture-benchmark.md) and [A–BO report](AFRE_12_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-13 — Nonlinear Feature Interactions.** Explicit interaction features,
-nonlinear transformations, appropriate tree research models, interaction stability,
-supported monotonic/shape constraints, cross-feature effects, event × regime and
-microstructure × context interactions; no temporal/sequence modeling yet.
-**Stop after AFRE-12.** AFRE-13 remains unimplemented. Model selection and ensembles
+## AFRE-13 completed scope
+
+`afre.nonlinear` adds exact semantic scalar projections of unchanged AFRE-1 features,
+AFRE-9 neutral signals, AFRE-10 security event attributes, AFRE-11 security filtered
+regime membership and AFRE-12 causal expert/mixture outputs. Ordered source revisions
+pin interaction values; commutative products normalize operand order. Unit algebra,
+explicit missing/fallback/zero-denominator policies and finite outputs are mandatory.
+Ten explicit transforms include bounded degree2/3 and fixed or TRAIN Type-7 quantile
+piecewise knots with clamp extrapolation. No interaction search/automatic expansion.
+
+Exact complete admitted AFRE-4 TRAIN samples fit knots, optional column standardization,
+AFRE-5 QR linear coefficients with fixed ridge, or depth≤4 SSE regression trees.
+Midpoint candidates are bounded by deterministic equal index spacing. Ties use SSE,
+feature identity, threshold and left≤/right> semantics. Leaves retain exact TRAIN IDs,
+counts/means/loss. Missing model columns fail; monotonic/shape constraints and splines
+remain unsupported. TEST cannot choose interactions/splits/knots or fit any parameter.
+
+Source availability respects receipt, qualified delivery and actual reconstruction
+clocks. TRAIN matrix computation is explicitly later than sample origins; it does not
+claim historical deployment. Feature-only held-out prediction checks source, transform,
+model and actual computation against each full origin cutoff. No late forecast
+reconstruction contract exists. Exact arithmetic contributions/tree paths are retained.
+Optional compatible AFRE-6 location translation preserves shape/scale and recomputes
+quantiles/events. Upstream calibration states are incompatible; dedicated fitting is
+unavailable. Horizon-specific1h/1d fixtures remain independent.
+
+Later exact matched point/proper scores, event/regime cohorts and AFRE-9 ranking/IC
+retain pinned truth and TEST seals/reuse. Compatible-window coefficient sign/magnitude
+and tree split recurrence are descriptive, never causal importance or automatic
+pruning/model selection. Safe bounded canonical JSON, verified projections/links,
+transactional13→14 migration, frozen snapshots and unified lineage preserve every
+prior registry row, DDL, metadata and public schema. Engine0.14.0, store1.13/user14,
+nonlinear schema1.0 and zero runtime dependencies. No direct external-engine dependency,
+sequence modeling, portfolio, risk optimization, execution or profitability claims.
+
+See [interactions](nonlinear-feature-interactions.md), [definitions](interaction-definitions.md),
+[transforms](nonlinear-transforms.md), [trees](shallow-tree-models.md),
+[stability](interaction-stability.md), [cross-domain](cross-domain-interactions.md),
+[evaluation](nonlinear-evaluation.md), [profile](nonlinear-benchmark.md)
+and [A–BI report](AFRE_13_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-14 — Temporal / Sequence Models.** Ordered historical feature
+sequences, causal masking/lookbacks/alignment, sequence windows, missing observations,
+length handling, time encoding, training-only transforms, multi-horizon outputs and
+supplied event/regime/external microstructure sequences. Recurrent/state-space/attention
+research models where appropriate; uncertainty decomposition remains AFRE-15.
+**Stop after AFRE-13.** AFRE-14 remains unimplemented. Model selection and ensembles
 remain distinct later phases. Portfolio construction, risk optimization and execution
 remain downstream projects after AFRE.

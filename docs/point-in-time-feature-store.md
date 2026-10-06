@@ -88,3 +88,17 @@ preserves exact base bytes and reads no truth. Matched evaluation/ranking retain
 PIT scope and TEST controls. Global calibration cannot silently transfer, and
 descriptive regime drift never refits. MCE/AME remain external neutral data producers;
 downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.
+
+
+## AFRE-13 composition boundary
+
+[Nonlinear interactions](nonlinear-feature-interactions.md) consume these completed
+contracts through exact neutral scalar references. Explicit definitions and TRAIN-only
+knots/scaling/coefficients/tree splits preserve source availability and actual computation.
+TEST cannot choose interactions/splits/knots. Event×regime, microstructure×context,
+options×context and expert×state share the generic layer; no direct external-engine
+implementation dependency exists. Target-free application, immutable source revisions,
+matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
+Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
+selection or sequence modeling is implemented. Predictive metrics do not establish
+profitability. AFRE-14 Temporal / Sequence Models remains deferred.

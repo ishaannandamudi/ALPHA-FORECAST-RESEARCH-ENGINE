@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-12.**" in master
-    assert "**Next scope: AFRE-13 — Nonlinear Feature Interactions.**" in readme
+    assert "**Stop after AFRE-13.**" in master
+    assert "**Next scope: AFRE-14 — Temporal / Sequence Models.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.13.0" and project["dependencies"] == []
+    assert project["version"] == "0.14.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -211,6 +211,26 @@ def main() -> None:
     assert re.findall(r"^\| ([A-Z]{1,2}) \|", mixture_report, re.MULTILINE) == list(
         mixture_labels
     )
+    nonlinear_report = (REPOSITORY / "docs/AFRE_13_COMPLETION_REPORT.md").read_text()
+    nonlinear_labels = (
+        *cross_section_labels[:52],
+        *("B" + chr(i) for i in range(ord("A"), ord("I") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", nonlinear_report, re.MULTILINE) == list(
+        nonlinear_labels
+    )
+    for name in (
+        "nonlinear-feature-interactions.md",
+        "interaction-definitions.md",
+        "nonlinear-transforms.md",
+        "shallow-tree-models.md",
+        "interaction-stability.md",
+        "cross-domain-interactions.md",
+        "nonlinear-evaluation.md",
+        "nonlinear-benchmark.md",
+        "nonlinear-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
     assert (REPOSITORY / "docs/mixture-profile.json").is_file()
     assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
@@ -230,6 +250,7 @@ def main() -> None:
         MIXTURE_SCHEMA_VERSION,
         MODEL_SCHEMA_VERSION,
         MULTIHORIZON_SCHEMA_VERSION,
+        NONLINEAR_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
         REGIME_CONDITIONED_SCHEMA_VERSION,
         STORE_SCHEMA_VERSION,
@@ -238,9 +259,10 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.13.0"
+    assert ENGINE_VERSION == "0.14.0"
     assert (
-        FOUNDATION_SCHEMA_VERSION
+        NONLINEAR_SCHEMA_VERSION
+        == FOUNDATION_SCHEMA_VERSION
         == FEATURE_STORE_SCHEMA_VERSION
         == TARGET_SCHEMA_VERSION
         == UNIVERSE_SCHEMA_VERSION
@@ -255,10 +277,10 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.12" and STORE_USER_VERSION == 13
+    assert STORE_SCHEMA_VERSION == "1.13" and STORE_USER_VERSION == 14
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 67-item A–BO scope"
+        "versions, links, historical reports and current 61-item A–BI scope"
     )
 
 
