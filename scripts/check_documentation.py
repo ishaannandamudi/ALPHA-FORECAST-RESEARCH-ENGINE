@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-14.**" in master
-    assert "**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.**" in readme
+    assert "**Stop after AFRE-15.**" in master
+    assert "**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.15.0" and project["dependencies"] == []
+    assert project["version"] == "0.16.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -252,6 +252,38 @@ def main() -> None:
         "sequence-profile.json",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
+    uncertainty_report = (REPOSITORY / "docs/AFRE_15_COMPLETION_REPORT.md").read_text()
+    uncertainty_labels = (
+        *cross_section_labels[:52],
+        *("B" + chr(i) for i in range(ord("A"), ord("M") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", uncertainty_report, re.MULTILINE) == list(
+        uncertainty_labels
+    )
+    for name in (
+        "forecast-uncertainty-decomposition.md",
+        "uncertainty-identifiability.md",
+        "aleatoric-epistemic-semantics.md",
+        "parameter-uncertainty.md",
+        "expert-disagreement-uncertainty.md",
+        "regime-event-uncertainty.md",
+        "uncertainty-calibration.md",
+        "uncertainty-evaluation.md",
+        "uncertainty-benchmark.md",
+        "uncertainty-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    for text in (master, readme):
+        assert "AFRE-0 through AFRE-15" in text
+        assert (
+            "**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.**" in text
+        )
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            assert not re.search(
+                r"AFRE-15[^\n.;]*?(?:unimplemented|remains deferred|is next)",
+                document.read_text(),
+            )
     assert (REPOSITORY / "docs/mixture-profile.json").is_file()
     assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
@@ -278,10 +310,11 @@ def main() -> None:
         STORE_SCHEMA_VERSION,
         STORE_USER_VERSION,
         TARGET_SCHEMA_VERSION,
+        UNCERTAINTY_SCHEMA_VERSION,
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.15.0"
+    assert ENGINE_VERSION == "0.16.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -299,11 +332,11 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.14" and STORE_USER_VERSION == 15
-    assert SEQUENCE_SCHEMA_VERSION == "1.0"
+    assert STORE_SCHEMA_VERSION == "1.15" and STORE_USER_VERSION == 16
+    assert SEQUENCE_SCHEMA_VERSION == UNCERTAINTY_SCHEMA_VERSION == "1.0"
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 72-item A–BT scope"
+        "versions, links, historical reports and current 65-item A–BM scope"
     )
 
 

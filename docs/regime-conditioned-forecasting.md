@@ -87,11 +87,17 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred.
 
 
 ## AFRE-14 sequence integration
 
 Sequence histories admit FILTERED regime probabilities through neutral scalars; SMOOTHED/EX_POST historical states remain inadmissible.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+
+## AFRE-15 uncertainty integration
+
+AFRE-15 retains hard/soft membership evidence: state entropy is in nats, state fitted-mean spread is an attribution proxy, and fallback/missing state evidence remains explicit. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
+
+Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.

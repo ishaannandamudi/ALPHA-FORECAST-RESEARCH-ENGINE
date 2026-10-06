@@ -1,0 +1,13 @@
+# Uncertainty evaluation
+
+Evaluations pin exact decomposition, forecast, sample and frozen target-vintage IDs, same fold/target/horizon/partition and nominal levels, evaluation cutoff and availability. Duplicate methods for a sample and unmatched truth reject. Labels must be completed and known at cutoff. TEST assessment requires an explicit native immutable TEST access identity; reusing it with changed purpose/cutoff/grid rejects. New declared assessments are recorded explicitly; the engine provides no method selector. TEST is never an estimator input or interval calibration/tuning source.
+
+Coverage/sharpness are separate from proper scores. AFRE-6/12 CRPS, NLL, Brier and pinball are reused where a full law or supplied marginal exists; unsupported score values are explicit. Quality, horizon, event and regime cohorts retain counts and minimum support. `UncertaintyComparison` requires exact same sample/truth IDs and truth values, cutoff, target, horizon, fold, partition and levels. It reports differences without selecting a winner.
+
+Buckets sort `(predictive variance, sample fingerprint)` into deterministic ordinal equal-count groups. Ties may split, but order/seed/restart cannot alter assignment. Buckets report variance ranges and realized absolute/squared errors with minimum counts. Pearson/Spearman uncertainty-error relationships use native undefined states for zero dispersion and insufficient support. Monotonic bucket error is descriptive; no significance or causal claim is made.
+
+Drift uses explicitly ordered disjoint known origin windows with compatible fold/target/horizon/levels. It reports variance shifts, signed coverage errors, error correlation and exact additive share means, without fitting, selecting, retraining or modifying artifacts. Actual1h/1d fixtures estimate each horizon independently; no proportional time scaling or joint law is inferred. AFRE-9 ranks remain unchanged; uncertainty-aware ranking and orthogonalization are deferred.
+
+A bounded audit traverses specs, components, intervals, source laws, model/design/normalization, TRAIN and calibration evidence, native completed fit records, exact target/horizon and later evaluation truth/TEST records. Safe canonical data, hash checks, immutable indexes/links and semantic replay reject forged attribution or scores. Later corrections create new source/rebuild identities and never mutate old decomposition bytes.
+
+Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.

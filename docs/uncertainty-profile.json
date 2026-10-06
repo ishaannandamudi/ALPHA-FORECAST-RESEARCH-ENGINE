@@ -1,0 +1,38 @@
+{
+  "canonical_uncertainty_bytes": 1476071,
+  "counts": {
+    "TRAIN_rows_each": 12,
+    "audit_nodes": 309,
+    "covariance_dimensions": 2,
+    "covariances": 3,
+    "evaluation_pairs": 44,
+    "source_families": 11,
+    "test_decompositions": 4,
+    "uncertainty_artifacts": 748,
+    "validation_decompositions": 44
+  },
+  "engine_version": "0.16.0",
+  "max_absolute_covariance_prediction_oracle_error": 3.308722450212111e-24,
+  "offline": true,
+  "scope": "neutral bounded causal fixtures; arithmetic repetitions are not independent samples; no production SLA",
+  "sqlite_closed_bytes": 25010176,
+  "sqlite_open_including_WAL_bytes": 29537040,
+  "store": "1.15",
+  "timings_seconds": {
+    "TRAIN_covariance_fit": 0.038839457964058965,
+    "bounded_unified_audit": 0.8180919580045156,
+    "canonical_serialization": 0.026525207969825715,
+    "causal_fixture_44_validation_4_test_decompositions": 26.03521083400119,
+    "component_construction": 0.0021418749820441008,
+    "covariance_QR_200_arithmetic_repetitions": 0.00457504199584946,
+    "decomposition_replay_validation": 0.002299542014952749,
+    "drift_two_known_windows": 0.027322707988787442,
+    "eleven_source_evaluations_44_samples": 1.3617272500414401,
+    "idempotent_persistence": 0.3216321659856476,
+    "interval_extraction": 9.741599205881357e-05,
+    "mixture_moments_1000_arithmetic_repetitions": 0.052235250012017787,
+    "restart_and_byte_replay": 0.19811749999644235
+  },
+  "uncertainty_schema": "1.0",
+  "user_version": 16
+}

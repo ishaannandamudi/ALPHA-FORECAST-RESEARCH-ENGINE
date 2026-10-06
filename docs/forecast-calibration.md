@@ -97,3 +97,9 @@ same-origin rankings remain descriptive and never refit/select. No independence 
 is claimed; expert weights are forecast-combination weights, never portfolio weights. Downstream
 HFT integration supplies AME/MCE/EIE/options adapters without direct implementation dependencies.
 Frozen snapshots, append-only corrections and bounded lineage preserve older artifact bytes.
+
+## AFRE-15 uncertainty integration
+
+AFRE-15 assesses exact stored calibrated intervals at their nominal levels. Marginal calibration does not invent a full law or identify causal uncertainty sources; calibration and sharpness remain separate. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
+
+Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.

@@ -81,4 +81,10 @@ downstream HFT integration supplies adapters. Predictive metrics do not prove pr
 
 Sequence specs, transforms, datasets and models remain independently target/horizon-specific; actual1h/1d identities stay distinct without inferred covariance.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+
+## AFRE-15 uncertainty integration
+
+AFRE-15 pins each exact target/horizon and independently represents actual1h/1d uncertainty. No proportional time scaling, cross-horizon joint law or portfolio-risk interpretation is introduced. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
+
+Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.

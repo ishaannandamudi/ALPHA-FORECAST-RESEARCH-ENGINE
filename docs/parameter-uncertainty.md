@@ -1,0 +1,11 @@
+# Parameter uncertainty
+
+`ParameterUncertaintySpec` pins an existing model, `IID_HOMOSKEDASTIC_CORRECT_LINEAR`, minimum TRAIN count, rank tolerance, condition limit, seed and `pivoted-QR-OLS-covariance-v1`. Fitting produces immutable `ParameterCovariance` with exact model/design/fold/target/horizon/TRAIN sample IDs, cutoff and actual computation/availability clocks, SSE, residual estimator, degrees of freedom, rank, intercept policy and numerical condition proxy.
+
+Eligible models are unpenalized fixed AFRE-5 linear/residual/cross-sectional global or no-intercept models, AFRE-13 fixed transformed-column linear readouts, and AFRE-14 fixed temporal-feature linear readouts. Every source design row is replayed from admitted TRAIN evidence and pinned normalization. A separate fitting operation reads responses; forecast-time `xᵀ Cov(beta) x` reads frozen covariance and causal input design only.
+
+For N rows and full rank p, `sigma_hat² = SSE / (N−p)` and `Cov(beta) = sigma_hat² (XᵀX)⁻¹`. Runtime computes the inverse crossproduct through pivoted Householder QR and triangular solves, avoiding a normal-matrix inverse. A Frobenius condition bound on R and its inverse rejects unstable designs. Include the intercept as1 when global; exclude it for no-intercept. Nonpositive residual degrees or insufficient count return `INSUFFICIENT_DATA`; rank deficiency/ill conditioning return `INCOMPATIBLE`. Numerical overflow or resource violations reject.
+
+Ridge/lasso/constant/within-origin-intercept covariance is incompatible. Tree epistemic covariance is unidentifiable absent an explicit estimator. No bootstrap, jackknife or Hessian approximation is implemented. A sequence readout estimate covers its fixed output coefficients only; it does not estimate uncertainty over hidden dynamics, preprocessing selection, learned temporal structure or sequence model search. Nonlinear readout covariance conditions on supplied interactions/transforms. The status is `PARTIALLY_IDENTIFIED`, with assumptions retained as lineage.
+
+Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.

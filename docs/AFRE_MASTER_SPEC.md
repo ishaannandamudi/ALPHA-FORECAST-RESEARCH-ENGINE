@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-14 complete**, engine 0.15.0,
+Status: **AFRE-0 through AFRE-15 complete**, engine 0.16.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared sequence store 1.14/user_version=15; regime-conditioned, mixture, nonlinear and sequence schemas1.0.
+shared uncertainty store 1.15/user_version=16; regime-conditioned, mixture, nonlinear, sequence and uncertainty schemas1.0.
 
 ## Mission and philosophy
 
@@ -234,7 +234,7 @@ causal distributions and proper scoring. AFRE-7 adds separate causal calibration
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
 AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
-AFRE-14 adds causal ordered histories; AFRE-15 Forecast Uncertainty Decomposition is next;
+AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is next;
 model selection, ensembles,
 portfolios and execution remain deferred.
 
@@ -752,10 +752,37 @@ See [sequence architecture](temporal-sequence-models.md), [windows](sequence-win
 [external sources](external-sequence-integration.md), [evaluation](sequence-evaluation.md),
 [profile](sequence-benchmark.md) and [A–BT report](AFRE_14_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.** Identifiable aleatoric vs
-epistemic decomposition, model/parameter/expert disagreement, event/regime/data-quality,
-horizon-dependent uncertainty and calibrated diagnostics, with explicit identifiability limits.
-No signal orthogonalization yet. **Stop after AFRE-14.** AFRE-15 is unimplemented.
-Model selection and ensembles remain distinct later phases. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE. No AFRE phase
-claims profitability from predictive metrics.
+## AFRE-15 completed scope
+
+Exact Gaussian/finite empirical predictive variance, exact finite-mixture within/between
+closure and explicit compatible remainder; non-additive model/expert spread, supplied regime
+entropy/state-mean ambiguity and event-conditioned/base proxy. Quality states carry no invented
+variance or penalty. Conservative unpenalized full-rank AFRE-5/13/14 readout covariance pins
+TRAIN-only fixed-design iid homoskedastic correct-model assumptions, SSE/(N−rank), intercept,
+pivoted QR condition/rank policy and prediction xᵀCov(beta)x. Ridge/tree/dynamics/selection
+uncertainty remains unsupported. Aleatoric != epistemic; disagreement != epistemic automatically.
+Calibration measures reliability, not causal uncertainty-source attribution.
+
+Causal VALIDATION/TEST construction blocks truth and TRAIN-response reads. Availability is
+at least actual computation and all sources; no reconstruction/backdating permission is added.
+Exact-law or compatible stored-calibration intervals, separate coverage/sharpness/proper scores,
+minimum-count cohorts, matched truth comparison, ordinal buckets/error correlation and known-window
+drift are descriptive with no auto-refit/selection. Every decomposition is horizon-specific;
+actual1h/1d evidence remains independent, no joint law or time scaling is invented.
+
+Immutable canonical data-only specs/components/decompositions/intervals/covariance/evaluations/
+comparison/drift/audits have fixed indexes and bounded unified lineage. Transactional15→16 migration
+adds uncertainty store1.15/user_version16; engine0.16.0, uncertainty schema1.0, all earlier schemas1.0,
+zero runtime dependencies. Earlier public contracts/source/tests remain unchanged.
+See [uncertainty architecture](forecast-uncertainty-decomposition.md), [identifiability](uncertainty-identifiability.md),
+[parameter methods](parameter-uncertainty.md), [evaluation](uncertainty-evaluation.md),
+[profile](uncertainty-benchmark.md) and [A–BM report](AFRE_15_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.** Residualization,
+projection against existing signals, pairwise/multivariate redundancy, partial correlation,
+incremental explanatory value, collinearity diagnostics, orthogonal signal construction,
+cross-sectional and temporal redundancy. No invariance framework yet. **Stop after AFRE-15.**
+No AFRE-16 implementation, risk budget, position sizing, portfolio/risk/execution or direct
+external-engine integration. Model selection and ensembles remain separate later phases.
+Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
+No AFRE phase claims profitability from predictive metrics.

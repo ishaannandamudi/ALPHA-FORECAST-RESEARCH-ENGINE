@@ -70,4 +70,4 @@ See [event-conditioned forecasting](event-conditioned-forecasting.md).
 
 Sequence transforms/readouts require the exact complete admitted TRAIN set and per-sample source cutoffs; TEST/VALIDATION never choose windows or dynamics.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.

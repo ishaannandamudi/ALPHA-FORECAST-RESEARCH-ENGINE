@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-14 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-15 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.15.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear and sequence schemas **1.0**;
-shared sequence store **1.14**, `user_version=15` (additive to store1.13/user_version14). Runtime uses only the
+Python **3.11+**; engine **0.16.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence and uncertainty schemas **1.0**;
+shared uncertainty store **1.15**, `user_version=16` (additive to store1.14/user_version15). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -151,6 +151,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
+| uncertainty | Identified/proxy components, exact mixture closure, TRAIN OLS covariance, intervals, coverage/sharpness, buckets/drift, store1.15 |
 | sequence | Causal ordered windows, masks, TRAIN transforms, fixed decay/state dynamics, QR readouts, matched diagnostics, additive store1.14 |
 | nonlinear | Explicit causal interactions, TRAIN-only knots/scaling, QR linear models, bounded trees, matched research diagnostics, additive store1.13 |
 | regime_conditioned | Neutral hard/soft filtered regimes, TRAIN state means/offsets, causal transitions, matched metrics/ranks, drift and additive store1.11 |
@@ -299,10 +300,23 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.mixture_demo`.
 Expert weights are forecast-combination weights, never portfolio weights. Component calibration
 is not mixture calibration. No expert independence is assumed. Quantile averaging is invalid.
 
-**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.** Identifiable aleatoric,
-epistemic, model, parameter, expert-disagreement, event/regime, data-quality and
-horizon-dependent uncertainty with calibrated diagnostics. Identifiability limits
-must be explicit; signal orthogonalization remains AFRE-16. **Stop after AFRE-14.**
+AFRE-15 adds [uncertainty decomposition](docs/forecast-uncertainty-decomposition.md),
+[identifiability](docs/uncertainty-identifiability.md), [aleatoric/epistemic semantics](docs/aleatoric-epistemic-semantics.md),
+[parameter covariance](docs/parameter-uncertainty.md), [expert disagreement](docs/expert-disagreement-uncertainty.md),
+[event/regime ambiguity](docs/regime-event-uncertainty.md), [calibration](docs/uncertainty-calibration.md),
+[evaluation](docs/uncertainty-evaluation.md), [profile](docs/uncertainty-benchmark.md) and
+[A–BM report](docs/AFRE_15_COMPLETION_REPORT.md). Run the35-step offline demo with
+`PYTHONPATH=src:. .venv311/bin/python -m examples.uncertainty_demo`.
+Exact finite-mixture within/between variance closes under a declared identity; other diagnostic
+measures remain non-additive. OLS covariance requires explicit fixed-design iid assumptions.
+Aleatoric is distinct from epistemic; disagreement is not automatically epistemic;
+quality diagnostics are not variance; calibration and sharpness remain separate.
+Uncertainty is horizon-specific descriptive metadata with causal availability.
+
+**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.** Supplied signal
+residualization/projection, pairwise/multivariate redundancy, partial correlation,
+incremental explanatory value, collinearity and cross-sectional/temporal redundancy.
+No invariance framework yet. **Stop after AFRE-15.**
 Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
 Predictive metrics do not establish profitability.
 
