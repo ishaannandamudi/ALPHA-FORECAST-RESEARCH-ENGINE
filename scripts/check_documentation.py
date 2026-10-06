@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-13.**" in master
-    assert "**Next scope: AFRE-14 — Temporal / Sequence Models.**" in readme
+    assert "**Stop after AFRE-14.**" in master
+    assert "**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.14.0" and project["dependencies"] == []
+    assert project["version"] == "0.15.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -231,6 +231,27 @@ def main() -> None:
         "nonlinear-profile.json",
     ):
         assert (REPOSITORY / "docs" / name).is_file()
+    sequence_report = (REPOSITORY / "docs/AFRE_14_COMPLETION_REPORT.md").read_text()
+    sequence_labels = (
+        *cross_section_labels[:52],
+        *("B" + chr(i) for i in range(ord("A"), ord("T") + 1)),
+    )
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", sequence_report, re.MULTILINE) == list(
+        sequence_labels
+    )
+    for name in (
+        "temporal-sequence-models.md",
+        "sequence-windows.md",
+        "sequence-masking.md",
+        "sequence-time-encoding.md",
+        "causal-sequence-training.md",
+        "sequence-model-families.md",
+        "external-sequence-integration.md",
+        "sequence-evaluation.md",
+        "sequence-benchmark.md",
+        "sequence-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
     assert (REPOSITORY / "docs/mixture-profile.json").is_file()
     assert (REPOSITORY / "docs/cross-sectional-profile.json").is_file()
     for text in (master, readme):
@@ -253,13 +274,14 @@ def main() -> None:
         NONLINEAR_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
         REGIME_CONDITIONED_SCHEMA_VERSION,
+        SEQUENCE_SCHEMA_VERSION,
         STORE_SCHEMA_VERSION,
         STORE_USER_VERSION,
         TARGET_SCHEMA_VERSION,
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.14.0"
+    assert ENGINE_VERSION == "0.15.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -277,10 +299,11 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.13" and STORE_USER_VERSION == 14
+    assert STORE_SCHEMA_VERSION == "1.14" and STORE_USER_VERSION == 15
+    assert SEQUENCE_SCHEMA_VERSION == "1.0"
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 61-item A–BI scope"
+        "versions, links, historical reports and current 72-item A–BT scope"
     )
 
 

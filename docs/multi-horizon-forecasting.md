@@ -75,3 +75,10 @@ preserves exact base bytes and reads no truth. Matched evaluation/ranking retain
 PIT scope and TEST controls. Global calibration cannot silently transfer, and
 descriptive regime drift never refits. MCE/AME remain external neutral data producers;
 downstream HFT integration supplies adapters. Predictive metrics do not prove profitability.
+
+
+## AFRE-14 sequence integration
+
+Sequence specs, transforms, datasets and models remain independently target/horizon-specific; actual1h/1d identities stay distinct without inferred covariance.
+See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
+AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.

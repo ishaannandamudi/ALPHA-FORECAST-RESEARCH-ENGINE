@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-13 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-14 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.14.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture and nonlinear schemas **1.0**;
-shared nonlinear store **1.13**, `user_version=14` (additive to store1.12/user_version13). Runtime uses only the
+Python **3.11+**; engine **0.15.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear and sequence schemas **1.0**;
+shared sequence store **1.14**, `user_version=15` (additive to store1.13/user_version14). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -151,6 +151,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
+| sequence | Causal ordered windows, masks, TRAIN transforms, fixed decay/state dynamics, QR readouts, matched diagnostics, additive store1.14 |
 | nonlinear | Explicit causal interactions, TRAIN-only knots/scaling, QR linear models, bounded trees, matched research diagnostics, additive store1.13 |
 | regime_conditioned | Neutral hard/soft filtered regimes, TRAIN state means/offsets, causal transitions, matched metrics/ranks, drift and additive store1.11 |
 | target_engine | Exact windows/prices/actions/benchmarks, path estimators, immutable label datasets, cutoff queries, audit and additive store 1.2 |
@@ -298,14 +299,12 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.mixture_demo`.
 Expert weights are forecast-combination weights, never portfolio weights. Component calibration
 is not mixture calibration. No expert independence is assumed. Quantile averaging is invalid.
 
-**Next scope: AFRE-14 — Temporal / Sequence Models.** Ordered historical feature
-sequences, causal masking/lookbacks, missing sequence observations, sequence lengths,
-time encoding, training-only transforms, horizon-specific outputs and supplied
-event/regime/microstructure sequences. Appropriate recurrent/state-space/attention
-research models belong to AFRE-14; uncertainty decomposition remains AFRE-15.
-**Stop after AFRE-13.** AFRE-14 remains deferred. Downstream HFT integration supplies
-real provider adapters. Predictive metrics do not establish profitability. Portfolio
-construction, risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.** Identifiable aleatoric,
+epistemic, model, parameter, expert-disagreement, event/regime, data-quality and
+horizon-dependent uncertainty with calibrated diagnostics. Identifiability limits
+must be explicit; signal orthogonalization remains AFRE-16. **Stop after AFRE-14.**
+Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
+Predictive metrics do not establish profitability.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.
@@ -358,3 +357,21 @@ See [nonlinear interactions](docs/nonlinear-feature-interactions.md),
 [cross-domain contracts](docs/cross-domain-interactions.md),
 [evaluation](docs/nonlinear-evaluation.md), [profile](docs/nonlinear-benchmark.md)
 and [A–BI report](docs/AFRE_13_COMPLETION_REPORT.md).
+
+## AFRE-14 temporal sequence research
+
+Causal fixed-count/elapsed windows preserve final availability, deterministic revisions,
+exact timestamp-union alignment, masks, padding and irregular time. TRAIN-only population
+normalization feeds fixed exponential-decay or stable diagonal state-space aggregates with
+an AFRE-5 QR/fixed-ridge linear readout. Actual construction/fit/forecast clocks remain distinct.
+Target-free application, compatible law translation, same-origin ranking, actual1h/1d
+identities, matched truths, TEST seals, descriptive stability/coverage and bounded unified
+lineage are retained. Session windows, recurrent networks and attention are unsupported.
+There is no direct external-engine dependency, broad model search or uncertainty decomposition.
+
+[Architecture](docs/temporal-sequence-models.md), [windows](docs/sequence-windows.md),
+[masks](docs/sequence-masking.md), [time](docs/sequence-time-encoding.md),
+[TRAIN causality](docs/causal-sequence-training.md), [families](docs/sequence-model-families.md),
+[sources](docs/external-sequence-integration.md), [evaluation](docs/sequence-evaluation.md),
+[profile](docs/sequence-benchmark.md), [A–BT report](docs/AFRE_14_COMPLETION_REPORT.md).
+Run `PYTHONPATH=src:. .venv311/bin/python -m examples.sequence_demo` for the 37-step offline demo.

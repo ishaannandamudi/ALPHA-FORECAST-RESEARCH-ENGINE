@@ -2,7 +2,7 @@
 
 AFRE-13 is complete: engine0.14.0, nonlinear schema1.0, shared store1.13/user14.
 AFRE-0 through AFRE-25 remains the frozen 26-phase roadmap. Earlier public schemas
-and source/test semantics are unchanged. Stop after AFRE-13; AFRE-14 remains deferred.
+and source/test semantics are unchanged. Stop after AFRE-14; AFRE-15 remains deferred.
 
 The package separates immutable semantic definitions, exact origin-specific scalar
 inputs, pure transforms, TRAIN matrices/fitted state, linear/tree fitting, target-free
@@ -31,3 +31,10 @@ path, external engine import or heavy ML dependency. Zero runtime dependencies.
 See [definitions](interaction-definitions.md), [transforms](nonlinear-transforms.md),
 [trees](shallow-tree-models.md), [evaluation](nonlinear-evaluation.md) and
 [report](AFRE_13_COMPLETION_REPORT.md).
+
+
+## AFRE-14 sequence integration
+
+Causal interaction outputs may become ordered sequence inputs with exact definitions, units, source clocks and nested expert-horizon/attestor checks.
+See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
+AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.

@@ -109,4 +109,4 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition remains deferred.

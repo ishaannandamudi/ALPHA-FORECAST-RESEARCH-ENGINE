@@ -64,3 +64,10 @@ AFRE-9 relative models reuse admitted AFRE-5 TRAIN matrices and exact full origi
 
 Event observations pin the exact base fold and ResearchSample partition. Fitting admits only exact TRAIN matrix rows with known targets; event/reaction information is checked at each sample origin. Native TEST comparisons require persisted access records. Overlap relations do not create independent samples.
 See [event-conditioned forecasting](event-conditioned-forecasting.md).
+
+
+## AFRE-14 sequence integration
+
+Sequence transforms/readouts require the exact complete admitted TRAIN set and per-sample source cutoffs; TEST/VALIDATION never choose windows or dynamics.
+See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
+AFRE-15 uncertainty decomposition remains deferred; predictive metrics do not establish profitability.

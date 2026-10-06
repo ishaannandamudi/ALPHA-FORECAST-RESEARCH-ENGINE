@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-13 complete**, engine 0.14.0,
+Status: **AFRE-0 through AFRE-14 complete**, engine 0.15.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared nonlinear store 1.13/user_version=14; regime-conditioned, mixture and nonlinear schemas1.0.
+shared sequence store 1.14/user_version=15; regime-conditioned, mixture, nonlinear and sequence schemas1.0.
 
 ## Mission and philosophy
 
@@ -228,13 +228,14 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-13.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-14.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
 AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
-AFRE-14 — Temporal / Sequence Models is next; model selection, ensembles,
+AFRE-14 adds causal ordered histories; AFRE-15 Forecast Uncertainty Decomposition is next;
+model selection, ensembles,
 portfolios and execution remain deferred.
 
 ## AFRE-1 implementation and availability boundary
@@ -711,11 +712,50 @@ See [interactions](nonlinear-feature-interactions.md), [definitions](interaction
 [evaluation](nonlinear-evaluation.md), [profile](nonlinear-benchmark.md)
 and [A–BI report](AFRE_13_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-14 — Temporal / Sequence Models.** Ordered historical feature
-sequences, causal masking/lookbacks/alignment, sequence windows, missing observations,
-length handling, time encoding, training-only transforms, multi-horizon outputs and
-supplied event/regime/external microstructure sequences. Recurrent/state-space/attention
-research models where appropriate; uncertainty decomposition remains AFRE-15.
-**Stop after AFRE-13.** AFRE-14 remains unimplemented. Model selection and ensembles
-remain distinct later phases. Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+## AFRE-14 completed scope
+
+Causal sequences accept ordinary/event/FILTERED-regime/neutral microstructure/context/options,
+expert/mixture and nonlinear histories through existing provider-neutral contracts. Exact
+source definitions, units, observation time, final availability and revision fingerprints are
+pinned. Live source availability cannot precede AFRE receipt; qualified historical delivery
+requires approved evidence and preserves actual later ingestion/computation clocks.
+
+Fixed-count and exact elapsed UTC windows apply availability filtering before deterministic
+revision resolution. Candidate rosters cannot precede candidate availability at construction.
+Exact timestamp-union alignment preserves per-feature masks, left/right
+masked padding, no silent filling and four completeness states. Irregular deltas, origin ages
+and ordinal positions are explicit. Session windows and grid interpolation are unsupported.
+TRAIN transforms bind the complete exact admitted fold/sample set; population standardization
+uses unmasked TRAIN tokens only and rejects zero scales. Known target vintages are confined to
+TRAIN fitting or separate later evaluation. Held-out feature/label changes never choose settings.
+
+Fixed exponential decay and stable diagonal per-observation state dynamics feed a bounded
+AFRE-5 QR readout with optional supplied ridge. Zero initial state, masked update skips,
+exact contributions and state trajectories are pinned; no nonlinear recurrence/attention,
+bidirectional future context, learned dynamics or broad model search is implemented.
+Feature-only VALIDATION/TEST application rejects later snapshots/models/computation clocks.
+Compatible AFRE-6 law shifts preserve shape/scale; upstream calibrators are incompatible and
+dedicated sequence calibration fitting is unavailable. AFRE-9 ranking, independent actual1h/1d
+identities, exact matched truth/proper scores, event/regime cohorts, TEST seals/reuse, descriptive
+coverage/coefficient ranges and bounded unified lineage are supported without auto-refit.
+
+Transactional14→15 migration is additive: all previous rows, DDL, metadata and public schemas
+remain unchanged. Engine0.15.0, sequence schema1.0, store1.14/user_version15, zero runtime
+dependencies. Strict safe canonical persistence verifies hashes, family/schema, projections,
+links and semantic replay. Limits128timestamps/16features/2000TRAINrows/2mworkcells/8MiB,
+plus explicit observation/forecast/audit counts/depth, fail closed. Provider timestamp honesty
+and upstream causal derivation remain trust boundaries; contracts do not authenticate them.
+
+See [sequence architecture](temporal-sequence-models.md), [windows](sequence-windows.md),
+[masks](sequence-masking.md), [time encoding](sequence-time-encoding.md),
+[TRAIN fitting](causal-sequence-training.md), [families](sequence-model-families.md),
+[external sources](external-sequence-integration.md), [evaluation](sequence-evaluation.md),
+[profile](sequence-benchmark.md) and [A–BT report](AFRE_14_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-15 — Forecast Uncertainty Decomposition.** Identifiable aleatoric vs
+epistemic decomposition, model/parameter/expert disagreement, event/regime/data-quality,
+horizon-dependent uncertainty and calibrated diagnostics, with explicit identifiability limits.
+No signal orthogonalization yet. **Stop after AFRE-14.** AFRE-15 is unimplemented.
+Model selection and ensembles remain distinct later phases. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE. No AFRE phase
+claims profitability from predictive metrics.

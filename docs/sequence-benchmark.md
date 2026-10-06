@@ -1,0 +1,7 @@
+# Bounded sequence profile
+
+Run `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.sequence_profile`. The [recorded profile](sequence-profile.json) runs with sockets and DNS blocked. It measures causal cross-domain fixture construction, window extraction/alignment/masking, aligned column and mask scans, TRAIN normalization, dataset construction, both QR fits, prediction, ranking, evaluation, unified audit, serialization, idempotent persistence and verified restart.
+
+The causal fixture has12 TRAIN samples,8 feature channels and maximum history8 with irregular timestamps, sourced missing tokens and padding. A separately labelled3200-repetition inference kernel measures bounded arithmetic work; it is not3200 additional causal TRAIN rows. The profile does not claim large real training-history performance or a production SLA. Alignment/mask construction is measured jointly with extraction; separate diagnostic scan timings are also recorded. Persist/reopen compares all sequence artifact bytes.
+
+An independent normal-equation/Gaussian-elimination oracle checks the QR readout for both supplied families and reports maximum error. Independent tests separately check exact windows/boundaries, deltas, population normalization, known half-life weights, masked recurrence, probability translation, matched metric deltas and coefficient ranges. The numerical error and observed timings are machine/fixture-specific, not financial evidence.
