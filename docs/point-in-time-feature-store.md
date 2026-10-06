@@ -101,11 +101,20 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred.
 
 
 ## AFRE-14 sequence integration
 
 Sequence observations retain exact FeatureVintage effective times and final availability; they never replace receipt evidence with upstream publication time.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
+
+## AFRE-16 integration
+
+Explicit residual-vintage export requires a caller-named new definition pinning the exact projection/version/unit and actual residual clocks. Existing feature sets are not replaced. External publication cannot backdate receipt; qualified historical binding requires an approved attestor and preserves later reconstruction clocks.
+
+See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
+no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
+guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.

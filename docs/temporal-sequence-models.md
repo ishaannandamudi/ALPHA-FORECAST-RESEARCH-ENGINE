@@ -12,10 +12,19 @@ Candidate evidence must already be available at actual construction. TRAIN snaps
 
 [Windows](sequence-windows.md), [masks](sequence-masking.md), [time encoding](sequence-time-encoding.md), [causal fitting](causal-sequence-training.md), [families](sequence-model-families.md), [neutral sources](external-sequence-integration.md), [evaluation](sequence-evaluation.md), [profile](sequence-benchmark.md), [A–BT report](AFRE_14_COMPLETION_REPORT.md).
 
-AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred. Predictive metrics do not establish profitability. Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
+AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred. Predictive metrics do not establish profitability. Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-15 uncertainty integration
 
 AFRE-15 supports declared fixed-design unpenalized sequence-readout covariance, conditional on fixed dynamics and TRAIN transforms. It estimates no uncertainty over hidden dynamics or model selection. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
+
+## AFRE-16 integration
+
+Exact causal sequence forecasts can enter temporal/historical cross-sectional redundancy as scalars. Hidden-state vectors, lag search and nonlinear conditional-independence claims remain unsupported. The sequence model/history is pinned and cannot be refit by redundancy diagnostics.
+
+See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
+no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
+guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.

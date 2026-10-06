@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-15 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-16 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.16.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence and uncertainty schemas **1.0**;
-shared uncertainty store **1.15**, `user_version=16` (additive to store1.14/user_version15). Runtime uses only the
+Python **3.11+**; engine **0.17.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence, uncertainty and orthogonalization schemas **1.0**;
+shared orthogonalization store **1.16**, `user_version=17` (additive to store1.15/user_version16). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -151,6 +151,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | cross_sectional | Same-origin PIT rankings, peer normalization, groups, external signals, IC/stability and additive store1.9 |
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
+| orthogonalization | TRAIN QR projections, causal residuals, matched matrices/partial/incremental metrics, PIT ranks, descriptive stability, store1.16 |
 | uncertainty | Identified/proxy components, exact mixture closure, TRAIN OLS covariance, intervals, coverage/sharpness, buckets/drift, store1.15 |
 | sequence | Causal ordered windows, masks, TRAIN transforms, fixed decay/state dynamics, QR readouts, matched diagnostics, additive store1.14 |
 | nonlinear | Explicit causal interactions, TRAIN-only knots/scaling, QR linear models, bounded trees, matched research diagnostics, additive store1.13 |
@@ -313,12 +314,25 @@ Aleatoric is distinct from epistemic; disagreement is not automatically epistemi
 quality diagnostics are not variance; calibration and sharpness remain separate.
 Uncertainty is horizon-specific descriptive metadata with causal availability.
 
-**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.** Supplied signal
-residualization/projection, pairwise/multivariate redundancy, partial correlation,
-incremental explanatory value, collinearity and cross-sectional/temporal redundancy.
-No invariance framework yet. **Stop after AFRE-15.**
+AFRE-16 adds [causal signal orthogonalization](docs/signal-orthogonalization.md): exact
+candidate/reference sources, TRAIN-only deterministic QR/preprocessing, target-free frozen residuals,
+common-intersection Pearson/Spearman matrices, rank/condition/VIF, partial association, matched
+base/augmented target-model diagnostics, temporal and historical cross-sectional panels, explicit
+AFRE-1 feature export and AFRE-9 PIT sector ranking, compatible-window descriptive stability,
+immutable additive16→17 persistence and bounded unified audits. Orthogonal != independent;
+redundancy is metric-dependent. No broad signal search, automatic pruning or model replacement.
+
+Run `.venv311/bin/python -m examples.orthogonalization_demo` for the37-step offline walkthrough
+and `.venv311/bin/python -m benchmarks.orthogonalization_profile` for the bounded profile.
+See [the A–BP completion report](docs/AFRE_16_COMPLETION_REPORT.md),
+[profile results](docs/orthogonalization-profile.json) and [temporal semantics](docs/temporal-redundancy.md).
+
+**Next scope: AFRE-17 — Invariance & Stability Research.** Performance stability across time,
+regimes, events, sectors/universes, market environments and feature-distribution shifts;
+coefficient/sign stability, forecast degradation and environment-conditioned invariance diagnostics
+with an explicit no-causal-proof boundary. **Stop after AFRE-16.** No AFRE-17 framework is implemented.
 Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
-Predictive metrics do not establish profitability.
+No AFRE phase claims trading profitability merely from predictive metrics.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.

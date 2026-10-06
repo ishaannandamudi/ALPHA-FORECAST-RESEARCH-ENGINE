@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-15.**" in master
-    assert "**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.**" in readme
+    assert "**Stop after AFRE-16.**" in master
+    assert "**Next scope: AFRE-17 — Invariance & Stability Research.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.16.0" and project["dependencies"] == []
+    assert project["version"] == "0.17.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,14 +274,12 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0 through AFRE-15" in text
-        assert (
-            "**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.**" in text
-        )
+        assert "AFRE-0 through AFRE-16" in text
+        assert "**Next scope: AFRE-17 — Invariance & Stability Research.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
-                r"AFRE-15[^\n.;]*?(?:unimplemented|remains deferred|is next)",
+                r"AFRE-16[^\n.;]*?(?:unimplemented|remains deferred|is next)",
                 document.read_text(),
             )
     assert (REPOSITORY / "docs/mixture-profile.json").is_file()
@@ -304,6 +302,7 @@ def main() -> None:
         MODEL_SCHEMA_VERSION,
         MULTIHORIZON_SCHEMA_VERSION,
         NONLINEAR_SCHEMA_VERSION,
+        ORTHOGONALIZATION_SCHEMA_VERSION,
         PROBABILISTIC_SCHEMA_VERSION,
         REGIME_CONDITIONED_SCHEMA_VERSION,
         SEQUENCE_SCHEMA_VERSION,
@@ -314,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.16.0"
+    assert ENGINE_VERSION == "0.17.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -332,11 +331,44 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.15" and STORE_USER_VERSION == 16
-    assert SEQUENCE_SCHEMA_VERSION == UNCERTAINTY_SCHEMA_VERSION == "1.0"
+    assert STORE_SCHEMA_VERSION == "1.16" and STORE_USER_VERSION == 17
+    assert (
+        SEQUENCE_SCHEMA_VERSION
+        == UNCERTAINTY_SCHEMA_VERSION
+        == ORTHOGONALIZATION_SCHEMA_VERSION
+        == "1.0"
+    )
+    orthogonal_report = (REPOSITORY / "docs/AFRE_16_COMPLETION_REPORT.md").read_text()
+    orthogonal_labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 81)),
+    )
+    assert len(orthogonal_labels) == 68
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", orthogonal_report, re.MULTILINE) == list(
+        orthogonal_labels
+    )
+    assert re.findall(r"^\| (\d+) \|", orthogonal_report, re.MULTILINE) == [
+        str(i) for i in range(1, 50)
+    ]
+    for name in (
+        "signal-orthogonalization.md",
+        "signal-redundancy.md",
+        "partial-correlation.md",
+        "orthogonal-signal-construction.md",
+        "collinearity-diagnostics.md",
+        "incremental-signal-value.md",
+        "cross-sectional-redundancy.md",
+        "temporal-redundancy.md",
+        "orthogonalization-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    for text in (master, readme):
+        assert "Orthogonal != independent" in text
+        assert "**Stop after AFRE-16.**" in text
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 65-item A–BM scope"
+        "versions, links, historical reports and current 68-item A–BP scope"
     )
 
 

@@ -97,17 +97,26 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred.
 
 
 ## AFRE-14 sequence integration
 
 Sequence inputs consume existing causal event attributes with exact occurrence and availability evidence; they do not re-extract events or use post-origin attributes.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
 
 ## AFRE-15 uncertainty integration
 
 AFRE-15 retains event-conditioned source laws where compatible; conditioned-vs-base absolute spread is a non-causal proxy, with event class/subtype coverage cohorts. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
+
+## AFRE-16 integration
+
+Causal event forecast values and declared shifts can participate as exact scalar source artifacts with the same full origin/sample/target/horizon. This supplies inputs to fixed TRAIN redundancy analysis; event outputs are not automatically replaced or declared independent.
+
+See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
+no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
+guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.

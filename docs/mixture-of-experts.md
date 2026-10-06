@@ -69,17 +69,26 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred.
 
 
 ## AFRE-14 sequence integration
 
 Exact causal expert/mixture outputs may become sequence predictors with preserved target/horizon and lineage; expert-combination weights are not portfolio weights.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
 
 ## AFRE-15 uncertainty integration
 
 AFRE-15 adds exact within/between finite-mixture variance closure and compatible residuals/shares. Between-expert variance is disagreement, not automatically epistemic; point spread remains a non-additive proxy. See [uncertainty decomposition](forecast-uncertainty-decomposition.md).
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
+
+## AFRE-16 integration
+
+Exact expert point/law-expectation and mixture outputs can enter supplied signal comparisons. The expert/gate, target/horizon, source artifact, origin/sample, units and availability stay pinned. Diagnostics cannot prune experts, change a gate or form a new ensemble.
+
+See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
+no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
+guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.

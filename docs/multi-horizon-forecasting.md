@@ -81,7 +81,7 @@ downstream HFT integration supplies adapters. Predictive metrics do not prove pr
 
 Sequence specs, transforms, datasets and models remain independently target/horizon-specific; actual1h/1d identities stay distinct without inferred covariance.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
 
 ## AFRE-15 uncertainty integration
 

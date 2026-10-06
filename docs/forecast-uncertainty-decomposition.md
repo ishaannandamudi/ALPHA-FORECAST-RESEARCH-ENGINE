@@ -16,6 +16,15 @@ See [identifiability](uncertainty-identifiability.md), [noise and knowledge sema
 
 Run the35-step offline demo with `PYTHONPATH=src:. .venv311/bin/python -m examples.uncertainty_demo`.
 
-**Stop after AFRE-15. Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.** No ranking adjustment, model search, ensemble construction, invariance, portfolio allocation or refit automation is implemented.
+**Stop after AFRE-16. Next scope: AFRE-17 — Invariance & Stability Research.** No ranking adjustment, model search, ensemble construction, invariance, portfolio allocation or refit automation is implemented.
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
+
+## AFRE-16 integration
+
+Identified or explicitly numerical proxy diagnostics can enter supplied signal comparisons only with exact component/measure/method/units/model/covariance policy. An uncertainty quality label is not numerical variance or alpha. Candidate projections remain target-free and cannot manufacture epistemic attribution.
+
+See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
+no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
+guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.

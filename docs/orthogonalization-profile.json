@@ -1,0 +1,63 @@
+{
+  "causal_workflow": {
+    "artifacts": 222,
+    "audit_nodes": 548,
+    "references": 2,
+    "test_rows": 4,
+    "timings_seconds": {
+      "alignment": 0.14935725001851097,
+      "audit": 1.1420862919767387,
+      "correlation_matrix": 0.004974416980985552,
+      "evaluation": 0.039771666983142495,
+      "idempotent_persistence": 0.003728209005203098,
+      "partial_correlation": 0.013743209012318403,
+      "projection": 0.008714041963685304,
+      "residual_application": 0.027126084023620933,
+      "restart_replay": 0.0643427079776302,
+      "target_model_fit": 0.03475250001065433,
+      "upstream_fixture_and_build": 36.538393415976316
+    },
+    "train_rows": 12,
+    "validation_rows": 12
+  },
+  "engine_version": "0.17.0",
+  "kernel_only_workload": {
+    "causal_repository_admission": false,
+    "references": 12,
+    "rows": 2000,
+    "supplied_candidates": 8,
+    "timings_seconds": {
+      "candidate_reference_correlations": 0.1040429170243442,
+      "qr_projection": 1.12287116603693,
+      "residual_application": 0.010698167025111616
+    }
+  },
+  "limitations": [
+    "synthetic offline workload",
+    "kernel rows are arithmetic fixtures, not admitted causal TRAIN rows",
+    "hardware-specific timings",
+    "no production SLA",
+    "no profitability inference"
+  ],
+  "maximum_numerical_errors": {
+    "coefficient": 5.773159728050814e-15,
+    "incremental_metric": 4.3520742565306136e-14,
+    "partial_target_correlation": 0.0,
+    "pearson": 0.0,
+    "r_squared": 0.0,
+    "residual": 0.0,
+    "spearman": 1.3877787807814457e-17,
+    "stability_coefficient_range": 0.0,
+    "variance_ratio": 0.0,
+    "vif": 3.1086244689504383e-15
+  },
+  "offline": true,
+  "orthogonalization_schema": "1.0",
+  "production_sla": false,
+  "sqlite_user_version": 17,
+  "storage": {
+    "orthogonalization_payload_bytes": 344653,
+    "whole_registry_bytes": 25513984
+  },
+  "store_schema": "1.16"
+}

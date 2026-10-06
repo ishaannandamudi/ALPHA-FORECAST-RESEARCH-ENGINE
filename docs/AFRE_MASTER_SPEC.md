@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-15 complete**, engine 0.16.0,
+Status: **AFRE-0 through AFRE-16 complete**, engine 0.17.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared uncertainty store 1.15/user_version=16; regime-conditioned, mixture, nonlinear, sequence and uncertainty schemas1.0.
+shared orthogonalization store 1.16/user_version=17; regime-conditioned, mixture, nonlinear, sequence, uncertainty and orthogonalization schemas1.0.
 
 ## Mission and philosophy
 
@@ -228,13 +228,13 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-14.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-16.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
 AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
-AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is next;
+AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred;
 model selection, ensembles,
 portfolios and execution remain deferred.
 
@@ -778,11 +778,60 @@ See [uncertainty architecture](forecast-uncertainty-decomposition.md), [identifi
 [parameter methods](parameter-uncertainty.md), [evaluation](uncertainty-evaluation.md),
 [profile](uncertainty-benchmark.md) and [A–BM report](AFRE_15_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-16 — Signal Orthogonalization & Redundancy Analysis.** Residualization,
-projection against existing signals, pairwise/multivariate redundancy, partial correlation,
-incremental explanatory value, collinearity diagnostics, orthogonal signal construction,
-cross-sectional and temporal redundancy. No invariance framework yet. **Stop after AFRE-15.**
-No AFRE-16 implementation, risk budget, position sizing, portfolio/risk/execution or direct
-external-engine integration. Model selection and ensembles remain separate later phases.
+## AFRE-16 completed scope
+
+Supplied exact candidate/reference semantic/model/version/unit identities bind source artifacts to
+admitted research samples/full origins. Ordinary features, neutral external sources, event/regime,
+expert/mixture, nonlinear/sequence outputs and explicitly numerical uncertainty diagnostics are
+supported without direct external-engine dependencies. Provider publication is not AFRE receipt.
+Qualified reconstructed bindings require caller-approved exact historical-delivery evidence and
+retain later actual receipt/ingestion/computation clocks.
+
+TRAIN-only deterministic pivoted QR projects the candidate response on references, with explicit
+intercept, NONE/TRAIN_STANDARDIZE preprocessing, equal-row weights, minimum support and stable
+rank/condition policy. Frozen coefficients/preprocessing, exact TRAIN samples/candidate values,
+VIF and common-intersection correlation matrices are persisted. Deficient/ill-conditioned designs
+fail; no hidden imputation, pseudo-inverse, regularization or pruning occurs. Target-free residual
+construction requires feature-only reads, causal sources/model and actual computation no later
+than the full origin cutoff. Residuals preserve candidate units and explicit missing states.
+
+Held-out R²/MSE and population residual/candidate variance ratios remain distinct. Separately fixed
+TRAIN target readouts compare references-only with references plus raw candidate/residual on the
+same exact later truth intersection, with augmented-minus-base metrics and explicit TEST seals.
+Partial Pearson and rank-of-linear-residual association use separately TRAIN-fitted nuisance
+transforms. Orthogonal != independent; redundancy depends on the declared metric, sample and set.
+No significance, uniqueness, causal novelty or profitability is inferred.
+
+TEMPORAL_PANEL and CROSS_SECTIONAL_HISTORICAL are implemented. Historical cross-sectional fits
+pin complete eligible AFRE-3/9 TRAIN grids and apply within later origins. Explicit residual feature
+export and AFRE-9 ranking retain exact target/horizon, universe and historical group memberships.
+One full universe/origin context per timestamp is required for cross-sectional fitting, evaluation
+and ranking.
+Actual1h/1d analyses are separate. Caller-supplied independent candidates and ordered disjoint-window
+coefficient/correlation/variance-ratio summaries never search references, select survivors, refit,
+promote or mutate downstream models. Per-origin fits, lag search, basis construction and a new
+within-group projection estimator are unsupported.
+
+Engine0.17.0, orthogonalization schema1.0, store1.16/user_version17, all earlier schemas1.0 and zero
+runtime dependencies. Transactional16→17 migration preserves prior rows/DDL/metadata. Safe canonical
+immutable artifacts verify family/schema/hash, indexed projections/links and semantic replay.
+Frozen snapshots isolate concurrent candidate/reference/projection/target corrections. Bounds cover
+references/candidates, rows, matrix/work cells, family counts, windows, payload and lineage bytes/nodes/depth.
+
+See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.md),
+[partial association](partial-correlation.md), [construction](orthogonal-signal-construction.md),
+[collinearity](collinearity-diagnostics.md), [incremental value](incremental-signal-value.md),
+[cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
+[profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-17 — Invariance & Stability Research.** Performance stability across time,
+regimes, events, sectors/universes, market environments and feature-distribution shifts;
+coefficient/sign stability, forecast degradation and environment-conditioned invariance diagnostics
+with an explicit no-causal-proof boundary. **Stop after AFRE-16.** No AFRE-17 framework, cost
+evaluation, multiple-testing framework, broad model selection, general ensemble or automatic pruning
+is implemented. AFRE-18 cost-aware evaluation stays separate from portfolio construction; AFRE-19
+multiple-testing/overfitting controls remain explicit; AFRE-20 model selection remains separate from
+AFRE-21 ensemble construction; AFRE-22 drift/decay remains separate from AFRE-23 champion/challenger
+evaluation. AFRE-24 is the forecast service boundary and AFRE-25 final integration/hardening.
 Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
-No AFRE phase claims profitability from predictive metrics.
+No AFRE phase claims trading profitability merely from predictive metrics.
