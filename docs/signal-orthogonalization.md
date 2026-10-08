@@ -62,4 +62,12 @@ timestamp. Distinct
 universe, cutoff, session or build contexts at the same timestamp are rejected rather than pooled
 into a single rank-IC slice.
 
-AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 [cost-aware research evaluation](transaction-cost-aware-research.md) is complete.
+
+AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
+evaluates frozen native forecasts/residual signals using separate exposure, cost and later
+truth artifacts. Gross and net remain separate; PIT cohorts retain full-path trade deltas.
+Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
+Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
+settings. No execution, model selection, direct external-engine dependency or profitability
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.

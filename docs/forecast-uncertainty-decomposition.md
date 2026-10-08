@@ -16,7 +16,7 @@ See [identifiability](uncertainty-identifiability.md), [noise and knowledge sema
 
 Run the35-step offline demo with `PYTHONPATH=src:. .venv311/bin/python -m examples.uncertainty_demo`.
 
-**Stop after AFRE-17. Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** AFRE-17 adds declared descriptive stability research. Ranking adjustment, model search, ensemble construction, cost-aware evaluation, portfolio allocation and refit automation remain deferred.
+**Stop after AFRE-18. Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.** AFRE-17 adds declared descriptive stability research. AFRE-18 cost-aware evaluation is complete; ranking adjustment, model search, ensemble construction, portfolio allocation and refit automation remain deferred.
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
 
@@ -29,4 +29,12 @@ no automatic pruning or broad signal search occurs. Orthogonal != independent, r
 guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
 remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is complete.
 
-AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 [cost-aware research evaluation](transaction-cost-aware-research.md) is complete.
+
+AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
+evaluates frozen native forecasts/residual signals using separate exposure, cost and later
+truth artifacts. Gross and net remain separate; PIT cohorts retain full-path trade deltas.
+Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
+Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
+settings. No execution, model selection, direct external-engine dependency or profitability
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.

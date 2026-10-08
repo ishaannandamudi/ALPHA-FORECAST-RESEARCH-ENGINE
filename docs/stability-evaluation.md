@@ -12,4 +12,9 @@ SQLite17→18 is transactional and additive, preserving prior DDL/metadata/rows.
 
 Default hard limits:32 environments,8 explicit compounds,2,000 samples/forecasts,24 metric selectors,16 declared features,32 windows,64,000 work/grid cells,20,000 artifacts per family,8MiB payload/lineage,100,000 audit nodes and64 depth. Lower caller limits apply on reads and writes. Unified lineage traces environments, memberships, native forecasts/models, PIT event/regime/group/universe evidence, TRAIN fit records, exact evaluation truth and TEST seals. Audits explicitly state the absence of causal proof, significance, profitability, model search and automatic mutation.
 
-See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** **Stop after AFRE-17.**
+See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
+Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
+research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
+a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
+remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.

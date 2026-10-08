@@ -10,4 +10,16 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** **Stop after AFRE-17.**
+**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
+Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
+research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
+a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
+remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
+AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
+evaluates frozen native forecasts/residual signals using separate exposure, cost and later
+truth artifacts. Gross and net remain separate; PIT cohorts retain full-path trade deltas.
+Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
+Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
+settings. No execution, model selection, direct external-engine dependency or profitability
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.

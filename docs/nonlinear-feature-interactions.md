@@ -2,7 +2,7 @@
 
 AFRE-13 is complete: engine0.14.0, nonlinear schema1.0, shared store1.13/user14.
 AFRE-0 through AFRE-25 remains the frozen 26-phase roadmap. Earlier public schemas
-and source/test semantics are unchanged. Stop after AFRE-17; AFRE-17 Invariance & Stability Research is complete. AFRE-18 cost-aware evaluation remains deferred.
+and source/test semantics are unchanged. Stop after AFRE-18; AFRE-17 Invariance & Stability Research is complete. AFRE-18 cost-aware research evaluation is complete.
 
 The package separates immutable semantic definitions, exact origin-specific scalar
 inputs, pure transforms, TRAIN matrices/fitted state, linear/tree fitting, target-free
@@ -54,4 +54,4 @@ no automatic pruning or broad signal search occurs. Orthogonal != independent, r
 guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
 remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is complete.
 
-AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 [cost-aware research evaluation](transaction-cost-aware-research.md) is complete.

@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-17 complete**, engine 0.18.0,
+Status: **AFRE-0 through AFRE-18 complete**, engine 0.19.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared invariance store 1.17/user_version=18; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization and invariance schemas 1.0.
+shared cost-research store 1.18/user_version=19; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance and transaction-cost-research schemas 1.0.
 
 ## Mission and philosophy
 
@@ -228,7 +228,7 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-17.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-18.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
@@ -824,18 +824,16 @@ See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.
 [cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
 [profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Declared neutral cost inputs, spread/slippage/impact assumptions, turnover-aware research diagnostics, gross versus net expected edge and break-even cost; no execution optimization. **Stop after AFRE-17.** No AFRE-18 cost
-evaluation, multiple-testing framework, broad model selection, general ensemble or automatic pruning
-is implemented. AFRE-18 cost-aware evaluation stays separate from portfolio construction; AFRE-19
-multiple-testing/overfitting controls remain explicit; AFRE-20 model selection remains separate from
-AFRE-21 ensemble construction; AFRE-22 drift/decay remains separate from AFRE-23 champion/challenger
-evaluation. AFRE-24 is the forecast service boundary and AFRE-25 final integration/hardening.
-Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
-No AFRE phase claims trading profitability merely from predictive metrics.
+**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
+Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
+research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
+a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
+remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-17 completed scope
 
-AFRE-0 through AFRE-17 are complete. Engine 0.18.0, invariance/stability schema 1.0,
+Historical AFRE-17 checkpoint: engine 0.18.0, invariance/stability schema 1.0,
 shared store 1.17/SQLite user_version=18; every earlier public schema remains 1.0.
 The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25.
 
@@ -849,11 +847,38 @@ Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline de
 `.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
 [A–BW completion report](AFRE_17_COMPLETION_REPORT.md) and [profile](invariance-profile.json).
 
-**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Cost-aware alpha
-evaluation, spread/slippage/impact assumptions, neutral provider cost inputs, turnover-aware
-research diagnostics, gross versus net expected edge, break-even cost and market-impact-aware
-research comparison; no execution optimization. **Stop after AFRE-17.**
-AFRE-19 multiple-testing controls remain explicit; AFRE-20 model selection remains separate
-from AFRE-21 ensembles; AFRE-22 drift/decay remains separate from AFRE-23 champion/challenger.
-AFRE-24 is the final forecast service boundary; AFRE-25 is final integration/hardening.
-Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
+Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
+research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
+a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
+remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
+## AFRE-18 completed scope
+
+AFRE-0 through AFRE-18 are complete. Engine 0.19.0, transaction-cost-research schema 1.0,
+shared store 1.18/SQLite user_version=19; all earlier schemas remain 1.0 and runtime
+dependencies remain empty. The frozen roadmap has 26 distinct phases, AFRE-0 through AFRE-25.
+
+AFRE-18 adds explicit bounded per-security exposure paths, initial policies, absolute-change
+turnover, six-clock provider-neutral spread/fee/slippage/impact inputs, historical-causal
+and ex-post timing, matched arithmetic gross/cost/net contributions, explicit missing/fallback
+policy, embedded-category protection, algebraic break-even and supplied sensitivity grids.
+Native forecasts, residual signals, uncertainty metadata, PIT cohorts and actual1h/1d
+assessments remain distinct. No execution optimization, fill, capacity, profitability,
+portfolio performance, automatic selection or TEST-driven tuning claim is made.
+
+See [cost research](transaction-cost-aware-research.md),
+[scenarios](cost-scenarios.md), [exposure rules](research-exposure-rules.md),
+[spread/fees/slippage](spread-fee-slippage.md), [impact](market-impact-research.md),
+[turnover](turnover-diagnostics.md), [break-even](break-even-cost.md),
+[sensitivity](cost-sensitivity.md), [measured profile](costs-profile.json) and
+[the A–BS report / 50 gates](AFRE_18_COMPLETION_REPORT.md).
+Run `PYTHONPATH=src:. .venv311/bin/python -m examples.costs_demo` for the checked 40-step
+offline demo and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.costs_profile` for the profile.
+
+**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
+Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
+research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
+a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
+remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.

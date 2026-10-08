@@ -45,10 +45,12 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-17.**" in master
-    assert "**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.**" in readme
+    assert "**Stop after AFRE-18.**" in master
+    assert (
+        "**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**" in readme
+    )
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.18.0" and project["dependencies"] == []
+    assert project["version"] == "0.19.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,8 +276,11 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0 through AFRE-17" in text
-        assert "**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.**" in text
+        assert "AFRE-0 through AFRE-18" in text
+        assert (
+            "**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**"
+            in text
+        )
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -313,7 +318,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.18.0"
+    assert ENGINE_VERSION == "0.19.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +336,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.17" and STORE_USER_VERSION == 18
+    assert STORE_SCHEMA_VERSION == "1.18" and STORE_USER_VERSION == 19
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,7 +370,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-17.**" in text
+        assert "**Stop after AFRE-18.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -397,9 +402,42 @@ def main() -> None:
                 r"AFRE-17[^\n.;]*?(?:remains deferred|is deferred|unimplemented|is next)", text
             )
             assert not re.search(r"Next scope: AFRE-17|Stop after AFRE-16", text)
+    from afre.version import COST_RESEARCH_SCHEMA_VERSION
+
+    assert COST_RESEARCH_SCHEMA_VERSION == "1.0"
+    report = (REPOSITORY / "docs/AFRE_18_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 84)),
+    )
+    assert len(labels) == 71
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", report, re.MULTILINE) == list(labels)
+    assert re.findall(r"^\| (\d+) \|", report, re.MULTILINE) == [str(i) for i in range(1, 51)]
+    for name in (
+        "transaction-cost-aware-research.md",
+        "cost-scenarios.md",
+        "research-exposure-rules.md",
+        "spread-fee-slippage.md",
+        "market-impact-research.md",
+        "turnover-diagnostics.md",
+        "break-even-cost.md",
+        "cost-sensitivity.md",
+        "costs-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            text = document.read_text()
+            assert not re.search(
+                r"AFRE-18 (?:cost-aware (?:research )?evaluation )?"
+                r"(?:remains deferred|is deferred|is unimplemented|is next)",
+                text,
+            )
+            assert not re.search(r"Next scope: AFRE-18|Stop after AFRE-17", text)
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 75-item A–BW scope/54 gates"
+        "versions, links, historical reports and current 71-item A–BS scope/50 gates"
     )
 
 
