@@ -119,6 +119,17 @@ def test_semantic_forgery_atomic(case: Case, kind: str) -> None:
     snap = case.repo.get(SequenceSnapshot, f.snapshot_id)
     value: Artifact
     if kind == "snapshot":
+        # Use explicit late evidence; fingerprint ordering can select a snapshot
+        # whose exclusions are already empty, making removal an idempotent write.
+        late = case.observe(45, 999.0, 65)
+        snap = case.engine.snapshot(
+            f.origin,
+            (case.micro,),
+            case.fixture.specs[0].window,
+            65,
+            (late.fingerprint,),
+        )
+        assert snap.exclusions == ((late.fingerprint, "future-availability"),)
         value = replace(snap, exclusions=())
     elif kind == "mask":
         # Forge a sourced mask into a padded cell while keeping value/mask agreement.

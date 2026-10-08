@@ -5,7 +5,7 @@ zero linear correlation does not prove statistical or causal independence, a uni
 source, or non-redundancy under nonlinear relationships. A residual signal is not guaranteed alpha.
 Predictive metrics do not establish trading profitability.
 
-`OrthogonalizationRepository` extends the unchanged AFRE-15 repository. Engine 0.17.0,
+`OrthogonalizationRepository` extends the unchanged AFRE-15 repository. The historical AFRE-16 checkpoint used engine 0.17.0,
 orthogonalization schema 1.0, shared store 1.16/user_version17. Transactional 16→17 migration
 preserves all prior rows, DDL, metadata and public schema versions. Runtime dependencies remain empty.
 
@@ -61,3 +61,5 @@ Cross-sectional fitting, evaluation and ranking require one full universe/origin
 timestamp. Distinct
 universe, cutoff, session or build contexts at the same timestamp are rejected rather than pooled
 into a single rank-IC slice.
+
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.

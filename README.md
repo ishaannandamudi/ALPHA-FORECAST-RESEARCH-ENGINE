@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-16 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-17 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.17.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence, uncertainty and orthogonalization schemas **1.0**;
-shared orthogonalization store **1.16**, `user_version=17` (additive to store1.15/user_version16). Runtime uses only the
+Python **3.11+**; engine **0.18.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization and invariance schemas **1.0**;
+shared invariance store **1.17**, `user_version=18` (additive to store1.16/user_version17). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -152,6 +152,7 @@ Use `DatasetRepository` for the additive shared store; prior interfaces stay str
 | event_conditioned | Exact event clocks/windows, TRAIN conditioning, overlap/reactions, matched evaluation and additive store1.10 |
 | mixture | Exact native/neutral experts, TRAIN-only simplex weights, finite laws, matched evaluation/ranks/diagnostics, additive store1.12 |
 | orthogonalization | TRAIN QR projections, causal residuals, matched matrices/partial/incremental metrics, PIT ranks, descriptive stability, store1.16 |
+| invariance | Declared PIT environments, explicit intersections, descriptive metrics/parameters/ranks, feature shift and separate degradation, store 1.17 |
 | uncertainty | Identified/proxy components, exact mixture closure, TRAIN OLS covariance, intervals, coverage/sharpness, buckets/drift, store1.15 |
 | sequence | Causal ordered windows, masks, TRAIN transforms, fixed decay/state dynamics, QR readouts, matched diagnostics, additive store1.14 |
 | nonlinear | Explicit causal interactions, TRAIN-only knots/scaling, QR linear models, bounded trees, matched research diagnostics, additive store1.13 |
@@ -322,15 +323,12 @@ AFRE-1 feature export and AFRE-9 PIT sector ranking, compatible-window descripti
 immutable additive16→17 persistence and bounded unified audits. Orthogonal != independent;
 redundancy is metric-dependent. No broad signal search, automatic pruning or model replacement.
 
-Run `.venv311/bin/python -m examples.orthogonalization_demo` for the37-step offline walkthrough
+Run `.venv311/bin/python -m examples.orthogonalization_demo` for the 37-step offline walkthrough
 and `.venv311/bin/python -m benchmarks.orthogonalization_profile` for the bounded profile.
 See [the A–BP completion report](docs/AFRE_16_COMPLETION_REPORT.md),
 [profile results](docs/orthogonalization-profile.json) and [temporal semantics](docs/temporal-redundancy.md).
 
-**Next scope: AFRE-17 — Invariance & Stability Research.** Performance stability across time,
-regimes, events, sectors/universes, market environments and feature-distribution shifts;
-coefficient/sign stability, forecast degradation and environment-conditioned invariance diagnostics
-with an explicit no-causal-proof boundary. **Stop after AFRE-16.** No AFRE-17 framework is implemented.
+**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Declared neutral cost inputs, spread/slippage/impact assumptions, turnover-aware research diagnostics, gross versus net expected edge and break-even cost; no execution optimization. **Stop after AFRE-17.** AFRE-17 is implemented; AFRE-18 cost-aware evaluation remains deferred.
 Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
 No AFRE phase claims trading profitability merely from predictive metrics.
 
@@ -403,3 +401,28 @@ There is no direct external-engine dependency, broad model search or uncertainty
 [sources](docs/external-sequence-integration.md), [evaluation](docs/sequence-evaluation.md),
 [profile](docs/sequence-benchmark.md), [A–BT report](docs/AFRE_14_COMPLETION_REPORT.md).
 Run `PYTHONPATH=src:. .venv311/bin/python -m examples.sequence_demo` for the 37-step offline demo.
+
+## AFRE-17 completed scope
+
+AFRE-0 through AFRE-17 are complete. Engine 0.18.0, invariance/stability schema 1.0,
+shared store 1.17/SQLite user_version=18; every earlier public schema remains 1.0.
+The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25.
+
+AFRE-17 adds [declared environment stability](docs/invariance-stability-research.md), exact PIT
+memberships, native point/probabilistic/calibration/IC metrics, explicit intersections and
+minimum counts, supplied frozen parameter diagnostics, feature-distribution distances and
+separate error degradation. Stability != causal invariance proof. No significance or trading
+profitability claim, TEST-driven environment selection, auto-refit, auto-prune or promotion.
+
+Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline demo and
+`.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
+[A–BW completion report](docs/AFRE_17_COMPLETION_REPORT.md) and [profile](docs/invariance-profile.json).
+
+**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Cost-aware alpha
+evaluation, spread/slippage/impact assumptions, neutral provider cost inputs, turnover-aware
+research diagnostics, gross versus net expected edge, break-even cost and market-impact-aware
+research comparison; no execution optimization. **Stop after AFRE-17.**
+AFRE-19 multiple-testing controls remain explicit; AFRE-20 model selection remains separate
+from AFRE-21 ensembles; AFRE-22 drift/decay remains separate from AFRE-23 champion/challenger.
+AFRE-24 is the final forecast service boundary; AFRE-25 is final integration/hardening.
+Portfolio construction, risk optimization and execution remain downstream projects after AFRE.

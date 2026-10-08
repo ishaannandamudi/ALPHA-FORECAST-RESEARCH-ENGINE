@@ -190,14 +190,14 @@ implementation dependency exists. Target-free application, immutable source revi
 matched later truth, AFRE-9 ranking and bounded replay preserve prior semantics.
 Diagnostics are arithmetic/descriptive, not causal importance; no automatic pruning/model
 selection or sequence modeling is implemented. Predictive metrics do not establish
-profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred.
+profitability. AFRE-14 Temporal / Sequence Models is complete; AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete.
 
 
 ## AFRE-14 sequence integration
 
 Sequence artifacts preserve canonical ordering, source revision policy, masks, TRAIN normalization, supplied dynamics, actual clocks and exact matched truth across hash seeds, reversed insertion and restart.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete; predictive metrics do not establish profitability.
 
 ## AFRE-15 uncertainty integration
 
@@ -212,4 +212,6 @@ AFRE-16 adds exact source/observation/spec/row/matrix/projection/residual/evalua
 See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
 no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
 guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
-remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is complete.
+
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.

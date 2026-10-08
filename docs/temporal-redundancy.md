@@ -27,7 +27,7 @@ separate; no pooled predictive claim or horizon-time scaling is invented.
 raw-unit coefficient ranges (undoing each TRAIN standardization), residual/candidate variance
 ratios and raw-reference correlation values. It cannot refit, delete a signal, change a feature
 set, promote survivors or modify downstream models. This bounded descriptive summary is not the
-AFRE-17 environment/invariance framework, which remains deferred.
+AFRE-17 environment/invariance framework, which is now implemented.
 
 See [redundancy measures](signal-redundancy.md) and [AFRE-17 boundary](signal-orthogonalization.md).
 Residuals are not guaranteed alpha. Predictive metrics do not establish trading profitability.

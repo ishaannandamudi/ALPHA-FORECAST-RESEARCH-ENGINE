@@ -202,13 +202,31 @@ def build_fixture(
     )
 
 
+def irregular_forecast(repo: SequenceRepository, fixture: SequenceFixture) -> SequenceForecast:
+    from afre.sequence import SequenceObservation
+
+    # This neutral scenario explicitly contains the irregular early history and
+    # later correction. Fingerprint ordering can change between engine versions.
+    securities = {
+        o.security
+        for identity in fixture.observation_ids
+        if (o := repo.get(SequenceObservation, identity)).observation_ns == 4
+        and o.available_ns == 65
+    }
+    return next(
+        f
+        for identity in fixture.forecasts[0]
+        if (f := repo.get(SequenceForecast, identity)).origin.instrument in securities
+    )
+
+
 def correct_micro(
     repo: SequenceRepository, fixture: SequenceFixture, at: int, received: int, number: float
 ) -> str:
     from afre.nonlinear import ScalarInput
     from afre.sequence import SequenceObservation
 
-    first = repo.get(SequenceForecast, fixture.forecasts[0][0])
+    first = irregular_forecast(repo, fixture)
     old = next(
         repo.get(SequenceObservation, i)
         for i in fixture.observation_ids
@@ -254,7 +272,7 @@ def demonstrate(repo: SequenceRepository, fixture: SequenceFixture) -> tuple[str
         print(f"{len(steps)}. PASS {description}")
 
     engine = SequenceEngine(repo)
-    first = repo.get(SequenceForecast, fixture.forecasts[0][0])
+    first = irregular_forecast(repo, fixture)
     snap = repo.get(SequenceSnapshot, first.snapshot_id)
     done("ordinary causal feature history")
     assert len(set(snap.gap_seconds)) > 1

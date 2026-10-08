@@ -2,7 +2,7 @@
 
 AFRE-13 is complete: engine0.14.0, nonlinear schema1.0, shared store1.13/user14.
 AFRE-0 through AFRE-25 remains the frozen 26-phase roadmap. Earlier public schemas
-and source/test semantics are unchanged. Stop after AFRE-16; AFRE-17 Invariance & Stability Research remains deferred.
+and source/test semantics are unchanged. Stop after AFRE-17; AFRE-17 Invariance & Stability Research is complete. AFRE-18 cost-aware evaluation remains deferred.
 
 The package separates immutable semantic definitions, exact origin-specific scalar
 inputs, pure transforms, TRAIN matrices/fitted state, linear/tree fitting, target-free
@@ -37,7 +37,7 @@ See [definitions](interaction-definitions.md), [transforms](nonlinear-transforms
 
 Causal interaction outputs may become ordered sequence inputs with exact definitions, units, source clocks and nested expert-horizon/attestor checks.
 See [temporal sequences](temporal-sequence-models.md) and [causal sequence training](causal-sequence-training.md).
-AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred; predictive metrics do not establish profitability.
+AFRE-15 uncertainty decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete; predictive metrics do not establish profitability.
 
 ## AFRE-15 uncertainty integration
 
@@ -52,4 +52,6 @@ Nonlinear outputs or causal scalar inputs can enter supplied TRAIN projection an
 See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
 no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
 guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
-remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is complete.
+
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.

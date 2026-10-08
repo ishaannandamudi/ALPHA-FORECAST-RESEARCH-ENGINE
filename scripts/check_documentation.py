@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-16.**" in master
-    assert "**Next scope: AFRE-17 — Invariance & Stability Research.**" in readme
+    assert "**Stop after AFRE-17.**" in master
+    assert "**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.17.0" and project["dependencies"] == []
+    assert project["version"] == "0.18.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,12 +274,12 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0 through AFRE-16" in text
-        assert "**Next scope: AFRE-17 — Invariance & Stability Research.**" in text
+        assert "AFRE-0 through AFRE-17" in text
+        assert "**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
-                r"AFRE-16[^\n.;]*?(?:unimplemented|remains deferred|is next)",
+                r"AFRE-17[^\n.;]*?(?:unimplemented|remains deferred|is next)",
                 document.read_text(),
             )
     assert (REPOSITORY / "docs/mixture-profile.json").is_file()
@@ -313,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.17.0"
+    assert ENGINE_VERSION == "0.18.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +331,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.16" and STORE_USER_VERSION == 17
+    assert STORE_SCHEMA_VERSION == "1.17" and STORE_USER_VERSION == 18
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,10 +365,41 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-16.**" in text
+        assert "**Stop after AFRE-17.**" in text
+    from afre.version import INVARIANCE_SCHEMA_VERSION
+
+    assert INVARIANCE_SCHEMA_VERSION == "1.0"
+    report = (REPOSITORY / "docs/AFRE_17_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 88)),
+    )
+    assert len(labels) == 75
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", report, re.MULTILINE) == list(labels)
+    assert re.findall(r"^\| (\d+) \|", report, re.MULTILINE) == [str(i) for i in range(1, 55)]
+    for name in (
+        "invariance-stability-research.md",
+        "environment-definitions.md",
+        "time-stability.md",
+        "regime-event-stability.md",
+        "sector-universe-stability.md",
+        "feature-distribution-shift.md",
+        "forecast-degradation.md",
+        "stability-evaluation.md",
+        "invariance-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            text = document.read_text()
+            assert not re.search(
+                r"AFRE-17[^\n.;]*?(?:remains deferred|is deferred|unimplemented|is next)", text
+            )
+            assert not re.search(r"Next scope: AFRE-17|Stop after AFRE-16", text)
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 68-item A–BP scope"
+        "versions, links, historical reports and current 75-item A–BW scope/54 gates"
     )
 
 

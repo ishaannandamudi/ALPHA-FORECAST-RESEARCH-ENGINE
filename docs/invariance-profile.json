@@ -1,0 +1,32 @@
+{
+  "artifacts": 77,
+  "audit_nodes": 366,
+  "canonical_payload_bytes": 361222,
+  "engine": "0.18.0",
+  "limits": "Offline synthetic measurement; arithmetic workload is separate from the native workflow; no production SLA.",
+  "maximum_numerical_error": {
+    "KS": 0.0,
+    "degradation": 0.0
+  },
+  "native_environments": 2,
+  "native_memberships": 24,
+  "native_metrics": 44,
+  "native_samples": 12,
+  "schema": "1.0",
+  "seconds": {
+    "audit": 1.038391917012632,
+    "coefficients": 0.09783683298155665,
+    "comparison": 0.2775526670156978,
+    "degradation": 0.277528207981959,
+    "environment_aggregation": 0.8237240840098821,
+    "feature_shift": 0.24645720899570733,
+    "idempotent_persistence": 0.056362500006798655,
+    "membership_construction_and_idempotent_publication": 0.15412970900069922,
+    "membership_replay": 0.14456024998798966,
+    "restart": 6.899959374975879,
+    "separate_32_by_2000_KS_kernel": 0.02048229199135676,
+    "upstream_fixture_and_declaration": 31.584733084018808
+  },
+  "sqlite_bytes": 27197440,
+  "store": "1.17"
+}

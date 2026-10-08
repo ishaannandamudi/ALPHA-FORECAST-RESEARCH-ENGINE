@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-16 complete**, engine 0.17.0,
+Status: **AFRE-0 through AFRE-17 complete**, engine 0.18.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared orthogonalization store 1.16/user_version=17; regime-conditioned, mixture, nonlinear, sequence, uncertainty and orthogonalization schemas1.0.
+shared invariance store 1.17/user_version=18; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization and invariance schemas 1.0.
 
 ## Mission and philosophy
 
@@ -228,13 +228,13 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-16.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-17.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
 AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-12
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
-AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred;
+AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete;
 model selection, ensembles,
 portfolios and execution remain deferred.
 
@@ -505,7 +505,7 @@ TEST access/reuse. Paired diagnostics use exact full-origin intersection; suppli
 weighted MSE is descriptive and cannot select models. One bounded lineage spans
 all earlier phases. Snapshot-frozen reads, immutable safe JSON, verified indexes
 and additive transactional store1.8/user_version9 preserve earlier artifacts and
-metadata. Engine0.9.0, all public schemas1.0, zero runtime dependencies.
+metadata. Engine 0.9.0, all public schemas 1.0, zero runtime dependencies.
 
 See [multi-horizon forecasting](multi-horizon-forecasting.md),
 [horizon sets](horizon-sets.md), [dependence](cross-horizon-dependence.md),
@@ -543,8 +543,8 @@ uses explicit intersection. Top-bottom spreads are not tradable portfolio return
 no predictive metric proves profitability. No cross-horizon fused ranking exists.
 
 Additive transactional 9→10 migration, immutable safe JSON, verified indexes and
-bounded unified lineage preserve every prior row/DDL/metadata value. Engine0.10.0,
-store1.9/user_version10, cross-sectional schema1.0; zero runtime dependencies.
+bounded unified lineage preserve every prior row/DDL/metadata value. Engine 0.10.0,
+store1.9/user_version10, cross-sectional schema 1.0; zero runtime dependencies.
 See [rankings](cross-sectional-ranking.md), [normalization](cross-sectional-normalization.md),
 [IC](information-coefficient.md), [groups](group-neutral-ranking.md),
 [stability](rank-stability.md), [external integration](external-signal-integration.md),
@@ -585,7 +585,7 @@ Predictive metrics never prove trading profitability.
 
 Atomic10→11 migration preserves all previous rows/DDL/metadata; new safe immutable
 JSON, verified indexes, bounded lineage/replay and frozen reads resist subsequent
-corrections. Engine0.11.0, store1.10/user_version11, event-conditioned schema1.0;
+corrections. Engine 0.11.0, store1.10/user_version11, event-conditioned schema 1.0;
 zero runtime dependencies. Earlier repository interfaces retain their original
 snapshot metadata. See [forecasting](event-conditioned-forecasting.md),
 [time](event-time-semantics.md), [windows](event-windows.md),
@@ -617,8 +617,8 @@ calibration is incompatible; dedicated regime fitting remains unavailable. Known
 drift describes probability/error/transition-frequency changes and never refits/selects.
 
 Immutable bounded safe JSON, verified relational projections, transactional11→12 migration,
-frozen reads and unified lineage preserve every earlier row/DDL/metadata item. Engine0.12.0,
-store1.11/user_version12, regime-conditioned schema1.0, zero runtime dependencies. No direct
+frozen reads and unified lineage preserve every earlier row/DDL/metadata item. Engine 0.12.0,
+store1.11/user_version12, regime-conditioned schema 1.0, zero runtime dependencies. No direct
 MCE/AME import, private database, sibling path, detector algorithm or executable plugin.
 Downstream HFT integration supplies adapters. No predictive metric proves profitability.
 See [forecasting](regime-conditioned-forecasting.md), [snapshots](regime-snapshots.md),
@@ -662,7 +662,7 @@ No expert independence, causal importance, portfolio interpretation or profitabi
 
 Safe immutable JSON, verified indexes, transactional12→13 migration and bounded unified
 lineage/frozen snapshots preserve every earlier row/DDL/metadata value and exact replay.
-Engine0.13.0, store1.12/user_version13, mixture schema1.0; older schemas remain1.0.
+Engine 0.13.0, store1.12/user_version13, mixture schema 1.0; older schemas remain1.0.
 Zero runtime dependencies; no direct AME/MCE/EIE/options implementation, sibling database,
 private class, filesystem assumption, dynamic executable payload or runtime network.
 Downstream HFT integration supplies real provider adapters. Expert weight != portfolio weight.
@@ -702,8 +702,8 @@ retain pinned truth and TEST seals/reuse. Compatible-window coefficient sign/mag
 and tree split recurrence are descriptive, never causal importance or automatic
 pruning/model selection. Safe bounded canonical JSON, verified projections/links,
 transactional13→14 migration, frozen snapshots and unified lineage preserve every
-prior registry row, DDL, metadata and public schema. Engine0.14.0, store1.13/user14,
-nonlinear schema1.0 and zero runtime dependencies. No direct external-engine dependency,
+prior registry row, DDL, metadata and public schema. Engine 0.14.0, store1.13/user14,
+nonlinear schema 1.0 and zero runtime dependencies. No direct external-engine dependency,
 sequence modeling, portfolio, risk optimization, execution or profitability claims.
 
 See [interactions](nonlinear-feature-interactions.md), [definitions](interaction-definitions.md),
@@ -740,7 +740,7 @@ identities, exact matched truth/proper scores, event/regime cohorts, TEST seals/
 coverage/coefficient ranges and bounded unified lineage are supported without auto-refit.
 
 Transactional14→15 migration is additive: all previous rows, DDL, metadata and public schemas
-remain unchanged. Engine0.15.0, sequence schema1.0, store1.14/user_version15, zero runtime
+remain unchanged. Engine 0.15.0, sequence schema 1.0, store1.14/user_version15, zero runtime
 dependencies. Strict safe canonical persistence verifies hashes, family/schema, projections,
 links and semantic replay. Limits128timestamps/16features/2000TRAINrows/2mworkcells/8MiB,
 plus explicit observation/forecast/audit counts/depth, fail closed. Provider timestamp honesty
@@ -772,7 +772,7 @@ actual1h/1d evidence remains independent, no joint law or time scaling is invent
 
 Immutable canonical data-only specs/components/decompositions/intervals/covariance/evaluations/
 comparison/drift/audits have fixed indexes and bounded unified lineage. Transactional15→16 migration
-adds uncertainty store1.15/user_version16; engine0.16.0, uncertainty schema1.0, all earlier schemas1.0,
+adds uncertainty store1.15/user_version16; engine0.16.0, uncertainty schema 1.0, all earlier schemas 1.0,
 zero runtime dependencies. Earlier public contracts/source/tests remain unchanged.
 See [uncertainty architecture](forecast-uncertainty-decomposition.md), [identifiability](uncertainty-identifiability.md),
 [parameter methods](parameter-uncertainty.md), [evaluation](uncertainty-evaluation.md),
@@ -812,7 +812,7 @@ coefficient/correlation/variance-ratio summaries never search references, select
 promote or mutate downstream models. Per-origin fits, lag search, basis construction and a new
 within-group projection estimator are unsupported.
 
-Engine0.17.0, orthogonalization schema1.0, store1.16/user_version17, all earlier schemas1.0 and zero
+Historical AFRE-16 checkpoint: Engine 0.17.0, orthogonalization schema 1.0, store1.16/user_version17, all earlier schemas 1.0 and zero
 runtime dependencies. Transactional16→17 migration preserves prior rows/DDL/metadata. Safe canonical
 immutable artifacts verify family/schema/hash, indexed projections/links and semantic replay.
 Frozen snapshots isolate concurrent candidate/reference/projection/target corrections. Bounds cover
@@ -824,10 +824,7 @@ See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.
 [cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
 [profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-17 — Invariance & Stability Research.** Performance stability across time,
-regimes, events, sectors/universes, market environments and feature-distribution shifts;
-coefficient/sign stability, forecast degradation and environment-conditioned invariance diagnostics
-with an explicit no-causal-proof boundary. **Stop after AFRE-16.** No AFRE-17 framework, cost
+**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Declared neutral cost inputs, spread/slippage/impact assumptions, turnover-aware research diagnostics, gross versus net expected edge and break-even cost; no execution optimization. **Stop after AFRE-17.** No AFRE-18 cost
 evaluation, multiple-testing framework, broad model selection, general ensemble or automatic pruning
 is implemented. AFRE-18 cost-aware evaluation stays separate from portfolio construction; AFRE-19
 multiple-testing/overfitting controls remain explicit; AFRE-20 model selection remains separate from
@@ -835,3 +832,28 @@ AFRE-21 ensemble construction; AFRE-22 drift/decay remains separate from AFRE-23
 evaluation. AFRE-24 is the forecast service boundary and AFRE-25 final integration/hardening.
 Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
 No AFRE phase claims trading profitability merely from predictive metrics.
+
+## AFRE-17 completed scope
+
+AFRE-0 through AFRE-17 are complete. Engine 0.18.0, invariance/stability schema 1.0,
+shared store 1.17/SQLite user_version=18; every earlier public schema remains 1.0.
+The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25.
+
+AFRE-17 adds [declared environment stability](invariance-stability-research.md), exact PIT
+memberships, native point/probabilistic/calibration/IC metrics, explicit intersections and
+minimum counts, supplied frozen parameter diagnostics, feature-distribution distances and
+separate error degradation. Stability != causal invariance proof. No significance or trading
+profitability claim, TEST-driven environment selection, auto-refit, auto-prune or promotion.
+
+Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline demo and
+`.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
+[A–BW completion report](AFRE_17_COMPLETION_REPORT.md) and [profile](invariance-profile.json).
+
+**Next scope: AFRE-18 — Transaction-Cost-Aware Research Evaluation.** Cost-aware alpha
+evaluation, spread/slippage/impact assumptions, neutral provider cost inputs, turnover-aware
+research diagnostics, gross versus net expected edge, break-even cost and market-impact-aware
+research comparison; no execution optimization. **Stop after AFRE-17.**
+AFRE-19 multiple-testing controls remain explicit; AFRE-20 model selection remains separate
+from AFRE-21 ensembles; AFRE-22 drift/decay remains separate from AFRE-23 champion/challenger.
+AFRE-24 is the final forecast service boundary; AFRE-25 is final integration/hardening.
+Portfolio construction, risk optimization and execution remain downstream projects after AFRE.

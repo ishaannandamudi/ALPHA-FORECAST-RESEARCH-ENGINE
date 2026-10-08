@@ -12,7 +12,7 @@ Candidate evidence must already be available at actual construction. TRAIN snaps
 
 [Windows](sequence-windows.md), [masks](sequence-masking.md), [time encoding](sequence-time-encoding.md), [causal fitting](causal-sequence-training.md), [families](sequence-model-families.md), [neutral sources](external-sequence-integration.md), [evaluation](sequence-evaluation.md), [profile](sequence-benchmark.md), [A–BT report](AFRE_14_COMPLETION_REPORT.md).
 
-AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research remains deferred. Predictive metrics do not establish profitability. Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
+AFRE-15 Forecast Uncertainty Decomposition is complete; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete. Predictive metrics do not establish profitability. Portfolio construction, risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-15 uncertainty integration
 
@@ -27,4 +27,6 @@ Exact causal sequence forecasts can enter temporal/historical cross-sectional re
 See [signal orthogonalization](signal-orthogonalization.md). Supplied candidate/reference sets are fixed;
 no automatic pruning or broad signal search occurs. Orthogonal != independent, residuals are not
 guaranteed alpha, and predictive metrics do not establish trading profitability. The frozen roadmap
-remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is deferred.
+remains26 distinct phases, AFRE-0 through AFRE-25; AFRE-17 Invariance & Stability Research is complete.
+
+AFRE-17 adds [declared environment stability research](invariance-stability-research.md) over frozen artifacts. PIT memberships, target/horizon compatibility, exact intersections and minimum counts remain explicit. Input shift and error degradation are separate; there is no causal-proof, significance, profitability, auto-refit/prune or promotion claim. AFRE-18 cost-aware research evaluation remains deferred.

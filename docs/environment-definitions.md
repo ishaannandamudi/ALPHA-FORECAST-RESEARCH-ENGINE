@@ -1,0 +1,13 @@
+# Declared environments and causal memberships
+
+`EnvironmentDefinition` pins a logical ID, category, label, version, provider, target/horizon, matching rule, declaration time, minimum count and explicit validity/availability policies. `EnvironmentSet` canonicalizes exact definitions and rejects duplicate names, mixed targets and unsupported compounds. There are no executable predicates or automatically discovered partitions.
+
+Implemented categories are TIME_WINDOW; filtered hard or soft REGIME; EVENT class with optional exact materiality/novelty/surprise ranges and native event window; PIT SECTOR/INDUSTRY; exact UNIVERSE; DATA_QUALITY from native forecast-quality tokens; and CUSTOM/MARKET_STATE as neutral received labels. Market-state labels have no inferred economic meaning. Event absence means outside the explicitly supplied evidence cohort, not proof that no event occurred.
+
+`EnvironmentMembership` pins the complete sample/origin/security, exact definition, supplied and selected evidence IDs, mappings, state, weight and reason. Smoothed/ex-post regimes fail closed. Soft probabilities retain their values: no normalization, thresholding or argmax. Compounds are explicit event×regime or sector×regime pairs. The non-regime component is hard, so the weight is a conditional cohort weight rather than an independence assertion. Nested compounds and automatically generated grids are rejected.
+
+Native publication, source availability, AFRE receipt, ingestion, computation and final availability are preserved in source evidence. Provider publication is not AFRE availability. Qualified historical delivery requires an approved attestor and native exact source/entity binding. Late receipts cannot define an earlier usable membership.
+
+`evidence_available_ns` records admissible historical evidence; `constructed_ns` and `available_ns` retain actual derived-membership construction. A reconstruction made later can be used for later descriptive research with qualified PIT evidence. It cannot pretend AFRE constructed or ingested the membership at that historical instant. `metadata` requires actual final membership availability by the exact requested origin and enforces the target-free guard.
+
+Declarations and analysis settings must be no later than the exact fold's training cutoff. This is a caller-attested chronology: software cannot independently authenticate an earlier declaration timestamp or prove that a human never inspected outcomes. No API reads held-out performance to choose environments. Later source corrections produce new evidence identities and explicit new analyses; old artifacts remain immutable.
