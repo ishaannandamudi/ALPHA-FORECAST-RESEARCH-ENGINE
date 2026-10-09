@@ -10,16 +10,22 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
-Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
-research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
-a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
-remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.
 AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
 evaluates frozen native forecasts/residual signals using separate exposure, cost and later
 truth artifacts. Gross and net remain separate; PIT cohorts retain full-path trade deltas.
 Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
 Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
 settings. No execution, model selection, direct external-engine dependency or profitability
-proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls is complete; see [the control layer](multiple-testing-controls.md).
+
+AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
+source/truth, target/horizon, environment and cost-scenario opportunities without mutating
+prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
+TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
+causality or profitability, and no automatic model selection or pruning occurs.

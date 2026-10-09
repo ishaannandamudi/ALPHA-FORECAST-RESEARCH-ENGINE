@@ -29,5 +29,5 @@ publishes all per-horizon evidence and the aggregate in one transaction.
 
 Metrics and horizon-to-horizon performance differences provide predictive research
 evidence. They do not establish trading profitability, portfolio allocations or
-execution decisions. Multiple-testing governance remains explicit future AFRE-19;
+execution decisions. Multiple-testing governance is explicit in AFRE-19;
 model selection belongs to AFRE-20.

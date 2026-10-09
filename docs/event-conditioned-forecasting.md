@@ -129,4 +129,4 @@ truth artifacts. Gross and net remain separate; PIT cohorts retain full-path tra
 Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
 Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
 settings. No execution, model selection, direct external-engine dependency or profitability
-proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls is complete; see [the control layer](multiple-testing-controls.md).

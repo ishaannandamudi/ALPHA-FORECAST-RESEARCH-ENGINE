@@ -25,6 +25,6 @@ no pooled event model, fused rank or joint distribution exists.
 Native TEST requires an explicit evaluation identity and persisted TestEvaluation
 access record from the exact fold/cutoff. Exact reuse is idempotent; conflicting
 reuse fails. TRAIN and TEST never fit conditioned calibration. Inspecting many event
-subgroups does not solve multiple testing; AFRE-19 owns that future framework.
+subgroups does not solve multiple testing; AFRE-19 provides explicit trial-family accounting and conservative supported tests; see [controls](multiple-testing-controls.md).
 Ranking != portfolio construction; top/bottom and IC are predictive diagnostics,
 not tradable strategy returns or profitability evidence.

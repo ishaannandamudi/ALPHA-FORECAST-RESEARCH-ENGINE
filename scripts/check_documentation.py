@@ -45,12 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-18.**" in master
-    assert (
-        "**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**" in readme
-    )
+    assert "**Stop after AFRE-19.**" in master
+    assert "**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.19.0" and project["dependencies"] == []
+    assert project["version"] == "0.20.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -276,11 +274,8 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0 through AFRE-18" in text
-        assert (
-            "**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**"
-            in text
-        )
+        assert "AFRE-0 through AFRE-19" in text
+        assert "**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -318,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.19.0"
+    assert ENGINE_VERSION == "0.20.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -336,7 +331,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.18" and STORE_USER_VERSION == 19
+    assert STORE_SCHEMA_VERSION == "1.19" and STORE_USER_VERSION == 20
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -370,7 +365,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-18.**" in text
+        assert "**Stop after AFRE-19.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -435,9 +430,40 @@ def main() -> None:
                 text,
             )
             assert not re.search(r"Next scope: AFRE-18|Stop after AFRE-17", text)
+    from afre.version import MULTIPLE_TESTING_SCHEMA_VERSION
+
+    assert MULTIPLE_TESTING_SCHEMA_VERSION == "1.0"
+    report = (REPOSITORY / "docs/AFRE_19_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 85)),
+    )
+    assert len(labels) == 72
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", report, re.MULTILINE) == list(labels)
+    assert re.findall(r"^\| (\d+) \|", report, re.MULTILINE) == [str(i) for i in range(1, 46)]
+    for name in (
+        "multiple-testing-controls.md",
+        "research-trial-registry.md",
+        "hypothesis-families.md",
+        "fwer-controls.md",
+        "fdr-controls.md",
+        "test-reuse.md",
+        "selection-bias.md",
+        "research-overfitting.md",
+        "multiple-testing-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            text = document.read_text()
+            assert not re.search(
+                r"AFRE-19[^\n.;]*?(?:remains deferred|is deferred|unimplemented|is next)", text
+            )
+            assert not re.search(r"Next scope: AFRE-19|Stop after AFRE-18", text)
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 71-item A–BS scope/50 gates"
+        "versions, links, historical reports and current 72-item A–BT scope/45 gates"
     )
 
 

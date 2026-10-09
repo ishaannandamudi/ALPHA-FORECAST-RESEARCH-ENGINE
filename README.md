@@ -2,7 +2,7 @@
 
 AFRE is a point-in-time quantitative research foundation. Its eventual output is
 a calibrated multi-horizon return distribution with uncertainty, feature/model
-lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-18 are complete.**
+lineage and honest out-of-sample evidence. **AFRE-0 through AFRE-19 are complete.**
 AFRE-4 adds Dataset Builder & Leakage-Safe Splitting: frozen causal research grids,
 explicit failed cells, scoped interval purge, elapsed/session/bar embargo,
 walk-forward/rolling/expanding/holdout folds, train-only simple preprocessing,
@@ -29,9 +29,9 @@ availability/missingness, finite probability mixtures and matched contribution d
 Point-in-Time Feature Store, Forecast Targets & Label Construction and
 Point-in-Time Universe & Security Eligibility remain compatible.
 
-Python **3.11+**; engine **0.19.0**; foundation, feature-store, target, universe,
-dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance and transaction-cost-research schemas **1.0**;
-shared cost-research store **1.18**, `user_version=19` (additive to store1.17/user_version18). Runtime uses only the
+Python **3.11+**; engine **0.20.0**; foundation, feature-store, target, universe,
+dataset, model, probabilistic, calibration, multi-horizon, cross-sectional, event-conditioned, regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research and multiple-testing schemas **1.0**;
+shared research store **1.19**, `user_version=20` (additive to store1.18/user_version19). Runtime uses only the
 standard library.
 
 The architecture consists of immutable typed contracts, pure validation,
@@ -329,12 +329,12 @@ and `.venv311/bin/python -m benchmarks.orthogonalization_profile` for the bounde
 See [the A–BP completion report](docs/AFRE_16_COMPLETION_REPORT.md),
 [profile results](docs/orthogonalization-profile.json) and [temporal semantics](docs/temporal-redundancy.md).
 
-**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
-Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
-research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
-a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
-remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.
 
 Contracts establish declared provenance and invariants. They cannot authenticate
 an upstream timestamp or detect a scalar secretly derived from future target data.
@@ -422,12 +422,12 @@ Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline de
 `.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
 [A–BW completion report](docs/AFRE_17_COMPLETION_REPORT.md) and [profile](docs/invariance-profile.json).
 
-**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
-Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
-research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
-a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
-remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.
 ## AFRE-18 completed scope
 
 AFRE-0 through AFRE-18 are complete. Engine 0.19.0, transaction-cost-research schema 1.0,
@@ -451,9 +451,43 @@ See [cost research](docs/transaction-cost-aware-research.md),
 Run `PYTHONPATH=src:. .venv311/bin/python -m examples.costs_demo` for the checked 40-step
 offline demo and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.costs_profile` for the profile.
 
-**Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.**
-Multiple-hypothesis corrections, false discovery and family-wise error controls, repeated
-research-trial accounting, selection-bias diagnostics, appropriate deflated statistics and
-a research-trial registry with an explicit no-causal-proof boundary. Broad model selection
-remains AFRE-20. **Stop after AFRE-18.** AFRE-19 is unimplemented. Portfolio construction,
-risk optimization and execution remain downstream projects after AFRE.
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.
+
+## AFRE-19 completed scope
+
+AFRE-0 through AFRE-19 are complete. Engine 0.20.0; multiple-testing schema 1.0;
+shared store 1.19/SQLite user_version=20. Earlier public schemas remain 1.0.
+Earlier completed-scope version statements above are historical release checkpoints.
+
+Immutable planned opportunities and their separate completions retain exact source,
+hypothesis, target/horizon, fold, environment, cost, preprocessing and inspected-choice
+identities. Every frozen family retains failed, unavailable and missing attempts in its
+full denominator. Conditional exact sign tests require explicit caller-attested
+independence, fair nonzero signs, nonoverlapping native labels and exact pairing.
+Bonferroni/Holm control nominal FWER; BH requires independence/PRDS; BY supports
+arbitrary dependence of valid marginal p-values. The level and every reported method
+are fixed in the family before the held-out boundary. Open, adaptive, unknown and
+retrospective analyses carry interpretation limits and make no final discovery claim.
+
+P-value != effect size. Median effects are separate; CI/SE, normal/correlation inference
+and Sharpe/generic deflation are unsupported. Corrections do not eliminate data snooping,
+leakage, adaptivity or nonstationarity. Significance != causality; significance !=
+profitability. Selection events describe caller-supplied outcomes and retain candidate
+sets, ordering/ties and TEST involvement. No model selection, promotion, pruning or
+automatic follow-up hypotheses occur. Registry snapshots contain all visible registered
+opportunities; exact TEST seals, reuse thresholds and untracked native history remain
+explicit. New evidence creates new IDs while frozen old results remain byte-identical.
+
+See [controls](docs/multiple-testing-controls.md), [registry](docs/research-trial-registry.md), [families](docs/hypothesis-families.md), [FWER](docs/fwer-controls.md), [FDR](docs/fdr-controls.md), [TEST reuse](docs/test-reuse.md), [selection](docs/selection-bias.md), [overfitting](docs/research-overfitting.md), [profile](docs/multiple-testing-profile.json) and [A–BT report](docs/AFRE_19_COMPLETION_REPORT.md).
+
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.

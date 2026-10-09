@@ -57,8 +57,20 @@ See [scenarios](cost-scenarios.md), [exposure](research-exposure-rules.md),
 [sensitivity](cost-sensitivity.md), [profile](costs-profile.json) and
 [the completion report](AFRE_18_COMPLETION_REPORT.md).
 
-**Stop after AFRE-18.** AFRE-19 Multiple Testing & Research Overfitting Controls is deferred:
-hypothesis/FDR/FWER controls, trial accounting/registry, selection-bias diagnostics and
-appropriate deflated statistics with no causal-proof claim. Broad model selection is AFRE-20,
-ensemble construction AFRE-21, drift/decay AFRE-22, champion/challenger shadow evaluation
-AFRE-23, final forecast service AFRE-24, integration/hardening AFRE-25.
+AFRE-19 is complete. Each inspected cost scenario is a separate declared research
+opportunity; [multiple-testing controls](multiple-testing-controls.md) preserve its
+native units, hypothetical contribution semantics and immutable evaluation evidence.
+No Sharpe ratio or trading profitability is inferred from these arithmetic streams.
+
+**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
+Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
+no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
+model-family comparisons and nested selection where needed. Ensemble fusion remains
+AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
+remain downstream projects after AFRE.
+
+AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
+source/truth, target/horizon, environment and cost-scenario opportunities without mutating
+prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
+TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
+causality or profitability, and no automatic model selection or pruning occurs.

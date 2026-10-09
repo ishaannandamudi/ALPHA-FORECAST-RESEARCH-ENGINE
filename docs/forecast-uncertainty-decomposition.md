@@ -16,7 +16,7 @@ See [identifiability](uncertainty-identifiability.md), [noise and knowledge sema
 
 Run the35-step offline demo with `PYTHONPATH=src:. .venv311/bin/python -m examples.uncertainty_demo`.
 
-**Stop after AFRE-18. Next scope: AFRE-19 — Multiple Testing & Research Overfitting Controls.** AFRE-17 adds declared descriptive stability research. AFRE-18 cost-aware evaluation is complete; ranking adjustment, model search, ensemble construction, portfolio allocation and refit automation remain deferred.
+**Stop after AFRE-19. Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.** AFRE-17 adds declared descriptive stability research. AFRE-18 cost-aware evaluation is complete; ranking adjustment, model search, ensemble construction, portfolio allocation and refit automation remain deferred.
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
 
@@ -37,4 +37,10 @@ truth artifacts. Gross and net remain separate; PIT cohorts retain full-path tra
 Uncertainty does not automatically become cost and ranking/stability definitions are unchanged.
 Historical-causal versus ex-post evidence is explicit, and supplied grids cannot select TEST
 settings. No execution, model selection, direct external-engine dependency or profitability
-proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls remains deferred.
+proof is added. AFRE-19 Multiple Testing & Research Overfitting Controls is complete; see [the control layer](multiple-testing-controls.md).
+
+AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
+source/truth, target/horizon, environment and cost-scenario opportunities without mutating
+prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
+TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
+causality or profitability, and no automatic model selection or pruning occurs.
