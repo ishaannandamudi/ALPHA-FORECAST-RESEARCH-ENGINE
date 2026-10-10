@@ -1,0 +1,9 @@
+# Parameter, structure and fusion-weight comparisons
+
+Explicit compatible fitted references may compare coefficient vectors, maximum safe relative changes, sign-change counts, vector correlation and normalized L1/L2 changes. Actual vectors and intercepts remain in source observations. A zero reference norm or undefined correlation is UNAVAILABLE. Column/unit/target/horizon/semantics mismatches are INCOMPARABLE. A parameter comparison is a new descriptive monitor, never replacement of the original producer.
+
+Native AFRE-17 affine raw-scale conversion is reused for statistical models. Nonlinear explicit interaction readouts are converted only through their recorded affine centers/scales and exact column grid. Scaled sequence readouts and scaled residual projections are conservatively INCOMPARABLE; unscaled sequence readout/decay and unscaled projection coefficients are supported. Tree split/path recurrence is structural Jaccard; thresholds and leaf support require exact structural columns. These quantities do not explain hidden dynamics or tree causes.
+
+Cross-sectional rank displacement, lower-ordinal top-K overlap, score dispersion and sign persistence retain exact ranked entity keys. CrossSectionSpec score/direction/ties/normalization/group/missingness policies must match for vector comparisons. Unknown ranks remain absent.
+
+AFRE-15 total predictive variance, exact component values/shares and disagreement remain native quantities; no causal decomposition is invented. AFRE-16 residual-to-raw variance ratio and raw/reference correlation retain exact aligned signal evidence. AFRE-21 original weights, affine effective coefficients, intercept, dominance, effective count, simplex entropy and per-source contributions remain frozen. Health cannot alter weights or switch to a component.

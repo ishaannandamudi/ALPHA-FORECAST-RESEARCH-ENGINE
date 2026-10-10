@@ -1,0 +1,35 @@
+{
+  "audit_bytes": 268912,
+  "audit_nodes": 120,
+  "boundary": "AFRE22 descriptive offline research; no production SLA",
+  "history_records": 4,
+  "maximum_numerical_error": 4.440892098500626e-16,
+  "metrics": 13,
+  "monitored_artifacts": 4,
+  "numerical_errors": {
+    "INPUT_KS": 0.0,
+    "INPUT_MEAN": 0.0,
+    "INPUT_QUANTILE": 0.0,
+    "INPUT_STD": 0.0,
+    "MEAN_ABSOLUTE_SHIFT": 0.0,
+    "PARAMETER_CORRELATION": 1.1102230246251565e-16,
+    "PARAMETER_L1": 0.0,
+    "PARAMETER_L2": 1.1102230246251565e-16,
+    "PARAMETER_SIGN_CHANGES": 0.0,
+    "STANDARDIZED_MEAN": 4.440892098500626e-16
+  },
+  "sqlite_bytes": 8392704,
+  "timings": {
+    "audit_seconds": 0.14347887504845858,
+    "classification_seconds": 9.167008101940155e-06,
+    "fixture_seconds": 3.746141624986194,
+    "history_seconds": 0.12934445799328387,
+    "metric_calculation_seconds": 0.08940379193518311,
+    "parameter_weight_seconds": 0.08241558296140283,
+    "persistence_seconds": 0.11026449990458786,
+    "restart_seconds": 0.11506620794534683,
+    "source_resolution_seconds": 0.011372084030881524,
+    "window_admission_seconds": 0.0685906249564141
+  },
+  "window_pairs": 4
+}

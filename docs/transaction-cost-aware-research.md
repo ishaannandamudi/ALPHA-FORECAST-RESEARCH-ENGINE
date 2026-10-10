@@ -62,10 +62,10 @@ opportunity; [multiple-testing controls](multiple-testing-controls.md) preserve 
 native units, hypothetical contribution semantics and immutable evaluation evidence.
 No Sharpe ratio or trading profitability is inferred from these arithmetic streams.
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
@@ -77,3 +77,5 @@ causality or profitability, and no automatic model selection or pruning occurs.
 ## AFRE-21 integration
 
 AFRE-18 accepts frozen AFRE-21 target-unit FusedForecast returns under separately declared hypothetical exposure and cost scenarios. The adapter preserves exact artifact/sample/origin/target/horizon and causal availability. Cost evaluation cannot select sources or refit weights. It remains research evaluation; portfolio construction, risk optimization and execution are downstream, and predictive metrics do not establish profitability. See [fusion evaluation](fusion-evaluation.md).
+
+AFRE-22 [drift, decay and model health](drift-decay-model-health.md) uses frozen artifacts and predeclared windows/rules. Drift != failure; input drift != error degradation. Truth-dependent metrics retain native TEST seals and research history; health warnings do not erase overfitting concerns. No hidden thresholds, automatic retraining/recalibration, model replacement, weight changes, causal explanation or profitability claim. AFRE-17 environment research remains distinct from ongoing AFRE-22 monitoring. AFRE-20 model selection remains distinct from AFRE-21 ensemble construction; monitoring does not rerun selection. AFRE-18 hypothetical costs remain separate from downstream portfolio construction/risk/execution. AFRE-23 owns Champion/Challenger & Shadow Evaluation.

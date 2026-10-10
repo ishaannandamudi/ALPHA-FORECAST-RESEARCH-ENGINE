@@ -11,7 +11,7 @@ Fewer than the fixed minimum in either window produces INSUFFICIENT_DATA. Missin
 state-error support or transition history yields an explicit null component. These
 are descriptive shifts, without significance claims, calibrated degradation alarms,
 automatic taxonomy changes, retraining, tuning, selection or promotion. Diagnostics
-never write a fit/model artifact. AFRE-22 later owns broader model health; AFRE-23
+never write a fit/model artifact. AFRE-22 owns descriptive broader model health; AFRE-23
 champion/challenger deployment evaluation remains distinct.
 
 Changes may also reflect universe composition or matched-truth coverage differences

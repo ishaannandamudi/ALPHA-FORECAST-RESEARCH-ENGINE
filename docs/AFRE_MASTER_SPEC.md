@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0–AFRE-21 complete**, engine 0.22.0,
+Status: **AFRE-0–AFRE-22 complete**, engine 0.23.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared research store 1.21/user_version=22; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research, multiple-testing and selection schemas 1.0.
+shared research store 1.22/user_version=23; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research, multiple-testing, selection, fusion and health schemas 1.0.
 
 ## Mission and philosophy
 
@@ -228,7 +228,7 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-21.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-22.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
@@ -236,7 +236,7 @@ AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-1
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
 AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete;
 AFRE-18 cost-aware research, AFRE-19 overfitting controls, AFRE-20 model selection
-and AFRE-21 explicit fusion are complete. AFRE-22 through AFRE-25 remain deferred;
+AFRE-21 explicit fusion and AFRE-22 descriptive health are complete. AFRE-23 through AFRE-25 remain deferred;
 portfolios and execution remain downstream.
 
 ## AFRE-1 implementation and availability boundary
@@ -825,10 +825,10 @@ See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.
 [cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
 [profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-17 completed scope
@@ -847,10 +847,10 @@ Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline de
 `.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
 [A–BW completion report](AFRE_17_COMPLETION_REPORT.md) and [profile](invariance-profile.json).
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 ## Historical AFRE-18 completed scope
 
@@ -875,10 +875,10 @@ See [cost research](transaction-cost-aware-research.md),
 Run `PYTHONPATH=src:. .venv311/bin/python -m examples.costs_demo` for the checked 40-step
 offline demo and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.costs_profile` for the profile.
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## Historical AFRE-19 completed scope
@@ -908,10 +908,10 @@ explicit. New evidence creates new IDs while frozen old results remain byte-iden
 
 See [controls](multiple-testing-controls.md), [registry](research-trial-registry.md), [families](hypothesis-families.md), [FWER](fwer-controls.md), [FDR](fdr-controls.md), [TEST reuse](test-reuse.md), [selection](selection-bias.md), [overfitting](research-overfitting.md), [profile](multiple-testing-profile.json) and [A–BT report](AFRE_19_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-20 completed boundary
@@ -951,10 +951,10 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.selection_demo` for 35 ver
 steps and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.selection_profile` for
 separate bounded timing/storage measurements. There is no production SLA.
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.**
-Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
-monitoring windows and warning/degraded states remain future scope.
-Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
+Explicit champions/challengers, shadow predictions, matched evaluation and
+promotion/rollback criteria remain future scope; no automatic deployment.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-21 completed scope
@@ -965,6 +965,16 @@ Immutable source references, predeclared fixed point/signal/probability rules an
 
 See [fusion guide](ensemble-signal-fusion.md), [evaluation](fusion-evaluation.md), [profile](fusion-profile.json) and [A–CR completion report](AFRE_21_COMPLETION_REPORT.md).
 
-**Stop after AFRE-21.**
+**Stop after AFRE-22.**
 
-**Next scope: AFRE-22 — Drift, Decay & Model Health.** Future work covers input/prediction/calibration/residual drift, signal decay, coefficient/weight drift, monitoring windows and warning/degraded states. No automatic production replacement is implied. AFRE-23 owns champion/challenger evaluation, AFRE-24 the final forecast service boundary and AFRE-25 final integration/hardening. Portfolio construction, risk optimization and execution remain downstream. No AFRE phase establishes trading profitability merely from predictive metrics.
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.** Future work covers explicit champions/challengers, shadow predictions, matched evaluation and promotion/rollback criteria; no automatic deployment. No automatic production replacement is implied. AFRE-23 owns champion/challenger evaluation, AFRE-24 the final forecast service boundary and AFRE-25 final integration/hardening. Portfolio construction, risk optimization and execution remain downstream. No AFRE phase establishes trading profitability merely from predictive metrics.
+
+## AFRE-22 completed scope
+
+Engine 0.23.0; health schema 1.0; shared store 1.22/SQLite user_version=23; all earlier public schemas remain 1.0; Python 3.11+; zero runtime dependencies.
+
+[Drift, decay and model health](drift-decay-model-health.md) pins frozen monitored artifacts, explicit windows/rules, target-free input/prediction drift and later-cutoff errors/calibration. Drift != failure; input drift != error degradation. Health is descriptive: no retrain, recalibrate, weight changes, replacement, promotion, retirement, routing or notifications. No causal explanation, health probability or profitability claim follows. Immutable histories, fixed-reference trends, native AFRE-17 environments and AFRE-19/20/21 context retain exact identities and availability. See [A–CB completion report](AFRE_22_COMPLETION_REPORT.md), [rules](health-rules.md) and [snapshots](health-snapshots.md).
+
+**Stop after AFRE-22.**
+
+**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.** Future scope: explicit champion/challengers, shadow predictions, exact matched evaluation, promotion and rollback criteria; AFRE-22 health, AFRE-19 research history, AFRE-20 selection provenance and AFRE-21 fused candidates. No automatic deployment or production service. AFRE-24 remains the final forecast service boundary and AFRE-25 final integration/hardening. Portfolio construction, risk optimization and execution remain downstream.

@@ -1,0 +1,11 @@
+# Declared health windows
+
+A `MonitoringWindow` pins UTC nanosecond start/end, inclusivity, origin-valid-time semantics, evaluation cutoff and minimum support. Start < end <= cutoff. A current window follows the reference start; overlap requires `allow_overlap=True` and remains visible in the spec. No automatic moving reference or adaptive boundary search exists. Parameter self-comparisons and some native fixtures deliberately use overlapping windows; they are explicit self-comparisons, not evidence of temporal decay.
+
+`HealthSpec` pins every observation identity, reference, comparison reference, request, rule binding, target/horizon, declaration, minimum count, intersection, pairing key, aggregation, seed, implementation and bounds. Predeclared monitors require declaration <= current start, rules declared <= spec declaration and frozen references available <= declaration. TEST performance requires predeclaration and native TEST seals. Retrospective non-TEST comparisons set `predeclared=False`; they cannot claim advance threshold/window selection.
+
+NATIVE_PER_WINDOW uses each window's native admitted support. COMMON_INTERSECTION requires the complete declared scalar column grid and an exact shared pairing key; PAIRWISE_INTERSECTION uses the requested column. SAMPLE pairs exact sample IDs; disjoint temporal samples therefore have an empty intersection. SECURITY explicitly pairs repeated entities across times. Truth-dependent support is intersected again after known-at-cutoff truth admission.
+
+Source availability is distinct from health observation construction and snapshot availability. Reconstructed observations preserve later construction time; a snapshot must be available after its cutoff and all admitted construction times. Feature clocks and qualified historical delivery remain governed by AFRE-1: publication/provider timestamps do not establish AFRE receipt. Late source or cohort evidence is excluded with a reason. Aggregate cost/stability observations use native evaluation-cutoff valid time and carry an explicit quality marker.
+
+Rolling and expanding window generation and drift matrices are deferred. Caller-supplied fixed windows and fixed-reference trends are supported; no silent baseline reset occurs.
