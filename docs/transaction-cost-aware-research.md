@@ -62,12 +62,11 @@ opportunity; [multiple-testing controls](multiple-testing-controls.md) preserve 
 native units, hypothetical contribution semantics and immutable evaluation evidence.
 No Sharpe ratio or trading profitability is inferred from these arithmetic streams.
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
 
 AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
 source/truth, target/horizon, environment and cost-scenario opportunities without mutating

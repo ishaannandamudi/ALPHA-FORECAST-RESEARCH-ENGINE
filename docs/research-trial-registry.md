@@ -36,3 +36,5 @@ Callers may lower them. Whole historical TEST enumeration is bounded, including 
 later than the requested cutoff; it fails rather than silently truncating history.
 
 See [controls](multiple-testing-controls.md) and [TEST reuse](test-reuse.md).
+
+AFRE-20 [candidate registries](candidate-registry.md) reference every native plan/trial, including failure and incompatibility. Each truth cutoff has a distinct declared request/attempt. Failed fits use explicit predeclared protocol anchors without invented observations. Native SelectionEvent requires exact criterion/median-effect and ordering compatibility; the AFRE-20 SelectionResult always preserves the full pool.

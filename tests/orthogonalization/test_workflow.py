@@ -402,7 +402,12 @@ def test_regime_probability_and_event_shift(case: Case) -> None:
     from afre.event_conditioned.artifacts import EventConditionedForecast
     from afre.regime_conditioned.artifacts import RegimeConditionedForecast
 
-    identity = case.fixture.upstream.ids("soft-regime")[0]
+    # The deliberately late snapshot has no membership; hash order is not eligibility.
+    identity = next(
+        i
+        for i in case.fixture.upstream.ids("soft-regime")
+        if case.repo.get(RegimeConditionedForecast, i).membership is not None
+    )
     raw = case.repo.get(RegimeConditionedForecast, identity)
     src = source_for(case.repo, identity)
     assert raw.membership is not None

@@ -2,7 +2,7 @@
 
 AFRE-13 is complete: engine0.14.0, nonlinear schema1.0, shared store1.13/user14.
 AFRE-0 through AFRE-25 remains the frozen 26-phase roadmap. Earlier public schemas
-and source/test semantics are unchanged. Stop after AFRE-19; AFRE-17 Invariance & Stability Research is complete. AFRE-18 cost-aware research evaluation is complete.
+and source/test semantics are unchanged. Stop after AFRE-20; AFRE-17 Invariance & Stability Research is complete. AFRE-18 cost-aware research evaluation is complete.
 
 The package separates immutable semantic definitions, exact origin-specific scalar
 inputs, pure transforms, TRAIN matrices/fitted state, linear/tree fitting, target-free

@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0 through AFRE-19 complete**, engine 0.20.0,
+Status: **AFRE-0–AFRE-20 complete**, engine 0.21.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared research store 1.19/user_version=20; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research and multiple-testing schemas 1.0.
+shared research store 1.20/user_version=21; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research, multiple-testing and selection schemas 1.0.
 
 ## Mission and philosophy
 
@@ -209,7 +209,7 @@ back into larger phases. Completed AFRE-0 contracts remain unchanged.
 | AFRE-17 | Invariance & Stability Research | Relationship stability across periods, regimes, universes and distribution shifts |
 | AFRE-18 | Transaction-Cost-Aware Research Evaluation | Friction-aware research evaluation with explicit cost assumptions; no portfolio construction |
 | AFRE-19 | Multiple Testing & Research Overfitting Controls | Multiple-testing corrections, selection-bias controls and protected final holdout |
-| AFRE-20 | Hyperparameter & Model Selection Framework | Nested tuning and reproducible model selection, separate from ensemble construction |
+| AFRE-20 | Hyperparameter & Model Selection Framework | Declared bounded TRAIN/VALIDATION model selection, separate from ensemble construction; nested tuning deferred |
 | AFRE-21 | Ensemble & Signal Fusion | Signal fusion and ensembles trained with out-of-fold inputs |
 | AFRE-22 | Drift, Decay & Model Health | Drift detection, predictive decay and model-health monitoring |
 | AFRE-23 | Champion/Challenger & Shadow Evaluation | Champion/challenger comparison and shadow forecast evaluation before service promotion; no trade execution |
@@ -228,7 +228,7 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-19.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-20.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
@@ -824,12 +824,11 @@ See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.
 [cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
 [profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-17 completed scope
 
@@ -847,13 +846,12 @@ Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline de
 `.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
 [A–BW completion report](AFRE_17_COMPLETION_REPORT.md) and [profile](invariance-profile.json).
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
-## AFRE-18 completed scope
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
+## Historical AFRE-18 completed scope
 
 AFRE-0 through AFRE-18 are complete. Engine 0.19.0, transaction-cost-research schema 1.0,
 shared store 1.18/SQLite user_version=19; all earlier schemas remain 1.0 and runtime
@@ -876,14 +874,13 @@ See [cost research](transaction-cost-aware-research.md),
 Run `PYTHONPATH=src:. .venv311/bin/python -m examples.costs_demo` for the checked 40-step
 offline demo and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.costs_profile` for the profile.
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
 
-## AFRE-19 completed scope
+## Historical AFRE-19 completed scope
 
 AFRE-0 through AFRE-19 are complete. Engine 0.20.0; multiple-testing schema 1.0;
 shared store 1.19/SQLite user_version=20. Earlier public schemas remain 1.0.
@@ -910,9 +907,51 @@ explicit. New evidence creates new IDs while frozen old results remain byte-iden
 
 See [controls](multiple-testing-controls.md), [registry](research-trial-registry.md), [families](hypothesis-families.md), [FWER](fwer-controls.md), [FDR](fdr-controls.md), [TEST reuse](test-reuse.md), [selection](selection-bias.md), [overfitting](research-overfitting.md), [profile](multiple-testing-profile.json) and [A–BT report](AFRE_19_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
+
+## AFRE-20 completed boundary
+
+AFRE-20 is the [declared model selection framework](model-selection-framework.md).
+Engine 0.21.0; selection schema 1.0; shared store 1.20/SQLite user_version=21;
+earlier public schemas remain 1.0 and runtime dependencies remain empty.
+TRAIN fits; VALIDATION selects; TEST evaluates only later under native seals and
+AFRE-19 reuse accounting. Selection references the immutable TRAIN-fitted model.
+
+Complete bounded Cartesian grids, explicit native recipes, exact request cutoffs,
+deterministic fingerprint ties, failure/incompatibility/minimum-support states and
+complete candidate registries preserve the inspected opportunity denominator. Native
+families AFRE-5/6/10/11/13/14 are integrated. An explicit causal AFRE-16 residual feature
+can enter the native nonlinear input; earlier TEST rows cannot become selection rows.
+MIN_MSE, MIN_MAE, MAX_R2, Gaussian/empirical CRPS and Gaussian NLL are supported.
+IC/rank IC, AFRE-18 cost selection, automatic calibration and AFRE-12 orchestration
+are deferred. Native AFRE-19 SelectionEvent is emitted only on exact metric/direction/
+ordering compatibility; otherwise the full AFRE-20 decision/trial pool stays explicit.
+
+Frozen snapshots, additive transactional20→21 migration, immutable indexed storage,
+source/label correction identities, bounded audits, hash-seed/order/restart replay and
+real second-writer regressions preserve old result bytes. There is no hidden adaptive
+search, TEST tuning, validation-based early stopping, automatic final refit, ensemble
+fusion, model promotion or production deployment. Independent walk-forward/horizon
+calls are supported; nested, coupled, random/Bayesian/continuous and partial search
+are unsupported. VALIDATION selection does not prove generalization or profitability.
+
+See [spaces](search-spaces.md), [registry](candidate-registry.md),
+[validation](validation-selection.md), [budgets](resource-budgets.md),
+[families/comparisons](model-family-comparison.md),
+[TEST isolation](test-isolation-selection.md),
+[reproducibility](selection-reproducibility.md),
+[measured profile](selection-profile.json) and
+[A–CB report](AFRE_20_COMPLETION_REPORT.md).
+Run `PYTHONPATH=src:. .venv311/bin/python -m examples.selection_demo` for 35 verified
+steps and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.selection_profile` for
+separate bounded timing/storage measurements. There is no production SLA.
+
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.

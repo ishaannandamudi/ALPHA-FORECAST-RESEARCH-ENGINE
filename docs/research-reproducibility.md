@@ -1,8 +1,8 @@
 # Research reproducibility
 
-Engine: **0.10.0**. All foundation through cross-sectional public schemas: **1.0**.
-Shared cross-sectional store: **1.9**, `PRAGMA user_version=10`, extending
-multi-horizon store1.8/user_version9 additively.
+Engine: **0.21.0**. All public schemas through selection: **1.0**.
+Shared selection store: **1.20**, `PRAGMA user_version=21`, extending
+multiple-testing store1.19/user_version20 additively.
 The original `ArtifactStore` keeps its strict 1.0/user_version=1 interface.
 Processing, model, label, calendar, source and selection
 implementation versions are recorded separately. No wall-clock time or implicit
@@ -127,7 +127,7 @@ platform-universal bit identity is not claimed. ProbabilisticRepository retains
 is response-free; only explicit later evaluation expands held-out truth. See
 [probabilistic reproducibility](probabilistic-evaluation.md).
 AFRE-6 evaluates calibration diagnostics but does NOT fit calibration transformations.
-AFRE-7 implements separate Forecast Calibration; selection/ensembles/portfolios/execution remain deferred.
+AFRE-7 implements separate Forecast Calibration. AFRE-20 adds declared model selection; ensemble construction, portfolios and execution remain deferred.
 
 AFRE-7 migration 7->8 preserves every prior payload, row, DDL and metadata value.
 CalibrationRepository emits 0.8.0 snapshot metadata; strict ProbabilisticRepository
@@ -229,3 +229,5 @@ source/truth, target/horizon, environment and cost-scenario opportunities withou
 prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
 TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
 causality or profitability, and no automatic model selection or pruning occurs.
+
+AFRE-20 adds [selection replay](selection-reproducibility.md): declared grid/request identity, immutable TRAIN fits, exact VALIDATION truth, full AFRE-19 pool, frozen snapshot and transactional20→21 publication. Engine0.21.0/store1.20/SQLite21; prior schemas and historical evidence remain unchanged. No automatic final refit or ensemble fusion.

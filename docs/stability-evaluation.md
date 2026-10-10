@@ -12,9 +12,8 @@ SQLite17→18 is transactional and additive, preserving prior DDL/metadata/rows.
 
 Default hard limits:32 environments,8 explicit compounds,2,000 samples/forecasts,24 metric selectors,16 declared features,32 windows,64,000 work/grid cells,20,000 artifacts per family,8MiB payload/lineage,100,000 audit nodes and64 depth. Lower caller limits apply on reads and writes. Unified lineage traces environments, memberships, native forecasts/models, PIT event/regime/group/universe evidence, TRAIN fit records, exact evaluation truth and TEST seals. Audits explicitly state the absence of causal proof, significance, profitability, model search and automatic mutation.
 
-See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.

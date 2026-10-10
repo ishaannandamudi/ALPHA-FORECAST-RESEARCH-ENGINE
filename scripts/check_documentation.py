@@ -45,14 +45,14 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-19.**" in master
-    assert "**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**" in readme
+    assert "**Stop after AFRE-20.**" in master
+    assert "**Next scope: AFRE-21 — Ensemble & Signal Fusion.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.20.0" and project["dependencies"] == []
+    assert project["version"] == "0.21.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
-        assert not re.search(r"\b21[ -]phases?\b|AFRE-0 through AFRE-20", text)
+        assert not re.search(r"\b21[ -]phases?\b", text)
         for link in re.findall(r"\]\(([^)]+)\)", text):
             if "://" in link or link.startswith("#"):
                 continue
@@ -274,8 +274,8 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0 through AFRE-19" in text
-        assert "**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**" in text
+        assert "AFRE-0–AFRE-20" in text
+        assert "**Next scope: AFRE-21 — Ensemble & Signal Fusion.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -313,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.20.0"
+    assert ENGINE_VERSION == "0.21.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +331,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.19" and STORE_USER_VERSION == 20
+    assert STORE_SCHEMA_VERSION == "1.20" and STORE_USER_VERSION == 21
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,7 +365,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-19.**" in text
+        assert "**Stop after AFRE-20.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -461,9 +461,41 @@ def main() -> None:
                 r"AFRE-19[^\n.;]*?(?:remains deferred|is deferred|unimplemented|is next)", text
             )
             assert not re.search(r"Next scope: AFRE-19|Stop after AFRE-18", text)
+    from afre.version import SELECTION_SCHEMA_VERSION
+
+    assert SELECTION_SCHEMA_VERSION == "1.0"
+    report = (REPOSITORY / "docs/AFRE_20_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 91)),
+        "CA",
+        "CB",
+    )
+    assert len(labels) == 80
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", report, re.MULTILINE) == list(labels)
+    assert re.findall(r"^\| (\d+) \|", report, re.MULTILINE) == [str(i) for i in range(1, 47)]
+    for name in (
+        "model-selection-framework.md",
+        "search-spaces.md",
+        "candidate-registry.md",
+        "validation-selection.md",
+        "resource-budgets.md",
+        "model-family-comparison.md",
+        "test-isolation-selection.md",
+        "selection-reproducibility.md",
+        "selection-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    assert (REPOSITORY / "examples/selection_demo.py").is_file()
+    assert (REPOSITORY / "benchmarks/selection_profile.py").is_file()
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            text = document.read_text()
+            assert not re.search(r"Next scope: AFRE-20|Stop after AFRE-19", text)
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 72-item A–BT scope/45 gates"
+        "versions, links, historical reports and current 80-item A–CB scope/46 gates"
     )
 
 

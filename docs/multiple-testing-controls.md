@@ -46,4 +46,4 @@ See [families](hypothesis-families.md), [registry](research-trial-registry.md),
 [selection](selection-bias.md), [overfitting](research-overfitting.md),
 [profile](multiple-testing-profile.json) and [completion report](AFRE_19_COMPLETION_REPORT.md).
 
-Stop after AFRE-19. AFRE-20 Hyperparameter & Model Selection Framework is deferred.
+AFRE-20 [declared model selection](model-selection-framework.md) is complete. Every inspected candidate remains in the native opportunity pool; a SelectionEvent requires exact median-effect/criterion and ordering compatibility. **Stop after AFRE-20.** AFRE-21 Ensemble & Signal Fusion remains deferred.

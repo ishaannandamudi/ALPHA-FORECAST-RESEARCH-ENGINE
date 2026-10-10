@@ -10,12 +10,11 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-20 — Hyperparameter & Model Selection Framework.**
-Explicit candidate/search spaces, TRAIN/VALIDATION selection, deterministic search,
-no TEST tuning, candidate registry, resource budgets, stable ties, selection criteria,
-model-family comparisons and nested selection where needed. Ensemble fusion remains
-AFRE-21. **Stop after AFRE-19.** Portfolio construction, risk optimization and execution
-remain downstream projects after AFRE.
+**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
+Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
+point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
+Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+risk optimization and execution remain downstream projects after AFRE.
 AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
 evaluates frozen native forecasts/residual signals using separate exposure, cost and later
 truth artifacts. Gross and net remain separate; PIT cohorts retain full-path trade deltas.
