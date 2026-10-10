@@ -231,3 +231,7 @@ TEST reuse and caller-recorded selection sets. Corrections do not establish inde
 causality or profitability, and no automatic model selection or pruning occurs.
 
 AFRE-20 adds [selection replay](selection-reproducibility.md): declared grid/request identity, immutable TRAIN fits, exact VALIDATION truth, full AFRE-19 pool, frozen snapshot and transactional20→21 publication. Engine0.21.0/store1.20/SQLite21; prior schemas and historical evidence remain unchanged. No automatic final refit or ensemble fusion.
+
+## AFRE-21 integration
+
+AFRE-21 adds canonical fusion identities, additive transactional store migration 21→22, consistent snapshots, actual concurrent corrections, exact restart replay and fresh interpreter seeds 0/1/42/random with reversed source/sample/spec/request order. Application guards TargetVintage before inherited caches. Independent elementary oracles report numerical errors, and a bounded measured profile reports honest unique row counts. See [fusion evaluation](fusion-evaluation.md).

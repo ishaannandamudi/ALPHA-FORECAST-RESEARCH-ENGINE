@@ -1,0 +1,9 @@
+# TRAIN-only learned fusion weights
+
+LEARNED_LINEAR_POINT fits `y = intercept + sum(w_j * prediction_j)` on the exact complete admitted TRAIN grid at the fold's TRAIN cutoff. Each column is an already-produced, causally available, genuinely out-of-sample source prediction for that sample. Native base artifacts must predate the sample; external fitted sources must exclude it and declare an earlier fit cutoff. Globally sealed TEST samples cannot become meta-TRAIN rows.
+
+The native deterministic pivoted Householder QR solver estimates unconstrained coefficients. WITH_INTERCEPT adds a constant column; NO_INTERCEPT does not. QR is not simplex-constrained optimization. There is no hidden ridge, penalty tuning, missing-column deletion or weight clipping. Rank deficiency and the pinned QR condition proxy threshold fail explicitly. The proxy is not an exact matrix condition number.
+
+FusionArtifact persists ordered source IDs, coefficients, intercept, centers/scales, exact TRAIN observation IDs/values, TargetVintage IDs/responses, rank, condition proxy, cutoff, computation/availability and assumptions. During target-free application, semantic replay uses these frozen witnesses without reading TargetVintage. Outside application, full semantic validation rechecks original TRAIN evidence. Guards run before native caches and prohibit held-out result access during fitting.
+
+VALIDATION evaluates frozen weights. TEST only evaluates the sealed predeclared final artifact and records native TestEvaluation access. Candidate selection across inspected rules belongs to AFRE-20; its fusion-candidate adapter is unsupported. There is no alternative selector here. StackedPoint, learned signal weights, constrained learning and ridge are unsupported. Safe future stacking must generate out-of-fold or nested historical base predictions; in-sample fitted predictions are never an admissible shortcut.

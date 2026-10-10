@@ -77,3 +77,7 @@ source/truth, target/horizon, environment and cost-scenario opportunities withou
 prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
 TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
 causality or profitability, and no automatic model selection or pruning occurs.
+
+## AFRE-21 integration
+
+AFRE-21 accepts an explicitly supplied AFRE-16 OrthogonalSignalValue and pins its projection, reference set, unit and exact sample/origin. Fusion never automatically residualizes or neutralizes inputs. Fixed TRAIN-standardized signal blends store centers/scales and produce dimensionless outputs. See [fusion evaluation](fusion-evaluation.md).

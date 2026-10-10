@@ -46,4 +46,8 @@ See [families](hypothesis-families.md), [registry](research-trial-registry.md),
 [selection](selection-bias.md), [overfitting](research-overfitting.md),
 [profile](multiple-testing-profile.json) and [completion report](AFRE_19_COMPLETION_REPORT.md).
 
-AFRE-20 [declared model selection](model-selection-framework.md) is complete. Every inspected candidate remains in the native opportunity pool; a SelectionEvent requires exact median-effect/criterion and ordering compatibility. **Stop after AFRE-20.** AFRE-21 Ensemble & Signal Fusion remains deferred.
+AFRE-20 [declared model selection](model-selection-framework.md) is complete. Every inspected candidate remains in the native opportunity pool; a SelectionEvent requires exact median-effect/criterion and ordering compatibility. **Stop after AFRE-21.** AFRE-21 Ensemble & Signal Fusion is complete; AFRE-22 drift/decay/health remains deferred.
+
+## AFRE-21 integration
+
+AFRE-21 creates native phase-21 hypothesis/trial/family opportunities for every inspected fusion rule or weight scheme. Failed attempts require explicit native protocol anchors and remain counted. FusionComparison requires its explicit FusionTrialPool. Fusion does not suppress unfavorable trials or infer significance from metric deltas. See [fusion evaluation](fusion-evaluation.md).

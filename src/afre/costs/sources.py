@@ -45,7 +45,28 @@ def sources_for(
     values: list[ResearchCostSource] = []
     for identity in scenario.source_ids:
         value = repo.get_any(identity)
-        if isinstance(value, OrthogonalSignalValue):
+        from afre.fusion.artifacts import FusedForecast
+
+        if isinstance(value, FusedForecast):
+            require(
+                value.value is not None
+                and value.target_id == scenario.target.fingerprint
+                and value.horizon_id == scenario.target.horizon.fingerprint
+                and value.fold_id == scenario.fold_id
+                and value.unit == "target-value:" + scenario.target.fingerprint
+                and scenario.signal_unit == "return_fraction",
+                "exact causal fused cost forecast",
+            )
+            assert value.value is not None
+            s = ResearchCostSource(
+                identity,
+                value.sample_id,
+                value.origin,
+                value.value,
+                value.available_ns,
+                value.artifact_id,
+            )
+        elif isinstance(value, OrthogonalSignalValue):
             repo._validate_links(value)
             p = repo.resolve(ProjectionArtifact, value.projection_id)
             spec = repo.resolve(OrthogonalizationSpec, p.spec_id)

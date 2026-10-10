@@ -53,6 +53,29 @@ def project(
     fold_id: str,
 ) -> NativeTrialSource:
     value = repo.get_any(identity)
+    from afre.fusion.artifacts import FusedForecast
+
+    if isinstance(value, FusedForecast):
+        require(
+            value.value is not None
+            and value.target_id == hypothesis.target_id
+            and value.horizon_id == hypothesis.horizon_id
+            and value.fold_id == fold_id,
+            "exact available fusion trial source",
+        )
+        require(
+            value.unit == "target-value:" + hypothesis.target_id,
+            "fusion target-metric trial requires explicit target-unit forecast",
+        )
+        assert value.value is not None
+        return NativeTrialSource(
+            identity,
+            value.sample_id,
+            value.origin,
+            value.value,
+            hypothesis.unit,
+            (value.artifact_id,),
+        )
     if isinstance(value, OrthogonalSignalValue):
         projection = repo.resolve(ProjectionArtifact, value.projection_id)
         spec = repo.resolve(OrthogonalizationSpec, projection.spec_id)
@@ -160,7 +183,10 @@ def validate_plan(repo: "MultipleTestingRepository", plan: TrialSpecification) -
     for identity in (*plan.preprocessing_ids, *plan.model_spec_ids):
         repo.get_any(identity)
     native = repo.get_any(plan.source_artifact_id)
+    from afre.fusion.artifacts import FusedForecast
+
     forecast_classes = {
+        21: FusedForecast,
         5: PointForecast,
         6: ProbabilisticForecast,
         7: CalibratedForecast,

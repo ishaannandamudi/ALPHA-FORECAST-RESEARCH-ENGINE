@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-20.**" in master
-    assert "**Next scope: AFRE-21 — Ensemble & Signal Fusion.**" in readme
+    assert "**Stop after AFRE-21.**" in master
+    assert "**Next scope: AFRE-22 — Drift, Decay & Model Health.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.21.0" and project["dependencies"] == []
+    assert project["version"] == "0.22.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,8 +274,8 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0–AFRE-20" in text
-        assert "**Next scope: AFRE-21 — Ensemble & Signal Fusion.**" in text
+        assert "AFRE-0–AFRE-21" in text
+        assert "**Next scope: AFRE-22 — Drift, Decay & Model Health.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -313,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.21.0"
+    assert ENGINE_VERSION == "0.22.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +331,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.20" and STORE_USER_VERSION == 21
+    assert STORE_SCHEMA_VERSION == "1.21" and STORE_USER_VERSION == 22
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,7 +365,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-20.**" in text
+        assert "**Stop after AFRE-21.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -493,9 +493,42 @@ def main() -> None:
         if "COMPLETION_REPORT" not in document.name:
             text = document.read_text()
             assert not re.search(r"Next scope: AFRE-20|Stop after AFRE-19", text)
+    from afre.version import FUSION_SCHEMA_VERSION
+
+    assert FUSION_SCHEMA_VERSION == "1.0"
+    report = (REPOSITORY / "docs/AFRE_21_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 91)),
+        *tuple("C" + chr(i) for i in range(65, 83)),
+    )
+    assert len(labels) == 96
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", report, re.MULTILINE) == list(labels)
+    assert re.findall(r"^\| (\d+) \|", report, re.MULTILINE) == [str(i) for i in range(1, 50)]
+    for name in (
+        "ensemble-signal-fusion.md",
+        "fusion-sources.md",
+        "fixed-weight-ensembles.md",
+        "learned-fusion-weights.md",
+        "probabilistic-fusion.md",
+        "fusion-missingness.md",
+        "fusion-diversity.md",
+        "fusion-evaluation.md",
+        "fusion-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    assert (REPOSITORY / "examples/fusion_demo.py").is_file()
+    assert (REPOSITORY / "benchmarks/fusion_profile.py").is_file()
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            assert not re.search(
+                r"Next scope: AFRE-21|Stop after AFRE-20|AFRE-21[^\n.;]*?remains deferred",
+                document.read_text(),
+            )
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 80-item A–CB scope/46 gates"
+        "versions, links, historical reports and current 96-item A–CR scope/49 gates"
     )
 
 

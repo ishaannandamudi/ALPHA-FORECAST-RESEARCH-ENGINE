@@ -33,8 +33,12 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.selection_demo` for 35 ver
 offline steps. See [profile](selection-profile.json), [reproducibility](selection-reproducibility.md)
 and [A–CB completion report](AFRE_20_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-21 — Ensemble & Signal Fusion.** Fixed ensembles,
-TRAIN/VALIDATION-safe learned weights, stacking where justified, point/probability/signal
-fusion and diversity diagnostics. Model-health automation belongs to AFRE-22.
-**Stop after AFRE-20.** Portfolio construction, risk optimization and execution
+**Next scope: AFRE-22 — Drift, Decay & Model Health.** Future scope covers
+input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
+monitoring windows and warning/degraded states. Model-health automation belongs to AFRE-22.
+**Stop after AFRE-21.** Portfolio construction, risk optimization and execution
 remain downstream projects after AFRE.
+
+## AFRE-21 integration
+
+AFRE-20 owns selection among fusion candidates. AFRE-21 does not add another selector. The optional fusion-candidate adapter is unsupported; no post-VALIDATION TEST winner is inferred. An explicit upstream SelectionResult can record an already-selected contributor, but it never selects fusion weights. See [fusion evaluation](fusion-evaluation.md).

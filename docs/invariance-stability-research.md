@@ -10,10 +10,10 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-21 — Ensemble & Signal Fusion.**
-Fixed ensembles, TRAIN/VALIDATION-safe learned weights, stacking where justified,
-point forecast fusion, probabilistic fusion, signal fusion and diversity-aware diagnostics.
-Model-health automation remains AFRE-22. **Stop after AFRE-20.** Portfolio construction,
+**Next scope: AFRE-22 — Drift, Decay & Model Health.**
+Input/prediction/calibration/residual drift, signal decay, coefficient/weight drift,
+monitoring windows and warning/degraded states remain future scope.
+Model-health automation remains AFRE-22. **Stop after AFRE-21.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
 evaluates frozen native forecasts/residual signals using separate exposure, cost and later
@@ -28,3 +28,7 @@ source/truth, target/horizon, environment and cost-scenario opportunities withou
 prior artifacts. [Registry snapshots](research-trial-registry.md) retain failed attempts,
 TEST reuse and caller-recorded selection sets. Corrections do not establish independence,
 causality or profitability, and no automatic model selection or pruning occurs.
+
+## AFRE-21 integration
+
+AFRE-21 can attach an exact target/horizon/sample/output EnvironmentMetric as separate post-hoc metadata. This cannot change fusion weights. Descriptive comparisons of supplied frozen fusion fits implement no AFRE-22 model-health automation. See [fusion evaluation](fusion-evaluation.md).

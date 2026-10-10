@@ -61,7 +61,7 @@ class TrialSpecification(Artifact):
             if identity:
                 validate_fingerprint(identity)
         require(
-            5 <= self.native_phase <= 18
+            (5 <= self.native_phase <= 18 or self.native_phase == 21)
             and 1 <= len(self.sample_ids) <= 2000
             and 1 <= len(self.source_ids) <= 2000,
             "native trial source/sample bounds",
