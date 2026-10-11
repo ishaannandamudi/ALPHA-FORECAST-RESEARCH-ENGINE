@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-22.**" in master
-    assert "**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**" in readme
+    assert "**Stop after AFRE-23.**" in master
+    assert "**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.23.0" and project["dependencies"] == []
+    assert project["version"] == "0.24.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,8 +274,8 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0–AFRE-22" in text
-        assert "**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**" in text
+        assert "AFRE-0–AFRE-23" in text
+        assert "**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**" in text
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -313,7 +313,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.23.0"
+    assert ENGINE_VERSION == "0.24.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +331,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.22" and STORE_USER_VERSION == 23
+    assert STORE_SCHEMA_VERSION == "1.23" and STORE_USER_VERSION == 24
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,7 +365,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-22.**" in text
+        assert "**Stop after AFRE-23.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -559,9 +559,42 @@ def main() -> None:
             assert not re.search(
                 r"Next scope: AFRE-22|Stop after AFRE-21", document.read_text()
             )
+    from afre.version import CHAMPION_CHALLENGER_SCHEMA_VERSION
+
+    assert CHAMPION_CHALLENGER_SCHEMA_VERSION == "1.0"
+    current = (REPOSITORY / "docs/AFRE_23_COMPLETION_REPORT.md").read_text()
+    current_labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 91)),
+        *tuple("C" + chr(i) for i in range(65, 83)),
+    )
+    assert len(current_labels) == 96
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", current, re.MULTILINE) == list(current_labels)
+    assert re.findall(r"^\| (\d+) \|", current, re.MULTILINE) == [str(i) for i in range(1, 50)]
+    for name in (
+        "champion-challenger.md",
+        "shadow-evaluation.md",
+        "challenge-programs.md",
+        "promotion-criteria.md",
+        "rollback-criteria.md",
+        "challenger-matching.md",
+        "challenge-health-cost-context.md",
+        "challenge-audit.md",
+        "challenge-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    assert (REPOSITORY / "examples/challenge_demo.py").is_file()
+    assert (REPOSITORY / "benchmarks/challenge_profile.py").is_file()
+    assert "MANUAL_ONLY" in master and "MANUAL_ONLY" in readme
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            assert not re.search(
+                r"Next scope: AFRE-23|Stop after AFRE-22", document.read_text()
+            )
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 80-item A–CB scope/49 gates"
+        "versions, links, historical reports and current 96-item A–CR scope/49 gates"
     )
 
 

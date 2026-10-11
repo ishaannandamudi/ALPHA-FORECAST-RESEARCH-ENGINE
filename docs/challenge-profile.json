@@ -1,0 +1,50 @@
+{
+  "audit_bytes": 346399,
+  "audit_nodes": 181,
+  "boundary": "bounded AFRE23 offline synthetic research; no production SLA",
+  "challengers": 2,
+  "champions_per_program": 1,
+  "counts": {
+    "ChallengeAudit": 1,
+    "ChallengeBounds": 1,
+    "ChallengeCostPlan": 1,
+    "ChallengeMetricRequest": 9,
+    "ChallengeProgram": 2,
+    "ChallengeRun": 2,
+    "ChallengeWindow": 1,
+    "ChallengerComparison": 18,
+    "CommonMatchedEvidence": 2,
+    "EvaluationEvidence": 2,
+    "ParticipantMetricResult": 27,
+    "ParticipantReference": 3,
+    "PromotionAssessment": 4,
+    "PromotionCriterion": 4,
+    "ShadowForecast": 18
+  },
+  "matched_samples": 3,
+  "maximum_numerical_error": 1.5265566588595902e-16,
+  "numerical_errors": {
+    "CRPS": 2.7755575615628914e-17,
+    "IC": 0.0,
+    "MAE": 1.3877787807814457e-17,
+    "MSE": 3.469446951953614e-18,
+    "NLL": 1.5265566588595902e-16,
+    "RMSE": 1.3877787807814457e-17
+  },
+  "sqlite_bytes": 9912320,
+  "timings": {
+    "audit_seconds": 0.7908340829890221,
+    "comparison_seconds": 0.0026445420226082206,
+    "criteria_evaluation_seconds": 0.0009312499314546585,
+    "fixture_seconds": 5.613349040970206,
+    "health_cost_context_seconds": 5.315566083998419,
+    "matching_seconds": 0.11481745808850974,
+    "metric_evaluation_seconds": 0.08227504207752645,
+    "participant_resolution_seconds": 0.01629275002051145,
+    "persistence_seconds": 0.2902267079334706,
+    "restart_seconds": 0.7512498330324888,
+    "rollback_native_fixture_seconds": 82.7551279590698,
+    "shadow_construction_seconds": 0.5968204160453752,
+    "storage_measurement_seconds": 2.5290995836257935e-05
+  }
+}

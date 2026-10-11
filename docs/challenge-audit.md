@@ -1,0 +1,11 @@
+# Challenge persistence, replay and audit
+
+The additive 23→24 migration preserves every prior table/index/trigger definition, metadata key and artifact row. New immutable `ch_artifacts`, `ch_records` and `ch_links` store canonical schema-1.0 payloads, exact searchable projections and lineage. Indexes cover programs/participants, champion/challenger roles, target/horizon, metric/status, cutoff/availability, TEST, environments, selected provenance and references to sources, criteria and health/cost artifacts.
+
+Reads verify registered type/schema, bounded canonical payload, fingerprint, record projection and links. Resolve additionally replays participant provenance, shadow construction under the target guard, common matching, metric numerics, comparison orientation, promotion/rollback criteria and complete run grids. Rehashed semantic forgeries are rejected. Idempotent exact writes return the same identity; SQL triggers reject mutation/deletion.
+
+Shadow construction, complete evaluation and audit each use one frozen read snapshot. Evaluation temporarily stages bounded results for dependency replay, then publishes its entire result grid in one writer transaction. Separate writer connections may append source, target, health or program corrections during a read; existing inputs remain pinned. Failed evaluations publish no partial run.
+
+History is append-only, ordered by cutoff/availability/fingerprint for an explicit program. Exact corrections create new IDs and leave earlier artifacts unchanged. Fresh interpreter seeds 0/1/42/random, reversed participant/request/criterion/sample insertion, and persisted restart must produce byte-identical canonical results. The [profile](challenge-profile.json) measures bounded synthetic timing/storage and numerical errors; it promises no production SLA.
+
+`ChallengeAudit` traverses exact program/criteria/participant/source/explicit truth/health/cost/research/context lineage, bounded by nodes, depth and serialized bytes. Native samples' unrelated target references are pruned; assigned truth remains explicit. Embedded security/horizon/law contracts are certified through their parent native artifacts. Artifacts contain registered safe structured data: no executable predicates, dynamic imports, eval/exec, pickle/joblib, provider-selected paths, shell commands or network clients.

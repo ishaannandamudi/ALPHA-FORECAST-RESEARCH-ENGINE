@@ -16,7 +16,7 @@ See [identifiability](uncertainty-identifiability.md), [noise and knowledge sema
 
 Run the35-step offline demo with `PYTHONPATH=src:. .venv311/bin/python -m examples.uncertainty_demo`.
 
-**Stop after AFRE-22. Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.** AFRE-17 adds declared descriptive stability research. AFRE-18 cost-aware evaluation is complete; AFRE-20 adds declared bounded model selection. Explicit AFRE-21 fusion is complete; ranking adjustment, portfolio allocation and refit automation remain deferred.
+**Stop after AFRE-23. Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.** AFRE-17 adds declared descriptive stability research. AFRE-18 cost-aware evaluation is complete; AFRE-20 adds declared bounded model selection. Explicit AFRE-21 fusion is complete; ranking adjustment, portfolio allocation and refit automation remain deferred.
 
 Predictive uncertainty does not establish trading profitability. These are descriptive forecast artifacts; portfolio construction, risk optimization and execution remain downstream projects after AFRE. AFRE-15 has no direct external-engine dependency.
 

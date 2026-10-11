@@ -10,10 +10,9 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-23 — Champion/Challenger & Shadow Evaluation.**
-Explicit champions/challengers, shadow predictions, matched evaluation and
-promotion/rollback criteria remain future scope; no automatic deployment.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-22.** Portfolio construction,
+**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
 evaluates frozen native forecasts/residual signals using separate exposure, cost and later

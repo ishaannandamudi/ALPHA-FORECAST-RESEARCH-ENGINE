@@ -1,0 +1,9 @@
+# Frozen challenge programs
+
+`ChallengeProgram` pins the sole explicit champion, canonical challenger set, exact target/horizon/unit, native dataset/fold, fixed window boundaries and truth cutoff, minimum matched support, canonical metric requests, promotion/rollback criteria, TEST policy, declaration clock, matching/criteria policy, shadow mode, optional health participants, cost plan, native environment memberships, research certificates, uncertainty context, implementation and seed.
+
+The only primary matching policy is `COMMON_INTERSECTION`. All participants share the same eligible sample/origin/truth-vintage support. No pairwise or aggregate unmatched primary promotion evidence is used. Requested metrics have explicit minimum counts, probability threshold/levels and ranking cross-section/top-K settings. Bounds are identity-bearing and also enforced against configured repository limits.
+
+Predeclared programs require declaration no later than window start and participants known at declaration. Criteria must be declared by the program clock. Retrospective VALIDATION programs must explicitly set `predeclared=False`; their later declarations are retained and do not imply a prospective decision. SEALED_TEST always requires predeclared programs and criteria, plus exact native fold/sample/cutoff seals. TEST truth cannot change participants, thresholds, support policy, window or program.
+
+Changing a champion, challenger, criterion, cost plan, window or target creates a new program fingerprint. Changing supplied source/truth/health/cost evidence creates a new evidence/run identity. No automatic program creation or adaptive window extension exists. Each target and actual horizon is handled in a separate program; the real 1h/1d fixture has different native targets, datasets and program identities.

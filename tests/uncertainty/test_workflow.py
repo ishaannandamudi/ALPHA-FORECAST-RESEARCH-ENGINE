@@ -4,10 +4,12 @@ from dataclasses import replace
 
 import pytest
 
+from afre.regime_conditioned.artifacts import RegimeConditionedForecast
 from afre.schema import ContractError
 from afre.uncertainty import (
     ClosurePolicy,
     CovarianceAssumption,
+    ForecastUncertaintyDecomposition,
     IdentifiabilityStatus,
     ParameterUncertaintySpec,
     UncertaintyEvaluationSpec,
@@ -20,6 +22,15 @@ from afre.uncertainty import (
 from examples.uncertainty_demo import component
 from examples.uncertainty_horizon_fixture import horizon_uncertainties
 from tests.uncertainty.conftest import Case
+
+
+def soft_regime_result(case: Case) -> ForecastUncertaintyDecomposition:
+    # Fingerprint order can put the deliberately late, membership-free fallback first.
+    for identity in case.fixture.results("soft-regime"):
+        result = case.repo.get(ForecastUncertaintyDecomposition, identity)
+        if case.repo.get(RegimeConditionedForecast, result.forecast_id).membership is not None:
+            return result
+    raise AssertionError("fixture requires a causal soft-regime membership")
 
 
 @pytest.mark.parametrize(
@@ -111,8 +122,13 @@ def test_incompatible_diagnostics(
         if kind is UncertaintyType.REGIME_AMBIGUITY
         else "gaussian"
     )
+    source = (
+        soft_regime_result(case)
+        if kind is UncertaintyType.REGIME_AMBIGUITY
+        else case.result(name)
+    )
     spec = replace(
-        case.repo.get(UncertaintySpec, case.result(name).spec_id),
+        case.repo.get(UncertaintySpec, source.spec_id),
         requests=(
             UncertaintyRequest(UncertaintyType.TOTAL_PREDICTIVE),
             UncertaintyRequest(kind, measure),
@@ -164,12 +180,9 @@ def test_exact_partial_and_proxy_exclusion(case: Case) -> None:
 
 
 def test_regime_spread_is_separate_from_entropy(case: Case) -> None:
-    from afre.regime_conditioned.artifacts import (
-        RegimeConditionedForecast,
-        RegimeConditionedModel,
-    )
+    from afre.regime_conditioned.artifacts import RegimeConditionedModel
 
-    old = case.result("soft-regime")
+    old = soft_regime_result(case)
     raw = case.repo.get(RegimeConditionedForecast, old.forecast_id)
     model = case.repo.get(RegimeConditionedModel, raw.model_id)
     assert raw.membership is not None
