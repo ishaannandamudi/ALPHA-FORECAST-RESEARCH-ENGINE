@@ -27,6 +27,7 @@ from afre.fusion import (
 from afre.probabilistic.artifacts import DistributionParameters
 from afre.probabilistic.schema import DistributionFamily
 from afre.research_datasets.samples import ResearchSample
+from afre.research_datasets.schema import Partition
 from examples.feature_store_demo import SOURCE
 from examples.fusion_fixture import FusionFixture, build_fixture
 
@@ -96,18 +97,34 @@ def build_challenge_fixture(
         )
         model = engine.fit(spec, 0, 0, 0)
         engine.choose_test(model.fingerprint, 0, "predeclared-independent-challenge-fixture")
-        outputs = tuple(
+        forecasts = tuple(
             engine.apply(
                 model.fingerprint,
                 r.sample_id,
                 (engine.observe(ref.fingerprint, r.fingerprint).fingerprint,),
                 r.origin.timestamp_ns,
-            ).fingerprint
+            )
             for r in raw
+        )
+        # Boundary examples select a validation output at its earliest origin.
+        # Content hashes cannot determine a forecast's temporal or TEST role.
+        outputs = tuple(
+            f.fingerprint
+            for f in sorted(
+                forecasts,
+                key=lambda f: (
+                    {Partition.VALIDATION: 0, Partition.TRAIN: 1, Partition.TEST: 2}[
+                        f.partition
+                    ],
+                    f.origin.timestamp_ns,
+                    f.security.fingerprint,
+                    f.fingerprint,
+                ),
+            )
         )
         participant = challenge.participant(name, role, model.fingerprint)
         participants.append(participant)
-        produced.append((participant.fingerprint, tuple(sorted(outputs))))
+        produced.append((participant.fingerprint, outputs))
     return ChallengeFixture(upstream, tuple(participants), tuple(sorted(produced)))
 
 

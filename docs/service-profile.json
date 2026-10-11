@@ -1,0 +1,31 @@
+{
+  "api": "1.0",
+  "asserted_demo_steps": 77,
+  "engine": "0.25.0",
+  "limitations": "bounded synthetic offline measurements; no production SLA",
+  "measurements": {
+    "artifact_registration": 7.342977875028737,
+    "audit": 0.25062362500466406,
+    "calibrated_snapshot_build": 0.4152007499942556,
+    "context_assembly": 0.692854541935958,
+    "empirical_snapshot_build": 0.40323820791672915,
+    "event_snapshot_build": 0.5106440410017967,
+    "gaussian_snapshot_build": 0.44863216602243483,
+    "hard-regime_snapshot_build": 0.5147843339946121,
+    "max_numerical_error": 0.0,
+    "mixture_snapshot_build": 0.5272701249923557,
+    "multi_horizon_bundle": 1.3636422079289332,
+    "nonlinear_snapshot_build": 0.44482874998357147,
+    "persistence": 0.10778358392417431,
+    "point_snapshot_build": 0.23551937495358288,
+    "registry_listing": 5.00856049999129,
+    "registry_lookup": 0.009675250039435923,
+    "restart": 0.0018404159927740693,
+    "sequence_snapshot_build": 0.4972064159810543,
+    "service_replay": 0.12148225004784763,
+    "storage_bytes": 35889152.0
+  },
+  "native_fixture": true,
+  "store": "1.24",
+  "units": "seconds except storage_bytes and max_numerical_error"
+}

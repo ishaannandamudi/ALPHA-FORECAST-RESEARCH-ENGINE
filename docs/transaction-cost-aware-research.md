@@ -62,9 +62,9 @@ opportunity; [multiple-testing controls](multiple-testing-controls.md) preserve 
 native units, hypothetical contribution semantics and immutable evaluation evidence.
 No Sharpe ratio or trading profitability is inferred from these arithmetic streams.
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 AFRE-19 integration: [declared controls](multiple-testing-controls.md) register exact native
@@ -79,4 +79,4 @@ AFRE-18 accepts frozen AFRE-21 target-unit FusedForecast returns under separatel
 
 AFRE-22 [drift, decay and model health](drift-decay-model-health.md) uses frozen artifacts and predeclared windows/rules. Drift != failure; input drift != error degradation. Truth-dependent metrics retain native TEST seals and research history; health warnings do not erase overfitting concerns. No hidden thresholds, automatic retraining/recalibration, model replacement, weight changes, causal explanation or profitability claim. AFRE-17 environment research remains distinct from ongoing AFRE-22 monitoring. AFRE-20 model selection remains distinct from AFRE-21 ensemble construction; monitoring does not rerun selection. AFRE-18 hypothetical costs remain separate from downstream portfolio construction/risk/execution. AFRE-23 owns Champion/Challenger & Shadow Evaluation.
 
-AFRE-23 [champion/challenger research](champion-challenger.md) is complete. Explicit participants and frozen criteria use exact common shadow evidence with immutable AFRE-18/19/20/21/22 context. Every assessment is MANUAL_ONLY; eligibility does not deploy, roll back, retrain, recalibrate or change fusion weights. TEST cannot redefine a program, and predictive metrics do not establish trading profitability. **Stop after AFRE-23. Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.** AFRE-25 hardening remains deferred.
+AFRE-23 [champion/challenger research](champion-challenger.md) is complete. Explicit participants and frozen criteria use exact common shadow evidence with immutable AFRE-18/19/20/21/22 context. Every assessment is MANUAL_ONLY; eligibility does not deploy, roll back, retrain, recalibrate or change fusion weights. TEST cannot redefine a program, and predictive metrics do not establish trading profitability. **Stop after AFRE-24. Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-25 hardening remains deferred.

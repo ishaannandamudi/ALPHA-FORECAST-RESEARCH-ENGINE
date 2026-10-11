@@ -45,10 +45,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-23.**" in master
-    assert "**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**" in readme
+    assert "**Stop after AFRE-24.**" in master
+    assert "**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.24.0" and project["dependencies"] == []
+    assert project["version"] == "0.25.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,8 +274,10 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0–AFRE-23" in text
-        assert "**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**" in text
+        assert "AFRE-0–AFRE-24" in text
+        assert (
+            "**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in text
+        )
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
             assert not re.search(
@@ -313,7 +315,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.24.0"
+    assert ENGINE_VERSION == "0.25.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -331,7 +333,7 @@ def main() -> None:
         == REGIME_CONDITIONED_SCHEMA_VERSION
         == "1.0"
     )
-    assert STORE_SCHEMA_VERSION == "1.23" and STORE_USER_VERSION == 24
+    assert STORE_SCHEMA_VERSION == "1.24" and STORE_USER_VERSION == 25
     assert (
         SEQUENCE_SCHEMA_VERSION
         == UNCERTAINTY_SCHEMA_VERSION
@@ -365,7 +367,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-23.**" in text
+        assert "**Stop after AFRE-24.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -592,9 +594,53 @@ def main() -> None:
             assert not re.search(
                 r"Next scope: AFRE-23|Stop after AFRE-22", document.read_text()
             )
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            assert not re.search(
+                r"Next scope: AFRE-24|Stop after AFRE-23|"
+                r"AFRE-24 snapshot/registry/service remains future",
+                document.read_text(),
+            )
+    current = (REPOSITORY / "docs/AFRE_24_COMPLETION_REPORT.md").read_text()
+    current_labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 91)),
+        *tuple("C" + chr(i) for i in range(65, 91)),
+        "DA",
+    )
+    assert len(current_labels) == 105
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", current, re.MULTILINE) == list(current_labels)
+    assert re.findall(r"^\| (\d+) \|", current, re.MULTILINE) == [str(i) for i in range(1, 51)]
+    for name in (
+        "forecast-snapshot.md",
+        "afre-service-api.md",
+        "artifact-registry.md",
+        "service-versioning.md",
+        "snapshot-context.md",
+        "snapshot-retrieval.md",
+        "service-errors.md",
+        "service-reproducibility.md",
+        "service-profile.json",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    assert (REPOSITORY / "examples/service_demo.py").is_file()
+    assert (REPOSITORY / "benchmarks/service_profile.py").is_file()
+    from afre.service import (
+        AFRE_SERVICE_API_VERSION,
+        FORECAST_SNAPSHOT_SCHEMA_VERSION,
+        REGISTRY_SCHEMA_VERSION,
+    )
+
+    assert (
+        AFRE_SERVICE_API_VERSION
+        == FORECAST_SNAPSHOT_SCHEMA_VERSION
+        == REGISTRY_SCHEMA_VERSION
+        == "1.0"
+    )
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 96-item A–CR scope/49 gates"
+        "versions, links, historical reports and current 105-item A–DA scope/50 gates"
     )
 
 

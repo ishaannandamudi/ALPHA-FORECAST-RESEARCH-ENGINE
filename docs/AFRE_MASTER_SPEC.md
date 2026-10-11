@@ -1,8 +1,8 @@
 # Alpha Forecast & Research Engine — master specification
 
-Status: **AFRE-0–AFRE-23 complete**, engine 0.24.0,
+Status: **AFRE-0–AFRE-24 complete**, engine 0.25.0,
 foundation/feature-store/target/universe/dataset/model/probabilistic/calibration/multi-horizon/cross-sectional/event-conditioned schemas 1.0,
-shared research store 1.23/user_version=24; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research, multiple-testing, selection, fusion, health and champion/challenger schemas 1.0.
+shared research store 1.24/user_version=25; regime-conditioned, mixture, nonlinear, sequence, uncertainty, orthogonalization, invariance, transaction-cost-research, multiple-testing, selection, fusion, health and champion/challenger schemas 1.0.
 
 ## Mission and philosophy
 
@@ -228,7 +228,7 @@ projects after AFRE**. No AFRE phase may claim trading profitability merely from
 predictive metrics.
 
 The roadmap may evolve through a reviewed specification revision while preserving
-these distinct phases. **Stop after AFRE-23.** AFRE-1 remains only the
+these distinct phases. **Stop after AFRE-24.** AFRE-1 remains only the
 Point-in-Time Feature Store. AFRE-6 implements explicit TRAIN-only uncertainty,
 causal distributions and proper scoring. AFRE-7 adds separate causal calibration.
 AFRE-8 composes exact horizons; AFRE-9 ranks exact same-origin securities;
@@ -236,7 +236,7 @@ AFRE-10 conditions exact events; AFRE-11 adds causal regime conditioning; AFRE-1
 adds explicit expert composition; AFRE-13 adds explicit nonlinear interactions.
 AFRE-14 adds causal ordered histories; AFRE-15 adds identified uncertainty metadata; AFRE-16 Signal Orthogonalization & Redundancy Analysis is complete; AFRE-17 Invariance & Stability Research is complete;
 AFRE-18 cost-aware research, AFRE-19 overfitting controls, AFRE-20 model selection
-AFRE-21 explicit fusion, AFRE-22 descriptive health and AFRE-23 advisory shadow evaluation are complete. AFRE-24 through AFRE-25 remain deferred;
+AFRE-21 explicit fusion, AFRE-22 descriptive health and AFRE-23 advisory shadow evaluation are complete. AFRE-24 immutable service is complete; AFRE-25 remains deferred;
 portfolios and execution remain downstream.
 
 ## AFRE-1 implementation and availability boundary
@@ -825,9 +825,9 @@ See [architecture](signal-orthogonalization.md), [redundancy](signal-redundancy.
 [cross-sectional](cross-sectional-redundancy.md), [temporal](temporal-redundancy.md),
 [profile](orthogonalization-profile.json) and [A–BP report](AFRE_16_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-17 completed scope
@@ -846,9 +846,9 @@ Run `.venv311/bin/python -m examples.invariance_demo` for the 37-step offline de
 `.venv311/bin/python -m benchmarks.invariance_profile` for the bounded profile. See the
 [A–BW completion report](AFRE_17_COMPLETION_REPORT.md) and [profile](invariance-profile.json).
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 ## Historical AFRE-18 completed scope
 
@@ -873,9 +873,9 @@ See [cost research](transaction-cost-aware-research.md),
 Run `PYTHONPATH=src:. .venv311/bin/python -m examples.costs_demo` for the checked 40-step
 offline demo and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.costs_profile` for the profile.
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## Historical AFRE-19 completed scope
@@ -905,9 +905,9 @@ explicit. New evidence creates new IDs while frozen old results remain byte-iden
 
 See [controls](multiple-testing-controls.md), [registry](research-trial-registry.md), [families](hypothesis-families.md), [FWER](fwer-controls.md), [FDR](fdr-controls.md), [TEST reuse](test-reuse.md), [selection](selection-bias.md), [overfitting](research-overfitting.md), [profile](multiple-testing-profile.json) and [A–BT report](AFRE_19_COMPLETION_REPORT.md).
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-20 completed boundary
@@ -947,9 +947,9 @@ Run `PYTHONPATH=src:. .venv311/bin/python -m examples.selection_demo` for 35 ver
 steps and `PYTHONPATH=src:. .venv311/bin/python -m benchmarks.selection_profile` for
 separate bounded timing/storage measurements. There is no production SLA.
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 snapshot/registry/service remains future scope.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-23.** Portfolio construction,
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 
 ## AFRE-21 completed scope
@@ -960,9 +960,9 @@ Immutable source references, predeclared fixed point/signal/probability rules an
 
 See [fusion guide](ensemble-signal-fusion.md), [evaluation](fusion-evaluation.md), [profile](fusion-profile.json) and [A–CR completion report](AFRE_21_COMPLETION_REPORT.md).
 
-**Stop after AFRE-23.**
+**Stop after AFRE-24.**
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.** Future work covers the final immutable snapshot, provider-neutral registry and service facade. No automatic production replacement is implied. AFRE-23 owns champion/challenger evaluation, AFRE-24 the final forecast service boundary and AFRE-25 final integration/hardening. Portfolio construction, risk optimization and execution remain downstream. No AFRE phase establishes trading profitability merely from predictive metrics.
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
 
 ## AFRE-22 completed scope
 
@@ -970,9 +970,9 @@ Engine 0.23.0; health schema 1.0; shared store 1.22/SQLite user_version=23; all 
 
 [Drift, decay and model health](drift-decay-model-health.md) pins frozen monitored artifacts, explicit windows/rules, target-free input/prediction drift and later-cutoff errors/calibration. Drift != failure; input drift != error degradation. Health is descriptive: no retrain, recalibrate, weight changes, replacement, promotion, retirement, routing or notifications. No causal explanation, health probability or profitability claim follows. Immutable histories, fixed-reference trends, native AFRE-17 environments and AFRE-19/20/21 context retain exact identities and availability. See [A–CB completion report](AFRE_22_COMPLETION_REPORT.md), [rules](health-rules.md) and [snapshots](health-snapshots.md).
 
-**Stop after AFRE-23.**
+**Stop after AFRE-24.**
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.** Future scope: final immutable forecast snapshots, exact registry/version exposure and reproducible provider-neutral retrieval. No automatic deployment or production service. AFRE-24 remains the final forecast service boundary and AFRE-25 final integration/hardening. Portfolio construction, risk optimization and execution remain downstream.
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
 
 ## AFRE-23 completed scope
 
@@ -980,6 +980,16 @@ Engine 0.24.0; champion/challenger schema 1.0; shared store 1.23 / SQLite user_v
 
 [Champion/challenger research](champion-challenger.md) freezes explicit participant roles, programs/windows/criteria, target-free native shadow records and one common matched truth support. Point, native probabilistic and same-origin ranking metrics produce independent challenger comparisons. Promotion/rollback assessments are MANUAL_ONLY; no global winner, deployment, retraining, recalibration or weight changes. Native AFRE-18 costs, AFRE-19 research/TEST history, AFRE-20 provenance, AFRE-21 fusion and AFRE-22 health remain separate exact context. Corrections append new immutable runs. See [audit](challenge-audit.md), [context](challenge-health-cost-context.md), [A–CR completion report](AFRE_23_COMPLETION_REPORT.md) and [measured profile](challenge-profile.json).
 
-**Stop after AFRE-23.**
+**Stop after AFRE-24.**
 
-**Next scope: AFRE-24 — Forecast Snapshot, Registry & Service.** Final immutable forecast snapshot; public provider-neutral AFRE API; artifact/model registry; exact versions/schemas; point/probability/calibration/horizon/ranking/context outputs; stable service facade; snapshot publication; reproducible retrieval; health/champion metadata. No execution or portfolio optimization. AFRE-25 remains final integration/hardening. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25; portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** AFRE-24 is the final forecast service boundary. AFRE-25 audits the completed integration, schemas/versions, provider boundaries, causality, replay, migration chain, security/corruption, bounds/performance, public API and documentation before a final release candidate. The roadmap freezes 26 distinct phases, AFRE-0 through AFRE-25. Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+
+## AFRE-24 completed scope
+
+Engine 0.25.0; forecast service/API/snapshot/registry schemas 1.0; shared store 1.24 / SQLite user_version=25. Earlier schemas remain 1.0, Python 3.11+ and zero runtime dependencies.
+
+[Immutable forecast snapshots](forecast-snapshot.md) publish exact native point/law/calibration outputs, independent horizons and bounded requested context. [Public API](afre-service-api.md) is read-only and provider-neutral; [registry](artifact-registry.md) records metadata without deployment. Exact frozen catalogs/selectors have no hidden latest. Target-free retrieval preserves native probability laws and honest receipt/reconstruction clocks. Health is NONE_DESCRIPTIVE_ONLY and challenge metadata MANUAL_ONLY. Corrections append new identities. See [context](snapshot-context.md), [retrieval](snapshot-retrieval.md), [versions](service-versioning.md), [errors](service-errors.md), [reproducibility](service-reproducibility.md), [A–DA report](AFRE_24_COMPLETION_REPORT.md) and [profile](service-profile.json).
+
+**Stop after AFRE-24.**
+
+**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.** Portfolio construction, risk optimization and execution remain downstream. No predictive metric establishes trading profitability.

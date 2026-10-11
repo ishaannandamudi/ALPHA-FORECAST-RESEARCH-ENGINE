@@ -1,0 +1,11 @@
+# Exact requested research context
+
+`ContextRequest` pins a category and exact native artifact ID. The projection schema is 1.0: `SnapshotContext` holds canonical `ContextField(path, value)` scalar records, evidence availability, optional cutoff and an explicit action boundary. Dot-separated field paths use canonical native tuple ordering. Public values are finite scalars or null; no executable native objects cross this boundary. Context fields are bounded at 4,096, sections at eight, event references at 128.
+
+Ranking exposes the exact security entry (score/rank/percentile), group, eligible universe and tie policy. Event context pins classes, IDs, windows, materiality, novelty, surprise and timing clocks. Regime context pins taxonomy/version, scope and hard or soft membership; only FILTERED evidence is admitted. Uncertainty is a frozen native certificate whose TRAIN covariance inputs are not reopened by the service. It preserves all native values and identifiability statuses, including null unavailable components. Orthogonal context exposes the exact projection and source metadata. Fusion context pins artifact/spec, source IDs, fixed/learned family, original/effective weights, contributors and missing-source reasons.
+
+Health and challenge require `historical_evaluation=True`. They are opaque historical evaluation certificates with exact native canonical/index/link verification and compatible producer/target/horizon bindings. Health exposes aggregate and metric statuses, cutoff and availability with NONE_DESCRIPTIVE_ONLY. Challenge exposes program, champion/challengers, run and promotion/rollback assessment statuses with MANUAL_ONLY. Their later outcome truth is never expanded or rescored by the service. Full native evaluation re-audit remains an explicit upstream operation.
+
+There is no silent latest health/challenge lookup. Access through `get_health_metadata(snapshot_id, artifact_id)` and `get_challenge_metadata(...)` succeeds only for context pinned into that published snapshot. The whole snapshot identity includes all requested sections; adding context preserves the separate forecast output identity.
+
+Research context has no portfolio interpretation or trading profitability implication. AFRE-25 remains final hardening.
