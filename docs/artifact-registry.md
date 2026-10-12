@@ -8,6 +8,8 @@ Every published forecast pins contributor entries. A separate deterministic snap
 
 Registry listing reads an explicit catalog fingerprint. Keyset `RegistryCursor` pins the entire `RegistryQuery` fingerprint and last entry ID; changing filters/page size/catalog invalidates the cursor. Concurrent appends cannot reorder a frozen catalog. The result bound is 100 per page; catalogs are bounded at 10,000 entries. No hidden latest or offset-based pagination exists.
 
-See [retrieval](snapshot-retrieval.md) and [replay](service-reproducibility.md). AFRE-25 remains final integration/hardening.
+See [retrieval](snapshot-retrieval.md) and [replay](service-reproducibility.md). AFRE-25 completes final integration/hardening.
 
 Registry family labels identify native artifact families. The version is the native artifact implementation version when exposed, otherwise the 1.0 family contract version. Exact artifact/content IDs pin trained revisions and their native specifications; these descriptive labels do not select or deploy a model.
+
+Final engine 1.0.0 audit: [architecture](AFRE_FINAL_ARCHITECTURE.md), [API](AFRE_PUBLIC_API.md), [reproducibility](AFRE_REPRODUCIBILITY_AUDIT.md), [release evidence](AFRE_25_COMPLETION_REPORT.md). Historical public records retain their recorded versions; current API/schema1.0 and store1.24/SQLite25 remain unchanged.

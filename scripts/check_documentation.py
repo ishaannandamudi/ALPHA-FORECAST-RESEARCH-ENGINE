@@ -1,6 +1,7 @@
 """Offline check of frozen roadmap, versions, completed scopes and local doc links."""
 
 import re
+import sys
 import tomllib
 from pathlib import Path
 
@@ -45,10 +46,10 @@ def main() -> None:
     for text in (master, readme):
         assert "26 distinct phases, AFRE-0 through AFRE-25" in text
         assert "Forecast Targets & Label Construction" in text
-    assert "**Stop after AFRE-24.**" in master
-    assert "**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in readme
+    assert "**Stop after AFRE-25.**" in master
+    assert "**Final scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in readme
     project = tomllib.loads((REPOSITORY / "pyproject.toml").read_text())["project"]
-    assert project["version"] == "0.25.0" and project["dependencies"] == []
+    assert project["version"] == "1.0.0" and project["dependencies"] == []
     documents = (REPOSITORY / "README.md", *sorted((REPOSITORY / "docs").glob("*.md")))
     for document in documents:
         text = document.read_text()
@@ -274,9 +275,9 @@ def main() -> None:
     ):
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
-        assert "AFRE-0–AFRE-24" in text
+        assert "AFRE-0–AFRE-25" in text
         assert (
-            "**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in text
+            "**Final scope: AFRE-25 — Final Integration, Hardening & Research Audit.**" in text
         )
     for document in documents:
         if "COMPLETION_REPORT" not in document.name:
@@ -315,7 +316,7 @@ def main() -> None:
         UNIVERSE_SCHEMA_VERSION,
     )
 
-    assert ENGINE_VERSION == "0.25.0"
+    assert ENGINE_VERSION == "1.0.0"
     assert (
         NONLINEAR_SCHEMA_VERSION
         == FOUNDATION_SCHEMA_VERSION
@@ -367,7 +368,7 @@ def main() -> None:
         assert (REPOSITORY / "docs" / name).is_file()
     for text in (master, readme):
         assert "Orthogonal != independent" in text
-        assert "**Stop after AFRE-24.**" in text
+        assert "**Stop after AFRE-25.**" in text
     from afre.version import INVARIANCE_SCHEMA_VERSION
 
     assert INVARIANCE_SCHEMA_VERSION == "1.0"
@@ -638,9 +639,44 @@ def main() -> None:
         == REGISTRY_SCHEMA_VERSION
         == "1.0"
     )
+    import json
+
+    # Preserve the documented direct-script entry point as well as module invocation.
+    sys.path.insert(0, str(REPOSITORY))
+    from scripts.build_release_manifest import manifest
+
+    current = (REPOSITORY / "docs/AFRE_25_COMPLETION_REPORT.md").read_text()
+    labels = (
+        *tuple(chr(i) for i in range(65, 91)),
+        *tuple("A" + chr(i) for i in range(65, 91)),
+        *tuple("B" + chr(i) for i in range(65, 87)),
+    )
+    assert len(labels) == 74
+    assert re.findall(r"^\| ([A-Z]{1,2}) \|", current, re.MULTILINE) == list(labels)
+    for name in (
+        "AFRE_FINAL_ARCHITECTURE.md",
+        "AFRE_PUBLIC_API.md",
+        "AFRE_INTEGRATION_HANDOFF.md",
+        "AFRE_TEMPORAL_AUDIT.md",
+        "AFRE_RESEARCH_AUDIT.md",
+        "AFRE_SECURITY_AUDIT.md",
+        "AFRE_REPRODUCIBILITY_AUDIT.md",
+        "AFRE_MIGRATION_AUDIT.md",
+        "AFRE_RELEASE_NOTES.md",
+    ):
+        assert (REPOSITORY / "docs" / name).is_file()
+    recorded = json.loads((REPOSITORY / "docs/afre-release-manifest.json").read_text())
+    assert recorded == manifest(recorded["release_status"])
+    for document in documents:
+        if "COMPLETION_REPORT" not in document.name:
+            assert not re.search(
+                r"Next scope: AFRE-25|Stop after AFRE-24|AFRE-25 remains final hardening",
+                document.read_text(),
+            )
     print(
         f"PASS: {len(documents)} documents; exact 26-phase roadmap; "
-        "versions, links, historical reports and current 105-item A–DA scope/50 gates"
+        "versions, links, historical reports, exact source manifest "
+        "and final 74-item A–BV audit"
     )
 
 

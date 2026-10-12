@@ -8,4 +8,4 @@ Origin lookup requires `SnapshotQuery`: exact catalog, producer, target, horizon
 
 Registry pagination uses a frozen catalog and a query-bound keyset cursor. Append new catalogs to expose corrections; old queries remain stable. No mutable latest/active pointer exists. See [registry](artifact-registry.md) and [errors](service-errors.md).
 
-AFRE-25 remains final integration/hardening; portfolio, risk optimization and execution stay downstream.
+AFRE-25 completes final integration/hardening; portfolio, risk optimization and execution stay downstream.

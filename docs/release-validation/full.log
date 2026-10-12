@@ -1,0 +1,465 @@
+PRECHECK PASS: sockets/DNS denied before AFRE imports and in Python children
+PRECHECK PASS: source/tests/config inventory and HEAD frozen
+
+GATE_PROGRESS passed=0 failed=0 elapsed=0.8s current=tests/calibration/test_contracts.py::test_invalid_fixed_contracts[<lambda>0]
+...............................................
+GATE_PROGRESS passed=47 failed=0 elapsed=74.5s current=tests/calibration/test_engine.py::test_fit_apply_evaluate_compare_and_audit[CalibrationMethod.QUANTILE_OFFSET]
+...
+GATE_PROGRESS passed=50 failed=0 elapsed=131.0s current=tests/calibration/test_engine.py::test_cutoff_exclusion_exact_time_and_rolling_no_future
+...................... [  2%]
+....................................................
+GATE_PROGRESS passed=124 failed=0 elapsed=191.2s current=tests/calibration/test_repository.py::test_bounds_fail_explicitly[observations-1]
+...................
+GATE_PROGRESS passed=143 failed=0 elapsed=248.0s current=tests/challenger/test_boundaries.py::test_inclusive_promotion_threshold[exact-ChallengeDirection.LOWER]
+. [  4%]
+...............
+GATE_PROGRESS passed=159 failed=0 elapsed=317.9s current=tests/challenger/test_context.py::test_cost_requirement_missing_is_incomparable
+......
+GATE_PROGRESS passed=165 failed=0 elapsed=377.1s current=tests/challenger/test_context.py::test_cost_diagnostics_and_corrections[partial-support]
+.....
+GATE_PROGRESS passed=170 failed=0 elapsed=440.2s current=tests/challenger/test_native.py::test_exact_native_families[point]
+.
+GATE_PROGRESS passed=171 failed=0 elapsed=582.7s current=tests/challenger/test_native.py::test_exact_native_families[gaussian]
+........
+GATE_PROGRESS passed=179 failed=0 elapsed=641.3s current=tests/challenger/test_native.py::test_exact_native_families[tree]
+..........
+GATE_PROGRESS passed=189 failed=0 elapsed=711.5s current=tests/challenger/test_native.py::test_explicit_earlier_baseline_rollback[insufficient]
+....
+GATE_PROGRESS passed=193 failed=0 elapsed=776.9s current=tests/challenger/test_native.py::test_explicit_earlier_baseline_rollback[health-disallowed]
+....
+GATE_PROGRESS passed=197 failed=0 elapsed=847.8s current=tests/challenger/test_native.py::test_native_law_support_without_fabricated_metrics[empirical]
+....
+GATE_PROGRESS passed=201 failed=0 elapsed=907.7s current=tests/challenger/test_replay.py::test_frozen_snapshot_parallel_writer[evaluation]
+......
+GATE_PROGRESS passed=207 failed=0 elapsed=968.0s current=tests/challenger/test_replay.py::test_hash_seeds_and_reverse_orders[random]
+......... [  6%]
+
+GATE_PROGRESS passed=216 failed=0 elapsed=1026.1s current=tests/challenger/test_storage.py::test_invalid_payload_hash[5]
+.............
+GATE_PROGRESS passed=229 failed=0 elapsed=1081.4s current=tests/challenger/test_storage.py::test_projection_tampering[ch_links]
+...............
+GATE_PROGRESS passed=244 failed=0 elapsed=1138.6s current=tests/challenger/test_workflow.py::test_native_numeric_oracles[ChallengeMetric.RMSE]
+............
+GATE_PROGRESS passed=256 failed=0 elapsed=1194.8s current=tests/challenger/test_workflow.py::test_native_numeric_oracles[ChallengeMetric.RANK_IC]
+.............
+GATE_PROGRESS passed=269 failed=0 elapsed=1250.4s current=tests/challenger/test_workflow.py::test_declared_mismatch_incomparable[horizon_id]
+..........
+GATE_PROGRESS passed=279 failed=0 elapsed=1399.9s current=tests/costs/test_availability.py::test_archive_delivery_evidence[False]
+......... [  8%]
+..........................
+GATE_PROGRESS passed=314 failed=0 elapsed=1455.5s current=tests/costs/test_evaluation.py::test_missing_policy_no_zero_default[CostMissingPolicy.EXCLUDE_SAMPLE]
+........
+GATE_PROGRESS passed=322 failed=0 elapsed=1635.1s current=tests/costs/test_evaluation.py::test_zero_gross_zero_turnover_explicit
+.............
+GATE_PROGRESS passed=335 failed=0 elapsed=1690.9s current=tests/costs/test_integration.py::test_native_forecast_families[hard-regime]
+.........
+GATE_PROGRESS passed=344 failed=0 elapsed=1754.9s current=tests/costs/test_integration.py::test_actual_one_hour_one_day_separate
+.........
+GATE_PROGRESS passed=353 failed=0 elapsed=1828.1s current=tests/costs/test_limits.py::test_lineage_canonical_byte_budget
+....... [ 10%]
+..........................
+GATE_PROGRESS passed=386 failed=0 elapsed=1883.6s current=tests/costs/test_numeric.py::test_initial_exposure_distinct
+..
+GATE_PROGRESS passed=388 failed=0 elapsed=2268.3s current=tests/costs/test_repository.py::test_migration_preserves_prior_ddl_metadata_rows
+............
+GATE_PROGRESS passed=400 failed=0 elapsed=2324.4s current=tests/costs/test_repository.py::test_sql_corruption_read_rejected[payload]
+...............
+GATE_PROGRESS passed=415 failed=0 elapsed=2379.4s current=tests/cross_sectional/test_determinism.py::test_hash_seed_reverse_restart[True-1]
+................. [ 13%]
+........................................................................ [ 15%]
+.............
+GATE_PROGRESS passed=517 failed=0 elapsed=2454.1s current=tests/cross_sectional/test_repository.py::test_migration_rollback
+........................................................... [ 17%]
+
+GATE_PROGRESS passed=576 failed=0 elapsed=2520.9s current=tests/event_conditioned/test_determinism.py::test_seed_reversal_and_restart[False-1]
+.......
+GATE_PROGRESS passed=583 failed=0 elapsed=2581.7s current=tests/event_conditioned/test_models.py::test_class_mean_independent_target_oracle[False]
+..................................................
+GATE_PROGRESS passed=633 failed=0 elapsed=2642.7s current=tests/event_conditioned/test_repository.py::test_corruption_fail_closed[missing]
+............... [ 19%]
+........................................................................ [ 21%]
+........................................................................ [ 24%]
+...................
+GATE_PROGRESS passed=811 failed=0 elapsed=2701.0s current=tests/fusion/test_context.py::test_cost_evaluation_and_stability_context
+..................
+GATE_PROGRESS passed=829 failed=0 elapsed=2846.1s current=tests/fusion/test_native.py::test_actual_hour_day_remain_independent
+.......
+GATE_PROGRESS passed=836 failed=0 elapsed=2937.3s current=tests/fusion/test_replay.py::test_seed_and_reversed_order[42]
+..
+GATE_PROGRESS passed=838 failed=0 elapsed=3012.6s current=tests/fusion/test_replay.py::test_failed_attempt_counted_and_pool_atomic
+.......................... [ 26%]
+........
+GATE_PROGRESS passed=872 failed=0 elapsed=3070.4s current=tests/health/test_inputs_vectors.py::test_actual_input_drift_oracle[HealthDiagnostic.INPUT_STD]
+.....................
+GATE_PROGRESS passed=893 failed=0 elapsed=3219.5s current=tests/health/test_native.py::test_native_forecast_families[gaussian]
+..................
+GATE_PROGRESS passed=911 failed=0 elapsed=3284.7s current=tests/health/test_native.py::test_native_fusion_weight_oracles
+......................... [ 28%]
+..............................
+GATE_PROGRESS passed=966 failed=0 elapsed=3349.3s current=tests/health/test_selection_context.py::test_context_certificate_clock_forgery
+...........................
+GATE_PROGRESS passed=993 failed=0 elapsed=3405.2s current=tests/health/test_workflow.py::test_target_free_even_warm_caches
+............
+GATE_PROGRESS passed=1005 failed=0 elapsed=3528.5s current=tests/invariance/test_availability.py::test_archive_publication_is_not_AFRE_delivery[True]
+... [ 30%]
+.....
+GATE_PROGRESS passed=1013 failed=0 elapsed=3590.9s current=tests/invariance/test_boundaries.py::test_PIT_sector_reclassification_cannot_replace_history
+..................
+GATE_PROGRESS passed=1031 failed=0 elapsed=3657.9s current=tests/invariance/test_concurrency.py::test_real_writer_frozen_analysis[event]
+...
+GATE_PROGRESS passed=1034 failed=0 elapsed=3726.6s current=tests/invariance/test_concurrency.py::test_real_writer_frozen_analysis[target]
+.....
+GATE_PROGRESS passed=1039 failed=0 elapsed=3784.3s current=tests/invariance/test_diagnostics.py::test_supplied_native_parameters[sequence]
+.....................
+GATE_PROGRESS passed=1060 failed=0 elapsed=3844.3s current=tests/invariance/test_evaluation.py::test_soft_regime_weighted_native_metric
+.................... [ 32%]
+......
+GATE_PROGRESS passed=1086 failed=0 elapsed=3900.1s current=tests/invariance/test_extra.py::test_uncertainty_exact_additive_environment_metrics
+.....................
+GATE_PROGRESS passed=1107 failed=0 elapsed=3957.0s current=tests/invariance/test_replay.py::test_seed_order_restart[False-random]
+....
+GATE_PROGRESS passed=1111 failed=0 elapsed=4012.5s current=tests/invariance/test_replay.py::test_seed_order_restart[True-random]
+.................
+GATE_PROGRESS passed=1128 failed=0 elapsed=4083.1s current=tests/invariance/test_repository.py::test_semantic_forgery_rejected[model]
+...........
+GATE_PROGRESS passed=1139 failed=0 elapsed=4145.8s current=tests/mixture/test_bounds.py::test_actual_overflow[experts]
+............. [ 35%]
+.....................................
+GATE_PROGRESS passed=1189 failed=0 elapsed=4210.8s current=tests/mixture/test_determinism.py::test_seed_reversal_restart[False-1]
+.....
+GATE_PROGRESS passed=1194 failed=0 elapsed=4278.8s current=tests/mixture/test_determinism.py::test_seed_reversal_restart[True-42]
+................
+GATE_PROGRESS passed=1210 failed=0 elapsed=4360.5s current=tests/mixture/test_lineage.py::test_component_calibration_does_not_transfer
+.............. [ 37%]
+.....................................................................
+GATE_PROGRESS passed=1293 failed=0 elapsed=4428.9s current=tests/multihorizon/test_bounds.py::test_shared_fit_work_bounds[work_cells]
+... [ 39%]
+................................................
+GATE_PROGRESS passed=1344 failed=0 elapsed=4487.2s current=tests/multihorizon/test_determinism.py::test_heldout_perturbation_does_not_fit_shared_parameters
+........................ [ 41%]
+.................
+GATE_PROGRESS passed=1385 failed=0 elapsed=4549.1s current=tests/multihorizon/test_repository.py::test_roundtrip_idempotence_and_bounds
+................
+GATE_PROGRESS passed=1401 failed=0 elapsed=4749.6s current=tests/multiple_testing/test_boundaries.py::test_cached_later_truth_and_results_guard
+.
+GATE_PROGRESS passed=1402 failed=0 elapsed=4873.3s current=tests/multiple_testing/test_boundaries.py::test_test_truth_correction_keeps_family_and_results
+...................................... [ 43%]
+........................
+GATE_PROGRESS passed=1464 failed=0 elapsed=4929.2s current=tests/multiple_testing/test_bounds_security.py::test_bounded_audit_native_train_truth_and_seal
+.....
+GATE_PROGRESS passed=1469 failed=0 elapsed=4989.1s current=tests/multiple_testing/test_concurrency.py::test_native_forecast_correction_new_opportunity_old_evidence_fixed
+..
+GATE_PROGRESS passed=1471 failed=0 elapsed=5220.1s current=tests/multiple_testing/test_evidence.py::test_missing_slots_never_final[FamilyCompleteness.PARTIAL]
+.
+GATE_PROGRESS passed=1472 failed=0 elapsed=5446.5s current=tests/multiple_testing/test_evidence.py::test_missing_slots_never_final[FamilyCompleteness.INVALID]
+.
+GATE_PROGRESS passed=1473 failed=0 elapsed=5672.7s current=tests/multiple_testing/test_evidence.py::test_complete_cannot_omit_attempt
+....................................... [ 45%]
+...................................................
+GATE_PROGRESS passed=1563 failed=0 elapsed=5765.5s current=tests/multiple_testing/test_registry_selection.py::test_selection_spread_oracles[DescriptiveSelectionRule.MIN_ERROR-False]
+..
+GATE_PROGRESS passed=1565 failed=0 elapsed=5863.5s current=tests/multiple_testing/test_registry_selection.py::test_selection_spread_oracles[DescriptiveSelectionRule.TOP_K-False]
+..
+GATE_PROGRESS passed=1567 failed=0 elapsed=5961.6s current=tests/multiple_testing/test_registry_selection.py::test_selection_spread_oracles[DescriptiveSelectionRule.DECLARED_THRESHOLD-False]
+..
+GATE_PROGRESS passed=1569 failed=0 elapsed=6047.1s current=tests/multiple_testing/test_registry_selection.py::test_selection_forgery_rejected[chosen]
+.....
+GATE_PROGRESS passed=1574 failed=0 elapsed=6111.3s current=tests/multiple_testing/test_registry_selection.py::test_registry_whole_no_subset_and_historical_snapshot
+..
+GATE_PROGRESS passed=1576 failed=0 elapsed=6177.0s current=tests/multiple_testing/test_registry_selection.py::test_validation_reuse_incompatible_and_overfitting
+....
+GATE_PROGRESS passed=1580 failed=0 elapsed=6258.3s current=tests/multiple_testing/test_replay.py::test_fresh_seed_order_requests_restart_36_steps
+.
+GATE_PROGRESS passed=1581 failed=0 elapsed=7176.1s current=tests/multiple_testing/test_repository.py::test_migration_prior_ddl_metadata_rows_preserved
+... [ 48%]
+......
+GATE_PROGRESS passed=1590 failed=0 elapsed=7578.5s current=tests/multiple_testing/test_repository.py::test_semantic_forgery_atomic[analysis]
+.
+GATE_PROGRESS passed=1591 failed=0 elapsed=8058.4s current=tests/multiple_testing/test_repository.py::test_valid_hash_relational_forgery_rejected_on_resolve
+.................
+GATE_PROGRESS passed=1608 failed=0 elapsed=8205.7s current=tests/nonlinear/test_bounds.py::test_positive_bounds[interactions]
+..................................
+GATE_PROGRESS passed=1642 failed=0 elapsed=8261.1s current=tests/nonlinear/test_concurrency.py::test_frozen_fit_prediction_and_evaluation[all]
+.....
+GATE_PROGRESS passed=1647 failed=0 elapsed=8328.3s current=tests/nonlinear/test_determinism.py::test_seed_reversal_restart[True-0]
+.....
+GATE_PROGRESS passed=1652 failed=0 elapsed=8390.6s current=tests/nonlinear/test_horizons_calibration.py::test_upstream_calibrator_incompatible
+.... [ 50%]
+............
+GATE_PROGRESS passed=1668 failed=0 elapsed=8449.6s current=tests/nonlinear/test_repository.py::test_migration_rollback
+............................................................ [ 52%]
+..............................................................
+GATE_PROGRESS passed=1790 failed=0 elapsed=8505.1s current=tests/nonlinear/test_workflow.py::test_stability_no_prune
+.......... [ 54%]
+...
+GATE_PROGRESS passed=1803 failed=0 elapsed=8623.6s current=tests/orthogonalization/test_bounds.py::test_resource_limits[rows]
+..................................................................... [ 56%]
+................................................
+GATE_PROGRESS passed=1920 failed=0 elapsed=8696.8s current=tests/orthogonalization/test_repository.py::test_layout_tamper[metadata]
+........................ [ 59%]
+.....
+GATE_PROGRESS passed=1949 failed=0 elapsed=8767.2s current=tests/orthogonalization/test_workflow.py::test_native_source_unified_audit[event]
+.............................................................
+GATE_PROGRESS passed=2010 failed=0 elapsed=8822.4s current=tests/probabilistic/test_engine.py::test_gaussian_declared_scale[scale1]
+...... [ 61%]
+........................................................................ [ 63%]
+............
+GATE_PROGRESS passed=2100 failed=0 elapsed=8881.0s current=tests/probabilistic/test_reproducibility.py::test_reversed_upstream_train_and_forecast_requests
+...
+GATE_PROGRESS passed=2103 failed=0 elapsed=8951.7s current=tests/regime_conditioned/test_bounds.py::test_explicit_overflow[taxonomies]
+......................................................... [ 65%]
+......
+GATE_PROGRESS passed=2166 failed=0 elapsed=9015.1s current=tests/regime_conditioned/test_determinism.py::test_seed_reversal_restart[False-1]
+.....
+GATE_PROGRESS passed=2171 failed=0 elapsed=9075.6s current=tests/regime_conditioned/test_determinism.py::test_seed_reversal_restart[True-42]
+.................
+GATE_PROGRESS passed=2188 failed=0 elapsed=9131.1s current=tests/regime_conditioned/test_models.py::test_exact_declared_event_then_target_mean
+...
+GATE_PROGRESS passed=2191 failed=0 elapsed=9187.9s current=tests/regime_conditioned/test_repository.py::test_additive_eleven_to_twelve
+......................................... [ 67%]
+...............
+GATE_PROGRESS passed=2247 failed=0 elapsed=9389.4s current=tests/release/test_compatibility.py::test_unknown_engine_rejected[0.24.0]
+................
+GATE_PROGRESS passed=2263 failed=0 elapsed=9461.8s current=tests/release/test_external_consumer.py::test_public_consumer_contract
+.
+GATE_PROGRESS passed=2264 failed=0 elapsed=9641.8s current=tests/release/test_external_consumer.py::test_provider_neutral_six_clocks
+........................................ [ 70%]
+.............................................
+GATE_PROGRESS passed=2349 failed=0 elapsed=9701.1s current=tests/research_datasets/test_preprocessing.py::test_train_only_simple_statistics[NormalizationMethod.STANDARDIZE]
+..........................
+GATE_PROGRESS passed=2375 failed=0 elapsed=9758.8s current=tests/research_datasets/test_reproducibility.py::test_hash_seeds_and_restart
+. [ 72%]
+...................
+GATE_PROGRESS passed=2395 failed=0 elapsed=9814.3s current=tests/research_datasets/test_splitting.py::test_explicit_calendar_and_bar_embargo[EmbargoBasis.TRADING_SESSIONS]
+...........
+GATE_PROGRESS passed=2406 failed=0 elapsed=9986.4s current=tests/selection/test_families_horizons.py::test_probability_only_compatible_native_score[SelectionCriterion.MIN_CRPS]
+..
+GATE_PROGRESS passed=2408 failed=0 elapsed=10070.1s current=tests/selection/test_families_horizons.py::test_causal_declared_residual_feature_in_later_fold
+..
+GATE_PROGRESS passed=2410 failed=0 elapsed=10127.7s current=tests/selection/test_families_horizons.py::test_previous_test_rows_cannot_be_reclassified_in_later_fold
+...................................... [ 74%]
+.........................
+GATE_PROGRESS passed=2473 failed=0 elapsed=10188.9s current=tests/selection/test_pipeline.py::test_explicit_minimum_support_no_valid
+.....
+GATE_PROGRESS passed=2478 failed=0 elapsed=10258.2s current=tests/selection/test_pipeline.py::test_stored_test_evaluation_guard_before_cache[get-SelectionReadRole.PLANNING]
+..............
+GATE_PROGRESS passed=2492 failed=0 elapsed=10314.8s current=tests/selection/test_replay_audit.py::test_earlier_cutoff_exclusions_create_new_result
+.....
+GATE_PROGRESS passed=2497 failed=0 elapsed=10370.5s current=tests/selection/test_storage.py::test_migration_preserves_prior_ddl_metadata_rows
+......................
+GATE_PROGRESS passed=2519 failed=0 elapsed=10445.7s current=tests/sequence/test_availability.py::test_publication_not_afre_receipt[10000000]
+. [ 76%]
+...............................................
+GATE_PROGRESS passed=2567 failed=0 elapsed=10515.6s current=tests/sequence/test_determinism.py::test_seed_reversal_restart[False-42]
+....
+GATE_PROGRESS passed=2571 failed=0 elapsed=10584.0s current=tests/sequence/test_determinism.py::test_seed_reversal_restart[True-42]
+........
+GATE_PROGRESS passed=2579 failed=0 elapsed=10644.0s current=tests/sequence/test_repository.py::test_rollback_and_future
+............. [ 78%]
+...................................................................
+GATE_PROGRESS passed=2659 failed=0 elapsed=10823.0s current=tests/service/test_boundaries.py::test_truth_and_outcomes_before_cache
+..... [ 81%]
+.....
+GATE_PROGRESS passed=2669 failed=0 elapsed=10885.4s current=tests/service/test_boundaries.py::test_configured_bounds[snapshot_bytes]
+........
+GATE_PROGRESS passed=2677 failed=0 elapsed=10943.8s current=tests/service/test_context.py::test_native_contexts[3]
+........
+GATE_PROGRESS passed=2685 failed=0 elapsed=11003.5s current=tests/service/test_integrity.py::test_valid_hash_semantic_forgery[audit]
+........................
+GATE_PROGRESS passed=2709 failed=0 elapsed=11078.1s current=tests/service/test_queries.py::test_keyset_and_registry_filters
+.......
+GATE_PROGRESS passed=2716 failed=0 elapsed=11144.2s current=tests/service/test_storage.py::test_migration_and_future
+.............
+GATE_PROGRESS passed=2729 failed=0 elapsed=11211.0s current=tests/service/test_workflow.py::test_native_publication[event]
+...
+GATE_PROGRESS passed=2732 failed=0 elapsed=11272.3s current=tests/service/test_workflow.py::test_native_publication[nonlinear]
+.... [ 83%]
+
+GATE_PROGRESS passed=2736 failed=0 elapsed=11335.2s current=tests/statistical_models/test_boundaries.py::test_excluded_responses_cannot_affect_fit[Partition.VALIDATION]
+........................................................................ [ 85%]
+...................
+GATE_PROGRESS passed=2827 failed=0 elapsed=11402.6s current=tests/statistical_models/test_reproducibility.py::test_offline_demo
+..................................................... [ 87%]
+........................................................................ [ 89%]
+........................................................................ [ 91%]
+.........
+GATE_PROGRESS passed=3033 failed=0 elapsed=11551.2s current=tests/uncertainty/test_additional.py::test_point_expert_disagreement[UncertaintyMeasure.VARIANCE]
+...........................................................
+GATE_PROGRESS passed=3092 failed=0 elapsed=11650.2s current=tests/uncertainty/test_determinism.py::test_seed_order_restart[False-1]
+..
+GATE_PROGRESS passed=3094 failed=0 elapsed=11706.0s current=tests/uncertainty/test_determinism.py::test_seed_order_restart[False-random]
+.. [ 94%]
+
+GATE_PROGRESS passed=3096 failed=0 elapsed=11762.0s current=tests/uncertainty/test_determinism.py::test_seed_order_restart[True-1]
+..
+GATE_PROGRESS passed=3098 failed=0 elapsed=11818.2s current=tests/uncertainty/test_determinism.py::test_seed_order_restart[True-random]
+...................................................
+GATE_PROGRESS passed=3149 failed=0 elapsed=11874.0s current=tests/uncertainty/test_repository.py::test_sql_corruption[family]
+................... [ 96%]
+....................................
+GATE_PROGRESS passed=3204 failed=0 elapsed=11929.3s current=tests/universe/test_contracts.py::test_invalid_policy_cannot_be_silently_normalized[changes10]
+.................................... [ 98%]
+................................................                         [100%]
+------------ generated xml file: /private/tmp/afre25-full-junit.xml ------------
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.11.16-final-0 _______________
+
+Name                                                 Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------------------
+src/afre/calibration/lineage.py                         70      4     36      5    92%   51, 72, 78, 80, 135->134
+src/afre/calibration/repository.py                     134      1     36      1    99%   108
+src/afre/challenger/assessments.py                     100      1     32      1    98%   237
+src/afre/challenger/costs.py                            78      3     30      3    94%   99, 105, 129
+src/afre/challenger/lineage.py                          73      0     28      1    99%   46->exit
+src/afre/challenger/matching.py                         75      1     24      2    97%   116, 127->125
+src/afre/challenger/metrics.py                         103      2     54      3    97%   98, 116->129, 162
+src/afre/challenger/repository.py                      170      2     46      3    98%   91->exit, 115, 323
+src/afre/costs/components.py                            67      1     22      1    98%   97
+src/afre/costs/cost_inputs.py                           67      2     22      2    96%   141, 146
+src/afre/costs/definitions.py                          165      2     24      2    98%   132, 152
+src/afre/costs/engine.py                               111      1     14      0    99%   96
+src/afre/costs/evaluation.py                            56      0      6      1    98%   43->51
+src/afre/costs/lineage.py                               74      0     36      1    99%   151->154
+src/afre/costs/repository.py                           147      7     50      4    94%   83, 236, 293-294, 300-305
+src/afre/costs/sensitivity.py                           44      2      6      1    94%   68-69
+src/afre/cross_sectional/artifacts.py                  221      0     14      1    99%   151->153
+src/afre/cross_sectional/engine.py                      99      1     12      1    98%   57
+src/afre/cross_sectional/evaluation.py                 119      1     28      2    98%   79, 185->182
+src/afre/cross_sectional/lineage.py                     80      3     40      4    94%   82, 84, 91, 149->148
+src/afre/cross_sectional/repository.py                 130      2     34      2    98%   107, 234
+src/afre/cross_sectional/scoring.py                     73      1     28      1    98%   168
+src/afre/event_conditioned/artifacts.py                188      0     12      1    99%   85->87
+src/afre/event_conditioned/engine.py                   126      0     20      1    99%   57->51
+src/afre/event_conditioned/forecasts.py                 56      1     12      1    97%   86
+src/afre/event_conditioned/lineage.py                   76      7     36      2    87%   101-111, 171->174
+src/afre/event_conditioned/matching.py                 141      3     48      3    97%   88->76, 170, 190-191
+src/afre/event_conditioned/repository.py               118      2     26      2    97%   100, 224
+src/afre/event_conditioned/validation.py                54      0     32      1    99%   47->46
+src/afre/feature_store/dag.py                          111      0     24      1    99%   198->196
+src/afre/feature_store/engine.py                       144      0     26      1    99%   247->240
+src/afre/feature_store/models.py                       183      1     36      1    99%   205
+src/afre/feature_store/queries.py                      103      1     38      1    99%   220
+src/afre/feature_store/repository.py                   267      1    116      1    99%   166
+src/afre/fusion/application.py                          58      4     10      1    93%   122-131
+src/afre/fusion/compatibility.py                        33      6      6      1    77%   47-61
+src/afre/fusion/definitions.py                          89      1     16      1    98%   207
+src/afre/fusion/diversity.py                            45      0     12      2    96%   66->56, 68->56
+src/afre/fusion/engine.py                              113      2     12      2    97%   99, 119
+src/afre/fusion/evaluation.py                           89     11     30      3    85%   104, 122, 151-161
+src/afre/fusion/missingness.py                          16      0      6      1    95%   20->22
+src/afre/fusion/probabilistic.py                        78      1     12      0    99%   156
+src/afre/fusion/repository.py                          155      2     44      3    97%   80->exit, 104, 170
+src/afre/fusion/snapshots.py                            37      3     12      0    94%   25-27
+src/afre/health/calibration.py                          32      2     12      2    91%   33, 48
+src/afre/health/errors.py                               69      5     30      6    89%   34, 62, 80, 116, 124->113, 127
+src/afre/health/evaluation.py                          206     16     80      9    91%   84-87, 92, 94, 99, 131-142, 183, 218-227, 286, 468, 498
+src/afre/health/lineage.py                              73      1     26      1    98%   134
+src/afre/health/parameters.py                           57     11     24      3    75%   24-28, 99-117
+src/afre/health/probabilities.py                        55      6     22      4    84%   51, 63, 80-82, 96
+src/afre/health/repository.py                          153      4     46      4    96%   62->exit, 86, 154, 271-272
+src/afre/health/sources.py                             158     16     48      6    89%   130-131, 156-157, 227, 322-330, 336-338, 340-343
+src/afre/health/trends.py                               28      0      2      1    97%   57->60
+src/afre/health/vectors.py                              49      3     26      3    92%   59, 67, 105
+src/afre/invariance/coefficients.py                     38      3      8      3    87%   21, 28, 47
+src/afre/invariance/comparisons.py                      67      3     14      3    93%   92-97, 217->245, 244
+src/afre/invariance/diagnostics.py                     130      5     46      8    91%   78, 125, 153, 207->209, 210->209, 213-214, 232->234, 240->239
+src/afre/invariance/distributions.py                    65      1     16      1    98%   134
+src/afre/invariance/engine.py                           97      1      8      1    98%   71
+src/afre/invariance/environments.py                    145      3     44      2    97%   197-198, 264
+src/afre/invariance/evaluation.py                      102      1     42      2    98%   115->113, 164
+src/afre/invariance/lineage.py                          70      1     34      2    97%   95, 147->150
+src/afre/invariance/rankings.py                         43      1      4      1    96%   135
+src/afre/invariance/repository.py                      142      2     48      2    98%   84, 240
+src/afre/invariance/scoring.py                         100     16     54      9    79%   79, 86-93, 109, 115, 118, 140-142, 149, 165
+src/afre/invariance/uncertainty.py                      32      3     10      3    86%   56, 63, 66
+src/afre/invariance/validation.py                       48      0     26      1    99%   110->112
+src/afre/mixture/availability.py                       108      0     24      1    99%   169->175
+src/afre/mixture/engine.py                             141      1     14      1    99%   92
+src/afre/mixture/forecasts.py                           63      1     12      1    97%   140
+src/afre/mixture/learned.py                             40      1      8      0    98%   90
+src/afre/mixture/lineage.py                             91      6     48      3    91%   68, 122-130, 203->206
+src/afre/mixture/missingness.py                         39      3     16      3    89%   31, 45, 47
+src/afre/mixture/probabilistic.py                       77      2     16      1    97%   73, 78
+src/afre/mixture/repository.py                         120      2     26      2    97%   110, 237
+src/afre/mixture/validation.py                          67      0     44      1    99%   204->exit
+src/afre/multihorizon/artifacts.py                     235      1     18      1    99%   278
+src/afre/multihorizon/engine.py                         72      1      6      1    97%   44
+src/afre/multihorizon/evaluation.py                     79      1     26      3    96%   131->137, 147, 150->158
+src/afre/multihorizon/forecasts.py                      96      1     24      0    99%   164
+src/afre/multihorizon/lineage.py                        67      5     30      6    89%   61, 66, 71, 89, 106, 162->161
+src/afre/multihorizon/repository.py                    127      1     34      1    99%   96
+src/afre/multihorizon/training.py                       45      0     14      1    98%   72->79
+src/afre/multiple_testing/lineage.py                    92      0     36      1    99%   167->171
+src/afre/multiple_testing/observations.py               83      2     28      1    97%   151-152
+src/afre/multiple_testing/raw_tests.py                  43      2     16      2    93%   55, 77
+src/afre/multiple_testing/repository.py                151      2     40      2    98%   97, 234
+src/afre/nonlinear/engine.py                           146      1     16      1    99%   110
+src/afre/nonlinear/evaluation.py                        68      1     18      2    97%   36, 151->148
+src/afre/nonlinear/lineage.py                           90      0     46      1    99%   198->201
+src/afre/nonlinear/probability.py                       19      1      4      1    91%   67
+src/afre/nonlinear/repository.py                       125      1     26      1    99%   113
+src/afre/nonlinear/sources.py                          116      3     24      2    96%   107-109, 134->136
+src/afre/nonlinear/validation.py                       113      0     50      1    99%   296->exit
+src/afre/orthogonalization/evaluation_artifacts.py      91      0      4      1    99%   98->exit
+src/afre/orthogonalization/lineage.py                   71      1     34      2    97%   77, 127->130
+src/afre/orthogonalization/repository.py               136      2     44      2    98%   80, 204
+src/afre/orthogonalization/validation.py                53      0     28      1    99%   146->exit
+src/afre/persistence.py                                115      1     22      1    99%   107
+src/afre/probabilistic/fitting.py                       46      0      4      1    98%   74->76
+src/afre/probabilistic/lineage.py                       67      1     34      2    97%   62, 130->129
+src/afre/probabilistic/repository.py                   147      1     52      1    99%   99
+src/afre/regime_conditioned/artifacts.py               243      0     14      1    99%   114->exit
+src/afre/regime_conditioned/evaluation.py               96      0     22      1    99%   124->156
+src/afre/regime_conditioned/lineage.py                  79      3     38      4    94%   81, 99, 105, 176->179
+src/afre/regime_conditioned/matching.py                131      4     46      4    95%   102, 151, 157, 163
+src/afre/regime_conditioned/repository.py              120      1     26      1    99%   105
+src/afre/research_datasets/repository.py               222      1     66      1    99%   142
+src/afre/research_datasets/splitting.py                115      0     52      1    99%   111->113
+src/afre/research_datasets/validation.py               233      0     98      2    99%   273->exit, 406->415
+src/afre/selection/accounting.py                        45      1      8      1    96%   161
+src/afre/selection/admission.py                         77      0     32      1    99%   153->158
+src/afre/selection/engine.py                            95      5      6      0    95%   173-180
+src/afre/selection/fitting.py                           95      3     22      2    96%   121-122, 180
+src/afre/selection/geometry.py                          59      3     26      4    92%   50->66, 69, 80, 118
+src/afre/selection/guards.py                            57      1     28      1    98%   128
+src/afre/selection/metadata.py                          20     20      6      0     0%   3-68
+src/afre/selection/repository.py                       174      8     42      5    94%   87->exit, 147, 297-303, 348-349, 354-355
+src/afre/selection/scoring.py                           59      8     12      0    86%   108-118
+src/afre/sequence/engine.py                            149      1     20      1    99%   93
+src/afre/sequence/evaluation.py                         78      0     22      1    99%   165->162
+src/afre/sequence/lineage.py                            90      0     46      1    99%   196->199
+src/afre/sequence/observations.py                       75      6     24      2    92%   45-52, 98
+src/afre/sequence/repository.py                        145      1     42      1    99%   99
+src/afre/service/facade.py                             158      3     24      1    98%   117-118, 133
+src/afre/service/native.py                              72      1     14      1    98%   147
+src/afre/service/registry.py                            58      0     18      1    99%   114->123
+src/afre/service/repository.py                         158      2     40      2    98%   99, 193
+src/afre/service/validation.py                          32      0     14      1    98%   70->exit
+src/afre/statistical_models/design_matrix.py            95      1     22      1    98%   37
+src/afre/statistical_models/lineage.py                  48      9     28      6    80%   35, 48-51, 56, 83, 85, 94
+src/afre/statistical_models/metrics.py                  58      2     24      2    95%   48, 50
+src/afre/statistical_models/repository.py              147      2     48      2    98%   86, 214
+src/afre/statistical_models/validation.py              118      2     58      3    97%   200, 214, 272->271
+src/afre/target_engine/builders.py                     232      3    104      4    98%   247, 249, 339->337, 469
+src/afre/target_engine/corporate_actions.py             63      0     14      2    97%   84->83, 90->83
+src/afre/target_engine/repository.py                   347      9    168      6    96%   212, 443, 727, 737, 739-742, 744
+src/afre/uncertainty/components.py                     118      2     58      3    97%   150, 187->189, 201
+src/afre/uncertainty/diagnostics.py                     52      2      8      1    95%   136-137
+src/afre/uncertainty/lineage.py                         83      0     34      1    99%   162->165
+src/afre/uncertainty/parameter.py                      106      2     20      2    97%   155, 201
+src/afre/uncertainty/repository.py                     133      1     38      1    99%   84
+src/afre/uncertainty/scoring.py                         39      2     16      3    91%   40->42, 48->50, 74-77
+src/afre/uncertainty/sources.py                        118      1     32      2    98%   105->107, 195
+src/afre/uncertainty/validation.py                      71      1     32      1    98%   170
+src/afre/universe/eligibility.py                       149      5     76      7    95%   72, 81, 92, 114->116, 151, 195->183, 198
+src/afre/universe/queries.py                            80      0     24      1    99%   90->92
+src/afre/universe/repository.py                        277      1    126      2    99%   301, 587->exit
+src/afre/universe/validation.py                         38      1     16      1    96%   87
+------------------------------------------------------------------------------------------------
+TOTAL                                                34141    350   7268    293    98%
+
+349 files skipped due to complete coverage.
+Coverage JSON written to file /private/tmp/afre25-full-coverage.json
+Required test coverage of 95.0% reached. Total coverage: 98.34%
+3288 passed in 11974.22s (3:19:34)
+POSTCHECK PASS: source/tests/config inventory and HEAD unchanged

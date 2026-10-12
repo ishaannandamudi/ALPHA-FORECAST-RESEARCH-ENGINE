@@ -12,13 +12,17 @@ from afre.service.registry import registration_for
 from afre.service.registry_entries import RegistryEntry
 from afre.service.schema import SnapshotMode
 from afre.service.snapshots import ForecastSnapshot
+from afre.version import ENGINE_VERSION
 
 if TYPE_CHECKING:
     from afre.service.repository import ServiceRepository
 
 
 def build_snapshot(
-    repo: "ServiceRepository", request: SnapshotPublication
+    repo: "ServiceRepository",
+    request: SnapshotPublication,
+    *,
+    engine_version: str = ENGINE_VERSION,
 ) -> tuple[ForecastSnapshot, tuple[RegistryEntry, ...]]:
     require(repo._feature_only_depth > 0, "snapshot requires target-free guard")
     source = native_source(repo, request.source_id)
@@ -104,5 +108,6 @@ def build_snapshot(
         SnapshotMode.QUALIFIED_RECONSTRUCTED
         if lineage.reconstruction_evidence_ids
         else SnapshotMode.RECORDED_CAUSAL,
+        engine_version=engine_version,
     )
     return snapshot, entries

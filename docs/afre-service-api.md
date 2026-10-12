@@ -16,4 +16,6 @@ def read_exact(provider: ForecastServiceProvider, identity: str) -> None:
 
 There are no training, fitting, selection, recalibration, promotion, rollback, activation, allocation or execution methods. This is an in-process provider-neutral façade with zero runtime dependencies and no network daemon. Downstream adapters translate these public contracts; direct external-engine imports and broker integrations are outside AFRE.
 
-See [retrieval](snapshot-retrieval.md), [errors](service-errors.md), [versions](service-versioning.md) and [context](snapshot-context.md). AFRE-25 remains final hardening.
+See [retrieval](snapshot-retrieval.md), [errors](service-errors.md), [versions](service-versioning.md) and [context](snapshot-context.md). AFRE-25 completes the final integration and hardening audit.
+
+Final engine 1.0.0 audit: [architecture](AFRE_FINAL_ARCHITECTURE.md), [API](AFRE_PUBLIC_API.md), [reproducibility](AFRE_REPRODUCIBILITY_AUDIT.md), [release evidence](AFRE_25_COMPLETION_REPORT.md). Historical public records retain their recorded versions; current API/schema1.0 and store1.24/SQLite25 remain unchanged.

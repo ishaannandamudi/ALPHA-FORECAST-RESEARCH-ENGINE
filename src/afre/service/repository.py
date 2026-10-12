@@ -76,7 +76,7 @@ OUTCOMES = {
 
 
 class ServiceRepository(ChallengeRepository):
-    _snapshot_engine_version: ClassVar[str] = "0.25.0"
+    _snapshot_engine_version: ClassVar[str] = "1.0.0"
 
     def __init__(self, path: str | Path, bounds: ServiceBounds | None = None) -> None:
         self.service_bounds = bounds or ServiceBounds()

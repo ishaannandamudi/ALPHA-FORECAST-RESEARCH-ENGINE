@@ -1,0 +1,11 @@
+# Final temporal audit
+
+The six distinct clocks are upstream publication, upstream source availability, AFRE observed/received, AFRE ingestion, AFRE computation and final feature availability. Publication is not receipt. Live final availability cannot precede actual receipt or processing; archive download months later cannot silently establish historical causality. Qualified reconstruction retains actual later receipt/ingestion/computation and separately pins proven historical delivery/computation, attestation and local approval. Historically knowable, historically observed and reconstructed later are different claims.
+
+Concrete coverage includes 10:00 publication/10:02 receipt excluded at 10:01, unqualified archive exclusion and qualified reconstruction with actual later clocks in `tests/service/test_availability.py`, feature-store tests and the neutral adapter regression. All source/dependency availability must fit origin cutoff; late source and future truth reject before service caches.
+
+Target windows are (T,T+H]; price endpoints, benchmark observations, corporate actions and full path completion use exact typed units and completion evidence. Universe tests cover stable IDs, ticker reuse, historical membership, delisting, revisions, sectors and eligibility. Dataset tests enforce purging/embargo, independent horizon label completion and fold-local preprocessing. TRAIN fits, VALIDATION selection, calibration holdouts and sealed post-selection TEST evaluations remain separate.
+
+Event expectations/actuals/materiality/novelty obey their own clocks and overlap policy. Regime conditioning uses FILTERED evidence, never hindsight smoothing. Health/challenge historical evaluation metadata is labeled and cutoff-gated; it cannot alter the earlier forecast law or relax feature causality.
+
+The native release correction workflow reconstructs features, datasets, TRAIN fits, point forecasts, fusion and snapshots under a corrected revision while preserving original evidence and bytes. Concurrent reader/writer tests pin complete SQLite snapshots, rather than mixing revisions during a request. Evidence is bounded synthetic regression coverage, not proof of authenticity of provider clocks.

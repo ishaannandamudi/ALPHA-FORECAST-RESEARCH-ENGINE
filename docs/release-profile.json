@@ -1,0 +1,147 @@
+{
+  "actual_native_workflows": true,
+  "api": "1.0",
+  "asserted_demo_checks": 85,
+  "engine": "1.0.0",
+  "exclusive_python_self_seconds": {
+    "algorithm": 237.77051045399992,
+    "audit": 2.6503540250000004,
+    "fixture_construction": 0.019441420000000008,
+    "input_validation": 48.296343612999976,
+    "persistence": 33.322739481000006
+  },
+  "explicit_stage_measurements": {
+    "artifact_registration": 23.03895650000777,
+    "audit": 0.7797175421146676,
+    "calibrated_snapshot_build": 1.3270191249903291,
+    "context_assembly": 2.128445875016041,
+    "correction_corrected_assembly": 0.3306743331486359,
+    "correction_corrected_dataset_admission": 1.990643166936934,
+    "correction_corrected_design_matrix": 0.19024762499611825,
+    "correction_corrected_persistence": 1.5569129579234868,
+    "correction_corrected_persistence_and_validation": 0.3182995000388473,
+    "correction_corrected_pit_joins": 0.10298995894845575,
+    "correction_corrected_solver": 0.00126429193187505,
+    "correction_fixture_construction": 3.2558761660475284,
+    "correction_original_assembly": 0.32934441592078656,
+    "correction_original_dataset_admission": 1.9319115409161896,
+    "correction_original_design_matrix": 0.1912157079204917,
+    "correction_original_persistence": 1.5023580830311403,
+    "correction_original_persistence_and_validation": 0.32049116701819,
+    "correction_original_pit_joins": 0.1001595010748133,
+    "correction_original_solver": 0.0012326670112088323,
+    "cost_fixture_construction": 97.93520008400083,
+    "cost_research_evaluation": 2.9185095840366557,
+    "empirical_snapshot_build": 1.2829368331003934,
+    "event_snapshot_build": 1.5786020410014316,
+    "fixture_construction": 138.8419209170388,
+    "gaussian_snapshot_build": 1.2744999580318108,
+    "hard-regime_snapshot_build": 1.5956116250017658,
+    "max_numerical_error": 0.0,
+    "mixture_snapshot_build": 1.7067691660486162,
+    "multi_horizon_bundle": 4.228191833011806,
+    "nonlinear_snapshot_build": 1.4147915419889614,
+    "persistence": 0.10139704204630107,
+    "point_snapshot_build": 0.746255874983035,
+    "registry_listing": 16.243611790938303,
+    "registry_lookup": 0.026175959035754204,
+    "restart": 0.002515458967536688,
+    "selection_AFRE19_completion_seconds": 0.8890321659855545,
+    "selection_AFRE19_registration_seconds": 0.43996050010900944,
+    "selection_admission_enumeration_seconds": 0.16399829101283103,
+    "selection_atomic_persistence_seconds": 1.152130417060107,
+    "selection_audit": 3.1566340000135824,
+    "selection_decision_seconds": 1.7128271670080721,
+    "selection_fit_orchestration_seconds": 0.9950940830167383,
+    "selection_fixture_construction": 0.1685832500224933,
+    "selection_frozen_snapshot_seconds": 0.031607417040504515,
+    "selection_registry_snapshot_seconds": 1.1241703749401495,
+    "selection_validation_scoring_seconds": 1.5439927499974146,
+    "sequence_snapshot_build": 1.5722416249336675,
+    "service_replay": 0.3729757920373231,
+    "storage_bytes": 35921920.0
+  },
+  "limitations": "One bounded synthetic offline run, under instrumentation; no production throughput/latency SLA or scalability extrapolation. Timing is excluded from semantic identities.",
+  "operation_profile": {
+    "baseline_fitting": {
+      "calls": 12.0,
+      "cumulative_seconds": 3.457152288,
+      "self_seconds": 0.000273322
+    },
+    "calibration": {
+      "calls": 8.0,
+      "cumulative_seconds": 2.230162583,
+      "self_seconds": 0.00011787100000000001
+    },
+    "challenge_evaluation": {
+      "calls": 2.0,
+      "cumulative_seconds": 0.724209791,
+      "self_seconds": 4.0084000000000005e-05
+    },
+    "dataset_admission": {
+      "calls": 8.0,
+      "cumulative_seconds": 15.8173545,
+      "self_seconds": 0.002625782
+    },
+    "event_regime_conditioning": {
+      "calls": 56.0,
+      "cumulative_seconds": 10.133444249,
+      "self_seconds": 0.000260965
+    },
+    "feature_reconstruction": {
+      "calls": 56.0,
+      "cumulative_seconds": 0.9520335000000001,
+      "self_seconds": 0.000807787
+    },
+    "fusion": {
+      "calls": 7.0,
+      "cumulative_seconds": 0.889473626,
+      "self_seconds": 4.9918000000000006e-05
+    },
+    "health_monitoring": {
+      "calls": 2.0,
+      "cumulative_seconds": 0.42719591700000004,
+      "self_seconds": 1.6833e-05
+    },
+    "multi_horizon_assembly": {
+      "calls": 3.0,
+      "cumulative_seconds": 10.593406417,
+      "self_seconds": 3.209e-06
+    },
+    "probabilistic_prediction": {
+      "calls": 13.0,
+      "cumulative_seconds": 2.8974854170000004,
+      "self_seconds": 0.000314999
+    },
+    "registry_lookup": {
+      "calls": 1.0,
+      "cumulative_seconds": 0.026173458,
+      "self_seconds": 6.660000000000001e-07
+    },
+    "selection": {
+      "calls": 1.0,
+      "cumulative_seconds": 8.195306625,
+      "self_seconds": 9.929100000000001e-05
+    },
+    "service_replay": {
+      "calls": 34.0,
+      "cumulative_seconds": 16.813339332,
+      "self_seconds": 3.3496e-05
+    },
+    "signal_ranking": {
+      "calls": 3.0,
+      "cumulative_seconds": 1.04966025,
+      "self_seconds": 5.2174000000000006e-05
+    },
+    "snapshot_publication": {
+      "calls": 48.0,
+      "cumulative_seconds": 75.146065791,
+      "self_seconds": 0.0007892750000000001
+    }
+  },
+  "profile_rules": "Operation cumulative times include nested validation/persistence and may overlap. Exclusive Python self-time classifications use the exact path/name rules in benchmarks/release_profile.py; builtin/SQLite C work and other Python frames are outside those five buckets. Explicit fixture-construction wall times are separately recorded; native calls within fixture construction are profiled, not omitted or misreported as isolated throughput.",
+  "sqlite_user_version": 25,
+  "store": "1.24",
+  "units": "seconds, except calls/storage_bytes/max_numerical_error",
+  "wall_seconds": 536.2180835420731
+}

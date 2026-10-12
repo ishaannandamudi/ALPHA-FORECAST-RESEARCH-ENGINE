@@ -8,4 +8,4 @@ Health and challenge require `historical_evaluation=True`. They are opaque histo
 
 There is no silent latest health/challenge lookup. Access through `get_health_metadata(snapshot_id, artifact_id)` and `get_challenge_metadata(...)` succeeds only for context pinned into that published snapshot. The whole snapshot identity includes all requested sections; adding context preserves the separate forecast output identity.
 
-Research context has no portfolio interpretation or trading profitability implication. AFRE-25 remains final hardening.
+Research context has no portfolio interpretation or trading profitability implication. AFRE-25 completes the final integration and hardening audit.

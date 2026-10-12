@@ -26,7 +26,7 @@ def test_invalid_requests_and_response_versions(service_case: ServiceCase) -> No
         reply = c.service.get_snapshot(identity)
         assert reply.status is ServiceStatus.INVALID_REQUEST
         assert (reply.engine_version, reply.store_version, reply.sqlite_user_version) == (
-            "0.25.0",
+            "1.0.0",
             "1.24",
             25,
         )

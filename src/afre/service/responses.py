@@ -9,7 +9,8 @@ from afre.service.queries import PublicationCatalog, RegistryCursor
 from afre.service.registry_entries import RegistryEntry
 from afre.service.schema import ServiceStatus
 from afre.service.snapshots import ForecastSnapshot, MultiHorizonSnapshot
-from afre.service.versions import VersionInfo
+from afre.service.versions import SUPPORTED_ENGINES, VersionInfo
+from afre.version import ENGINE_VERSION
 
 
 @contract("svc_registry_page")
@@ -45,7 +46,7 @@ class ServiceReply(Artifact):
     message: str
     api_version: str = "1.0"
     service_schema: str = "1.0"
-    engine_version: str = "0.25.0"
+    engine_version: str = ENGINE_VERSION
     store_version: str = "1.24"
     sqlite_user_version: int = 25
     snapshot_schema: str = "1.0"
@@ -59,7 +60,7 @@ class ServiceReply(Artifact):
             == self.snapshot_schema
             == self.registry_schema
             == "1.0"
-            and self.engine_version == "0.25.0"
+            and self.engine_version in SUPPORTED_ENGINES
             and self.store_version == "1.24"
             and self.sqlite_user_version == 25,
             "public response boundary",

@@ -1,0 +1,416 @@
+{
+  "artifact_copy_rule": "Original logs/results/runner and guard retained at recorded temporary paths; repository copies preserve content and add only a final newline where required. Original and saved SHA256 values are recorded separately.",
+  "artifacts": {
+    "focused-final-junit.xml": {
+      "added_final_newline": true,
+      "original_path": "/private/tmp/afre25-focused-final-junit.xml",
+      "original_sha256": "054c450dc6925b05bd2991834a1c751f131a6f6ece5bf7384c811eb8e6235a10",
+      "saved_path": "docs/release-validation/focused-final-junit.xml",
+      "saved_sha256": "71f8a407c0c0a194ef554441f1d1d18dd0675788049a18cf0e26fd9ca02134ff"
+    },
+    "focused-final.log": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-focused-final.log",
+      "original_sha256": "d6ede5307d12cd8e2e4796490aaacc7637d45040e8d5399e18a75aa6d6fa1ea2",
+      "saved_path": "docs/release-validation/focused-final.log",
+      "saved_sha256": "d6ede5307d12cd8e2e4796490aaacc7637d45040e8d5399e18a75aa6d6fa1ea2"
+    },
+    "focused-service-coverage.json": {
+      "added_final_newline": true,
+      "original_path": "/private/tmp/afre25-service-coverage.json",
+      "original_sha256": "1ee83a758e0ee9919af2faa895778aae7c7872e225dbdcf6863a16829a901248",
+      "saved_path": "docs/release-validation/focused-service-coverage.json",
+      "saved_sha256": "7c885884dd40167028206c078edc6c815fd7dd1c82e38ce047d14b25c2e03aab"
+    },
+    "full-coverage.json": {
+      "added_final_newline": true,
+      "original_path": "/private/tmp/afre25-full-coverage.json",
+      "original_sha256": "ae9b070cccc5cfe28807bf6033ba16f54d7213ba8f126a48c2abff12083feda2",
+      "saved_path": "docs/release-validation/full-coverage.json",
+      "saved_sha256": "0aa94b289315e1365b9ca0a0bd8a7bca4ad9a77e4ef84ece94ac03df29f6f68b"
+    },
+    "full-junit.xml": {
+      "added_final_newline": true,
+      "original_path": "/private/tmp/afre25-full-junit.xml",
+      "original_sha256": "96b1656d94ea5dab780a449a69a45d8910fec316eef913be57e56d98feb19fda",
+      "saved_path": "docs/release-validation/full-junit.xml",
+      "saved_sha256": "696d1a42e2eec66c3a703865e57adf024b9409dafd0b96697bc0d2f8971b83b5"
+    },
+    "full-result.json": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-full-result.json",
+      "original_sha256": "4c9e850f9146a495d83c12591e1800d0beeb4bd7753e1e4772d448797a154663",
+      "saved_path": "docs/release-validation/full-result.json",
+      "saved_sha256": "4c9e850f9146a495d83c12591e1800d0beeb4bd7753e1e4772d448797a154663"
+    },
+    "full.log": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-full.log",
+      "original_sha256": "0f6d041385f1900a3ed98da61cb98aa9b81b1692be87f7d5cd54da3af38221ee",
+      "saved_path": "docs/release-validation/full.log",
+      "saved_sha256": "0f6d041385f1900a3ed98da61cb98aa9b81b1692be87f7d5cd54da3af38221ee"
+    },
+    "offline-guard.txt": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-offline-guard/sitecustomize.py",
+      "original_sha256": "4a43e931d24ea17b47b7292693169011780dbec68e70994e4d91e5518391a92d",
+      "saved_path": "docs/release-validation/offline-guard.txt",
+      "saved_sha256": "4a43e931d24ea17b47b7292693169011780dbec68e70994e4d91e5518391a92d"
+    },
+    "offline-runner.txt": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-offline-coverage.py",
+      "original_sha256": "fd70421c96b5b126f95b837ee529f599e157b47fae79e9dbb8fbe2e67ce1f0a7",
+      "saved_path": "docs/release-validation/offline-runner.txt",
+      "saved_sha256": "fd70421c96b5b126f95b837ee529f599e157b47fae79e9dbb8fbe2e67ce1f0a7"
+    },
+    "strict-mypy.log": {
+      "added_final_newline": false,
+      "original_path": "/private/tmp/afre25-prefreeze-mypy.log",
+      "original_sha256": "29ad49af690965d799c5d849640533fdc47efb17f847dc0cd1d54ee0ec559b4d",
+      "saved_path": "docs/release-validation/strict-mypy.log",
+      "saved_sha256": "29ad49af690965d799c5d849640533fdc47efb17f847dc0cd1d54ee0ec559b4d"
+    }
+  },
+  "compatibility": {
+    "api": "1.0",
+    "canonical_snapshot_audit_catalog_reply_bytes": "unchanged",
+    "evidence_path": "docs/release-compatibility-evidence.json",
+    "historical_completion_report_hashes": {
+      "docs/AFRE_0_COMPLETION_REPORT.md": "f0393f8816699f1a3eede08637dc804df6d32d949a0bb0d50f9a32deee0d3f49",
+      "docs/AFRE_10_COMPLETION_REPORT.md": "529cb4b5e1e51db9734b3839c49ee74fc69a70a522990def6016ecde1c8185cd",
+      "docs/AFRE_11_COMPLETION_REPORT.md": "7e4d06e43275baa4622d961c1c10035ecd1c75987896aeaaddbfb5f4f21ce74e",
+      "docs/AFRE_12_COMPLETION_REPORT.md": "c5c4cf665a5cbce3d05877534edbd4fe9159db9608ce6f3f08f2f9f4b36d6afd",
+      "docs/AFRE_13_COMPLETION_REPORT.md": "9801337a525ad70c270dcd12e06c8c45d9c6c08bf96934f0a106ae323384ef82",
+      "docs/AFRE_14_COMPLETION_REPORT.md": "3a298d483f0a1c9d844ba1dba309b8b8f48d22d0d0c1595b29a8a02499b5d812",
+      "docs/AFRE_15_COMPLETION_REPORT.md": "b73966ec4351fd9d8f1fd3ae163a1cec9b84fe9537b21754d57c61a725c22cdc",
+      "docs/AFRE_16_COMPLETION_REPORT.md": "7d3ae1775575c7b7eff00d6a5a964800f227c7bb4b4e0417647087668a2bb40e",
+      "docs/AFRE_17_COMPLETION_REPORT.md": "29c1fa3548761a0926ff615c05e0540ac3d76e9837c6c2cd82803d7187d66b4d",
+      "docs/AFRE_18_COMPLETION_REPORT.md": "f94ec123920512abcaead97d863662468e4aef924b1fc56b41c9646ff72bf38e",
+      "docs/AFRE_19_COMPLETION_REPORT.md": "7fb3c470c62acc71ef0d05e7775965063d1ca68cec7f0442d22f9a6f8769ef60",
+      "docs/AFRE_1_COMPLETION_REPORT.md": "09d5039c5fe7d46ee5211fa2a2f9dbbf599662d62a7d9cd2302a19943f096a84",
+      "docs/AFRE_20_COMPLETION_REPORT.md": "10e2ee6dae80180629d94f99f5784e5e89c71cffd81def6eef1941f291662274",
+      "docs/AFRE_21_COMPLETION_REPORT.md": "3d8212d44d594503c0560333d8019e42fb78f03d30672f0ad482409abba0434b",
+      "docs/AFRE_22_COMPLETION_REPORT.md": "57e0399066e613befeae3e05f5c5784f31b37b1e801e608fe206185374884a54",
+      "docs/AFRE_23_COMPLETION_REPORT.md": "4cc7a0a54209bdddd9cf583cf32a87e5778f2da49c42e570c1ae7adb9038f2cd",
+      "docs/AFRE_24_COMPLETION_REPORT.md": "aca3f93b6a70e7eb688a8ab5ae8cc5784d72541a4c48c20aa568ea634b6bf373",
+      "docs/AFRE_2_COMPLETION_REPORT.md": "177b680487bfd36fac5bff0c54f087c182d2cfd70a7dc128191a4bdb2ad55707",
+      "docs/AFRE_3_COMPLETION_REPORT.md": "360720e4138fad3cd89cbc8f300e7a1f0f6df0095a6cf2cade67de5065082599",
+      "docs/AFRE_4_COMPLETION_REPORT.md": "5f85a82607281c2dd8b1857977e9ce148b945de23e7a35b1f1a1da93308517c3",
+      "docs/AFRE_5_COMPLETION_REPORT.md": "2a141fd8a108e1520f32f61cd366ecb46f81122ee5fd658d5d8ae99c76d32c3a",
+      "docs/AFRE_6_COMPLETION_REPORT.md": "41f365f16c601f062431c8a79bd6a940e95354a4c7c3070ffc83ad48809bd7cb",
+      "docs/AFRE_7_COMPLETION_REPORT.md": "9564266f0606f73d475d4e9be68290aa3068514282f090e2dac1b470fc0b948c",
+      "docs/AFRE_8_COMPLETION_REPORT.md": "6677fcd2a86328729c7ae39602b8f28fc4238ada835869f1e288d7722219cb13",
+      "docs/AFRE_9_COMPLETION_REPORT.md": "9fd71522034bd0030245225653af9f7d2a14b229c158d75cc84a3cdbcf8bd426"
+    },
+    "new_engine": "1.0.0",
+    "old_engine": "0.25.0",
+    "public_exports_schema_storage_baseline": "unchanged"
+  },
+  "coverage": {
+    "branch_gate": "PASS",
+    "combined_covered": 40720,
+    "combined_gate": "PASS",
+    "combined_total": 41409,
+    "meta": {
+      "branch_coverage": true,
+      "format": 3,
+      "show_contexts": false,
+      "timestamp": "2026-10-11T19:36:24.150593",
+      "version": "7.16.2"
+    },
+    "minimum_branch_percent": 95,
+    "minimum_combined_percent": 95,
+    "totals": {
+      "covered_branches": 6929,
+      "covered_lines": 33791,
+      "excluded_lines": 468,
+      "missing_branches": 339,
+      "missing_lines": 350,
+      "num_branches": 7268,
+      "num_partial_branches": 293,
+      "num_statements": 34141,
+      "percent_branches_covered": 95.33571821684095,
+      "percent_branches_covered_display": "95",
+      "percent_covered": 98.33611050737763,
+      "percent_covered_display": "98",
+      "percent_statements_covered": 98.97483963562871,
+      "percent_statements_covered_display": "99"
+    }
+  },
+  "demo": {
+    "checks": 85,
+    "evidence_path": "docs/release-demo-evidence.json",
+    "result": "PASS"
+  },
+  "engine": "1.0.0",
+  "environment": {
+    "coverage_version": "7.16.2",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.16"
+  },
+  "final_documentation_checks": {
+    "diff_check": {
+      "exit_code": 0
+    },
+    "documentation": {
+      "exit_code": 0,
+      "output": "PASS: 224 documents; exact 26-phase roadmap; versions, links, historical reports, exact source manifest and final 74-item A\u2013BV audit"
+    },
+    "freeze_and_artifact_integrity": {
+      "added_coverage_exclusions": false,
+      "added_test_skips": false,
+      "frozen_files": 877,
+      "historical_reports": 25,
+      "public_exports_schema_storage": "unchanged",
+      "result": "PASS",
+      "saved_artifact_hashes": "matched"
+    },
+    "repository_security": {
+      "exit_code": 0,
+      "output": "PASS: 1136 deliverables checked for secrets, unfinished work and whitespace"
+    }
+  },
+  "focused_gate": {
+    "coverage_totals": {
+      "covered_branches": 226,
+      "covered_lines": 1252,
+      "excluded_lines": 34,
+      "missing_branches": 6,
+      "missing_lines": 6,
+      "num_branches": 232,
+      "num_partial_branches": 6,
+      "num_statements": 1258,
+      "percent_branches_covered": 97.41379310344827,
+      "percent_branches_covered_display": "97",
+      "percent_covered": 99.19463087248322,
+      "percent_covered_display": "99",
+      "percent_statements_covered": 99.52305246422894,
+      "percent_statements_covered_display": "99"
+    },
+    "duration_seconds": 871.15,
+    "errors": 0,
+    "failures": 0,
+    "passed": 123,
+    "scope": "affected service and integration regressions; service-only coverage",
+    "skipped": 0
+  },
+  "freeze": {
+    "count": 877,
+    "head": "16b20e42dbfa865677c1e873e0a65fd018691056",
+    "path": "docs/afre25-source-freeze.json",
+    "post_run": "PASS",
+    "pre_run": "PASS",
+    "resume_verification": "PASS",
+    "scope": "source, tests including golden fixtures, examples, benchmarks, scripts and configuration; mutable report/documentation artifacts excluded",
+    "sha256": "c8dfd59d165c3833e4aa484c8994e958da65a1c89aad7216698c419e2637366a"
+  },
+  "full_gate": {
+    "command": "PYTHONPATH=src:. .venv311/bin/python /private/tmp/afre25-offline-coverage.py > /private/tmp/afre25-full.log 2>&1",
+    "errors": 0,
+    "failures": 0,
+    "invocations": 1,
+    "junit_duration_seconds": 11974.087,
+    "junit_timestamp": "2026-10-11T16:16:52.078705-04:00",
+    "new_release_tests": 34,
+    "passed": 3288,
+    "pytest_duration_seconds": 11974.22,
+    "result": {
+      "elapsed_seconds": 11974.530869917013,
+      "exit_code": 0,
+      "freeze_sha256": "c8dfd59d165c3833e4aa484c8994e958da65a1c89aad7216698c419e2637366a",
+      "runner_sha256": "fd70421c96b5b126f95b837ee529f599e157b47fae79e9dbb8fbe2e67ce1f0a7"
+    },
+    "skipped": 0,
+    "tests": 3288,
+    "tests_by_family": {
+      "calibration": 136,
+      "challenger": 142,
+      "costs": 130,
+      "cross_sectional": 143,
+      "event_conditioned": 150,
+      "feature_store": 82,
+      "fusion": 88,
+      "health": 133,
+      "invariance": 135,
+      "mixture": 153,
+      "multihorizon": 108,
+      "multiple_testing": 208,
+      "nonlinear": 185,
+      "orthogonalization": 164,
+      "probabilistic": 145,
+      "regime_conditioned": 140,
+      "release": 34,
+      "research_datasets": 129,
+      "selection": 113,
+      "sequence": 140,
+      "service": 78,
+      "statistical_models": 94,
+      "target_engine": 65,
+      "test_identity": 23,
+      "test_lifecycle": 19,
+      "test_persistence": 19,
+      "test_reproducibility": 7,
+      "test_serialization": 21,
+      "test_temporal": 48,
+      "uncertainty": 159,
+      "universe": 97
+    }
+  },
+  "git": {
+    "branch": "main",
+    "files_changed": {
+      "README.md": " M",
+      "benchmarks/release_profile.py": "??",
+      "benchmarks/service_profile.py": " M",
+      "docs/AFRE_25_COMPLETION_REPORT.md": "??",
+      "docs/AFRE_FINAL_ARCHITECTURE.md": "??",
+      "docs/AFRE_INTEGRATION_HANDOFF.md": "??",
+      "docs/AFRE_MASTER_SPEC.md": " M",
+      "docs/AFRE_MIGRATION_AUDIT.md": "??",
+      "docs/AFRE_PERFORMANCE_AUDIT.md": "??",
+      "docs/AFRE_PUBLIC_API.md": "??",
+      "docs/AFRE_RELEASE_NOTES.md": "??",
+      "docs/AFRE_REPRODUCIBILITY_AUDIT.md": "??",
+      "docs/AFRE_RESEARCH_AUDIT.md": "??",
+      "docs/AFRE_SECURITY_AUDIT.md": "??",
+      "docs/AFRE_TEMPORAL_AUDIT.md": "??",
+      "docs/afre-release-manifest.json": "??",
+      "docs/afre-service-api.md": " M",
+      "docs/afre25-source-freeze.json": "??",
+      "docs/artifact-registry.md": " M",
+      "docs/champion-challenger.md": " M",
+      "docs/drift-decay-model-health.md": " M",
+      "docs/ensemble-signal-fusion.md": " M",
+      "docs/forecast-snapshot.md": " M",
+      "docs/forecast-uncertainty-decomposition.md": " M",
+      "docs/invariance-stability-research.md": " M",
+      "docs/model-selection-framework.md": " M",
+      "docs/multiple-testing-controls.md": " M",
+      "docs/nonlinear-feature-interactions.md": " M",
+      "docs/release-compatibility-evidence.json": "??",
+      "docs/release-demo-evidence.json": "??",
+      "docs/release-profile.json": "??",
+      "docs/release-validation-evidence.json": "??",
+      "docs/release-validation/focused-final-junit.xml": "??",
+      "docs/release-validation/focused-final.log": "??",
+      "docs/release-validation/focused-service-coverage.json": "??",
+      "docs/release-validation/full-coverage.json": "??",
+      "docs/release-validation/full-junit.xml": "??",
+      "docs/release-validation/full-result.json": "??",
+      "docs/release-validation/full.log": "??",
+      "docs/release-validation/offline-guard.txt": "??",
+      "docs/release-validation/offline-runner.txt": "??",
+      "docs/release-validation/strict-mypy.log": "??",
+      "docs/research-reproducibility.md": " M",
+      "docs/service-errors.md": " M",
+      "docs/service-reproducibility.md": " M",
+      "docs/service-versioning.md": " M",
+      "docs/snapshot-context.md": " M",
+      "docs/snapshot-retrieval.md": " M",
+      "docs/stability-evaluation.md": " M",
+      "docs/transaction-cost-aware-research.md": " M",
+      "examples/downstream_client.py": "??",
+      "examples/release_demo.py": "??",
+      "examples/release_workflows.py": "??",
+      "examples/service_demo.py": " M",
+      "pyproject.toml": " M",
+      "scripts/__init__.py": "??",
+      "scripts/build_release_manifest.py": "??",
+      "scripts/check_documentation.py": " M",
+      "scripts/check_repository.py": " M",
+      "src/afre/fusion/snapshots.py": " M",
+      "src/afre/selection/snapshots.py": " M",
+      "src/afre/service/audit.py": " M",
+      "src/afre/service/repository.py": " M",
+      "src/afre/service/responses.py": " M",
+      "src/afre/service/snapshot_builder.py": " M",
+      "src/afre/service/snapshots.py": " M",
+      "src/afre/service/validation.py": " M",
+      "src/afre/service/versions.py": " M",
+      "src/afre/version.py": " M",
+      "tests/release/__init__.py": "??",
+      "tests/release/conftest.py": "??",
+      "tests/release/fixtures/audit-0.25.0.json": "??",
+      "tests/release/fixtures/reply-0.25.0.json": "??",
+      "tests/release/fixtures/snapshot-0.25.0.json": "??",
+      "tests/release/fixtures/versions-0.25.0.json": "??",
+      "tests/release/test_compatibility.py": "??",
+      "tests/release/test_concurrency.py": "??",
+      "tests/release/test_corrections.py": "??",
+      "tests/release/test_determinism.py": "??",
+      "tests/release/test_external_consumer.py": "??",
+      "tests/release/test_migration_chain.py": "??",
+      "tests/release/test_security.py": "??",
+      "tests/release/test_staging.py": "??",
+      "tests/service/test_requests.py": " M"
+    },
+    "head": "16b20e42dbfa865677c1e873e0a65fd018691056",
+    "modified_count": 37,
+    "staged_changes": false,
+    "task_commits": 0,
+    "task_pushes": 0,
+    "untracked_count": 47,
+    "working_tree": "uncommitted release-candidate changes"
+  },
+  "limitations": [
+    "bounded synthetic offline research evidence",
+    "qualified reconstruction depends on approved historical-delivery attestation",
+    "no universal cross-hardware bit identity",
+    "no production throughput SLA",
+    "no guaranteed trading profitability",
+    "portfolio construction, risk optimization, execution and external adapters remain downstream",
+    "no automatic training, calibration, deployment or promotion"
+  ],
+  "offline_isolation": {
+    "fresh_child_probes": [
+      "socket.socket()",
+      "socket.getaddrinfo(example.com,443)"
+    ],
+    "guard_sha256": "4a43e931d24ea17b47b7292693169011780dbec68e70994e4d91e5518391a92d",
+    "mechanism": "Python socket and DNS denial before AFRE imports; sitecustomize guard propagated to Python subprocesses, including replaced child environments",
+    "pre_post_log_assertions": {
+      "POSTCHECK PASS: source/tests/config inventory and HEAD unchanged": true,
+      "PRECHECK PASS: sockets/DNS denied before AFRE imports and in Python children": true,
+      "PRECHECK PASS: source/tests/config inventory and HEAD frozen": true
+    },
+    "result": "PASS",
+    "scope": "Python socket/DNS denial; not an operating-system network-isolation certification"
+  },
+  "profile": {
+    "duration_seconds": 536.2180835420731,
+    "evidence_path": "docs/release-profile.json",
+    "native_operation_categories": 15,
+    "result": "PASS"
+  },
+  "public_schemas": "1.0",
+  "release_status": "RELEASE_CANDIDATE",
+  "repository_deliverable_count": 1136,
+  "runtime_dependencies": [],
+  "service_api": "1.0",
+  "sqlite_user_version": 25,
+  "static_gates": {
+    "documentation": {
+      "execution": "completed before freeze; final documentation edits checked separately",
+      "result": "PASS"
+    },
+    "repository_security": {
+      "execution": "completed before freeze; final deliverables checked separately",
+      "result": "PASS"
+    },
+    "ruff_check": {
+      "execution": "completed before source freeze; reused unchanged frozen files",
+      "result": "PASS"
+    },
+    "ruff_format_check": {
+      "execution": "completed before source freeze; reused unchanged frozen files",
+      "result": "PASS"
+    },
+    "strict_mypy": {
+      "execution": "completed before source freeze; saved output in release-validation/strict-mypy.log",
+      "result": "PASS",
+      "source_files": 871
+    }
+  },
+  "store": "1.24"
+}

@@ -4,6 +4,8 @@ from dataclasses import dataclass
 
 from afre.schema import Artifact, contract, require
 
+SUPPORTED_ENGINES = ("0.25.0", "1.0.0")
+
 CAPABILITIES = tuple(
     sorted(
         (
@@ -42,16 +44,17 @@ class VersionInfo(Artifact):
     capabilities: tuple[str, ...]
 
     def _validate(self) -> None:
-        require(self == version_info_unchecked(), "public version/catalog mismatch")
+        require(self.engine in SUPPORTED_ENGINES, "unsupported public engine version")
+        require(self == version_info_unchecked(self.engine), "public version/catalog mismatch")
 
 
-def version_info_unchecked() -> VersionInfo:
+def version_info_unchecked(engine: str | None = None) -> VersionInfo:
     # Compare a field tuple without recursively constructing another validated instance.
     from afre import version
 
     value = object.__new__(VersionInfo)
     values = {
-        "engine": version.ENGINE_VERSION,
+        "engine": version.ENGINE_VERSION if engine is None else engine,
         "api": "1.0",
         "snapshot_schema": "1.0",
         "registry_schema": "1.0",
@@ -75,7 +78,8 @@ def version_info_unchecked() -> VersionInfo:
     return value
 
 
-def version_info() -> VersionInfo:
-    value = version_info_unchecked()
+def version_info(engine: str | None = None) -> VersionInfo:
+    """Current catalog, or the closed API-1.0 historical engine catalog for replay."""
+    value = version_info_unchecked(engine)
     value.__post_init__()
     return value

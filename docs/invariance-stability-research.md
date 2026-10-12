@@ -10,9 +10,9 @@ Start with [environment definitions](environment-definitions.md), [evaluation](s
 
 No direct AME/MCE/EIE/options dependency is introduced. Providers supply neutral immutable evidence through existing AFRE availability contracts. There are zero runtime dependencies.
 
-**Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
+**Final scope: AFRE-25 — Final Integration, Hardening & Research Audit.** This completes the frozen 26-phase research architecture. Release decision and exact gate evidence are in [the final report](AFRE_25_COMPLETION_REPORT.md). Portfolio construction, risk optimization and execution remain downstream. Predictive metrics do not establish trading profitability.
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 completes the final integration and hardening audit.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-25.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.
 AFRE-18 [explicit hypothetical cost research](transaction-cost-aware-research.md) now
 evaluates frozen native forecasts/residual signals using separate exposure, cost and later

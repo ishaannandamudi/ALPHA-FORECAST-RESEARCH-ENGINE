@@ -1,0 +1,8 @@
+import socket
+class DeniedSocket(socket.socket):
+    def __new__(cls, *args, **kwargs):
+        raise AssertionError('network forbidden in final AFRE-25 suite')
+def denied(*args, **kwargs):
+    raise AssertionError('network forbidden in final AFRE-25 suite')
+for name in ('socket', 'create_connection', 'getaddrinfo', 'gethostbyname', 'gethostbyname_ex', 'gethostbyaddr', 'socketpair', 'getnameinfo'):
+    setattr(socket, name, DeniedSocket if name == 'socket' else denied)

@@ -113,7 +113,7 @@ def exercise(
     step("Calibration method, artifact, version and cutoff are pinned without refitting")
     versions = service.get_version_info()
     assert versions.status is ServiceStatus.AVAILABLE
-    assert getattr(versions.value, "engine", None) == "0.25.0"
+    assert getattr(versions.value, "engine", None) == "1.0.0"
     step("Engine and public API versions are explicit")
     assert (
         getattr(versions.value, "store", None) == "1.24"

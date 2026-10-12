@@ -12,7 +12,7 @@ SQLite17→18 is transactional and additive, preserving prior DDL/metadata/rows.
 
 Default hard limits:32 environments,8 explicit compounds,2,000 samples/forecasts,24 metric selectors,16 declared features,32 windows,64,000 work/grid cells,20,000 artifacts per family,8MiB payload/lineage,100,000 audit nodes and64 depth. Lower caller limits apply on reads and writes. Unified lineage traces environments, memberships, native forecasts/models, PIT event/regime/group/universe evidence, TRAIN fit records, exact evaluation truth and TEST seals. Audits explicitly state the absence of causal proof, significance, profitability, model search and automatic mutation.
 
-See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Next scope: AFRE-25 — Final Integration, Hardening & Research Audit.**
-AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 remains final hardening.
-AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-24.** Portfolio construction,
+See [the completion report](AFRE_17_COMPLETION_REPORT.md) for validation and [the measured profile](invariance-profile.json). **Final scope: AFRE-25 — Final Integration, Hardening & Research Audit.**
+AFRE-23 explicit champions/challengers, matched shadow evaluation and manual promotion/rollback advice are complete. AFRE-24 immutable snapshots, registry metadata and the read-only service boundary are complete; AFRE-25 completes the final integration and hardening audit.
+AFRE-22 provides descriptive health; automatic lifecycle actions remain excluded. **Stop after AFRE-25.** Portfolio construction,
 risk optimization and execution remain downstream projects after AFRE.

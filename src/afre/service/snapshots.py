@@ -9,8 +9,10 @@ from afre.service.context import SnapshotContext
 from afre.service.outputs import ForecastOutput
 from afre.service.queries import SnapshotPublication
 from afre.service.schema import SnapshotBundleStatus, SnapshotMode
+from afre.service.versions import SUPPORTED_ENGINES
 from afre.target_engine.definitions import TargetDefinition
 from afre.universe.identity import StableSecurityId
+from afre.version import ENGINE_VERSION
 
 
 @contract("svc_lineage")
@@ -58,7 +60,7 @@ class ForecastSnapshot(Artifact):
     lineage: SnapshotLineage
     final_available_ns: int
     mode: SnapshotMode
-    engine_version: str = "0.25.0"
+    engine_version: str = ENGINE_VERSION
     store_version: str = "1.24"
     api_version: str = "1.0"
     snapshot_schema: str = "1.0"
@@ -69,7 +71,7 @@ class ForecastSnapshot(Artifact):
 
     def _validate(self) -> None:
         require(
-            self.engine_version == "0.25.0"
+            self.engine_version in SUPPORTED_ENGINES
             and self.store_version == "1.24"
             and self.api_version == self.snapshot_schema == "1.0",
             "snapshot version mismatch",

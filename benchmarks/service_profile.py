@@ -11,7 +11,7 @@ def main() -> None:
     with TemporaryDirectory(prefix="afre-service-profile-") as work:
         steps, measures = demo(Path(work))
     report = {
-        "engine": "0.25.0",
+        "engine": "1.0.0",
         "store": "1.24",
         "api": "1.0",
         "native_fixture": True,

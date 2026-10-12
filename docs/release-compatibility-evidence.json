@@ -1,0 +1,18 @@
+{
+  "api": "1.0",
+  "audit_canonical_bytes_unchanged": true,
+  "audit_id": "afre.svc_audit:1.0:1cb7e28b1bb3ecf1421830fd5c344a21c05e6a654a113e3e28107917cc135729",
+  "captured_from_commit": "16b20e42dbfa865677c1e873e0a65fd018691056",
+  "golden_payload_hashes": {
+    "audit-0.25.0.json": "b98d1e9ffa47fc2ce2e5a1fe7b282be1f086a782faa19333f139d4f444c7b3d7",
+    "reply-0.25.0.json": "ad7cb909dac5b0bad34f3d5d3ed3e2064c6ee4f2b4abe892c2eab1d00f2a51f8",
+    "snapshot-0.25.0.json": "7073689f10ce9a5c0fe1de4181aab39675b8f902f5914a3d4c736f0ae0bb8cef",
+    "versions-0.25.0.json": "9ea19dfff078b675eea99bb44a66563ed64784271912671bca472c8e3d2278a3"
+  },
+  "immutable_creation_engine": "0.25.0",
+  "original_engine": "0.25.0",
+  "original_store_reopened": true,
+  "serving_engine": "1.0.0",
+  "snapshot_canonical_bytes_unchanged": true,
+  "snapshot_id": "afre.svc_snapshot:1.0:949a93985d27c284db5afcf163647cacefa395bebfc404bf4bb1a63091202e2c"
+}

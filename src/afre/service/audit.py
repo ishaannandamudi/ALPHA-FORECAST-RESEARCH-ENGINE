@@ -23,7 +23,7 @@ class SnapshotAudit(Artifact):
             self.snapshot_registry_entry.artifact_id == self.snapshot.fingerprint
             and not self.outcomes_read
             and self.action == "NONE_DESCRIPTIVE_ONLY;MANUAL_ONLY"
-            and self.versions == version_info(),
+            and self.versions == version_info(self.snapshot.engine_version),
             "audit identity/boundary corruption",
         )
 
@@ -32,7 +32,7 @@ def audit_for(snapshot: ForecastSnapshot, entry: RegistryEntry) -> SnapshotAudit
     return SnapshotAudit(
         snapshot,
         entry,
-        version_info(),
+        version_info(snapshot.engine_version),
         (
             "TRAIN fitted artifacts are immutable metadata leaves; service never refits",
             "historical health/challenge metadata is descriptive and does not read "

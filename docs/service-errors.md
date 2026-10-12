@@ -13,4 +13,4 @@ A failed public read returns `ServiceReply(status, None, safe_message)` with API
 | BOUNDS_EXCEEDED | Configured or hard resource limit exceeded. |
 | CORRUPT_ARTIFACT | Canonical bytes, hash, layout, index, link or semantic replay is invalid. |
 
-Publication is explicit and strict: invalid native/source/context evidence raises a contract error before atomic append. The consumer read façade never trains, promotes, changes champion or executes. AFRE-25 remains final hardening.
+Publication is explicit and strict: invalid native/source/context evidence raises a contract error before atomic append. The consumer read façade never trains, promotes, changes champion or executes. AFRE-25 completes the final integration and hardening audit.

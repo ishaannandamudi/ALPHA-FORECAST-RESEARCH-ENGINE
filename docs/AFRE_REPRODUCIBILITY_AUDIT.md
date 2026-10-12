@@ -1,0 +1,9 @@
+# Final reproducibility audit
+
+Semantic identity pins actual evidence, versions, target/horizon units, model specs, declared seeds, folds, cutoffs, exact evaluation support and immutable revisions. Canonical UTF-8 JSON normalizes order, signed zero and enum/type tags; fingerprints domain-separate schema and artifact content. Timings, benchmark measurements and SQLite page layout are excluded from semantic identity.
+
+The final native correction-chain regression recomputes real feature/dataset/fit/prediction/fusion/snapshot evidence in fresh processes under hash seeds 0, 1, 42 and random, using forward/reversed evidence insertion. Existing phase regressions additionally reverse feature/source/candidate/event/regime/trial/fusion/health/challenger/registry/request ordering. Service regressions replay exact canonical bytes after store reopen, and frozen readers remain unchanged during separate writer appends. Historical 0.25.0 public golden records are preserved, not regenerated under the final version.
+
+The release source identity hashes every `src/afre/**/*.py` file plus `pyproject.toml`, then hashes the canonical sorted compact path→SHA256 map. Documentation, generated manifest/reports/timings and test fixtures are excluded to avoid cyclic hashes. A separate final gate freeze covers all source/tests/examples/benchmarks/scripts/configuration and compatibility fixtures, with HEAD and hashes checked before and after the covered suite. Exact freeze evidence is recorded in the completion report.
+
+Reproducibility is demonstrated for identical logical inputs and versions within the tested Python/platform floating environment. Low-level floating behavior can differ across platforms/hardware; there is no universal bit-identity promise. Wall-clock runtime and SQLite storage-page diagnostics are machine-dependent measurements.

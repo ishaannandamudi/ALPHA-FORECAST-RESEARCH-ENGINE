@@ -1,0 +1,82 @@
+"""One frozen repository gate; socket/DNS denial starts before AFRE imports."""
+import hashlib
+import json
+import os
+import socket
+import subprocess
+import time
+from pathlib import Path
+
+GUARD = Path('/private/tmp/afre25-offline-guard')
+GUARD.mkdir(exist_ok=True)
+PATCH = '''import socket
+class DeniedSocket(socket.socket):
+    def __new__(cls, *args, **kwargs):
+        raise AssertionError('network forbidden in final AFRE-25 suite')
+def denied(*args, **kwargs):
+    raise AssertionError('network forbidden in final AFRE-25 suite')
+for name in ('socket', 'create_connection', 'getaddrinfo', 'gethostbyname', 'gethostbyname_ex', 'gethostbyaddr', 'socketpair', 'getnameinfo'):
+    setattr(socket, name, DeniedSocket if name == 'socket' else denied)
+'''
+(GUARD / 'sitecustomize.py').write_text(PATCH)
+class DeniedSocket(socket.socket):
+    def __new__(cls, *args, **kwargs):
+        raise AssertionError('network forbidden in final AFRE-25 suite')
+def denied(*args, **kwargs):
+    raise AssertionError('network forbidden in final AFRE-25 suite')
+for name in ('socket', 'create_connection', 'getaddrinfo', 'gethostbyname', 'gethostbyname_ex', 'gethostbyaddr', 'socketpair', 'getnameinfo'):
+    setattr(socket, name, DeniedSocket if name == 'socket' else denied)
+OriginalPopen = subprocess.Popen
+class OfflinePopen(OriginalPopen):
+    def __init__(self, *args, **kwargs):
+        env = dict(os.environ if kwargs.get('env') is None else kwargs['env'])
+        env['PYTHONPATH'] = str(GUARD) + os.pathsep + env.get('PYTHONPATH', '')
+        kwargs['env'] = env
+        super().__init__(*args, **kwargs)
+subprocess.Popen = OfflinePopen
+for probe in ("import socket; socket.socket()", "import socket; socket.getaddrinfo('example.com',443)"):
+    check = subprocess.run([str(Path('.venv311/bin/python').absolute()), '-c', probe],
+                           env={'PYTHONPATH':'src:.'}, capture_output=True, text=True)
+    assert check.returncode != 0 and 'network forbidden' in check.stderr
+print('PRECHECK PASS: sockets/DNS denied before AFRE imports and in Python children', flush=True)
+os.environ['COVERAGE_FILE'] = '/private/tmp/afre25-full.coverage'
+import pytest
+frozen = json.loads(Path('/private/tmp/afre25-frozen-source.json').read_text())
+def inventory():
+    listed = subprocess.run(['git','ls-files','-co','--exclude-standard','-z'], check=True,
+                            capture_output=True, text=True).stdout.split('\0')
+    return {n:hashlib.sha256(Path(n).read_bytes()).hexdigest() for n in sorted(set(listed))
+            if n and Path(n).is_file() and (Path(n).suffix in ('.py','.toml','.yml','.yaml','.ini','.cfg')
+                                          or n in ('.gitignore','requirements.txt') or n.startswith('tests/'))}
+def check_frozen():
+    assert inventory() == frozen['files'], 'source/tests/config freeze changed'
+    assert subprocess.run(['git','rev-parse','HEAD'], capture_output=True, check=True, text=True).stdout.strip() == frozen['head']
+check_frozen()
+print('PRECHECK PASS: source/tests/config inventory and HEAD frozen', flush=True)
+class Progress:
+    passed = 0
+    failed = 0
+    previous = 0.0
+    started = time.monotonic()
+    def pytest_runtest_logstart(self, nodeid, location):
+        now = time.monotonic()
+        if now - self.previous >= 55:
+            self.previous = now
+            print(f'\nGATE_PROGRESS passed={self.passed} failed={self.failed} elapsed={now-self.started:.1f}s current={nodeid}', flush=True)
+    def pytest_runtest_logreport(self, report):
+        if report.when == 'call':
+            self.passed += int(report.passed)
+            self.failed += int(report.failed)
+started = time.monotonic()
+result = pytest.main(['-q','--cov=afre','--cov-branch',
+                     '--cov-report=json:/private/tmp/afre25-full-coverage.json',
+                     '--cov-report=term:skip-covered',
+                     '--junitxml=/private/tmp/afre25-full-junit.xml'], plugins=[Progress()])
+coverage = json.loads(Path('/private/tmp/afre25-full-coverage.json').read_text())['totals']
+if coverage['percent_covered'] < 95 or coverage['covered_branches'] / coverage['num_branches'] < .95:
+    result = 1
+    print('COVERAGE GATE FAILURE: combined or branch coverage below 95%', flush=True)
+check_frozen()
+print('POSTCHECK PASS: source/tests/config inventory and HEAD unchanged', flush=True)
+Path('/private/tmp/afre25-full-result.json').write_text(json.dumps({'exit_code':int(result),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'elapsed_seconds':time.monotonic()-started,'freeze_sha256':hashlib.sha256(Path('/private/tmp/afre25-frozen-source.json').read_bytes()).hexdigest()}, sort_keys=True)+'\n')
+raise SystemExit(result)

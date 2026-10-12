@@ -25,6 +25,23 @@ def main() -> None:
     paths = sorted(set(listing.stdout.decode().split("\0")) - {""})
     failures: list[str] = []
     package = REPOSITORY / "src" / "afre"
+    forbidden = {
+        "socket",
+        "urllib",
+        "requests",
+        "httpx",
+        "http",
+        "ftplib",
+        "subprocess",
+        "pickle",
+        "joblib",
+        "importlib",
+        "ame",
+        "mce",
+        "eie",
+        "hft",
+        "options_engine",
+    }
     for name in paths:
         path = REPOSITORY / name
         if not path.is_file():
@@ -40,6 +57,15 @@ def main() -> None:
             failures.append(f"{name}: missing final newline")
         if package in path.parents and path.suffix == ".py":
             for node in ast.walk(ast.parse(text)):
+                imports = (
+                    [n.name for n in node.names]
+                    if isinstance(node, ast.Import)
+                    else [node.module]
+                    if isinstance(node, ast.ImportFrom) and node.module
+                    else []
+                )
+                if any(n.split(".")[0].lower() in forbidden for n in imports):
+                    failures.append(f"{name}: forbidden runtime import")
                 if (
                     isinstance(node, ast.Call)
                     and isinstance(node.func, ast.Name)

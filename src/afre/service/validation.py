@@ -30,7 +30,9 @@ def validate_service(repo: "ServiceRepository", value: Artifact) -> None:
             "registry semantic corruption",
         )
     elif isinstance(value, ForecastSnapshot):
-        expected, entries = build_snapshot(repo, value.publication)
+        expected, entries = build_snapshot(
+            repo, value.publication, engine_version=value.engine_version
+        )
         require(value == expected, "snapshot semantic corruption")
         require(
             all(repo.get(RegistryEntry, e.fingerprint) == e for e in entries),

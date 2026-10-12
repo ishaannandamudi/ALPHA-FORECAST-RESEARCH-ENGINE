@@ -17,7 +17,11 @@ TABLES = tuple(
 def frozen_copy(
     repo: SelectionRepository, hook: Callable[[], None] | None
 ) -> SelectionRepository:
-    stage = SelectionRepository(":memory:", repo.selection_bounds)
+    # Later phases add strict immutable tables: preserve the concrete native layout.
+    stage = type(repo)(":memory:")
+    for name, value in vars(repo).items():
+        if name == "bounds" or name.endswith("_bounds"):
+            setattr(stage, name, value)
     try:
         with repo.read_snapshot():
             repo._connection.execute("SELECT count(*) FROM metadata").fetchone()

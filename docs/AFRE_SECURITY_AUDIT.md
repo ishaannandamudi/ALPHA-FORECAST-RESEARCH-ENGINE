@@ -1,0 +1,9 @@
+# Final security audit
+
+Runtime dependencies are empty. Package code has no network, subprocess, eval/exec, dynamic executable imports, pickle/joblib or external-engine imports. Canonical JSON is a closed data-only class/enum catalog with exact fields, finite numbers, duplicate-key rejection, canonical-byte comparison, 16 MiB payload bound and depth 64. Service-specific bounds additionally limit atoms/components, lineage nodes/depth/bytes, contexts, queries/pages/catalogs/artifacts and frozen SQLite backup size. Declared bounds reject rather than silently dropping evidence.
+
+Dynamic gates exercise hostile payloads, malformed/version-incompatible requests, nonfinite/deep data, valid-hash semantic forgeries, projection/link/layout/metadata corruption, unavailable capabilities and sanitized public errors. Final socket/DNS denial starts before AFRE imports and is propagated to Python subprocesses. Static repository scanning covers credentials, unfinished markers, forbidden imports and executable-data calls.
+
+Fixed SQL tables and bound data parameters protect consumer selectors. Store path is explicitly chosen by the caller; model/code hashes are provenance references, never executable filesystem payloads. Immutable triggers prevent ordinary updates/deletes, and read-time semantic replay validates hashes, source identity, indices, links and layout. A database administrator can replace the whole file: hashes and triggers are not signatures or a provider authenticity guarantee. Qualified reconstruction trusts approved attestors under explicit policy.
+
+No operational credentials, real external integration or deployment/execution capability is included. The final report records exact security/network gate results and limits the release claim to this tested offline research boundary.
